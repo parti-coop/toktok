@@ -1,0 +1,11 @@
+= form_for @proposal do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control input-lg'
+
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control'
+
+  .form-group
+    = f.submit class: 'btn btn-primary'

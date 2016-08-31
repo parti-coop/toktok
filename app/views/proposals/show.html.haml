@@ -1,0 +1,12 @@
+%section
+  .container-fluid
+    .page-header
+      %h2
+        = @proposal.title
+        .pull-right
+          %small
+            = link_to '수정', [:edit, @proposal]
+            = link_to '삭제', @proposal, method: :delete, data: {confirm: '정말로 삭제하시겠습니까?'}
+
+    %div
+      = simple_format @proposal.body

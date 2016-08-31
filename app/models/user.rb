@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :registerable, :rememberable, :trackable, :omniauthable,
          :omniauth_providers => [:facebook, :twitter]
+
+  has_many :proposals, dependent: :destroy
+
   # validations
   VALID_NICKNAME_REGEX = /\A[ㄱ-ㅎ가-힣a-z0-9_]+\z/i
 
