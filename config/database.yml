@@ -1,25 +1,19 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
+<%
+  branch = `git rev-parse --abbrev-ref HEAD`.strip rescue nil
+  local_env = YAML.load_file("#{Rails.root}/local_env.yml").dig(Rails.env) || {}
+%>
+
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  adapter:   mysql2
+  username:  <%= local_env.dig('database', 'username') %>
+  password:  <%= local_env.dig('database', 'password') %>
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database:  hotlinekr_development_<%= branch %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
-
-production:
-  <<: *default
-  database: db/production.sqlite3
+  database:  hotlinekr_test_<%= branch %>

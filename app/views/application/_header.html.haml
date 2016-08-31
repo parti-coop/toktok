@@ -7,9 +7,28 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand{ href: root_path }
-          핫링크 코리아
+          HOTLINEKR
 
       .collapse.navbar-collapse
         %ul.nav.navbar-nav
           %li
             %a(href='#') 메뉴
+
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to edit_user_registration_path do
+                = render 'users/thumbnail'
+                = current_user.nickname
+            %li
+              = link_to sign_out_path, method: :delete do
+                로그아웃
+          - else
+            %li
+              = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'btn btn-join btn-join-facebook btn-block' do
+                %i.fa.fa-facebook.fa-fw
+                페이스북으로 가입/로그인
+            %li
+              = link_to user_twitter_omniauth_authorize_path(provider: :twitter), class: 'btn btn-join btn-join-twitter btn-block' do
+                %i.fa.fa-twitter.fa-fw
+                트위터로 가입/로그인

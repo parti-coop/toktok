@@ -1,0 +1,14 @@
+.img-user {
+  @extend .img-circle;
+  background-size: cover;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+
+  h2 & {
+    height: 30px;
+    width: 30px;
+    vertical-align: top;
+  }
+}

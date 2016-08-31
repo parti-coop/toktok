@@ -1,0 +1,9 @@
+.alert.alert-warning
+  - resource.errors.messages.each do |message|
+    - attribute_name = User.human_attribute_name(message[0])
+    - attribute_messages = message[1]
+    - attribute_messages.each do |m|
+      %p
+        %i.fa.fa-check
+        %strong> #{attribute_name}
+        은(는) #{m}
