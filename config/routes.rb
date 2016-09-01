@@ -6,8 +6,12 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy'
   end
 
-  resources :proposals
-  resources :questions
+  concern :commentable do
+    resources :comments, shallow: true
+  end
+
+  resources :proposals, concerns: :commentable
+  resources :questions, concerns: :commentable
 
   root 'pages#home'
 end

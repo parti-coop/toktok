@@ -1,0 +1,9 @@
+%h3 Comments
+%div
+  = form_for [commentable, Comment.new] do |f|
+    .form-group
+      = f.text_area :body, class: 'form-control'
+    .form-group
+      = f.submit class: 'btn btn-primary'
+%div
+  = render commentable.comments

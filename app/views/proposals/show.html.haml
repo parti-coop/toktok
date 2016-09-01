@@ -10,3 +10,6 @@
 
     %div
       = simple_format @proposal.body
+
+    %div
+      = render 'comments/list', commentable: @proposal

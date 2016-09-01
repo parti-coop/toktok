@@ -10,3 +10,6 @@
 
     %div
       = simple_format @question.body
+
+    %div
+      = render 'comments/list', commentable: @question
