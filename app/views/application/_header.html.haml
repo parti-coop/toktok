@@ -11,10 +11,9 @@
 
       .collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li
-            = link_to '입법제안', proposals_path
-          %li
-            = link_to '정보공개요청', questions_path
+          %li= link_to '입법제안', proposals_path
+          %li= link_to '정보공개요청', questions_path
+          %li= link_to '회원목록', users_path
 
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
