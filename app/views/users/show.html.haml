@@ -4,5 +4,13 @@
       %h2
         = @user.nickname
 
-    %div
-      = @user.inspect
+    %ul
+      %li
+        입법제안
+        = @user.proposals.count
+      %li
+        정보공개청구
+        = @user.questions.count
+      %li
+        댓글
+        = @user.comments.count

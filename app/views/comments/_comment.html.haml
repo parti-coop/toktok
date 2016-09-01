@@ -1,6 +1,6 @@
 %div[comment]
   = simple_format comment.body
   %div
-    = comment.user.inspect
+    = link_to comment.user.nickname, comment.user
     = link_to '수정', '#'
     = link_to '삭제', comment, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' }
