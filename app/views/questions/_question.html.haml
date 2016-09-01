@@ -1,5 +1,9 @@
 %div[question]
-  %h4= link_to question.title, question
-  %div
-    %span= question.created_at
-    %span.fa.fa-comment-o= question.comments.count
+  .media
+    .media-body
+      %h4= link_to question.title, question
+      %div
+        %span= question.created_at
+        %span.fa.fa-comment-o= question.comments.count
+    .media-right
+      = render 'likes/button', likable: question

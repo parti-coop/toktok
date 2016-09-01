@@ -1,6 +1,10 @@
 %div[proposal]
-  %h4= link_to proposal.title, proposal
-  %div
-    %span= proposal.created_at
-    %span.fa.fa-comment-o
-      = proposal.comments.count
+  .media
+    .media-body
+      %h4= link_to proposal.title, proposal
+      %div
+        %span= proposal.created_at
+        %span.fa.fa-comment-o
+          = proposal.comments.count
+    .media-right
+      = render 'likes/button', likable: proposal
