@@ -11,5 +11,8 @@
     %div
       = simple_format @proposal.body
 
+    %div.text-center
+      = render 'likes/button', likable: @proposal
+
     %div
       = render 'comments/list', commentable: @proposal

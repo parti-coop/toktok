@@ -1,0 +1,13 @@
+- if user_signed_in?
+  - if Like.liked_by?(likable, current_user)
+    = link_to Like.like_by_likable_and_user(likable, current_user), method: :delete, data: { confirm: '공감을 취소하겠습니까?' }, class: 'btn btn-default btn-lg' do
+      공감
+      = likable.likes.count
+  - else
+    = link_to [likable, Like.new], method: :post, class: 'btn btn-primary btn-lg' do
+      공감
+      = likable.likes.count
+- else
+  = link_to '', method: :post, class: 'btn btn-default btn-lg' do
+    공감
+    = likable.likes.count

@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   concern :commentable do
     resources :comments, shallow: true
   end
+  concern :likable do
+    resources :likes, shallow: true
+  end
 
   resources :users
-  resources :proposals, concerns: :commentable
-  resources :questions, concerns: :commentable
+  resources :proposals, concerns: [:commentable, :likable]
+  resources :questions, concerns: [:commentable, :likable]
 
   root 'pages#home'
 end
