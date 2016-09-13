@@ -1,24 +1,11 @@
 %section
   .container-fluid
-    .row
-      .col-sm-6
-        .page-header
-          %h2
-            입법제안
-            .pull-right
-              %small
-                = link_to '제안하기', new_proposal_path
+    .page-header
+      %h2
+        제안
+        .pull-right
+          %small
+            = link_to '제안하기', new_proposal_path
 
-        %div
-          = render @proposals
-
-      .col-sm-6
-        .page-header
-          %h2
-            정보공개요청
-            .pull-right
-              %small
-                = link_to '질문하기', new_question_path
-
-        %div
-          = render @questions
+    %div
+      = render @proposals
