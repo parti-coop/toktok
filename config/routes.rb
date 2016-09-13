@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :likes, shallow: true
   end
 
+  resources :committees
+  resources :congressmen
   resources :users
   resources :proposals, concerns: [:commentable, :likable]
   resources :questions, concerns: [:commentable, :likable]

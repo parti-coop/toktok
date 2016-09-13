@@ -1,0 +1,15 @@
+%section
+  .container
+    .page-header
+      %h2 위원회
+
+    %section
+      = render 'form'
+
+    - @committees.each do |committee|
+      %section[committee]
+        %h3= committee.name
+        %p= committee.description
+        %div
+          = link_to '수정', [:edit, committee]
+          = link_to '삭제', committee, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
