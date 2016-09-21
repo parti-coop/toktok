@@ -10,6 +10,8 @@
 
     %div
       = simple_format @proposal.body
+      - @proposal.proposal_attachments.each do |attachment|
+        = link_to attachment.name, attachment.source.url, target: '_blank'
 
     %div.text-center
       = render 'likes/button', likable: @proposal

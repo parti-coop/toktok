@@ -43,6 +43,6 @@ class ProposalsController < ApplicationController
   private
 
   def proposal_params
-    params.require(:proposal).permit(:title, :body)
+    params.require(:proposal).permit(:title, :body, proposal_attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
   end
 end

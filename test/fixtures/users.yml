@@ -1,0 +1,5 @@
+one:
+  email: one@gmail.com
+  uid: uid
+  provider: facebook
+  nickname: nick1

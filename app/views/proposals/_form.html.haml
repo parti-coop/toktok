@@ -7,5 +7,13 @@
     = f.label :body
     = f.text_area :body, class: 'form-control redactor'
 
+
+  %h3 Attachments
+  #proposal_attachments
+    = f.fields_for :proposal_attachments do |ff|
+      = render 'proposal_attachment_fields', f: ff
+    .links
+      = link_to_add_association 'add attachment', f, :proposal_attachments
+
   .form-group
     = f.submit class: 'btn btn-primary'

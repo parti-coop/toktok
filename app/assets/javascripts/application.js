@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require redactor
+//= require cocoon
 $(function(){
   // Initialize Redactor
   $('.redactor').redactor({
