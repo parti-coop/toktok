@@ -1,7 +1,11 @@
 %div[proposal]
   .media
     .media-body
-      %h4= link_to proposal.title, proposal
+      %h4
+        = link_to proposal.title, proposal
+        - if proposal.launched?
+          = link_to proposal.project do
+            %i.fa.fa-rocket
       %div
         %span= proposal.created_at
         %span.fa.fa-comment-o

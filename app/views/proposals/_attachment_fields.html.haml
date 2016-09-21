@@ -1,0 +1,9 @@
+.nested-fields
+  .form-group
+    = f.label :source
+    = f.hidden_field :soure_cache, value: f.object.source_cache
+    - if f.object.source.url.present?
+      = link_to f.object.name, f.object.source.url, target: '_blank'
+    - else
+      = f.file_field :source, class: 'form-control input-lg'
+    = link_to_remove_association "remove", f

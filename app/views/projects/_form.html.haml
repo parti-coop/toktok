@@ -1,11 +1,13 @@
-= form_for @proposal do |f|
+= form_for @project do |f|
+
+  = f.hidden_field :proposal_id, value: @proposal.id
   .form-group
     = f.label :title
-    = f.text_field :title, class: 'form-control input-lg'
+    = f.text_field :title, class: 'form-control input-lg', value: @project.title || @proposal.title
 
   .form-group
     = f.label :body
-    = f.text_area :body, class: 'form-control redactor'
+    = f.text_area :body, class: 'form-control redactor', value: @project.body || @proposal.body
 
 
   %h3 Attachments

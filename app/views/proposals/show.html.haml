@@ -5,12 +5,17 @@
         = @proposal.title
         .pull-right
           %small
+            - if @proposal.launched?
+              프로젝트 :
+              = link_to @proposal.project.title, @proposal.project
+            - else
+              = link_to '프로젝트 만들기', new_project_path(proposal_id: @proposal.id)
             = link_to '수정', [:edit, @proposal]
             = link_to '삭제', @proposal, method: :delete, data: {confirm: '정말로 삭제하시겠습니까?'}
 
     %div
       = simple_format @proposal.body
-      - @proposal.proposal_attachments.each do |attachment|
+      - @proposal.attachments.each do |attachment|
         = link_to attachment.name, attachment.source.url, target: '_blank'
 
     %div.text-center

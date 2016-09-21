@@ -1,0 +1,20 @@
+%section
+  .container-fluid
+    .page-header
+      %h2
+        = @project.title
+        .pull-right
+          %small
+            = link_to '수정', [:edit, @project]
+            = link_to '삭제', @project, method: :delete, data: {confirm: '정말로 삭제하시겠습니까?'}
+
+    %div
+      = simple_format @project.body
+      - @project.attachments.each do |attachment|
+        = link_to attachment.name, attachment.source.url, target: '_blank'
+
+    %div.text-center
+      = render 'likes/button', likable: @project
+
+    %div
+      = render 'comments/list', commentable: @project

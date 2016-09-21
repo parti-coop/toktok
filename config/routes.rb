@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :congressmen
   resources :users
   resources :proposals, concerns: [:commentable, :likable]
+  resources :projects, concerns: [:commentable, :likable]
   resources :questions, concerns: [:commentable, :likable]
 
   root 'pages#home'

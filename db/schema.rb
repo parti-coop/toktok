@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921050410) do
+ActiveRecord::Schema.define(version: 20160921082635) do
+
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "source",          null: false
+    t.string   "name",            null: false
+    t.string   "source_type",     null: false
+    t.string   "attachable_type", null: false
+    t.integer  "attachable_id",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id", using: :btree
+  end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "commentable_type"
@@ -50,14 +61,15 @@ ActiveRecord::Schema.define(version: 20160921050410) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
-  create_table "proposal_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string   "source",      null: false
-    t.string   "name",        null: false
-    t.string   "source_type", null: false
-    t.integer  "proposal_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["proposal_id"], name: "index_proposal_attachments_on_proposal_id", using: :btree
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "title",                     null: false
+    t.text     "body",        limit: 65535
+    t.integer  "proposal_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
   create_table "proposals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
