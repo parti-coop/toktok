@@ -73,6 +73,9 @@ gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
 gem 'newrelic_rpm'
 gem 'ey_config'
 
+# tool
+gem 'redactor2_rails', '~> 0.1.1'
+
 group :development do
   gem 'web-console', '~> 2.0'
 end
