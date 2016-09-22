@@ -9,7 +9,9 @@ $(function () {
         fileUpload: '/redactor2_rails/files',
         fileUploadFields: params,
         lang: 'ko',
-        toolbarFixed: true
+        toolbarFixed: true,
+        buttonsHide: ['file']
     };
+    // Initialize Redactor
+    $('.redactor').redactor();
 });
-
