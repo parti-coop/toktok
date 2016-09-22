@@ -1,12 +1,35 @@
+%p
+  국회에 제안, 톡을 보내세요
+  %br
+  시민의 제안이 법안이 됩니다
+
 = form_for @proposal do |f|
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control input-lg'
 
+
+  .form-group
+    = f.label :user_name
+    - if @proposal.user_name.present?
+      = f.text_field :user_name, class: 'form-control input-lg'
+    - else
+      = f.text_field :user_name, class: 'form-control input-lg', value: current_user.nickname
+
+  .form-group
+    = f.label :user_email
+    - if @proposal.user_email.present?
+      = f.text_field :user_email, class: 'form-control input-lg'
+    - else
+      = f.text_field :user_email, class: 'form-control input-lg', value: current_user.email
+
+  .form-group
+    = f.label :user_phone
+    = f.text_field :user_phone, class: 'form-control input-lg'
+
   .form-group
     = f.label :body
     = f.text_area :body, class: 'form-control redactor'
-
 
   %h3 Attachments
   #attachments
