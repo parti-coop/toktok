@@ -1,11 +1,12 @@
-%section
-  .container-fluid
-    .page-header
-      %h2
-        제안
-        .pull-right
-          %small
-            = link_to '제안하기', new_proposal_path
+%p
+  국회에 직접 제안, 톡을 보내세요
+  시민의 제안이 법안이 됩니다
 
-    %div
-      = render @proposals
+- if user_signed_in?
+  = link_to 'TALKTALK', new_proposal_path
+- else
+  = link_to 'TALKTALK', join_path
+
+%div
+  진행중인 프로젝트
+  = render @projects
