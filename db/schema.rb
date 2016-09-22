@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922162803) do
+ActiveRecord::Schema.define(version: 20160922162804) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20160922162803) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "proposer_name",                null: false
-    t.string   "proposer_email"
-    t.string   "proposer_phone"
+    t.string   "proposer_email",               null: false
+    t.string   "proposer_phone",               null: false
     t.index ["user_id"], name: "index_proposals_on_user_id", using: :btree
   end
 
