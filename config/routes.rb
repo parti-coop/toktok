@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     delete 'sign_out', to: 'devise/sessions#destroy'
   end
+  get 'join', to: 'users#join'
 
   concern :commentable do
     resources :comments, shallow: true

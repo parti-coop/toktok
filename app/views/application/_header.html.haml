@@ -27,10 +27,4 @@
                 로그아웃
           - else
             %li
-              = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'btn btn-join btn-join-facebook btn-block' do
-                %i.fa.fa-facebook.fa-fw
-                페이스북으로 가입/로그인
-            %li
-              = link_to user_twitter_omniauth_authorize_path(provider: :twitter), class: 'btn btn-join btn-join-twitter btn-block' do
-                %i.fa.fa-twitter.fa-fw
-                트위터로 가입/로그인
+              = link_to '가입/로그인', join_path
