@@ -2,3 +2,6 @@ proposal1:
   title: title1
   body: body1
   user: one
+  proposer_name: proposer_name1
+  proposer_email: proposer_email1
+  proposer_phone: proposer_phone1

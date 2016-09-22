@@ -10,22 +10,16 @@
 
 
   .form-group
-    = f.label :user_name
-    - if @proposal.user_name.present?
-      = f.text_field :user_name, class: 'form-control input-lg'
-    - else
-      = f.text_field :user_name, class: 'form-control input-lg', value: current_user.nickname
+    = f.label :proposer_name
+    = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname))
 
   .form-group
-    = f.label :user_email
-    - if @proposal.user_email.present?
-      = f.text_field :user_email, class: 'form-control input-lg'
-    - else
-      = f.text_field :user_email, class: 'form-control input-lg', value: current_user.email
+    = f.label :proposer_email
+    = f.text_field :proposer_email, class: 'form-control input-lg', value: (@proposal.proposer_email || current_user.try(:email))
 
   .form-group
-    = f.label :user_phone
-    = f.text_field :user_phone, class: 'form-control input-lg'
+    = f.label :proposer_phone
+    = f.text_field :proposer_phone, class: 'form-control input-lg'
 
   .form-group
     = f.label :body
