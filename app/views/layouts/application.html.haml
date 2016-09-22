@@ -23,6 +23,9 @@
       = yield :header
     - else
       = render 'application/header'
-    = yield
+    - if content_for?(:main)
+      = yield :main
+    - else
+      = yield
     = javascript_include_tag 'application'
     = yield :script if content_for?(:script)

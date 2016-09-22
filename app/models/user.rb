@@ -50,7 +50,9 @@ class User < ApplicationRecord
   # the other methods
 
   def admin?
-    %w(account@parti.xyz).include? email
+    return false if ENV["ADMIN_EMAILS"].blank?
+    admin_emails = ENV["ADMIN_EMAILS"].split(',').map &:strip
+    admin_emails.include? email
   end
 
   private

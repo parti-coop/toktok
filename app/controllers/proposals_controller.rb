@@ -1,10 +1,8 @@
 class ProposalsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @proposals = Proposal.all
-  end
-
-  def show
-    @proposal = Proposal.find(params[:id])
   end
 
   def new
@@ -12,21 +10,15 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @proposal = Proposal.new(proposal_params)
     @proposal.user = current_user
     if @proposal.save
-      redirect_to @proposal
+      render 'create'
     else
       render 'new'
     end
   end
 
-  def edit
-    @proposal = Proposal.find(params[:id])
-  end
-
   def update
-    @proposal = Proposal.find(params[:id])
     if @proposal.update(proposal_params)
       redirect_to @proposal
     else
@@ -35,7 +27,6 @@ class ProposalsController < ApplicationController
   end
 
   def destroy
-    @proposal = Proposal.find(params[:id])
     @proposal.destroy
     redirect_to root_path
   end

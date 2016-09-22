@@ -2,13 +2,7 @@
   .container-fluid
     .page-header
       %h2
-        = @proposal.title
-        .pull-right
-          %small
-            - if can? :update, @proposal
-              = link_to '수정', [:edit, @proposal]
-            - if can? :destroy, @proposal
-              = link_to '삭제', @proposal, method: :delete, data: {confirm: '정말로 삭제하시겠습니까?'}
+        #{@proposal.title} 제안해주셔서 감사합니다!
 
     %div
       %span= @proposal.proposer_name
@@ -22,4 +16,7 @@
         = link_to attachment.name, attachment.source.url, target: '_blank'
 
     %div
-      = render 'comments/list', commentable: @proposal
+      - if user_signed_in?
+        #{ link_to '내 페이지', current_user}에서 확인 가능합니다.
+      - else
+        진행 결과는 메일이나 전화로 연락 드릴께요.

@@ -17,6 +17,7 @@ production:
   S3_SECRET_KEY: xx
   S3_REGION: xx
   S3_BUCKET: xx
+  ADMIN_EMAILS: 쉼표로 구분되는 관리자 이메일 
 ```
 
 
@@ -69,6 +70,10 @@ development:
     username: 사용자이름
     password: 암호
 ```
+ 
+#### 스키마
+
+db:create와 db:migrate로 생성합니다.
 
 ### 로그인 준비
 
@@ -81,6 +86,8 @@ export TWITTER_APP_ID="xx"
 export TWITTER_APP_SECRET="xx"
 ```
 
-#### 스키마
+### 관리자
 
-db:create와 db:migrate로 생성합니다.
+```
+export ADMIN_EMAILS='관리자 메일주소'
+```

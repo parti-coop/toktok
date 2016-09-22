@@ -6,4 +6,4 @@
     .form-group
       = f.submit class: 'btn btn-primary'
 %div
-  = render commentable.comments
+  = render partial: 'comments/comment', collection: commentable.comments

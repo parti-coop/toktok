@@ -1,0 +1,8 @@
+- content_for :main do
+  .container-fluid
+    .row
+      .col-md-2
+        = render 'admin/sidebar'
+      .col-md-10
+        = yield
+= render file: 'layouts/application'

@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   end
   get 'join', to: 'users#join'
 
+  namespace :admin do
+    root to: "pages#home"
+    resources :proposals
+  end
+  root 'pages#home'
+
   concern :commentable do
     resources :comments, shallow: true
   end
@@ -21,6 +27,4 @@ Rails.application.routes.draw do
   resources :proposals, concerns: [:commentable, :likable]
   resources :projects, concerns: [:commentable, :likable]
   resources :questions, concerns: [:commentable, :likable]
-
-  root 'pages#home'
 end

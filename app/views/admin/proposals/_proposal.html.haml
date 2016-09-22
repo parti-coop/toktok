@@ -1,0 +1,19 @@
+%div[proposal]
+  .media
+    .media-body
+      %h4
+        = link_to proposal.title, admin_proposal_path(proposal)
+        - if proposal.launched?
+          = link_to proposal.project do
+            %i.fa.fa-rocket
+      %div
+        %span= proposal.proposer_name
+        %span= proposal.proposer_email
+        %span= proposal.proposer_phone
+        - if proposal.user.present?
+          %span (회원: #{proposal.user.nickname})
+      %div
+        %span= proposal.created_at
+        %span.fa.fa-comment-o
+          = proposal.comments.count
+
