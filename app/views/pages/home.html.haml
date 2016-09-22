@@ -1,12 +1,12 @@
-%p
-  국회에 직접 제안, 톡을 보내세요
-  시민의 제안이 법안이 됩니다
+%section
+  .container-fluid
+    .page-header
+      %p
+        국회에 직접 제안, 톡을 보내세요
+        시민의 제안이 법안이 됩니다
 
-- if user_signed_in?
-  = link_to 'TALKTALK', new_proposal_path
-- else
-  = link_to 'TALKTALK', join_path
-
-%div
-  진행중인 프로젝트
-  = render @projects
+      = link_to user_signed_in? ? new_proposal_path : join_path do
+        TALKTALK
+    %div
+      진행중인 프로젝트
+      = render @projects

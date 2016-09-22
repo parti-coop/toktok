@@ -3,14 +3,11 @@
     .page-header
       %h2
         = @user.nickname
+        = link_to '프로필수정', edit_user_registration_path if @user == current_user
 
     %ul
       %li
-        입법제안
-        = @user.proposals.count
+        내가 한 제안(#{@user.proposals.count})
+        = render @user.proposals
       %li
-        정보공개청구
-        = @user.questions.count
-      %li
-        댓글
-        = @user.comments.count
+        참여한 프로젝트

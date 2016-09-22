@@ -18,8 +18,5 @@
       - @proposal.attachments.each do |attachment|
         = link_to attachment.name, attachment.source.url, target: '_blank'
 
-    %div.text-center
-      = render 'likes/button', likable: @proposal
-
     %div
       = render 'comments/list', commentable: @proposal

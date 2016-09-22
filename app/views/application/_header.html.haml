@@ -19,7 +19,7 @@
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
             %li
-              = link_to edit_user_registration_path do
+              = link_to user_path(current_user) do
                 = render 'users/thumbnail'
                 = current_user.nickname
             %li
