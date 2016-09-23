@@ -1,21 +1,28 @@
 # encoding: utf-8
 class Redactor2RailsImageUploader < CarrierWave::Uploader::Base
   include Redactor2Rails::Backend::CarrierWave
-
-  # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  # include CarrierWave::ImageScience
 
-  # Choose what kind of storage to use for this uploader:
-  # storage :fog
-  storage :file
+  def self.env_storage
+    if Rails.env.production?
+      :fog
+    else
+      :file
+    end
+  end
+
+  storage env_storage
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "system/redactor2_assets/images/#{model.id}"
+    "uploads/redactor2_assets/images/#{model.class.to_s.underscore}/#{model.id}"
   end
+
+  def content_type_whitelist
+    /image\//
+  end
+
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -30,6 +37,22 @@ class Redactor2RailsImageUploader < CarrierWave::Uploader::Base
   # end
 
   process :read_dimensions
+
+  version :xs  do
+    process resize_to_fit: [80, nil]
+  end
+
+  version :sm do
+    process resize_to_fit: [200, nil]
+  end
+
+  version :md do
+    process resize_to_fit: [400, nil]
+  end
+
+  version :lg do
+    process resize_to_fit: [700, nil]
+  end
 
   # Create different versions of your uploaded files:
   version :thumb do
