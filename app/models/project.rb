@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :proposal, required: false
   belongs_to :user
+  belongs_to :committee
   has_many :likes, as: :likable
   has_many :comments, as: :commentable
   has_many :attachments, dependent: :destroy, as: :attachable

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922234258) do
+ActiveRecord::Schema.define(version: 20160923062842) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "source",          null: false
@@ -73,12 +73,14 @@ ActiveRecord::Schema.define(version: 20160922234258) do
   end
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string   "title",                     null: false
-    t.text     "body",        limit: 65535
+    t.string   "title",                      null: false
+    t.text     "body",         limit: 65535
     t.integer  "proposal_id"
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "committee_id"
+    t.index ["committee_id"], name: "index_projects_on_committee_id", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end

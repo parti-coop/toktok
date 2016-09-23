@@ -45,6 +45,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :body, :proposal_id, attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
+    params.require(:project).permit(:title, :body, :committee_id, :proposal_id, attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
   end
 end

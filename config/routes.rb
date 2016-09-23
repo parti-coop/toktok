@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     root to: "pages#home"
     resources :proposals
     resources :matches
+    resources :projects
   end
   root 'pages#home'
 
