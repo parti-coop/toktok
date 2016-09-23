@@ -5,9 +5,10 @@
         = @user.nickname
         = link_to '프로필수정', edit_user_registration_path if @user == current_user
 
-    %ul
-      %li
-        내가 한 제안(#{@user.proposals.count})
-        = render @user.proposals
-      %li
-        참여한 프로젝트
+    - if @user == current_user
+      %ul
+        %li
+          내가 한 제안(#{@user.proposals.count})
+          = render @user.proposals
+        %li
+          참여한 프로젝트

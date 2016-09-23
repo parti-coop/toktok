@@ -3,9 +3,12 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
-
-    @comment.save
-    redirect_to :back
+    if current_user.blank?
+      redirect_to join_path
+    else
+      @comment.save
+      redirect_to :back
+    end
   end
 
   def update
