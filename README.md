@@ -52,6 +52,7 @@ $ chmod +x .git/hooks/post-checkout
 #### mysql 설정
 mysql을 구동해야합니다. mysql의 encoding은 utf8mb4를 사용합니다. mysql은 버전 5.6 이상을 사용합니다.
 
+
 encoding세팅은 my.cnf에 아래 설정을 넣고 반드시 재구동합니다. 참고로 맥에선 /usr/local/Cellar/mysql/(설치하신 mysql버전 번호)/my.cnf입니다.
 
 ```
@@ -72,8 +73,10 @@ development:
 ```
  
 #### 스키마
-
-db:create와 db:migrate로 생성합니다.
+```
+CREATE DATABASE hotlinekr_development_브랜치이름 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
+이후 db:migrate로 수행합니다.
 
 ### 로그인 준비
 
