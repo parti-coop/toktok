@@ -3,3 +3,8 @@ one:
   uid: uid
   provider: facebook
   nickname: nick1
+admin:
+  email: admin@parti.xyz
+  uid: admin
+  provider: facebook
+  nickname: admin

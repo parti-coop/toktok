@@ -1,13 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-  party: MyString
-  committee: one
+congressman1:
+  name: congressman1
+  description: congressman1 desc
+  party: red
+  committee: committee1
 
-two:
-  name: MyString
-  description: MyString
-  party: MyString
-  committee: two

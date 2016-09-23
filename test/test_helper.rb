@@ -22,7 +22,7 @@ class ActiveSupport::TestCase
   fixtures :all
   include CatanTestHelpers
 
-  ENV["ADMIN_EMAIL"] = "admin@parti.xyz"
+  ENV["ADMIN_EMAILS"] = "admin@parti.xyz"
 
   CarrierWave.root = Rails.root.join('test/fixtures/files')
   def after_teardown

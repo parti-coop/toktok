@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "pages#home"
     resources :proposals
+    resources :matches
   end
   root 'pages#home'
 

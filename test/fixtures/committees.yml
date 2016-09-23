@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
-
-two:
-  name: MyString
-  description: MyString
+committee1:
+  name: committee1
+  description: committee1 desc
