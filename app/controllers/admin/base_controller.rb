@@ -6,12 +6,12 @@ module Admin
       @current_ability ||= AdminAbility.new(current_user)
     end
 
-    before_filter :verify_admin
+    before_filter :verify_staff
 
     private
 
-    def verify_admin
-      redirect_to root_url unless current_user.try(:admin?)
+    def verify_staff
+      redirect_to root_url unless current_user.try(:role).try(:staff?)
     end
   end
 end

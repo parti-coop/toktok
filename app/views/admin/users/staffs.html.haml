@@ -1,0 +1,10 @@
+%section
+  .container
+    .page-header
+      %h2 운영자
+
+    %section
+      = render 'form'
+
+    - User.staffs.each do |user|
+      = render user

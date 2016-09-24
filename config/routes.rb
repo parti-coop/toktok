@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "pages#home"
+    get :staffs, to: "users#staffs"
+    patch 'users/role', to: "users#role"
     resources :proposals
     resources :matches
     resources :projects

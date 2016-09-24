@@ -1,2 +1,7 @@
 kr:
   hello: "안녕하세요"
+  enumerize:
+    user:
+      role:
+        admin: "운영자"
+        citizen: "시민"

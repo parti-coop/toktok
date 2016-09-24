@@ -17,7 +17,9 @@ production:
   S3_SECRET_KEY: xx
   S3_REGION: xx
   S3_BUCKET: xx
-  ADMIN_EMAILS: 쉼표로 구분되는 관리자 이메일 
+  DEFAULT_ADMIN_EMAIL: 최초 관리자 이메일 
+  DEFAULT_ADMIN_PROVIDER: 최초 관리자의 인증 제공 업체 구별자
+  DEFAULT_ADMIN_UID: 인증 제공 업체에 등록된 최초 관리자의 uid
 ```
 
 
@@ -73,9 +75,11 @@ development:
 ```
  
 #### 스키마
+
 ```
 CREATE DATABASE hotlinekr_development_브랜치이름 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
+
 이후 db:migrate로 수행합니다.
 
 ### 로그인 준비
@@ -91,6 +95,18 @@ export TWITTER_APP_SECRET="xx"
 
 ### 관리자
 
+DEFAULT_ADMIN_UID는 https://dev.twitter.com/rest/tools/console 을 통해 획득한다. 
+
 ```
-export ADMIN_EMAILS='관리자 메일주소'
+export DEFAULT_ADMIN_UID="???"
+export DEFAULT_ADMIN_PROVIDER="twitter"
+export DEFAULT_ADMIN_EMAIL="account@parti.xyz"
 ```
+
+#### 관리자 데이터 추가
+
+[mbleigh/seed-fu](https://github.com/mbleigh/seed-fu) 을 이용하여 설정된 초기 데이터를 로딩합니다.
+
+```
+$ source .powenv
+$ bundle exec rake db:seed_fu

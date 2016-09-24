@@ -1,0 +1,4 @@
+%div
+  = byline user
+  - if user != current_user
+    = link_to '스텝권한 삭제', admin_users_role_path(user_nickname: user.nickname, role: :citizen), method: :patch, data: { confirm: '정말로 삭제하시겠습니까?' }

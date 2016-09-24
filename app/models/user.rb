@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  extend Enumerize
+  enumerize :role, in: [:citizen, :staff]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :registerable, :rememberable, :trackable, :omniauthable,
@@ -19,6 +22,9 @@ class User < ApplicationRecord
     uniqueness: { case_sensitive: false },
     length: { maximum: 20 }
   validate :nickname_exclude_pattern
+
+  # scopes
+  scope :staffs, -> { where(role: :staff) }
 
   # filters
   before_save :downcase_nickname
@@ -45,14 +51,6 @@ class User < ApplicationRecord
 
   def self.find_for_omniauth(auth)
     where(provider: auth[:provider], uid: auth[:uid]).first
-  end
-
-  # the other methods
-
-  def admin?
-    return false if ENV["ADMIN_EMAILS"].blank?
-    admin_emails = ENV["ADMIN_EMAILS"].split(',').map &:strip
-    admin_emails.include? email
   end
 
   private

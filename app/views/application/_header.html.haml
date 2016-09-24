@@ -14,7 +14,7 @@
           %li= link_to '제안', new_proposal_path
           %li= link_to '프로젝트', projects_path
           %li= link_to '회원', users_path
-          - if current_user.try(:admin?)
+          - if current_user.try(:role).try(:staff?)
             %li= link_to '위원회', committees_path
             %li= link_to '관리', admin_root_path
 

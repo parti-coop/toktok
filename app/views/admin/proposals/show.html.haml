@@ -7,7 +7,7 @@
           %small
             - if @proposal.launched?
               프로젝트 :
-              = link_to @proposal.project.title, @proposal.project
+              = link_to @proposal.project.title, [:admin, @proposal.project]
             - else
               = link_to '프로젝트 만들기', new_project_path(proposal_id: @proposal.id)
 

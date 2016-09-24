@@ -1,0 +1,7 @@
+= form_tag admin_users_role_path, method: :patch do
+  = hidden_field_tag :role, 'staff'
+  .form-group
+    = label_tag :user_nickname
+    = text_field_tag :user_nickname
+  .form-group
+    = submit_tag

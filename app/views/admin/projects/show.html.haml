@@ -3,7 +3,7 @@
     .page-header
       %h2
         = @project.title
-        - if current_user.try(:admin?)
+        - if current_user.try(:role).try(:staff?)
           .pull-right
             %small
               = link_to '관리', admin_project_path(@project)

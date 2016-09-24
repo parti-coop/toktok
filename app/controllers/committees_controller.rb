@@ -1,5 +1,5 @@
 class CommitteesController < ApplicationController
-  before_filter :verify_admin
+  before_filter :verify_staff
 
   def index
     @committees = Committee.all
@@ -34,7 +34,7 @@ class CommitteesController < ApplicationController
     params.require(:committee).permit(:name, :description)
   end
 
-  def verify_admin
-    redirect_to root_url unless current_user.try(:admin?)
+  def verify_staff
+    redirect_to root_url unless current_user.try(:role).try(:staff?)
   end
 end
