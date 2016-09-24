@@ -1,8 +1,13 @@
 one:
   email: one@gmail.com
-  uid: uid
+  uid: one
   provider: facebook
   nickname: nick1
+two:
+  email: two@gmail.com
+  uid: two
+  provider: facebook
+  nickname: nick2
 admin:
   email: admin@parti.xyz
   uid: admin

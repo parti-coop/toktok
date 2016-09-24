@@ -18,7 +18,9 @@
         = link_to attachment.name, attachment.source.url, target: '_blank'
 
     %div.text-center
-      = render 'likes/button', likable: @project
+      = render 'participations/button', project: @project
+    %div.text-center
+      = render 'participations/list', project: @project
 
     %div
       = render 'comments/list', commentable: @project

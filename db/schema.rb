@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923062842) do
+ActiveRecord::Schema.define(version: 20160924020544) do
 
-  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
     t.string   "name",            null: false
     t.string   "source_type",     null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id", using: :btree
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.integer  "user_id"
@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "congressmen", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "congressmen", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "name"
     t.string   "description"
     t.string   "party"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["committee_id"], name: "index_congressmen_on_committee_id", using: :btree
   end
 
-  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer  "user_id"
     t.string   "likable_type"
     t.integer  "likable_id"
@@ -61,31 +61,42 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
-  create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer  "project_id",                            null: false
-    t.integer  "committee_id",                          null: false
+    t.integer  "congressman_id",                        null: false
     t.string   "current_status", default: "requesting"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
-    t.index ["committee_id"], name: "index_matches_on_committee_id", using: :btree
-    t.index ["project_id", "committee_id"], name: "index_matches_on_project_id_and_committee_id", unique: true, using: :btree
+    t.index ["congressman_id"], name: "index_matches_on_congressman_id", using: :btree
+    t.index ["project_id", "congressman_id"], name: "index_matches_on_project_id_and_congressman_id", unique: true, using: :btree
     t.index ["project_id"], name: "index_matches_on_project_id", using: :btree
   end
 
-  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string   "title",                      null: false
-    t.text     "body",         limit: 65535
+  create_table "participations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_participations_on_project_id", using: :btree
+    t.index ["user_id", "project_id"], name: "index_participations_on_user_id_and_project_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
+  end
+
+  create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.string   "title",                                          null: false
+    t.text     "body",                 limit: 65535
     t.integer  "proposal_id"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "committee_id"
+    t.integer  "participations_count",               default: 0
     t.index ["committee_id"], name: "index_projects_on_committee_id", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
-  create_table "proposals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "proposals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer  "user_id"
     t.string   "title",                        null: false
     t.text     "body",           limit: 65535
@@ -97,7 +108,7 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["user_id"], name: "index_proposals_on_user_id", using: :btree
   end
 
-  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer  "user_id",    null: false
     t.string   "title"
     t.string   "body"
@@ -106,7 +117,7 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end
 
-  create_table "redactor2_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "redactor2_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
     t.integer  "data_file_size"
@@ -121,7 +132,7 @@ ActiveRecord::Schema.define(version: 20160923062842) do
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_redactor2_assetable_type", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "email",               default: "", null: false
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       default: 0,  null: false

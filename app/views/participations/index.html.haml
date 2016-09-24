@@ -1,0 +1,10 @@
+%section
+  .container-fluid
+    .page-header
+      %h2
+        = link_to @project.title, @project
+        &gt;
+        참여 시민
+    %ul
+      - @participations.each do |participation|
+        %li= byline participation.user

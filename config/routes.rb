@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   resources :congressmen
   resources :users
   resources :proposals, concerns: [:commentable, :likable]
-  resources :projects, concerns: [:commentable, :likable]
+  resources :projects, concerns: [:commentable, :likable] do
+    resources :participations do
+      delete :cancel, on: :collection
+    end
+  end
   resources :questions, concerns: [:commentable, :likable]
 end
