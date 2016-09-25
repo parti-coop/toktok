@@ -6,7 +6,7 @@ module Admin
       @current_ability ||= AdminAbility.new(current_user)
     end
 
-    before_filter :verify_staff
+    before_action :verify_staff
 
     private
 
