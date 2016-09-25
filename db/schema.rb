@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924043244) do
+ActiveRecord::Schema.define(version: 20160925061237) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(version: 20160924043244) do
   end
 
   create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
-    t.integer  "project_id",                            null: false
-    t.integer  "congressman_id",                        null: false
-    t.string   "current_status", default: "requesting"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "project_id",                         null: false
+    t.integer  "congressman_id",                     null: false
+    t.string   "status",         default: "calling", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["congressman_id"], name: "index_matches_on_congressman_id", using: :btree
     t.index ["project_id", "congressman_id"], name: "index_matches_on_project_id_and_congressman_id", unique: true, using: :btree
     t.index ["project_id"], name: "index_matches_on_project_id", using: :btree
@@ -83,14 +83,15 @@ ActiveRecord::Schema.define(version: 20160924043244) do
   end
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
-    t.string   "title",                                          null: false
-    t.text     "body",                 limit: 65535
+    t.string   "title",                                                  null: false
+    t.text     "body",                      limit: 65535
     t.integer  "proposal_id"
     t.integer  "user_id"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.integer  "committee_id"
-    t.integer  "participations_count",               default: 0
+    t.integer  "participations_count",                    default: 0
+    t.integer  "participations_goal_count",               default: 1000
     t.index ["committee_id"], name: "index_projects_on_committee_id", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree

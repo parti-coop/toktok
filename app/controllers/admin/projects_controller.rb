@@ -40,13 +40,13 @@ module Admin
     private
 
     def project_params
-      params.require(:project).permit(:title, :body, :committee_id, :proposal_id, attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
+      params.require(:project).permit(:title, :body, :committee_id, :proposal_id, :participations_goal_count, attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
     end
 
     def should_exists_committees
       unless Committee.exists?
         flash[:info] = t('messages.empty_committees')
-        redirect_back fallback_location: @project
+        redirect_back fallback_location: admin_projects_path
       end
     end
   end

@@ -1,13 +1,13 @@
 - if user_signed_in?
   - if project.participant?(current_user)
-    = link_to cancel_project_participations_path(project_id: project), method: :delete, data: { confirm: '참여 취소하겠습니까?' }, class: 'btn btn-default btn-lg' do
+    = link_to cancel_project_participations_path(project_id: project), method: :delete, data: { confirm: '참여를 취소하겠습니까?' }, class: 'btn btn-default btn-lg' do
       참여 중
       = project.participations_count
   - else
     = link_to project_participations_path(project_id: project), method: :post, class: 'btn btn-primary btn-lg' do
-      참여
+      참여하기
       = project.participations_count
 - else
   = link_to join_path, class: 'btn btn-default btn-lg' do
-    참여
+    참여하기
     = project.participations_count

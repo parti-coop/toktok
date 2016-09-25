@@ -16,6 +16,12 @@
     = f.text_area :body, class: 'form-control redactor'
 
   .form-group
+    = f.label :participations_goal_count
+    = f.text_field :participations_goal_count, class: 'form-control  input-lg'
+    .help-block
+      입력하지 않으면 1000명 기본값으로 설정됩니다.
+
+  .form-group
     = f.label :proposal_id
     = f.text_field :proposal_id, class: 'form-control input-lg'
     .help-block

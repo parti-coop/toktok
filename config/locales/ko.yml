@@ -3,8 +3,20 @@ ko:
   messages:
     empty_committees: 위원회가 하나도 없습니다. 위원회를 먼저 만드세요.
     not_found: 찾을 수 없습니다.
+    project_status:
+      gathering: 시민 지지
+      calling: 매칭 중
+      matched: 매칭 성공
+
   enumerize:
     user:
       role:
         admin: "운영자"
         citizen: "시민"
+    match:
+      status:
+        calling: 요청 중
+        accept: 참여 확정
+        reject: 거절
+        no_answer: 무응답
+

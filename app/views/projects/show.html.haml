@@ -8,19 +8,26 @@
             %small
               = link_to '관리', admin_project_path(@project)
 
-    - if @project.committee.present?
-      %div
-        = @project.committee.name
+    %div
+      [상태]
+      = t("messages.project_status.#{@project.status}")
 
     %div
+      [내용]
       = simple_format @project.body
       - @project.attachments.each do |attachment|
         = link_to attachment.name, attachment.source.url, target: '_blank'
+    - if @project.committee.present?
+      %div
+        [관련 상임위원회]
+        = @project.committee.name
 
     %div.text-center
       = render 'participations/button', project: @project
     %div.text-center
       = render 'participations/list', project: @project
+
+    = render "projects/body_#{@project.status}", project: @project
 
     %div
       = render 'comments/list', commentable: @project

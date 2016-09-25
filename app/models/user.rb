@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :omniauth_providers => [:facebook, :twitter]
 
   has_many :proposals, dependent: :destroy
+  has_many :participations, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy

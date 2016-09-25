@@ -1,0 +1,6 @@
+= form_for [:admin, @match] do |f|
+  .form-group
+    = f.label :status
+    = f.select :status, Match.status.options, {}, { class: 'form-control input-lg' }
+  .form-group
+    = f.submit class: 'btn btn-defult'

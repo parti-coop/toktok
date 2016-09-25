@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     get :staffs, to: "users#staffs"
     patch 'users/role', to: "users#role"
     resources :proposals
-    resources :matches
-    resources :projects
+    resources :projects do
+      resources :matches, shallow: true
+    end
     resources :committees
   end
   root 'pages#home'

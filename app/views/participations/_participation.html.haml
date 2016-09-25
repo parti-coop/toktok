@@ -1,0 +1,8 @@
+- project = participation.project
+%div[participation]
+  %h4= link_to project.title, project
+  %div
+    %span= project.created_at
+    %span.fa.fa-comment-o
+      = project.comments.count
+  = render 'participations/button', project: project

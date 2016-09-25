@@ -7,24 +7,47 @@
           %small
             = link_to '수정', [:edit, :admin, @project]
 
-    - if @project.committee.present?
-      %div
-        = @project.committee.name
+    %div
+      [상태]
+      = t("messages.project_status.#{@project.status}")
 
     %div
+      [내용]
       = simple_format @project.body
       - @project.attachments.each do |attachment|
         = link_to attachment.name, attachment.source.url, target: '_blank'
+    - if @project.committee.present?
+      %div
+        [관련 상임위원회]
+        = @project.committee.name
+
     %div
+      [
       %span.fa.fa-users
-      #{@project.participations_count}명 참여
+      시민 참여]
+      #{@project.participations_count}명
       = link_to '모두 보기', project_participations_path(project_id: @project), target: '_blank'
 
     - if @project.proposal.present?
-      %h3 Proposal
+      %h3 관련제안
       .panel.panel-default
         .panel-body
           = render @project.proposal
+
+    %div
+      %h3 참여 국회의원
+      %ul.list-group
+        - @project.matches.each do |m|
+          %li.list-group-item
+            = m.congressman.name
+            = m.status_text
+            = m.created_at
+            .pull-right
+              = link_to '수정', [:edit, :admin, m]
+              = link_to '삭제', [:admin, m], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+        - if @project.unmathed_ongressmen.any?
+          %li.list-group-item
+            = render 'admin/matches/new_form', project: @project
 
     %div
       = render 'comments/list', commentable: @project

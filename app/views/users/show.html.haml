@@ -11,4 +11,5 @@
           내가 한 제안(#{@user.proposals.count})
           = render @user.proposals
         %li
-          참여한 프로젝트
+          참여 중인 프로젝트(#{@user.participations.count})
+          = render @user.participations
