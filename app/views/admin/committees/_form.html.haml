@@ -1,5 +1,5 @@
 .alert.alert-info
-  = form_for @committee do |f|
+  = form_for [:admin, @committee] do |f|
     .form-group
       = f.label :name
       = f.text_field :name, class: 'form-control'

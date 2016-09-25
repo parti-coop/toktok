@@ -1,0 +1,21 @@
+%section
+  .container-fluid
+    .page-header
+      %h2
+        = @committee.name
+        .pull-right
+          %small
+            = link_to '수정', [:edit, :admin, @committee]
+            = link_to '삭제', [:admin, @committee], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+    %div
+      = simple_format @committee.description
+
+    %div
+      %ul.list-group
+        - @committee.congressmen.each do |c|
+          %li.list-group-item
+            = c.name
+            .pull-right
+              = link_to '삭제', c, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+        %li.list-group-item
+          = render 'congressmen/form', committee: @committee

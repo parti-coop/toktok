@@ -2,10 +2,12 @@
   .media
     .media-body
       %h4
+        \##{proposal.id}
         = link_to proposal.title, admin_proposal_path(proposal)
         - if proposal.launched?
-          = link_to proposal.project do
-            %i.fa.fa-rocket
+          %i.fa.fa-rocket
+          - proposal.projects.each do |project|
+            = link_to project.title, [:admin, project]
       %div
         %span= proposal.proposer_name
         %span= proposal.proposer_email

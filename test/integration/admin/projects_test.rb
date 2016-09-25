@@ -2,8 +2,8 @@ require 'test_helper'
 
 class ProjectsTest < ActionDispatch::IntegrationTest
   test '프로젝트를 만듭니다.' do
-    sign_in(users(:one))
-    post projects_path, params: {project: {
+    sign_in(users(:admin))
+    post admin_projects_path, params: {project: {
       title: 'title', body: 'body',
       proposal_id: proposals(:proposal1),
       attachments_attributes: [
@@ -11,8 +11,8 @@ class ProjectsTest < ActionDispatch::IntegrationTest
       ]
     }}
 
-    assert assigns[:project].persisted?
-    attachment = assigns[:project].attachments.first
+    assert assigns(:project).persisted?
+    attachment = assigns(:project).attachments.first
     assert_equal 'sample.pdf', attachment.name
   end
 end

@@ -1,0 +1,38 @@
+= form_for [:admin, @project] do |f|
+
+  .form-group
+    = f.label :committee
+    = f.select :committee_id, nil, {}, {class: 'form-control input-lg'} do
+      - Committee.all.each do |committee|
+        %option{value: committee.id, selected: @project.committee == committee}
+          = committee.name
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control input-lg'
+
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control redactor'
+
+  .form-group
+    = f.label :proposal_id
+    = f.text_field :proposal_id, class: 'form-control input-lg'
+    .help-block
+      관련 제안이 있다면 해당 제안번호를 넣어주세요.
+      = link_to '제안번호 확인', admin_proposals_path, target: '_blank'
+
+    - if @project.proposal.present?
+      .panel.panel-default
+        .panel-body
+          = render @project.proposal
+
+  %h3 Attachments
+  #attachments
+    = f.fields_for :attachments do |ff|
+      = render 'attachment_fields', f: ff
+    .links
+      = link_to_add_association 'add attachment', f, :attachments
+
+  .form-group
+    = f.submit class: 'btn btn-primary'

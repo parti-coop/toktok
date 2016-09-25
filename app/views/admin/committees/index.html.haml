@@ -1,0 +1,22 @@
+%section
+  .container
+    .page-header
+      %h2 위원회
+
+    %section
+      = render 'form'
+
+    - @committees.each do |committee|
+      %section
+        .panel.panel-default[committee]
+          .panel-heading
+            .pull-right
+              = link_to '수정', [:edit, :admin, committee]
+              = link_to '삭제', [:admin, committee], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+            = link_to [:admin, committee] do
+              %h4.panel-title= committee.name
+
+          .panel-body
+            %p= committee.description
+
+            %i.fa.fa-user-secret 국회의원 #{committee.congressmen.count}

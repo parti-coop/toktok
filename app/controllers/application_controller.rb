@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  after_filter :prepare_unobtrusive_flash
 
   if Rails.env.production? or Rails.env.staging?
     rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownFormat do |exception|
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
   def render_404
     self.response_body = nil
     render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+  end
+
+  def errors_to_flash(model)
+    flash[:notice] = model.errors.full_messages.join('<br>').html_safe
   end
 end

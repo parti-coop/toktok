@@ -22,6 +22,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 gem 'bootswatch-rails'
 gem 'haml-rails', '~> 0.9.0'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
+gem 'unobtrusive_flash', '~> 3.2'
 
 # assets
 source 'https://rails-assets.org' do
@@ -54,7 +55,6 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'video_info', '~> 2.6', '>= 2.6.1'
 gem 'browser', '~> 2.0', '>= 2.0.2'
 gem 'meta-tags', '~> 2.1.0'
-gem 'unobtrusive_flash', '~> 3.1'
 gem 'ruby_dig', '~> 0.0.2'
 gem 'identicon', '~> 0.0.5'
 

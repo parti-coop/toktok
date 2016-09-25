@@ -1,0 +1,10 @@
+%section
+  .container-fluid
+    .page-header
+      %h2
+        입법프로젝트
+        .pull-right
+          %small
+            = link_to '만들기', new_admin_project_path
+    %div
+      = render @projects

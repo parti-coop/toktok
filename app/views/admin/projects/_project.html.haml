@@ -1,0 +1,8 @@
+%div[project]
+  %h4= link_to project.title, [:admin, project]
+  %div
+    %span= project.created_at
+    %span.fa.fa-comment-o
+      = project.comments.count
+    %span.fa.fa-users
+      #{project.participations_count}명 참여

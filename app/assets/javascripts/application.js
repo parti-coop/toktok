@@ -5,6 +5,11 @@
 //= require redactor
 //= require redactor2_rails/langs/ko
 //= require cocoon
+//= require unobtrusive_flash
+//= require unobtrusive_flash_bootstrap
+
+UnobtrusiveFlash.flashOptions['timeout'] = 30000;
+
 $(function(){
   $('[data-action="parti-home-slide"] a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var hash = $(e.target).attr('href');

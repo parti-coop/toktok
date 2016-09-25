@@ -13,3 +13,4 @@ admin:
   uid: admin
   provider: facebook
   nickname: admin
+  role: staff

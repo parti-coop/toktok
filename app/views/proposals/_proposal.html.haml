@@ -4,8 +4,9 @@
       %h4
         = link_to proposal.title, proposal
         - if proposal.launched?
-          = link_to proposal.project do
-            %i.fa.fa-rocket
+          %i.fa.fa-rocket
+          - proposal.projects.each do |project|
+            = link_to project.title, project
       %div
         %span= proposal.proposer_name
         %span= proposal.proposer_email

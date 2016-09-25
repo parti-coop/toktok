@@ -3,10 +3,9 @@
     .page-header
       %h2
         = @project.title
-        - if current_user.try(:role).try(:staff?)
-          .pull-right
-            %small
-              = link_to '관리', admin_project_path(@project)
+        .pull-right
+          %small
+            = link_to '수정', [:edit, :admin, @project]
 
     - if @project.committee.present?
       %div
@@ -16,9 +15,16 @@
       = simple_format @project.body
       - @project.attachments.each do |attachment|
         = link_to attachment.name, attachment.source.url, target: '_blank'
+    %div
+      %span.fa.fa-users
+      #{@project.participations_count}명 참여
+      = link_to '모두 보기', project_participations_path(project_id: @project), target: '_blank'
 
-    %div.text-center
-      = render 'likes/button', likable: @project
+    - if @project.proposal.present?
+      %h3 Proposal
+      .panel.panel-default
+        .panel-body
+          = render @project.proposal
 
     %div
       = render 'comments/list', commentable: @project

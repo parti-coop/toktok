@@ -1,5 +1,8 @@
-kr:
+ko:
   hello: "안녕하세요"
+  messages:
+    empty_committees: 위원회가 하나도 없습니다. 위원회를 먼저 만드세요.
+    not_found: 찾을 수 없습니다.
   enumerize:
     user:
       role:

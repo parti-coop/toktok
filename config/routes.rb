@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :proposals
     resources :matches
     resources :projects
+    resources :committees
   end
   root 'pages#home'
 
