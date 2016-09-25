@@ -5,8 +5,8 @@
     #{project.committee.name} 상암위원회 의원에게 참여를 요청합니다.
 
   %div
-    = render project.committee.congressmen
+    = render partial: 'matches/congressman', collection: project.committee.congressmen
 - else
   %p.help-block
     시민 #{project.participations_goal_count}명이 모이면
-    이 프로젝트에 딱맞는 국회의원에게 참여를 요청합니다.
+    입법 활동을 잘 할 수있는 국회의원에게 참여를 요청합니다.

@@ -7,32 +7,33 @@
           %small
             = link_to '수정', [:edit, :admin, @project]
 
-    %div
-      [상태]
-      = t("messages.project_status.#{@project.status}")
-
-    %div
-      [내용]
-      = simple_format @project.body
-      - @project.attachments.each do |attachment|
-        = link_to attachment.name, attachment.source.url, target: '_blank'
-    - if @project.committee.present?
-      %div
-        [관련 상임위원회]
-        = @project.committee.name
-
-    %div
-      [
-      %span.fa.fa-users
-      시민 참여]
-      #{@project.participations_count}명
-      = link_to '모두 보기', project_participations_path(project_id: @project), target: '_blank'
+    .panel.panel-default
+      .panel-heading
+        %div
+          [상태]
+          = t("messages.project_status.#{@project.status}")
+      .panel-body
+        [내용]
+        = simple_format @project.body
+        - @project.attachments.each do |attachment|
+          = link_to attachment.name, attachment.source.url, target: '_blank'
+      - if @project.committee.present?
+        .panel-footer
+          %div
+            [관련 상임위원회]
+            = @project.committee.name
 
     - if @project.proposal.present?
       %h3 관련제안
       .panel.panel-default
         .panel-body
           = render @project.proposal
+
+
+    %div
+      %h3 참여 시민
+      #{@project.participations_count}명 / 목표 #{@project.participations_goal_count}명
+      = link_to '모두 보기', project_participations_path(project_id: @project), target: '_blank'
 
     %div
       %h3 참여 국회의원

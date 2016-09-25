@@ -3,24 +3,31 @@
     .page-header
       %h2
         = @project.title
+        %small
+          = @project.created_at
         - if current_user.try(:role).try(:staff?)
           .pull-right
             %small
               = link_to '관리', admin_project_path(@project)
 
-    %div
-      [상태]
-      = t("messages.project_status.#{@project.status}")
-
-    %div
-      [내용]
-      = simple_format @project.body
-      - @project.attachments.each do |attachment|
-        = link_to attachment.name, attachment.source.url, target: '_blank'
-    - if @project.committee.present?
-      %div
-        [관련 상임위원회]
-        = @project.committee.name
+    .panel.panel-default
+      .panel-heading
+        %div
+          [상태]
+          = t("messages.project_status.#{@project.status}")
+        - if @project.proposal.present?
+          %div
+            [제안자]
+            = @project.proposal.proposer_name
+      .panel-body
+        = simple_format @project.body
+        - @project.attachments.each do |attachment|
+          = link_to attachment.name, attachment.source.url, target: '_blank'
+      - if @project.committee.present?
+        .panel-footer
+          %div
+            [관련 상임위원회]
+            = @project.committee.name
 
     %div.text-center
       = render 'participations/button', project: @project
