@@ -19,15 +19,15 @@ $footer-height: 254px
 $gray-base:              #000
 $gray-darker:            #161616
 $gray-dark:              #44444a
-$gray:                   #777777
+$gray:                   #5e5e5e
 $gray-light:             #c0c0c2
-$gray-lighter:           #eaeaeb
+$gray-lighter:           #dedede
 $gray-lightest:          #f3f3f7
 
-$brand-primary:         #966fd6
+$brand-primary:         #16a6a8
 $brand-light:           #f1ebfb
 $brand-primary-light:   lighten($brand-primary, 25%)
-$brand-primary-lighter: #f1ebfb
+$brand-primary-lighter: lighten($brand-primary, 40%)
 $brand-primary-dark:    darken($brand-primary, 15%)
 $brand-primary-darker:  darken($brand-primary, 40%)
 
@@ -64,9 +64,9 @@ $link-hover-decoration: none
 // $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace
 // $font-family-base:        $font-family-sans-serif
 
-// $font-size-base:          14px
-// $font-size-large:         ceil(($font-size-base * 1.25)) // ~18px => 1.8 rem
-// $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
+$font-size-base:          16px
+$font-size-large:         18px
+$font-size-small:         14px
 
 // $font-size-h1:            floor(($font-size-base * 2.6)) // ~36px
 // $font-size-h2:            floor(($font-size-base * 2.15)) // ~30px
@@ -191,7 +191,7 @@ $btn-default-border:             $gray-light
 // $btn-link-disabled-color:        $gray-light
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius-base:         0
+$btn-border-radius-base:         2px
 $btn-border-radius-large:        0
 $btn-border-radius-small:        0
 
@@ -377,7 +377,7 @@ $dropdown-fallback-border:       $gray-light
 //##
 
 // Basics of a navbar
-// $navbar-height:                    50px
+$navbar-height:                    64px
 // $navbar-margin-bottom:             $line-height-computed
 // $navbar-border-radius:             $border-radius-base
 // $navbar-padding-horizontal:        floor(($grid-gutter-width / 2))

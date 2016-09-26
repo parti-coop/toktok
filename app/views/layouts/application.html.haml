@@ -3,6 +3,7 @@
   %head
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no", :name => "viewport"}
 
     = favicon_link_tag 'favicon.ico'
 
@@ -16,7 +17,7 @@
     = csrf_meta_tags
 
   %body{class: "app-#{params[:controller]} app-#{params[:controller]}-#{params[:action]}"}
-    %section(style='position: fixed; z-index: 1000; width: 100%')
+    %section(style='position: fixed; z-index: 1000; width: 100%; top: 64px;')
       .container
         .unobtrusive-flash-container
     - if content_for?(:header)

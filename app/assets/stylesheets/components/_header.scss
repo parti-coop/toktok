@@ -1,0 +1,164 @@
+section#site-header {
+  .navbar-brand {
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    img {
+      height: 24px;
+    }
+  }
+  .navbar-toggle {
+    margin-left: 10px;
+  }
+  .navbar-user {
+    float: right;
+    margin-right: 15px;
+
+    a {
+      padding-right: 10px;
+    }
+
+    img {
+      height: 26px;
+    }
+  }
+  .navbar-collapse {
+    @media (max-width: $screen-xs-max) {
+      & > ul.nav {
+        margin-left: 15px;
+        margin-right: 15px;
+        > li {
+          border-bottom: 1px solid $gray-lighter;
+          > a {
+            color: $gray;
+          }
+        }
+      }
+    }
+    text-align: center;
+  }
+  .navbar-collapse > ul.nav > li {
+    > a.btn-sign-in,
+    > a.btn-sign-out {
+      @extend .btn-primary;
+      color: #fff;
+      margin-top: 10px;
+    }
+  }
+
+  // only color
+  $site-header-background-default   : #203a7b;
+  $site-header-background-highlight : darken($site-header-background-default, 15%);
+  $site-header-color-default        : #ecf0f1;
+  $site-header-color-highlight      : $brand-primary-lighter;
+  $site-header-color-toggle         : $brand-primary;
+  $site-header-background-dropdown-default        : #fff;
+  $site-header-background-dropdown-highlight      : $site-header-background-default;
+  $site-header-color-dropdown-default        : $gray;
+  $site-header-color-dropdown-highlight      : #fff;
+  $dropDown : true;
+
+  .navbar-default {
+    background-color: $site-header-background-default;
+    border-color: $site-header-background-highlight;
+    .navbar-brand {
+      color: $site-header-color-default;
+      &:hover, &:focus {
+        color: $site-header-color-highlight;
+      }
+    }
+    .navbar-text {
+      color: $site-header-color-default;
+    }
+    .navbar-nav {
+      > li {
+        > a {
+          color: $site-header-color-default;
+          &:hover,  &:focus {
+            color: $site-header-color-highlight;
+          }
+        }
+        @if $dropDown {
+          > .dropdown-menu {
+            background-color: $site-header-background-dropdown-default;
+            > li {
+              > a {
+                color: $site-header-color-dropdown-default;
+                &:hover,  &:focus {
+                  color: $site-header-color-dropdown-highlight;
+                  background-color: $site-header-background-dropdown-highlight;
+                }
+              }
+              > .divider {
+                background-color: $site-header-background-dropdown-highlight;
+              }
+            }
+          }
+        }
+      }
+      @if $dropDown {
+        .open .dropdown-menu > .active {
+          > a, > a:hover, > a:focus {
+            color: $site-header-color-dropdown-highlight;
+            background-color: $site-header-background-dropdown-highlight;
+          }
+        }
+      }
+      > .active {
+        > a, > a:hover, > a:focus {
+          color: $site-header-color-highlight;
+          background-color: $site-header-background-highlight;
+        }
+      }
+      > .open {
+        > a, > a:hover, > a:focus {
+          color: $site-header-color-highlight;
+          background-color: $site-header-background-highlight;
+        }
+      }
+    }
+    .navbar-toggle {
+      border-color: $site-header-background-default;
+      &:hover, &:focus {
+        background-color: $site-header-background-highlight;
+      }
+      .icon-bar {
+        background-color: $site-header-color-toggle;
+      }
+    }
+    .navbar-collapse{
+      border-color: $site-header-color-default;
+    }
+
+    .navbar-form {
+      border-color: $site-header-color-default;
+    }
+    .navbar-link {
+      color: $site-header-color-default;
+      &:hover {
+        color: $site-header-color-highlight;
+      }
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    .navbar-default {
+      .navbar-nav .open .dropdown-menu {
+        > li > a {
+          color: $site-header-color-default;
+          &:hover, &:focus {
+            color: $site-header-color-highlight;
+          }
+        }
+        > .active {
+          > a, > a:hover, > a:focus {
+            color: $site-header-color-highlight;
+            background-color: $site-header-background-highlight;
+          }
+        }
+      }
+      .navbar-collapse{
+        background-color: #fff;
+      }
+    }
+  }
+}

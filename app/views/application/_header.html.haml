@@ -1,20 +1,32 @@
-#site-header
-  %nav.navbar.navbar-inverse.navbar-fixed-top
+%section#site-header
+  %nav.navbar.navbar-default.navbar-fixed-top
     .container
       .navbar-header
-        %button.navbar-toggle.collapsed{"data-target": "#collapsable", "data-toggle": "collapse", type: "button"}
+        %button.navbar-toggle.collapsed.pull-left{"data-target": "#site-header-collapsable", "data-toggle": "collapse", type: "button"}
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand{ href: root_path }
-          HOTLINEKR
+          = image_tag 'site_header_logo.png'
+        %ul.nav.navbar-nav.navbar-user.visible-xs
+          %li
+            - if user_signed_in?
+              = link_to current_user_path do
+                = image_tag 'site_header_user.png'
+            - else
+              = link_to join_path do
+                = image_tag 'site_header_user.png'
 
-      .collapse.navbar-collapse
+      #site-header-collapsable.collapse.navbar-collapse
         %ul.nav.navbar-nav
           %li= link_to '제안하기', new_proposal_path
           %li= link_to '프로젝트', projects_path
+          - if user_signed_in?
+            %li.visible-xs-inline= link_to '로그아웃', sign_out_path, method: :delete, class: 'btn btn-sign-out btn-block'
+          - else
+            %li.visible-xs-inline= link_to '가입/로그인', join_path, class: 'btn btn-sign-in btn-block'
           - if current_user.try(:role).try(:staff?)
-            %li.dropdown
+            %li.dropdown.hidden-xs
               %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
                 관리
                 %span(class="caret")
@@ -25,7 +37,7 @@
                 %li= link_to '운영자 관리', admin_staffs_path
 
 
-        %ul.nav.navbar-nav.navbar-right
+        %ul.nav.navbar-nav.navbar-right.hidden-xs
           - if user_signed_in?
             %li
               = link_to user_path(current_user) do

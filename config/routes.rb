@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :committees
   resources :congressmen
   resources :users
+  get '/me', to: 'users#me', as: :current_user
   resources :proposals, concerns: [:commentable, :likable]
   resources :projects, concerns: [:commentable, :likable] do
     resources :participations do
