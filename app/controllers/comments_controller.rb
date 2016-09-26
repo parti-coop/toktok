@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
   def update
     @comment = Comment.find(params[:id])
     @comment.assign_attributes(comment_params)
@@ -26,7 +30,7 @@ class CommentsController < ApplicationController
       @comment.mentions.build(congressman: congressman) unless @comment.mentioned? congressman
     end
     @comment.save
-    redirect_back fallback_location: @comment.commentable
+    redirect_to @comment.commentable
   end
 
   def destroy

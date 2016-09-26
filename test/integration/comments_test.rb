@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CommentsTest < ActionDispatch::IntegrationTest
-  test '댓글에 국회의원을 맨션합니다 focus!' do
+  test '댓글에 국회의원을 맨션합니다' do
     sign_in(users(:one))
 
     post project_comments_path(projects(:project1)), params: { comment: {
@@ -13,7 +13,7 @@ class CommentsTest < ActionDispatch::IntegrationTest
     assert assigns(:comment).mentions.first.congressman, congressmen(:congressman1)
   end
 
-  test '이미 국회의원을 맨션한 댓글을 수정합니다 focus!' do
+  test '이미 국회의원을 맨션한 댓글을 수정합니다' do
     assert comments(:comment1).mentioned? congressmen(:congressman1)
     refute comments(:comment1).mentioned? congressmen(:congressman2)
     assert comments(:comment1).mentioned? congressmen(:congressman3)

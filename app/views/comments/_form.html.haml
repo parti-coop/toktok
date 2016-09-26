@@ -1,0 +1,6 @@
+- comment = @comment || Comment.new
+= form_for ( comment.new_record? ? [commentable, Comment.new] : comment ) do |f|
+  .form-group
+    = f.text_area :body, class: 'form-control'
+  .form-group
+    = f.submit class: 'btn btn-primary'
