@@ -26,4 +26,13 @@ $(function(){
     }
     $(form_control).focus();
   });
+
+  $(document).click(function (event) {
+    var clickover = $(event.target);
+    var opened = $(".navbar-collapse").hasClass("navbar-collapse");
+    opened = opened && $(".navbar-collapse").hasClass("in");
+    if (opened === true && !clickover.hasClass("navbar-toggle")) {
+        $("button.navbar-toggle").click();
+    }
+  });
 });
