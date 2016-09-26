@@ -5,10 +5,9 @@
         = @project.title
         %small
           = @project.created_at
-        - if current_user.try(:role).try(:staff?)
-          .pull-right
-            %small
-              = link_to '관리', admin_project_path(@project)
+        .pull-right
+          %small
+            = link_to '관리', admin_project_path(@project)
 
     .panel.panel-default
       .panel-heading

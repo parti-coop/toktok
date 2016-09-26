@@ -14,7 +14,15 @@
           %li= link_to '제안하기', new_proposal_path
           %li= link_to '프로젝트', projects_path
           - if current_user.try(:role).try(:staff?)
-            %li= link_to '관리', admin_root_path
+            %li.dropdown
+              %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                관리
+                %span(class="caret")
+              %ul.dropdown-menu
+                %li= link_to '제안', admin_proposals_path
+                %li= link_to '프로젝트', admin_projects_path
+                %li= link_to '위원회', admin_committees_path
+                %li= link_to '운영자 관리', admin_staffs_path
 
 
         %ul.nav.navbar-nav.navbar-right

@@ -2,7 +2,11 @@
   .container
     .page-header
       %h2
-        = @proposal.title
+        관리 &gt;
+        = link_to '제안', admin_proposals_path
+        &gt; #{@proposal.title}
+        %small
+          = static_date_f @proposal.created_at
         .pull-right
           %small
             - if @proposal.launched?
@@ -12,16 +16,19 @@
             - else
               = link_to '프로젝트 만들기', new_admin_project_path(proposal_id: @proposal.id)
 
-    %div
-      %span= @proposal.proposer_name
-      %span= @proposal.proposer_email
-      %span= @proposal.proposer_phone
-      - if @proposal.user.present?
-        %span (회원: #{@proposal.user.nickname})
-    %div
-      = simple_format @proposal.body
-      - @proposal.attachments.each do |attachment|
-        = link_to attachment.name, attachment.source.url, target: '_blank'
+    .panel.panel-default
+      .panel-heading
+        %div
+          [제안자]
+          %span= @proposal.proposer_name
+          %span= @proposal.proposer_email
+          %span= @proposal.proposer_phone
+          - if @proposal.user.present?
+            %span (회원: #{@proposal.user.nickname})
+      .panel-body
+        = simple_format @proposal.body
+        - @proposal.attachments.each do |attachment|
+          = link_to attachment.name, attachment.source.url, target: '_blank'
 
     %div
       = render 'comments/list', commentable: @proposal

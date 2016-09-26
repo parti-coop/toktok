@@ -3,6 +3,8 @@
     .page-header
       %h2
         = @proposal.title
+        %small
+          = @proposal.created_at
         .pull-right
           %small
             - if can? :update, @proposal

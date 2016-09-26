@@ -2,6 +2,34 @@
   .container
     .page-header
       %h2
-        입법제안
-    %div
-      = render @proposals
+        관리 &gt; 제안
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th #
+          %th 제목
+          %th 제안자
+          %th 날짜
+          %th 프로젝트
+      %tbody
+        - @proposals.each do |proposal|
+          %tr
+            %th(scope="row")= proposal.id
+            %td
+              = link_to proposal.title, admin_proposal_path(proposal)
+              %span.fa.fa-comment-o
+                = proposal.comments.count
+            %td
+              %span= proposal.proposer_name
+              -
+              %span= proposal.proposer_email
+              \/
+              %span= proposal.proposer_phone
+              - if proposal.user.present?
+                %span (회원: #{proposal.user.nickname})
+            %td
+              %span= static_date_f proposal.created_at
+            %td
+              - proposal.projects.each do |project|
+                = link_to project.title, [:admin, project]
+

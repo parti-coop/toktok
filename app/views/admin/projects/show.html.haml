@@ -2,7 +2,9 @@
   .container
     .page-header
       %h2
-        = @project.title
+        관리 &gt;
+        = link_to '프로젝트', admin_projects_path
+        &gt; #{@project.title}
         .pull-right
           %small
             = link_to '수정', [:edit, :admin, @project]
