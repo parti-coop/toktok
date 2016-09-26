@@ -13,6 +13,14 @@ body {
   min-width: 970px;
 }
 
+
+// Typography
+@media (max-width: $screen-xs-max) {
+  body, .btn {
+    font-size: $font-size-base-xs;
+  }
+}
+
 .container {
   max-width: 768px !important;
 }
