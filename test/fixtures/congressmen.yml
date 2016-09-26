@@ -5,4 +5,13 @@ congressman1:
   description: congressman1 desc
   party: red
   committee: committee1
-
+congressman2:
+  name: congressman2
+  description: congressman2 desc
+  party: blue
+  committee: committee1
+congressman3:
+  name: congressman3
+  description: congressman3 desc
+  party: blue
+  committee: committee1

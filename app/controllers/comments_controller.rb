@@ -6,19 +6,33 @@ class CommentsController < ApplicationController
     if current_user.blank?
       redirect_to join_path
     else
-      @comment.save
-      redirect_to :back
+      scan_mentioned_congressmen(@comment).each do |congressman|
+        @comment.mentions.build(congressman: congressman)
+      end
+      errors_to_flash(@comment) unless @comment.save
+      redirect_back fallback_location: @comment.commentable
     end
   end
 
   def update
     @comment = Comment.find(params[:id])
+    @comment.assign_attributes(comment_params)
+    mentioned_congressmen = scan_mentioned_congressmen(@comment)
+
+    @comment.mentions.each do |mention|
+      mention.destroy unless mentioned_congressmen.include? mention.congressman
+    end
+    mentioned_congressmen.each do |congressman|
+      @comment.mentions.build(congressman: congressman) unless @comment.mentioned? congressman
+    end
+    @comment.save
+    redirect_back fallback_location: @comment.commentable
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to :back
+    errors_to_flash(@comment) unless @comment.destroy
+    redirect_back fallback_location: @comment.commentable
   end
 
   private
@@ -33,5 +47,13 @@ class CommentsController < ApplicationController
         return $1.classify.constantize.find(value)
       end
     end
+  end
+
+  def scan_mentioned_congressmen(comment)
+    parse_mention_sign(comment.body).map { |name| Congressman.find_by(name: name) }.compact
+  end
+
+  def parse_mention_sign(body)
+    body.scan(Mention::AT_REGEX).flatten.compact.uniq
   end
 end

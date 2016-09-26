@@ -1,7 +1,7 @@
 = form_for [:admin, project, Match.new] do |f|
   .form-group
     = f.label :congressman_id
-    = f.select :congressman_id, nil, {}, { class: 'form-control input-lg', data: { action: 'hotlinekr-congressman-select' } } do
+    = f.select :congressman_id, nil, {}, { class: 'form-control input-lg action-congressman-select' } do
       - project.unmathed_ongressmen.each do |congressman|
         %option{value: congressman.id}= congressman.name
   .form-group

@@ -1,1 +1,5 @@
-= local_assigns.inspect
+%div
+  = congressman.name
+  %a.action-mention{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
+    %i.fa.fa-comment
+    톡톡

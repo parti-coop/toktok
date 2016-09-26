@@ -13,5 +13,17 @@
 UnobtrusiveFlash.flashOptions['timeout'] = 3000;
 
 $(function(){
-  $('[data-action="hotlinekr-congressman-select"]').select2();
+  $('.action-congressman-select').select2();
+  $('.action-mention').on('click', function(e) {
+    e.preventDefault();
+    var $target = $(e.currentTarget);
+    var to = $target.data('mention-to');
+    var form_control = $target.data('mention-form-control');
+
+    var value = $(form_control).val();
+    if(to) {
+      $(form_control).val('@' + to + ' ' + value);
+    }
+    $(form_control).focus();
+  });
 });

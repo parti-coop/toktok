@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ParticipationTest < ActionDispatch::IntegrationTest
+class ParticipationsTest < ActionDispatch::IntegrationTest
   test '프로젝트에 시민이 참여합니다' do
     sign_in(users(:one))
     refute projects(:project1).participant? users(:one)

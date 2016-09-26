@@ -1,2 +1,6 @@
-= match.congressman.name
-= match.status_text
+%div
+  = match.congressman.name
+  = match.status_text
+  %a.action-mention{ href: '#', data: { mention: { to: match.congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
+    %i.fa.fa-comment
+    톡톡

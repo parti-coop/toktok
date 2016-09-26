@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925061237) do
+ActiveRecord::Schema.define(version: 20160925234027) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20160925061237) do
     t.index ["congressman_id"], name: "index_matches_on_congressman_id", using: :btree
     t.index ["project_id", "congressman_id"], name: "index_matches_on_project_id_and_congressman_id", unique: true, using: :btree
     t.index ["project_id"], name: "index_matches_on_project_id", using: :btree
+  end
+
+  create_table "mentions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer  "congressman_id", null: false
+    t.integer  "comment_id",     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["comment_id"], name: "index_mentions_on_comment_id", using: :btree
+    t.index ["congressman_id", "comment_id"], name: "index_mentions_on_congressman_id_and_comment_id", unique: true, using: :btree
+    t.index ["congressman_id"], name: "index_mentions_on_congressman_id", using: :btree
   end
 
   create_table "participations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
