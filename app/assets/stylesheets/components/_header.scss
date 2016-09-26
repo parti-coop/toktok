@@ -1,8 +1,24 @@
 section#site-header {
+  nav.navbar {
+    border-bottom: none;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .navbar-header {
+      border-bottom: 1px solid $brand-primary;
+    }
+  }
+  @media (min-width: $screen-sm-min) {
+    nav.navbar {
+      border-bottom: 1px solid $brand-primary;
+    }
+  }
+
   .navbar-brand {
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
+    margin-left: 0;
     img {
       height: 24px;
     }
@@ -22,6 +38,9 @@ section#site-header {
   }
   .navbar-collapse {
     @media (max-width: $screen-xs-max) {
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 0;
+      border-bottom: 1px solid #fff;
+
       & > ul.nav {
         margin-left: 15px;
         margin-right: 15px;
@@ -50,7 +69,7 @@ section#site-header {
   }
 
   // only color
-  $site-header-background-default   : #203a7b;
+  $site-header-background-default   : $site-header-primary;
   $site-header-background-highlight : darken($site-header-background-default, 15%);
   $site-header-color-default        : #ecf0f1;
   $site-header-color-highlight      : $brand-primary-lighter;

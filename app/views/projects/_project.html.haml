@@ -1,10 +1,26 @@
-%div[project]
-  .media
-    .media-body
-      %h4= link_to project.title, project
-      %div
-        %span= project.created_at
-        %span.fa.fa-comment-o
-          = project.comments.count
-    .media-right
-      = render 'participations/button', project: project
+.project[project]
+  = link_to project do
+    .project-title= project.title
+    .project-body= excerpt project.body
+    .project-image{style: "background-image: url(#{project.image.sm.url});"}
+      .steps{class: "steps--#{project.status}"}<>
+        .step.step--gathering<>
+          시민 지지
+          .percent
+            56%
+        .step.step--matching<>
+          의원 매칭
+        .step.step--running<>
+          입법 활동
+
+  .project-meta.clearfix
+    .pull-left
+      %span.participations-button
+        = image_tag 'icon_participation.png', class: 'icon-participation'
+        %span.count= project.participations_count
+      %span.comments-button
+        = image_tag 'icon_comment.png', class: 'icon-comment'
+        %span.count= project.comments.count
+    .pull-right
+      %span.share-button
+        %span.count= image_tag 'icon_share.png', class: 'icon-share'

@@ -1,0 +1,12 @@
+@mixin hover-shadow() {
+  -webkit-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  -moz-box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+@mixin responsive-font-size-small() {
+  font-size: $font-size-small;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-small-xs;
+  }
+}

@@ -5,8 +5,8 @@ ko:
     not_found: 찾을 수 없습니다.
     project_status:
       gathering: 시민 지지
-      calling: 매칭 중
-      matched: 매칭 성공
+      matching: 의원 매칭
+      running: 입법 활동
 
   enumerize:
     user:

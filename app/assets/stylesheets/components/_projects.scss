@@ -1,0 +1,170 @@
+.project {
+  @mixin angle-right($height, $color) {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: $height/2 solid transparent;
+    border-bottom: $height/2 solid transparent;
+    border-left: $height/2 solid $color;
+    position: absolute;
+    top: 0;
+    right: -1 * $height/2;
+    z-index: 1;
+  }
+
+  @mixin angle-left($height, $color) {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: $height/2 solid $color;
+    border-bottom: $height/2 solid $color;
+    border-left: $height/2 solid transparent;
+    position: absolute;
+    top: 0;
+    left: -1 * $height/2;
+    z-index: 1;
+  }
+
+  padding-top: 26px;
+  padding-bottom: 16px;
+  border-top: 1px solid $gray-lighter;
+  .project-title {
+    font-size: $font-size-h3;
+    color: $gray-dark;
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+  .project-body {
+    color: $gray;
+    margin-bottom: 10px;
+  }
+  .project-image {
+    height: 200px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .steps {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    .step {
+      display: inline-block;
+      text-align: center;
+      @include responsive-font-size-small();
+      padding-top: 13px;
+      padding-bottom: 13px;
+      vertical-align: bottom;
+      position: relative;
+      color: $gray;
+      line-height: 14px;
+      &.step--gathering {
+        .percent {
+          display: inline-block;
+          margin-left: 9px;
+        }
+      }
+    }
+
+    &.steps--gathering .step--gathering,
+    &.steps--matching .step--matching,
+    &.steps--running .step--running {
+      vertical-align: middle;
+      background-color: $brand-primary;
+      color: #fff;
+      line-height: 18px;
+    }
+
+    &.steps--gathering .step--gathering,
+    &.steps--matching .step--matching {
+      &:after {
+        @include angle-right(44px, $brand-primary)
+      }
+    }
+
+    &.steps--matching .step--matching,
+    &.steps--running .step--running {
+      &:before {
+        @include angle-left(44px, $brand-primary)
+      }
+    }
+
+    &.steps--gathering .step--matching {
+      &:after {
+        @include angle-right(40px, $gray-lighter)
+      }
+    }
+
+    &.steps--running .step--gathering {
+      &:after {
+        @include angle-right(40px, $gray-lightest)
+      }
+    }
+
+    &.steps--gathering {
+      .step--gathering {
+        width: 41%;
+        .percent {
+          display: inline-block;
+          font-size: $font-size-h3;
+          color: #fefd37;
+          vertical-align: middle;
+          margin-left: 9px;
+        }
+      }
+      .step--matching {
+        width: 32%;
+        padding-left: 25px;
+        background-color: $gray-lighter;
+      }
+      .step--running {
+        width: 27%;
+        padding-left: 20px;
+        background-color: $gray-lightest;
+      }
+    }
+    &.steps--matching {
+      .step--gathering {
+        width: 40%;
+        background-color: $gray-lighter;
+      }
+      .step--matching {
+        width: 30%;
+        // line-height: 34px;
+      }
+      .step--running {
+        width: 30%;
+        padding-left: 20px;
+        background-color: $gray-lightest;
+      }
+    }
+    &.steps--running {
+      .step--gathering {
+        width: 35%;
+        background-color: $gray-lightest;
+      }
+      .step--matching {
+        width: 35%;
+        background-color: $gray-lighter;
+      }
+      .step--running {
+        width: 30%;
+      }
+    }
+  }
+  .project-meta {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    .count {
+      @include responsive-font-size-small();
+      color: $gray-light;
+    }
+    .comments-button {
+      margin-left: 15px;
+    }
+  }
+}

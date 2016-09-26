@@ -17,8 +17,14 @@
       .panel-body
         [내용]
         = simple_format @project.body
+
+        - if upload_file_exists?(@project.image)
+          [대표이미지]
+          = image_tag @project.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
+
         - @project.attachments.each do |attachment|
           = link_to attachment.name, attachment.source.url, target: '_blank'
+
       - if @project.committee.present?
         .panel-footer
           %div

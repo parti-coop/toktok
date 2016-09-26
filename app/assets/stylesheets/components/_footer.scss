@@ -1,0 +1,13 @@
+footer.footer {
+  background-color: $gray-lightest;
+  text-align: center;
+  padding-top: 22px;
+  padding-bottom: 18px;
+  .help-mail a {
+    @include responsive-font-size-small();
+    color: $gray-light;
+    text-decoration: underline;
+    margin-top: 12p;
+    margin-bottom: 17px;
+  }
+}

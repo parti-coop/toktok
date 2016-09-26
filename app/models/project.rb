@@ -11,6 +11,9 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 
+  # mount
+  mount_uploader :image, ImageUploader
+
   def participant? someone
     participations.exists? user: someone
   end
@@ -19,9 +22,9 @@ class Project < ApplicationRecord
     if participations_count < participations_goal_count
       :gathering
     elsif matches.having_status(:accept).any?
-      :matched
+      :running
     else
-      :calling
+      :matching
     end
   end
 

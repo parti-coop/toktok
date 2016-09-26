@@ -1,12 +1,14 @@
-%section
-  .container
-    .page-header
+%section#home
+  %section#key-visual
+    .container
       %p
-        국회에 직접 제안, 톡을 보내세요
+        국회에 직접 톡을 보내세요
+        %br
         시민의 제안이 법안이 됩니다
 
-      = link_to 'TALKTALK', new_proposal_path
+      = link_to '제안하기', new_proposal_path, class: 'btn btn-home-proposal'
 
-    %div
-      진행중인 프로젝트
+  %section#projects
+    .container
+      .section-title 진행 중인 프로젝트
       = render @projects

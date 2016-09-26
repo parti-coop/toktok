@@ -8,9 +8,11 @@ html {
 }
 
 body {
-  padding-top: 50px;
+  padding-top: 64px;
+  @media (max-width: $screen-xs-max) {
+    padding-top: 67px;
+  }
   width: 100%;
-  min-width: 970px;
 }
 
 
@@ -23,4 +25,16 @@ body {
 
 .container {
   max-width: 768px !important;
+}
+
+.icon-participation {
+  width: 16px;
+}
+
+.icon-comment {
+  width: 16px;
+}
+
+.icon-share {
+  height: 15px;
 }

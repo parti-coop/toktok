@@ -1,0 +1,38 @@
+section#home {
+  section#key-visual {
+    padding-top: 38px;
+    padding-bottom: 38px;
+    text-align: center;
+
+    background-color: $site-header-primary;
+    p {
+      font-size: $font-size-large;
+      color: $brand-primary-lighter;
+    }
+
+    .btn-home-proposal {
+      background-color: #02f2d5;
+      color: $site-header-primary;
+      width: 180px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: $font-size-large;
+
+      &:hover {
+        color: $site-header-primary-dark;
+        @include hover-shadow();
+      }
+    }
+  }
+
+  section#projects {
+    padding-top: 10px;
+
+    .section-title {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #16a6a8;
+    }
+  }
+}
