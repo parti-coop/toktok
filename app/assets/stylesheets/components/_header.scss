@@ -13,11 +13,9 @@ section#site-header {
   .navbar-user {
     float: right;
     margin-right: 15px;
-
     a {
       padding-right: 10px;
     }
-
     img {
       height: 26px;
     }
@@ -33,6 +31,11 @@ section#site-header {
             color: $gray;
           }
         }
+      }
+    }
+    @media (min-width: $screen-sm-min) {
+      & > ul.nav {
+        margin-left: -15px;
       }
     }
     text-align: center;

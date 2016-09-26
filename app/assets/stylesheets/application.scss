@@ -2,9 +2,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "base";
-@import "users";
 
 @import "redactor";
 @import "select2";
 
+@import "components/users";
 @import "components/header"
+
