@@ -1,3 +1,4 @@
+- participation_at_home ||= false
 %section
   .container
     .page-header
@@ -29,7 +30,7 @@
             = @project.committee.name
 
     %div.text-center
-      = render 'participations/button', project: @project
+      = render 'participations/button', project: @project, participation_at_home: participation_at_home
     %div.text-center
       = render 'participations/list', project: @project
 

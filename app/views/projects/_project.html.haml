@@ -24,3 +24,5 @@
     .pull-right
       %span.share-button
         %span.count= image_tag 'icon_share.png', class: 'icon-share'
+    .text-center
+      = render 'participations/button', project: project, participation_at_home: true

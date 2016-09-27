@@ -27,9 +27,10 @@
     z-index: 1;
   }
 
-  padding-top: 26px;
-  padding-bottom: 16px;
+  padding: 26px 20px 16px;
   border-top: 1px solid $gray-lighter;
+
+
   .project-title {
     font-size: $font-size-h3;
     color: $gray-dark;
@@ -43,6 +44,9 @@
   }
   .project-image {
     height: 200px;
+    @media (max-width: $screen-xs-max) {
+      height: 140px;
+    }
     position: relative;
     background-size: cover;
     background-position: center;
@@ -51,7 +55,7 @@
   .steps {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 100.1%;
     .step {
       display: inline-block;
       text-align: center;
@@ -165,6 +169,39 @@
     }
     .comments-button {
       margin-left: 15px;
+    }
+    .btn-participation {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-size: $font-size-large;
+      margin-top: 43px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 183px;
+
+      &__home {
+        background-color: #02f2d5;
+        color: $site-header-primary;
+        border-color: #02f2d5;
+
+        &:hover {
+          color: $site-header-primary-dark;
+          @include hover-shadow();
+        }
+      }
+
+      &__cancel {
+        background-color: $gray-lighter;
+        color: $site-header-primary;
+        border-color: $gray-lighter;
+
+        &:hover {
+          color: $site-header-primary-dark;
+          @include hover-shadow();
+        }
+      }
+
     }
   }
 }
