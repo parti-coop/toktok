@@ -1,32 +1,84 @@
-%section
+%section#project
   .container
     .page-header
+      .project-meta.clearfix
+        .pull-left
+          %span.participations-button
+            = image_tag 'icon_participation.png', class: 'icon-participation'
+            %span.count= @project.participations_count
+          %span.comments-button
+            = image_tag 'icon_comment.png', class: 'icon-comment'
+            %span.count= @project.comments.count
+        .pull-right
+          %span.share-button
+            %span.count= image_tag 'icon_share.png', class: 'icon-share'
       %h2
         = @project.title
-        %small
-          = @project.created_at
-        .pull-right
-          %small
-            = link_to '관리', admin_project_path(@project)
+        - if current_user.try(:role).try(:staff?)
+          .pull-right
+            %small
+              = link_to '관리', admin_project_path(@project)
 
-    .panel.panel-default
-      .panel-heading
-        %div
-          [상태]
-          = t("messages.project_status.#{@project.status}")
-        - if @project.proposal.present?
-          %div
-            [제안자]
-            = @project.proposal.proposer_name
-      .panel-body
-        = simple_format @project.body
-        - @project.attachments.each do |attachment|
-          = link_to attachment.name, attachment.source.url, target: '_blank'
-      - if @project.committee.present?
-        .panel-footer
-          %div
-            [관련 상임위원회]
+    .project-panel__intro.project-panel
+      = simple_format @project.body
+      - @project.attachments.each do |attachment|
+        = link_to attachment.name, attachment.source.url, target: '_blank'
+      .project-image{style: "background-image: url(#{@project.image.sm.url});"}
+
+    .project-intro-divider
+
+    .project-panel__status.project-panel
+      .project-label
+        %strong|
+        진행 상황
+      .project-status-bar
+        .steps
+          .step.step--gathering{class: "#{'step__now' if @project.status.to_s == 'gathering'}"}<>
+            매칭 중
+          .step.step--matching{class: "#{'step__now' if @project.status.to_s == 'matching'}"}<>
+            의원 매칭
+          .step.step--running{class: "#{'step__now' if @project.status.to_s == 'running'}"}<>
+            입법 활동
+    - if @project.proposal.present?
+      %hr.project-divider
+      .project-panel__proposer.project-panel
+        .project-label
+          %strong|
+          제안자
+        .proposal-content
+          .proposal-content__left.proposal-content
+            .proposer-image{style: "background-image: url(#{asset_data_base64('img_default_profile.png')});"}
+          .proposal-content__right.proposal-content
+            %span.proposer-name
+              = @project.proposal.proposer_name
+            %span.proposer-date
+              = static_date_f_not_hour @project.proposal.created_at
+            .proposer-opinion
+              = simple_format @project.proposal.body
+        .proposal
+
+    - if @project.committee.present?
+      .project-panel__committee.project-panel
+        %hr.project-divider
+        .project-label
+          %strong|
+          관련 상임위원회
+        .committee-content
+          .committee-name
             = @project.committee.name
+          .committee-congressmen
+            - @project.committee.congressmen.each do |congressman|
+              .committee-congressman
+                .committee-congressman__status
+                  참여
+                .committee-congressman__image{style: "background-image: url(#{asset_data_base64('img_default_profile.png')});"}
+                .committee-congressman__name
+                  = congressman.name
+                .committee-congressman__contacts
+                  .committee-congressman__contacts--tok
+                  .committee-congressman__contacts--twitter
+                  .committee-congressman__contacts--facebook
+
 
     %div.text-center
       = render 'participations/button', project: @project

@@ -205,3 +205,218 @@
     }
   }
 }
+
+section#project {
+  .page-header {
+    margin: 20px 0 0;
+    border: none;
+
+    .project-meta {
+      margin-top: 12px;
+      margin-bottom: 12px;
+
+      .count {
+        @include responsive-font-size-small();
+        color: $gray-light;
+      }
+
+      .comments-button {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .project-panel {
+    margin-bottom: 20px;
+
+    &__intro {
+      margin-top: -16px;
+      color: $gray;
+
+      .project-image {
+        height: 120px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+
+    .project-label {
+      color: $brand-primary;
+      strong {
+        font-weight: 900;
+      }
+    }
+
+    &__status {
+      .project-status-bar {
+        .steps {
+          margin-top: 12px;
+          .step {
+            color: $gray;
+            position: relative;
+            display: inline-block;
+            width: 33.33%;
+            text-align: center;
+            border-right: none;
+            background: #fff;
+            border: 1px solid $gray-lighter;
+            border-left: none;
+            font-size: $font-size-small;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            @media (max-width: $screen-xs-max) {
+              font-size: $font-size-small-xs;
+            }
+
+            &:after,
+            &:before {
+              content: '';
+              display: block;
+              position: absolute;
+              left: 100%;
+              width: 0;
+              height: 0;
+              border-style: solid;
+            }
+
+            &:after {
+              top: 16px;
+              border-color: transparent transparent transparent #fff;
+              border-width: 5px;
+            }
+
+            &:before {
+              top: 14px;
+              border-color: transparent transparent transparent $gray-lighter;
+              border-width: 7px;
+            }
+            &--gathering {
+              z-index: 3;
+              border-left: 1px solid $gray-lighter;
+            }
+            &--matching {
+              z-index: 2;
+            }
+            &--running {
+              z-index: 1;
+
+              &:after {
+                border: none;
+              }
+
+              &:before {
+                border: none;
+              }
+            }
+            &__now {
+              color: #fff;
+              background-color: $brand-primary;
+              border-color: $brand-primary;
+              &:before {
+                border-color: transparent transparent transparent $brand-primary;
+              }
+              &:after {
+                border-color: transparent transparent transparent $brand-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__proposer {
+      .proposal-content {
+        display: inline-block;
+        margin-top: 4px;
+        &__left {
+          width: 10%;
+          vertical-align: top;
+          .proposer-image {
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+        &__right {
+          width: 88%;
+          .proposer-name {
+            color: $gray;
+            font-size: $font-size-small-xs;
+          }
+          .proposer-date {
+            color: $gray;
+            font-size: $font-size-small-xs;
+            margin-left: 8px;
+          }
+          .proposer-opinion {
+            background-color: $gray-lightest;
+            padding: 4px 16px;
+
+          }
+        }
+      }
+    }
+    &__committee {
+      .committee-content {
+        margin-top: 4px;
+        .committee-name {
+
+        }
+        .committee-congressmen {
+          margin-top: 16px;
+          .committee-congressman {
+            position: relative;
+            background-color: $gray-lightest;
+            display: inline-block;
+            width: 148px;
+            height: 166px;
+            margin-bottom: 31px;
+            margin-right: 12px;
+
+            &__status {
+              display: inline-block;
+              border: 1px solid black;
+              border-radius: 50%;
+              position: absolute;
+              padding: 8px;
+              top: -10px;
+              font-size: 14px;
+              background-color: #fff;
+            }
+            &__image {
+              height: 70px;
+              width: 70px;
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: 20px;
+            }
+            &__name {
+              text-align: center;
+              margin-top: 7px;
+            }
+            &__contacts {
+
+            }
+          }        }
+      }
+
+    }
+  }
+
+  .project-intro-divider {
+    height: 10px;
+    background-color: $gray-lighter;
+    margin: 22px -15px;
+  }
+  .project-divider {
+    border-top: 1px solid #efefef;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
