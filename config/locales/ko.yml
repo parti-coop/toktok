@@ -20,3 +20,26 @@ ko:
         reject: 거절
         no_answer: 무응답
 
+  errors:
+    format: "%{message}"
+    messages:
+      blank: "%{attribute}을 입력해 주세요."
+
+  activerecord:
+    models:
+      proposal: 제안
+    attributes:
+      proposal:
+        title: 제목
+        proposer_email: 이메일
+        proposer_name: 이름
+        proposer_phone: 휴대폰
+        body: 내용
+      project:
+        title: 제목
+      comment:
+        body: 내용
+      committee:
+        name: 위원회 이름
+      congressman:
+        name: 이름

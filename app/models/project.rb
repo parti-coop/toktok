@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   has_many :matches, dependent: :destroy
   has_many :matched_congressmen, through: :matches, source: :congressman
 
+  validates :title, presence: true
+
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 
   # mount

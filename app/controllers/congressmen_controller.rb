@@ -1,8 +1,9 @@
 class CongressmenController < ApplicationController
   def create
     @congressman = Congressman.new(congressman_params)
-    @congressman.save
+    errors_to_flash(@congressman) unless @congressman.save
     redirect_to :back
+
   end
 
   def destroy

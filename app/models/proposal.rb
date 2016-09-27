@@ -5,6 +5,11 @@ class Proposal < ApplicationRecord
   has_many :attachments, dependent: :destroy, as: :attachable
   has_many :projects
 
+  validates :title, presence: true
+  validates :proposer_name, presence: true
+  validates :proposer_email, presence: true
+  validates :proposer_phone, presence: true
+
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 
 

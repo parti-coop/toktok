@@ -14,6 +14,7 @@ class ProposalsController < ApplicationController
     if @proposal.save
       render 'create'
     else
+      errors_to_flash(@proposal)
       render 'new'
     end
   end
