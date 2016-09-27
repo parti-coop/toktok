@@ -20,7 +20,6 @@
       #site-header-collapsable.collapse.navbar-collapse
         %ul.nav.navbar-nav
           %li= link_to '제안하기', new_proposal_path
-          %li= link_to '프로젝트', projects_path
           - if user_signed_in?
             %li.visible-xs-inline= link_to '로그아웃', sign_out_path, method: :delete, class: 'btn btn-sign-out btn-block'
           - else
