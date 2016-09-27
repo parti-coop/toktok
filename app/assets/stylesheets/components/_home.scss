@@ -4,10 +4,20 @@ section#home {
     padding-bottom: 38px;
     text-align: center;
 
+    .key-visual-image {
+      width: 100%;
+      margin-top: -150px;
+      margin-bottom: 20px;
+      @media (max-width: $screen-xs-max) {
+        margin-top: -72px;
+      }
+    }
+
     background-color: $site-header-primary;
     p {
       font-size: $font-size-large;
       color: $brand-primary-lighter;
+      position: relative;
     }
 
     .btn-home-proposal {
