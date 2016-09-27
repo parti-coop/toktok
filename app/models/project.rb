@@ -28,7 +28,7 @@ class Project < ApplicationRecord
     end
   end
 
-  def unmathed_ongressmen
+  def unmathed_congressmen
     Congressman.where.not(id: matched_congressmen)
   end
 end
