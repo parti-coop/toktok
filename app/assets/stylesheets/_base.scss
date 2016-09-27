@@ -15,6 +15,17 @@ body {
   width: 100%;
 }
 
+// Footer position
+$footer-height: 163px;
+body {
+  margin-bottom: $footer-height;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+}
 
 // Typography
 @media (max-width: $screen-xs-max) {
