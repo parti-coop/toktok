@@ -1,4 +1,9 @@
 %footer.footer
   .container
+    .footer-logo-wrapper
+      = link_to 'http://www.wagl.net/', target: '_blank', class: 'footer-logo footer-logo__wagl' do
+        = image_tag 'footer_logo_wagl.png'
+      = link_to 'http://parti.xyz', target: '_blank', class: 'footer-logo footer-logo__parti' do
+        = image_tag 'footer_logo_parti.png'
     .help-mail
       %a(href="mailto://toctoc@wagl.net") 문의하기 toctoc@wagl.net

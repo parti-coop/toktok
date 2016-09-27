@@ -3,6 +3,22 @@ footer.footer {
   text-align: center;
   padding-top: 22px;
   padding-bottom: 18px;
+  .footer-logo-wrapper {
+    margin-bottom: 14px;
+
+    .footer-logo {
+      img {
+        height: 20px;
+      }
+
+      &__wagl {
+        margin-right: 17px;
+      }
+      &__parti {
+
+      }
+    }
+  }
   .help-mail a {
     @include responsive-font-size-small();
     color: $gray-light;
