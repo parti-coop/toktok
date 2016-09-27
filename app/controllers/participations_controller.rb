@@ -11,11 +11,8 @@ class ParticipationsController < ApplicationController
     @participation.user = current_user
     @participation.save
 
-    if params[:participation_at_home]
-      redirect_to @project, participation_at_home: params[:participation_at_home]
-    else
-      redirect_back fallback_location: @participation.project
-    end
+    redirect_back fallback_location: @participation.project
+
   end
 
   def cancel
