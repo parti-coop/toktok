@@ -1,22 +1,32 @@
-%section
-  .container
-    .page-header
-      %h2
-        #{@proposal.title} 제안해주셔서 감사합니다!
-
-    %div
-      %span= @proposal.proposer_name
-      %span= @proposal.proposer_email
-      %span= @proposal.proposer_phone
-      - if @proposal.user.present?
-        %span (회원: #{@proposal.user.nickname})
-    %div
-      = simple_format @proposal.body
-      - @proposal.attachments.each do |attachment|
-        = link_to attachment.name, attachment.source.url, target: '_blank'
-
-    %div
-      - if user_signed_in?
-        #{ link_to '내 페이지', current_user}에서 확인 가능합니다.
-      - else
-        진행 결과는 메일이나 전화로 연락 드릴께요.
+%section#page-proposals-create
+  %section#intro
+    .container
+      %p
+        제안해주셔서 감사합니다.
+        %br
+        제안받은 내용은 국회톡톡팀이 검토 후
+        %br
+        프로젝트로 업로드합니다.
+  %section#saved-proposal
+    .container
+      .section-label
+        %strong|
+        제안자
+      .media
+        .media-right
+          .proposer-image.img-big-user{style: "background-image: url(#{image_url('img_default_profile.png')});"}
+        .media-body.proposal-proposer
+          .proposer-name
+            = @proposal.proposer_name
+            %span.proposer-date
+              = static_date_f_not_hour @proposal.created_at
+          .proposer-email
+            = @proposal.proposer_email
+          .proposer-phone
+            = @proposal.proposer_phone
+      %hr.proposal-divider
+      .section-label
+        %strong|
+        제안내용
+      .proposal-title= @proposal.title
+      .proposal-body!= @proposal.body

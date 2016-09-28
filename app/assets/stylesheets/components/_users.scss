@@ -12,3 +12,12 @@
     vertical-align: top;
   }
 }
+
+.img-big-user {
+  @extend .img-circle;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

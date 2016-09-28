@@ -106,3 +106,9 @@ body {
     @include hover-shadow();
   }
 }
+
+.section-label {
+  color: $brand-primary;
+}
+
+

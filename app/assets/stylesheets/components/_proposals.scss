@@ -26,3 +26,29 @@ section#page-proposals-new {
     }
   }
 }
+
+
+section#page-proposals-create {
+  section#intro {
+    color: $gray-dark;
+    background-color: $gray-lightest;
+    padding: 25px 20px;
+    text-align: center;
+  }
+  section#saved-proposal{
+    margin-top: 20px;
+    .proposal-proposer {
+      @include responsive-font-size-small();
+      color: $gray;
+      padding-left: 8px;
+    }
+    .proposal-title {
+      font-size: $font-size-h3;
+      margin-top: 15px;
+      margin-bottom: 7px;
+    }
+    .proposal-body {
+      color: $gray;
+    }
+  }
+}
