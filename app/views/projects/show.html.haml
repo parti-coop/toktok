@@ -92,12 +92,34 @@
                           = link_to congressman.facebook_url, target: '_blank' do
                             %i.fa.fa-facebook.fa-fw
 
-    %div.text-center
-      = render 'participations/button', project: @project
-    %div.text-center
-      = render 'participations/list', project: @project
+    .project-panel__participation.project-panel
+      %p.participation-title
+        해당 입법 발의를 위해 참여해 주세요!
+      .participation-progress
+        .participation-progress__graph
+          - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
+          - right_style = "float: right;" if @project.participations_percentage > 90
+          .current-participations-count.clearfix
+            .content{style: "#{left_style} #{right_style}"}
+              참여
+              %span
+                %span.count<>= @project.participations_count
+                명
+          - bar_count = (1 + ((@project.participations_percentage - 1)/100)).round(0)
+          - bar_count = 1 if @project.participations_percentage == 0
+          / - abort (bar_count-1).inspect
+          - (bar_count-1).times do |time|
+            .bar
+              .participations-bar{style: "width: 100%"}
+          .bar
+            .participations-bar{style: "width: #{@project.participations_percentage - ((bar_count-1) * 100)}%"}
 
-    = render "projects/body_#{@project.status}", project: @project
+            .participations-goal-count
+              목표 #{@project.participations_goal_count}명
+      .btn-project-participation
+        = render 'participations/button', project: @project
+      .participation-users
+        = render 'participations/list', project: @project
 
   %section#comments
     .container

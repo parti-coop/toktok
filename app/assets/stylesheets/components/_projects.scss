@@ -380,6 +380,128 @@ section#project {
           }
         }
       }
+    }
+
+    &__participation {
+      background-color: $site-header-primary;
+
+      padding: 38px 20px;
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-bottom: 0;
+      @include responsive-font-size-large();
+
+      .participation-title {
+        color: #fff;
+        text-align: center;
+      }
+
+
+      .participation-progress {
+        @include responsive-font-size-small();
+        .text-important {
+          color: $brand-primary-lighter;
+        }
+        &__count {
+          color: #fff;
+          span {
+            color: #fff;
+          }
+
+        }
+        &__graph {
+          padding: 16px 20px 12px;
+
+
+          .bar {
+            height: 10px;
+            margin: 4px 0;
+            width: 100%;
+            background-color: $gray-lighter;
+            .participations-bar {
+              background: $brand-primary;
+              height: 100%;
+            }
+          }
+          .participations-goal-count {
+            text-align: center;
+            color: #fff;
+            margin-top: 3px;
+          }
+          .current-participations-count {
+            .content {
+              display: inline-block;
+              position: relative;
+              color: #fff;
+              span {
+                color: #fff;
+              }
+              .count {
+                color: $brand-primary;
+              }
+            }
+          }
+        }
+        &__goal-count {
+          color: #fff;
+        }
+      }
+
+      .btn-project-participation {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+
+
+        .btn-participation {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          font-size: $font-size-large;
+          width: 183px;
+
+          &__accept {
+            background-color: #02f2d5;
+            color: $site-header-primary;
+            border-color: #02f2d5;
+
+            &:hover {
+              color: $site-header-primary-dark;
+              @include hover-shadow();
+            }
+          }
+
+          &__cancel {
+            background-color: $gray-lighter;
+            color: $site-header-primary;
+            border-color: $gray-lighter;
+
+            &:hover {
+              color: $site-header-primary-dark;
+              @include hover-shadow();
+            }
+          }
+
+        }
+      }
+
+      .participation-users {
+        margin-left: 22px;
+        margin-right: 22px;
+        margin-top: 24px;
+        .participation-user {
+          .user-image-thumb.img-user {
+            height: 30px;
+            width: 30px;
+          }
+        }
+      }
+      .participation-all-user {
+        margin-top: 10px;
+        display: block;
+        text-align: center;
+        color: #fff;
+        @include responsive-font-size-small();
+      }
 
     }
   }
