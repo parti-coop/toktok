@@ -47,7 +47,7 @@
           제안자
         .proposal-content
           .proposal-content__left.proposal-content
-            .proposer-image{style: "background-image: url(#{asset_data_base64('img_default_profile.png')});"}
+            .proposer-image{style: "background-image: url(#{image_url('img_default_profile.png')});"}
           .proposal-content__right.proposal-content
             %span.proposer-name
               = @project.proposal.proposer_name
@@ -71,7 +71,7 @@
               .committee-congressman
                 .committee-congressman__status
                   참여
-                .committee-congressman__image{style: "background-image: url(#{asset_data_base64('img_default_profile.png')});"}
+                .committee-congressman__image{style: "background-image: url(#{image_url('img_default_profile.png')});"}
                 .committee-congressman__name
                   = congressman.name
                 .committee-congressman__contacts
