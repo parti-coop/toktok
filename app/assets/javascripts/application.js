@@ -40,7 +40,6 @@ $(function(){
     }
   });
 
-<<<<<<< 8d15a2f3134fedf9e1d1e8001a6876217ef85bcd
   $('.action-validate').validate({
     ignore: ':hidden:not(.redactor)',
     errorPlacement: function(error, element) {
@@ -53,4 +52,20 @@ $(function(){
       $(element).closest('.form-group').removeClass('field_with_errors');
     }
   });
+
+  $('.owl-carousel').owlCarousel({
+    autoWidth: true,
+    dots: false,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    responsive:{
+      0:{
+          items:2
+      },
+      768:{
+          items:3
+      }
+    }
+  })
 });
