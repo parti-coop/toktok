@@ -145,3 +145,30 @@ section#page-users-show {
     }
   }
 }
+
+section#sign-up {
+  padding-top: 20px;
+  .sign-up-header {
+    @include responsive-font-size-large();
+    text-align: center;
+    color: #16a6a8;
+    margin-bottom: 36px
+  }
+  .sign-up-form {
+    text-align: center;
+    .remember_me {
+    }
+  }
+  #error_explanation {
+    h2 {
+      display: none;
+    }
+    ul {
+      padding: 0;
+      li {
+        color: red;
+        list-style: none;
+      }
+    }
+  }
+}

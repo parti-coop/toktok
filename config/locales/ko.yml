@@ -30,10 +30,16 @@ ko:
     format: "%{message}"
     messages:
       blank: "%{attribute}을 입력해 주세요."
+      not_saved: "저장되지 않았습니다"
+    models:
+      user:
+        attributes:
+          nickname: 닉네임
 
   activerecord:
     models:
       proposal: 제안
+      user: 회원
     attributes:
       proposal:
         title: 제목
@@ -49,6 +55,17 @@ ko:
         name: 위원회 이름
       congressman:
         name: 이름
+      user:
+        nickname: 닉네임
+    errors:
+      models:
+        user:
+          attributes:
+            nickname:
+              exclusion: '%{attribute}에 입력한 값이 올바르지 않습니다. 예시) users, admin, all 등은 사용할 수 없습니다.'
+              invalid: '%{attribute} 형식이 올바르지 않습니다.'
+              too_long: '%{attribute}는 20자를 넘을 수 없습니다.'
+              taken: '이미 사용중인 %{attribute}입니다'
 
   views:
     pagination:
