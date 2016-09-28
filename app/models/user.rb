@@ -23,6 +23,7 @@ class User < ApplicationRecord
     uniqueness: { case_sensitive: false },
     length: { maximum: 20 }
   validate :nickname_exclude_pattern
+  validates :email, presence: true
 
   # scopes
   scope :staffs, -> { where(role: :staff) }

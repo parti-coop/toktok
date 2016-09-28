@@ -34,7 +34,7 @@ ko:
     models:
       user:
         attributes:
-          nickname: 닉네임
+          nickname: 아이디
 
   activerecord:
     models:
@@ -56,7 +56,10 @@ ko:
       congressman:
         name: 이름
       user:
-        nickname: 닉네임
+        nickname: 아이디
+        email: 이메일
+        image: 프로필 사진
+
     errors:
       models:
         user:

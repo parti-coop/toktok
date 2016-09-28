@@ -151,13 +151,11 @@ section#sign-up {
   .sign-up-header {
     @include responsive-font-size-large();
     text-align: center;
-    color: #16a6a8;
+    color: $brand-primary;
     margin-bottom: 36px
   }
   .sign-up-form {
     text-align: center;
-    .remember_me {
-    }
   }
   #error_explanation {
     h2 {
@@ -165,6 +163,35 @@ section#sign-up {
     }
     ul {
       padding: 0;
+      li {
+        color: red;
+        list-style: none;
+      }
+    }
+  }
+}
+
+section#profile-edit {
+  padding-top: 20px;
+  .profile-edit-header {
+    @include responsive-font-size-large();
+    text-align: center;
+    color: $brand-primary;
+    margin-bottom: 36px
+  }
+  .user-title {
+
+  }
+  .profile-form {
+    text-align: center;
+  }
+  #error_explanation {
+    h2 {
+      display: none;
+    }
+    ul {
+      padding: 0;
+      text-align: center;
       li {
         color: red;
         list-style: none;
