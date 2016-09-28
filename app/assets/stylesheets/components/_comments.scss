@@ -1,0 +1,52 @@
+section#comments {
+  margin-top: 13px;
+
+  .placeholder {
+    color: $gray-light;
+    @include responsive-font-size-small();
+    border: 1px solid $gray-lighter;
+    line-height: 2.75;
+    padding-left: 13px;
+    border-radius: $input-border-radius;
+  }
+  .comment-form {
+    padding-bottom: 18px;
+    form#new_comment {
+      display: none;
+      #comment_body {
+        font-size: $font-size-base;
+        @media (max-width: $screen-xs-max) {
+          font-size: $font-size-small-xs;
+        }
+      }
+    }
+  }
+}
+
+.comment {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  color: $gray;
+  .comment-meta {
+    @include responsive-font-size-small();
+    margin-bottom: 5px;
+    .comment-name {
+      margin-right: 9px;
+    }
+  }
+  .buttons a + a {
+    margin-left: 9px;
+  }
+}
+
+.btn-comment {
+  line-height: 1;
+  &, &:focus, &.focus {
+    background-color: $gray-lighter;
+    color: $gray;
+  }
+  &:hover {
+    color: $gray-dark;
+    @include hover-shadow();
+  }
+}

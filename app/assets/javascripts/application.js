@@ -16,6 +16,11 @@
 
 UnobtrusiveFlash.flashOptions['timeout'] = 3000;
 
+function scroll_to_anchor(anchor_id){
+    var tag = $(anchor_id);
+    $('html,body').animate({scrollTop: tag.offset().top},'fast');
+}
+
 $(function(){
   $('.action-congressman-select').select2();
   $('.action-mention').on('click', function(e) {
@@ -68,4 +73,16 @@ $(function(){
       }
     }
   })
+
+  $('.action-show').on('click', function(e) {
+    var $elm = $(e.currentTarget);
+    var $target = $($elm.data('show-target'));
+    $target.show();
+    var focus_id = $elm.data('show-focus');
+    $focus = $(focus_id);
+    $focus.focus();
+    if($elm.data('show-self-hide')) {
+      $elm.hide();
+    }
+  });
 });

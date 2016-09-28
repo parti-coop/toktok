@@ -1,6 +1,3 @@
-%h3 Comments
-%div
-  = render 'comments/form', commentable:commentable
-
-%div
-  = render partial: 'comments/comment', collection: commentable.comments
+%a.anchor#anchor-comments
+= render 'comments/form', local_assigns
+= render 'comments/page', local_assigns.merge(comments: commentable.comments.recent.page)

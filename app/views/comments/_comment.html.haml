@@ -1,6 +1,12 @@
-%div[comment]
-  = simple_format comment.body
-  %div
-    = link_to comment.user.nickname, comment.user
-    = link_to '수정', [:edit, comment]
-    = link_to '삭제', comment, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' }
+.comment[comment]
+  .media
+    .media-left
+      .comment-image.img-big-user{style: "background-image: url(#{image_url(comment.user.image.xs.url)});"}
+    .media-body
+      .comment-meta
+        %span.comment-name= comment.user.nickname
+        %span.comment-date= date_f comment.created_at
+      = simple_format comment.body
+      .buttons
+        = link_to '수정', [:edit, comment]
+        = link_to '삭제', comment, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' }

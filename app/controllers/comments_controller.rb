@@ -1,4 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+
+  def index
+    @commentable = params[:commentable_type].classify.constantize.find(params[:commentable_id])
+    @comments = @commentable.comments.recent.page(params[:page])
+  end
+
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
@@ -10,16 +17,16 @@ class CommentsController < ApplicationController
         @comment.mentions.build(congressman: congressman)
       end
       errors_to_flash(@comment) unless @comment.save
-      redirect_back fallback_location: @comment.commentable
+      redirect_back_with_anchor anchor: 'anchor-comments', fallback_location: @comment.commentable
     end
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     @comment.assign_attributes(comment_params)
     mentioned_congressmen = scan_mentioned_congressmen(@comment)
 
@@ -34,7 +41,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     errors_to_flash(@comment) unless @comment.destroy
     redirect_back fallback_location: @comment.commentable
   end

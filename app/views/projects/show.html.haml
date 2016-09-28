@@ -48,7 +48,7 @@
         .project-panel__proposer
           .media
             .media-left
-              .proposer-image.img-big-user{style: "background-image: url(#{@project.proposal.propose_image_url(:sm)});"}
+              .proposer-image.img-big-user{style: "background-image: url(#{@project.proposal.proposer_image_url(:sm)});"}
             .media-body.proposal-content
               %span.proposer-name
                 = @project.proposal.proposer_name
@@ -101,5 +101,6 @@
 
     = render "projects/body_#{@project.status}", project: @project
 
-    %div
-      = render 'comments/list', commentable: @project
+  %section#comments
+    .container
+      = render 'comments/list', commentable: @project, placeholder: '지지 의견을 남겨주세요.'

@@ -7,7 +7,7 @@
         &gt; #{@proposal.title}
         %small
           = static_date_f @proposal.created_at
-        .pull-right
+        %div
           %small
             - if @proposal.launched?
               프로젝트 :

@@ -1,6 +1,12 @@
-- comment = @comment || Comment.new
-= form_for ( comment.new_record? ? [commentable, Comment.new] : comment ) do |f|
-  .form-group
-    = f.text_area :body, class: 'form-control'
-  .form-group
-    = f.submit class: 'btn btn-primary'
+.comment-form
+  - comment = @comment || Comment.new
+  - if user_signed_in?
+    .placeholder.action-show{ data: { show: { target: 'form#new_comment', focus: 'form#new_comment #comment_body', 'self-hide': 'true' } } }= local_assigns[:placeholder]
+    = form_for ( comment.new_record? ? [commentable, Comment.new] : comment ) do |f|
+      .form-group
+        = f.text_area :body, rows: 5, class: 'form-control', placeholder: local_assigns[:placeholder]
+      .form-group
+        = f.submit '저장', class: 'btn btn-comment'
+  - else
+    = link_to join_path do
+      .placeholder= local_assigns[:placeholder]

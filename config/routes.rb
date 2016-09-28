@@ -39,4 +39,5 @@ Rails.application.routes.draw do
     end
   end
   resources :questions, concerns: [:commentable, :likable]
+  resources :comments, only: :index
 end

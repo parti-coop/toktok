@@ -40,7 +40,6 @@ section#page-proposals-create {
     .proposal-proposer {
       @include responsive-font-size-small();
       color: $gray;
-      padding-left: 8px;
     }
     .proposal-title {
       font-size: $font-size-h3;

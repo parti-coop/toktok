@@ -16,7 +16,7 @@ class Proposal < ApplicationRecord
     projects.any?
   end
 
-  def propose_image_url(version = nil)
+  def proposer_image_url(version = nil)
     if user.present?
       if version.nil?
         return user.image.url

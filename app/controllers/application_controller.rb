@@ -24,4 +24,12 @@ class ApplicationController < ActionController::Base
   def errors_to_flash(model)
     flash[:notice] = model.errors.full_messages.join('<br>').html_safe
   end
+
+  def redirect_back_with_anchor(anchor:, fallback_location:, **args)
+    if referer = request.headers["Referer"]
+      redirect_to "#{referer}##{anchor}", **args
+    else
+      redirect_to fallback_location, **args
+    end
+  end
 end
