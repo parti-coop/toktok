@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927124049) do
+ActiveRecord::Schema.define(version: 20160927230251) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20160927124049) do
     t.integer  "participations_count",                    default: 0
     t.integer  "participations_goal_count",               default: 1000
     t.string   "image"
+    t.text     "summary",                   limit: 65535
     t.index ["committee_id"], name: "index_projects_on_committee_id", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree

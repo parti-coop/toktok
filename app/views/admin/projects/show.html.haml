@@ -1,7 +1,7 @@
 %section
   .container
     .page-header
-      %h2
+      %h2.clearfix
         관리 &gt;
         = link_to '프로젝트', admin_projects_path
         &gt; #{@project.title}
@@ -15,6 +15,9 @@
           [상태]
           = t("messages.project_status.#{@project.status}")
       .panel-body
+        [요약]
+        = simple_format @project.summary
+        %hr
         [내용]
         = simple_format @project.body
 

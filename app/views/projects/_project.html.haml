@@ -1,28 +1,50 @@
 .project[project]
   = link_to project do
+    .project-meta.clearfix
+      .pull-left
+        %span.created_at
+          %i.fa.fa-clock-o
+          %span.date= date_f project.created_at
+        %span.comments
+          = image_tag 'icon_comment.png', class: 'icon-comment'
+          %span.count= project.comments.count
+      .pull-right
+        %span.share-button
+          %span.count= image_tag 'icon_share.png', class: 'icon-share'
+
     .project-title= project.title
-    .project-body= excerpt project.body
+    .project-summary!= project.summary
+
     .project-image{style: "background-image: url(#{project.image.sm.url});"}
       .steps{class: "steps--#{project.status}"}<>
         .step.step--gathering<>
           시민 지지
-          .percent
-            56%
         .step.step--matching<>
           의원 매칭
         .step.step--running<>
           입법 활동
 
-  .project-meta.clearfix
-    .pull-left
-      %span.participations-button
-        = image_tag 'icon_participation.png', class: 'icon-participation'
-        %span.count= project.participations_count
-      %span.comments-button
-        = image_tag 'icon_comment.png', class: 'icon-comment'
-        %span.count= project.comments.count
-    .pull-right
-      %span.share-button
-        %span.count= image_tag 'icon_share.png', class: 'icon-share'
-    .text-center
+    .project-graph
+      - left_style = "left: #{project.participations_percentage - 5}%" if project.participations_percentage > 5 and project.participations_percentage <= 90
+      - right_style = "float: right;" if project.participations_percentage > 90
+      .current-participations-count.clearfix
+        .content{style: "#{left_style} #{right_style}"}
+          참여
+          %span
+            %span.count<>= project.participations_count
+            명
+      - bar_count = 1 + (project.participations_percentage - 1)/100
+      - bar_count = 1 if project.participations_percentage == 0
+      - (bar_count-1).times do |time|
+        .bar
+          .participations-bar{style: "width: 100%"}
+      .bar
+        .participations-bar{style: "width: #{project.participations_percentage - ((bar_count-1) * 100)}%"}
+
+      .participations-goal-count
+        목표
+        %span
+          %span.count<>= project.participations_goal_count
+          명
+    .project-participation
       = render 'participations/button', project: project, participation_at_home: true

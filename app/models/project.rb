@@ -33,4 +33,9 @@ class Project < ApplicationRecord
   def unmathed_congressmen
     Congressman.where.not(id: matched_congressmen)
   end
+
+  def participations_percentage
+    return 0 if participations_goal_count == 0
+    participations_count / participations_goal_count * 100
+  end
 end

@@ -1,44 +1,49 @@
 .project {
-  @mixin angle-right($height, $color) {
+  @mixin angle-after($height, $color) {
     content: "";
     display: inline-block;
     width: 0;
     height: 0;
-    border-top: $height/2 solid transparent;
-    border-bottom: $height/2 solid transparent;
-    border-left: $height/2 solid $color;
+    border-top: $height/5 solid transparent;
+    border-bottom: $height/5 solid transparent;
+    border-left: $height/5 solid $color;
     position: absolute;
-    top: 0;
-    right: -1 * $height/2;
+    top: ($height/2 - $height/5);
+    right: -$height/5 + 1px;
     z-index: 1;
   }
 
-  @mixin angle-left($height, $color) {
+  @mixin angle-before($height, $color, $border-color) {
     content: "";
     display: inline-block;
     width: 0;
     height: 0;
-    border-top: $height/2 solid $color;
-    border-bottom: $height/2 solid $color;
-    border-left: $height/2 solid transparent;
+    border-top: $height/5 solid $color;
+    border-bottom: $height/5 solid $color;
+    border-left: $height/5 solid $border-color;
     position: absolute;
-    top: 0;
-    left: -1 * $height/2;
-    z-index: 1;
+    top: ($height/2 - $height/5);
+    left: 0;
   }
 
-  padding: 26px 20px 16px;
+  padding: 20px;
   border-top: 1px solid $gray-lighter;
 
+  @media (min-width: $screen-sm-min) {
+    border-left: 1px solid $gray-lighter;
+    border-right: 1px solid $gray-lighter;
+  }
 
   .project-title {
+    margin-top: 14px;
+    margin-bottom: 7px;
     font-size: $font-size-h3;
     color: $gray-dark;
     &:hover {
       color: $brand-primary;
     }
   }
-  .project-body {
+  .project-summary {
     color: $gray;
     margin-bottom: 10px;
   }
@@ -60,127 +65,118 @@
       display: inline-block;
       text-align: center;
       @include responsive-font-size-small();
-      padding-top: 13px;
-      padding-bottom: 13px;
-      vertical-align: bottom;
+      padding-top: 10px;
+      padding-bottom: 10px;
       position: relative;
       color: $gray;
+      width: 33.3%;
       line-height: 14px;
-      &.step--gathering {
-        .percent {
-          display: inline-block;
-          margin-left: 9px;
-        }
-      }
+      background-color: $gray-lightest;
+      border-left: 1px solid $gray-lighter;
+    }
+    .step:last-child {
+      border-right: 1px solid $gray-lighter;
+    }
+    &.steps--running .step--running:last-child {
+      border-right-color: $brand-primary;
     }
 
     &.steps--gathering .step--gathering,
     &.steps--matching .step--matching,
     &.steps--running .step--running {
-      vertical-align: middle;
       background-color: $brand-primary;
       color: #fff;
-      line-height: 18px;
     }
 
     &.steps--gathering .step--gathering,
     &.steps--matching .step--matching {
       &:after {
-        @include angle-right(44px, $brand-primary)
+        @include angle-after(36px, $brand-primary)
       }
     }
 
-    &.steps--matching .step--matching,
-    &.steps--running .step--running {
+    &.steps--gathering .step--matching,
+    &.steps--matching .step--gathering,
+    &.steps--running .step--gathering,
+    &.steps--running .step--matching {
+      &:after {
+        @include angle-after(36px, $gray-lightest)
+      }
+    }
+    &.steps--gathering .step--running,
+    &.steps--gathering .step--matching,
+    &.steps--matching .step--running,
+    &.steps--running .step--matching {
       &:before {
-        @include angle-left(44px, $brand-primary)
+        @include angle-before(36px, $gray-lightest, $gray-lighter)
       }
     }
-
-    &.steps--gathering .step--matching {
-      &:after {
-        @include angle-right(40px, $gray-lighter)
-      }
-    }
-
-    &.steps--running .step--gathering {
-      &:after {
-        @include angle-right(40px, $gray-lightest)
-      }
-    }
-
-    &.steps--gathering {
-      .step--gathering {
-        width: 41%;
-        .percent {
-          display: inline-block;
-          font-size: $font-size-h3;
-          color: #fefd37;
-          vertical-align: middle;
-          margin-left: 9px;
-        }
-      }
-      .step--matching {
-        width: 32%;
-        padding-left: 25px;
-        background-color: $gray-lighter;
-      }
-      .step--running {
-        width: 27%;
-        padding-left: 20px;
-        background-color: $gray-lightest;
-      }
-    }
-    &.steps--matching {
-      .step--gathering {
-        width: 40%;
-        background-color: $gray-lighter;
-      }
-      .step--matching {
-        width: 30%;
-        // line-height: 34px;
-      }
-      .step--running {
-        width: 30%;
-        padding-left: 20px;
-        background-color: $gray-lightest;
-      }
-    }
-    &.steps--running {
-      .step--gathering {
-        width: 35%;
-        background-color: $gray-lightest;
-      }
-      .step--matching {
-        width: 35%;
-        background-color: $gray-lighter;
-      }
-      .step--running {
-        width: 30%;
+    &.steps--matching .step--matching,
+    &.steps--running .step--running  {
+      &:before {
+        @include angle-before(36px, $brand-primary, $gray-lighter)
       }
     }
   }
-  .project-meta {
-    margin-top: 12px;
-    margin-bottom: 12px;
+  .project-graph {
+    border: 1px solid $brand-primary;
+    padding: 16px 20px 12px;
+    color: $gray;
     .count {
+      color: $brand-primary;
+    }
+    .bar {
+      height: 10px;
+      margin: 4px 0;
+      width: 100%;
+      background-color: $gray-lighter;
+      .participations-bar {
+        background: $brand-primary;
+        height: 100%;
+      }
+    }
+    .participations-goal-count {
+      text-align: center;
+    }
+    .current-participations-count {
+      .content {
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+  .project-participation {
+    text-align: center;
+  }
+  .project-meta {
+    .count,
+    .date {
       @include responsive-font-size-small();
       color: $gray-light;
     }
-    .comments-button {
+    .created_at {
+      i {
+        color: $brand-primary;
+        font-size: 20px;
+        vertical-align: bottom;
+      }
+    }
+    .comments {
       margin-left: 15px;
     }
+  }
+  .project-participation {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+
     .btn-participation {
       padding-top: 12px;
       padding-bottom: 12px;
       font-size: $font-size-large;
-      margin-top: 43px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
       width: 183px;
 
-      &__home {
+      &__accept {
         background-color: #02f2d5;
         color: $site-header-primary;
         border-color: #02f2d5;

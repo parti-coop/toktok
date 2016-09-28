@@ -40,4 +40,8 @@ module ApplicationHelper
       return content, content_type
     end
   end
+
+  def date_f(date)
+    timeago_tag date, lang: :ko, limit: 100.days.ago
+  end
 end

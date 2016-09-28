@@ -24,6 +24,7 @@ gem 'haml-rails', '~> 0.9.0'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'unobtrusive_flash', '~> 3.2'
 gem 'truncate_html', '~> 0.9.3'
+gem 'rails-timeago', '~> 2.15'
 
 # assets
 source 'https://rails-assets.org' do

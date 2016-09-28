@@ -6,11 +6,11 @@
       참여 중
       = project.participations_count unless participation_at_home
   - else
-    = link_to project_participations_path(project_id: project), method: :post, class: 'btn btn-primary btn-lg btn-participation btn-participation__home' do
+    = link_to project_participations_path(project_id: project), method: :post, class: 'btn btn-primary btn-lg btn-participation btn-participation__accept' do
       참여하기
       = project.participations_count unless participation_at_home
 - else
-  = link_to join_path, class: 'btn btn-default btn-lg btn-participation btn-participation__home' do
+  = link_to join_path, class: 'btn btn-default btn-lg btn-participation btn-participation__accept' do
     참여하기
     = project.participations_count unless participation_at_home
 

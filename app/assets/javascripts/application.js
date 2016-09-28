@@ -9,6 +9,8 @@
 //= require unobtrusive_flash_bootstrap
 //= require select2.full
 //= require select2/ko.js
+//= require rails-timeago
+//= require locales/jquery.timeago.ko
 
 UnobtrusiveFlash.flashOptions['timeout'] = 3000;
 

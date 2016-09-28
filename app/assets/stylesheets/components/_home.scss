@@ -30,7 +30,7 @@ section#home {
 
       &:hover {
         color: $site-header-primary-dark;
-        @include hover-shadow();
+        @include hover-big-shadow();
       }
     }
   }
@@ -43,8 +43,9 @@ section#home {
       margin-bottom: 10px;
       font-size: 18px;
       color: #16a6a8;
-      padding-left: 20px;
-      padding-right: 20px;
+      @media (max-width: $screen-xs-max) {
+        padding-left: 20px;
+      }
     }
     .project-container {
       padding-left: 0;
