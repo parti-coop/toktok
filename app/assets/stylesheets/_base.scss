@@ -15,9 +15,16 @@ body {
   width: 100%;
 }
 
+// Form
+
 label {
   color: $gray-dark;
   font-weight: normal;
+  &.required:after {
+    content: "*";
+    margin-left: 5px;
+    color: $brand-danger;
+  }
 }
 
 .form-group {
@@ -30,6 +37,19 @@ label {
 
 .form-control {
   border: 1px solid $gray-lighter;
+}
+
+.form-control.error {
+  @extend .has-error;
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .redactor-box {
+    border: 1px solid $brand-danger;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
 }
 
 // Footer position

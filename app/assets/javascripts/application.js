@@ -11,6 +11,7 @@
 //= require select2/ko.js
 //= require rails-timeago
 //= require locales/jquery.timeago.ko
+//= require jquery.validate
 
 UnobtrusiveFlash.flashOptions['timeout'] = 3000;
 
@@ -35,6 +36,19 @@ $(function(){
     opened = opened && $(".navbar-collapse").hasClass("in");
     if (opened === true && !clickover.hasClass("navbar-toggle")) {
         $("button.navbar-toggle").click();
+    }
+  });
+
+  $('.action-validate').validate({
+    ignore: ':hidden:not(.redactor)',
+    errorPlacement: function(error, element) {
+      return true;
+    },
+    highlight: function(element, errorClass, validClass) {
+      $(element).closest('.form-group').addClass('field_with_errors');
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).closest('.form-group').removeClass('field_with_errors');
     }
   });
 });

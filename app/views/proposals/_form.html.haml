@@ -1,24 +1,23 @@
-= form_for @proposal do |f|
+= form_for @proposal, html: { class: 'new_proposal action-validate', data: { 'validate-submit-form-control': 'form.new_proposal input[type="submit"]' } } do |f|
   .form-group
-    = f.label :title
-    = f.text_field :title, class: 'form-control input-lg'
-
-
-  .form-group
-    = f.label :proposer_name
-    = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname))
+    = f.label :title, class: 'required'
+    = f.text_field :title, class: 'form-control input-lg', data: { 'rule-required': true }
 
   .form-group
-    = f.label :proposer_email
-    = f.text_field :proposer_email, class: 'form-control input-lg', value: (@proposal.proposer_email || current_user.try(:email))
+    = f.label :proposer_name, class: 'required'
+    = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname)), data: { 'rule-required': true }
 
   .form-group
-    = f.label :proposer_phone
-    = f.text_field :proposer_phone, class: 'form-control input-lg'
+    = f.label :proposer_email, class: 'required'
+    = f.text_field :proposer_email, class: 'form-control input-lg', value: (@proposal.proposer_email || current_user.try(:email)), data: { 'rule-required': true }
 
   .form-group
-    = f.label :body
-    = f.text_area :body, class: 'form-control redactor', row: 20
+    = f.label :proposer_phone, class: 'required'
+    = f.text_field :proposer_phone, class: 'form-control input-lg', data: { 'rule-required': true }
+
+  .form-group
+    = f.label :body, class: 'required'
+    = f.text_area :body, class: 'form-control redactor', row: 20, data: { 'rule-required': true }
 
     #attachments
       .button
