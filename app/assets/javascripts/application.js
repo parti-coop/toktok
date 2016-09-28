@@ -28,6 +28,10 @@ $(function(){
     var $target = $(e.currentTarget);
     var to = $target.data('mention-to');
     var form_control = $target.data('mention-form-control');
+    var form_placeholder = $target.data('mention-form-placeholder');
+
+    $(form_control).closest('form').show();
+    $(form_placeholder).hide();
 
     var value = $(form_control).val();
     if(to) {
