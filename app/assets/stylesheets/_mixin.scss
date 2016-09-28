@@ -16,3 +16,10 @@
     font-size: $font-size-small-xs;
   }
 }
+
+@mixin responsive-font-size-large() {
+  font-size: $font-size-large;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-large-xs;
+  }
+}

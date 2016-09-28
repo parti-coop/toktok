@@ -15,6 +15,23 @@ body {
   width: 100%;
 }
 
+label {
+  color: $gray-dark;
+  font-weight: normal;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group-submita {
+  text-align: center;
+}
+
+.form-control {
+  border: 1px solid $gray-lighter;
+}
+
 // Footer position
 $footer-height: 163px;
 body {
@@ -46,6 +63,46 @@ body {
   width: 16px;
 }
 
+.icon-attachment {
+  width: 8px;
+}
+
+.icon-close {
+  width: 14px;
+}
+
 .icon-share {
   height: 15px;
+}
+
+.col-middel {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+}
+
+.btn-attachment {
+  &:hover {
+    color: $gray-lighter;
+    @include hover-shadow();
+  }
+  &, &:focus, &.focus {
+    color: #fff;
+    background-color: $gray;
+  }
+  line-height: 1;
+  @include responsive-font-size-small();
+}
+
+.btn-submit {
+  line-height: 2.5;
+  width: 183px;
+  &, &:focus, &.focus {
+    background-color: $site-header-primary;
+    color: #fff;
+  }
+  &:hover {
+    color: $gray-lighter;
+    @include hover-shadow();
+  }
 }

@@ -1,0 +1,28 @@
+section#page-proposals-new {
+  padding-top: 20px;
+  .intro {
+    text-align: center;
+    @include responsive-font-size-large();
+    color: $brand-primary;
+    margin-bottom: 36px;
+  }
+  .btn-submit {
+    margin-top: 30px;
+  }
+  #attachments {
+    margin-top: 12px;
+    .nested-fields {
+      margin-top: 6px;
+      .form-group {
+        margin-bottom: 0;
+        .source-link {
+          margin-left: 15px;
+        }
+      }
+      &.nested-fields--persisted {
+        background-color: $gray-lightest;
+        line-height: 3.3;
+      }
+    }
+  }
+}

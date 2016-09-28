@@ -1,8 +1,3 @@
-%p
-  국회에 제안, 톡을 보내세요
-  %br
-  시민의 제안이 법안이 됩니다
-
 = form_for @proposal do |f|
   .form-group
     = f.label :title
@@ -23,14 +18,15 @@
 
   .form-group
     = f.label :body
-    = f.text_area :body, class: 'form-control redactor'
+    = f.text_area :body, class: 'form-control redactor', row: 20
 
-  %h3 Attachments
-  #attachments
-    = f.fields_for :attachments do |ff|
-      = render 'attachment_fields', f: ff
-    .links
-      = link_to_add_association 'add attachment', f, :attachments
+    #attachments
+      .button
+        = link_to_add_association f, :attachments, class: 'btn btn-attachment', 'data-association-insertion-method': 'after' do
+          = image_tag 'icon_attachment', class: 'icon-attachment'
+          첨부파일
+      = f.fields_for :attachments do |ff|
+        = render 'attachment_fields', f: ff
 
-  .form-group
-    = f.submit class: 'btn btn-primary'
+  .form-group.form-group-submita
+    = f.submit '제안하기', class: 'btn btn-submit', data: { disable_with: "저장 중..." }

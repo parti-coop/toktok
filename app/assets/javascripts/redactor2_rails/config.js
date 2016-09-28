@@ -10,7 +10,8 @@ $(function () {
         fileUploadFields: params,
         lang: 'ko',
         toolbarFixed: true,
-        buttonsHide: ['file']
+        buttonsHide: ['file'],
+        minHeight: 200
     };
     // Initialize Redactor
     $('.redactor').redactor();
