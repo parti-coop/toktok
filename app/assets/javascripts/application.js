@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require owl.carousel
 //= require bootstrap
 //= require redactor2_rails/config
 //= require redactor
@@ -39,6 +40,7 @@ $(function(){
     }
   });
 
+<<<<<<< 8d15a2f3134fedf9e1d1e8001a6876217ef85bcd
   $('.action-validate').validate({
     ignore: ':hidden:not(.redactor)',
     errorPlacement: function(error, element) {

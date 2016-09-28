@@ -57,6 +57,7 @@
               .proposer-opinion
                 = simple_format @project.proposal.body
 
+
     - if @project.committee.present?
       .project-panel__committee.project-panel
         %hr.project-divider
@@ -66,7 +67,8 @@
         .committee-content
           .committee-name
             = @project.committee.name
-          .committee-congressmen
+          .committee-congressmen.owl-carousel.owl-theme
+
             - @project.committee.congressmen.each do |congressman|
               .committee-congressman
                 .committee-congressman__status
@@ -76,9 +78,21 @@
                   = congressman.name
                 .committee-congressman__contacts
                   .committee-congressman__contacts--tok
+                    %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
+                      톡톡
+                      = image_tag 'icon_comment.png', class:'tok-icon'
                   .committee-congressman__contacts--twitter
+                    - if congressman.twitter_url.present?
+                      = link_to congressman.twitter_url, target: '_blank' do
+                        = image_tag 'icon_twitter_white.png', class:'twitter-icon'
+                    - else
+                      = image_tag 'icon_twitter_white.png', class:'twitter-icon'
                   .committee-congressman__contacts--facebook
-
+                    - if congressman.facebook_url.present?
+                      = link_to congressman.facebook_url, target: '_blank' do
+                        = image_tag 'icon_facebook_white.png', class:'facebook-icon'
+                    - else
+                      = image_tag 'icon_facebook_white.png', class:'facebook-icon'
 
     %div.text-center
       = render 'participations/button', project: @project
