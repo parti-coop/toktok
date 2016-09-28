@@ -15,6 +15,8 @@
           [상태]
           = t("messages.project_status.#{@project.status}")
       .panel-body
+        [제안자 소개]
+        = simple_format @project.proposer_description
         [요약]
         = simple_format @project.summary
         %hr
