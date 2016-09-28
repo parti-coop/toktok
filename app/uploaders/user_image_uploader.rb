@@ -25,7 +25,7 @@ class UserImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    Identicon.data_url_for model.try(:nickname) || 'default', 128, [240, 240, 240]
+    ActionController::Base.helpers.asset_path("img_default_profile.png")
   end
 
   # Process files as they are uploaded:
@@ -61,10 +61,6 @@ class UserImageUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     "#{secure_token(10)}.#{file.extension}" if original_filename.present?
-  end
-
-  def url
-    (UserImageUploader::env_storage == :fog or self.file.try(:exists?)) ? super : "https://canoe-file.s3.amazonaws.com#{super}"
   end
 
   protected

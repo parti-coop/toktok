@@ -3,9 +3,9 @@
     .page-header
       .project-meta.clearfix
         .pull-left
-          %span.participations-button
-            = image_tag 'icon_participation.png', class: 'icon-participation'
-            %span.count= @project.participations_count
+          %span.created_at
+            %i.fa.fa-clock-o
+            %span.date= date_f @project.created_at
           %span.comments-button
             = image_tag 'icon_comment.png', class: 'icon-comment'
             %span.count= @project.comments.count
@@ -47,7 +47,7 @@
           제안자
         .proposal-content
           .proposal-content__left.proposal-content
-            .proposer-image{style: "background-image: url(#{image_url('img_default_profile.png')});"}
+            .proposer-image{style: "background-image: url(#{@project.proposal.user.image.sm.url});"}
           .proposal-content__right.proposal-content
             %span.proposer-name
               = @project.proposal.proposer_name

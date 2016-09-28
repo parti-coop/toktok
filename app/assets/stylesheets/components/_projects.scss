@@ -223,7 +223,16 @@ section#project {
         @include responsive-font-size-small();
         color: $gray-light;
       }
+      .created_at {
+        i {
+          color: $brand-primary;
+        }
+        .date {
+          @include responsive-font-size-small();
+          color: $gray-light;
+        }
 
+      }
       .comments-button {
         margin-left: 15px;
       }
