@@ -1,5 +1,5 @@
-= form_for @congressman do |f|
-  = f.hidden_field :committee_id, value: committee.id
+= form_for [:admin, @congressman] do |f|
+  = f.hidden_field :committee_id, value: f.object.committee.id
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'

@@ -5,6 +5,10 @@ module Admin
     def index
       @committees = Committee.all
       @committee = Committee.new
+
+    end
+    def show
+      @congressman = Congressman.new
     end
 
     def create

@@ -1,9 +1,20 @@
 class CongressmenController < ApplicationController
+  load_and_authorize_resource
+
   def create
     @congressman = Congressman.new(congressman_params)
     errors_to_flash(@congressman) unless @congressman.save
     redirect_to :back
 
+  end
+
+  def update
+    if @congressman.update(congressman_params)
+      redirect_to [:admin, @congressman]
+    else
+      errors_to_flash(@congressman)
+      render 'edit'
+    end
   end
 
   def destroy

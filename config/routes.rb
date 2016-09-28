@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :matches, shallow: true
     end
     resources :committees
+    resources :congressmen
   end
   root 'pages#home'
 
