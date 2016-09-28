@@ -12,8 +12,18 @@ class Proposal < ApplicationRecord
 
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 
-
   def launched?
     projects.any?
+  end
+
+  def propose_image_url(version = nil)
+    if user.present?
+      if version.nil?
+        return user.image.url
+      else
+        return user.image.send(version).url
+      end
+    end
+    return UserImageUploader.new.default_url
   end
 end

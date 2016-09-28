@@ -23,3 +23,10 @@
     font-size: $font-size-large-xs;
   }
 }
+
+@mixin responsive-font-size-base() {
+  font-size: $font-size-base;
+  @media (max-width: $screen-xs-max) {
+    font-size: $font-size-base-xs;
+  }
+}

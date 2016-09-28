@@ -274,35 +274,15 @@ section#project {
       }
     }
     &__proposer {
+      margin-top: 9px;
       .proposal-content {
-        display: inline-block;
-        margin-top: 4px;
-        &__left {
-          width: 10%;
-          vertical-align: top;
-          .proposer-image {
-            height: 30px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-          }
-        }
-        &__right {
-          width: 88%;
-          .proposer-name {
-            color: $gray;
-            font-size: $font-size-small-xs;
-          }
-          .proposer-date {
-            color: $gray;
-            font-size: $font-size-small-xs;
-            margin-left: 8px;
-          }
-          .proposer-opinion {
-            background-color: $gray-lightest;
-            padding: 4px 16px;
-
-          }
+        color: $gray;
+        @include responsive-font-size-small();
+        .proposer-opinion {
+          @include responsive-font-size-base();
+          background-color: $gray-lighter;
+          margin-top: 5px;
+          padding: 4px 16px;
         }
       }
     }

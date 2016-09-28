@@ -45,17 +45,17 @@
         .project-label
           %strong|
           제안자
-        .proposal-content
-          .proposal-content__left.proposal-content
-            .proposer-image{style: "background-image: url(#{@project.proposal.user.image.sm.url});"}
-          .proposal-content__right.proposal-content
-            %span.proposer-name
-              = @project.proposal.proposer_name
-            %span.proposer-date
-              = static_date_f_not_hour @project.proposal.created_at
-            .proposer-opinion
-              = simple_format @project.proposal.body
-        .proposal
+        .project-panel__proposer
+          .media
+            .media-left
+              .proposer-image.img-big-user{style: "background-image: url(#{@project.proposal.propose_image_url(:sm)});"}
+            .media-body.proposal-content
+              %span.proposer-name
+                = @project.proposal.proposer_name
+              %span.proposer-date
+                = static_date_f_not_hour @project.proposal.created_at
+              .proposer-opinion
+                = simple_format @project.proposal.body
 
     - if @project.committee.present?
       .project-panel__committee.project-panel
