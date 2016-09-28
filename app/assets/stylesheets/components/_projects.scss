@@ -98,12 +98,6 @@ section#project .project-panel__status .project-status-bar,
 
 .project {
   padding: 20px;
-  border-top: 1px solid $gray-lighter;
-
-  @media (min-width: $screen-sm-min) {
-    border-left: 1px solid $gray-lighter;
-    border-right: 1px solid $gray-lighter;
-  }
 
   .project-title {
     margin-top: 14px;

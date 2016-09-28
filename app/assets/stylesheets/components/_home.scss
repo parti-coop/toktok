@@ -35,7 +35,7 @@ section#home {
     }
   }
 
-  section#projects {
+  section#current-projects {
     padding-top: 10px;
 
     .section-title {
@@ -52,5 +52,17 @@ section#home {
       padding-right: 0;
     }
 
+    .project {
+      border-top: 1px solid $gray-lighter;
+
+      @media (min-width: $screen-sm-min) {
+        border-left: 1px solid $gray-lighter;
+        border-right: 1px solid $gray-lighter;
+        &:last-child {
+          border-bottom: 1px solid $gray-lighter;
+        }
+      }
+
+    }
   }
 }
