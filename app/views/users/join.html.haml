@@ -1,13 +1,16 @@
-%section
+%section#page-join
   .container
-    %p
-      시민의 제안이 법안이 되는
-      국회톡톡을 시작해보세요
+    %p.intro
+      시민의 제안으로 법안을 만드는
+      %br
+      국회톡톡을 시작해보세요.
+    .join-buttons
+      = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'btn btn-join btn-join-facebook' do
+        %span
+          %i.fa.fa-facebook.fa-fw
+          페이스북으로 가입/로그인
 
-    = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'btn btn-join btn-join-facebook btn-block' do
-      %i.fa.fa-facebook.fa-fw
-      페이스북으로 가입/로그인
-
-    = link_to user_twitter_omniauth_authorize_path(provider: :twitter), class: 'btn btn-join btn-join-twitter btn-block' do
-      %i.fa.fa-twitter.fa-fw
-      트위터로 가입/로그인
+      = link_to user_twitter_omniauth_authorize_path(provider: :twitter), class: 'btn btn-join btn-join-twitter' do
+        %span
+          %i.fa.fa-twitter.fa-fw
+          트위터로 가입/로그인
