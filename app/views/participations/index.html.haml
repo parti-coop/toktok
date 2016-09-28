@@ -1,10 +1,32 @@
-%section
-  .container
-    .page-header
-      %h2
-        = link_to @project.title, @project
-        &gt;
-        참여 시민
-    %ul
-      - @participations.each do |participation|
-        %li= byline participation.user
+%section#page-participations
+  %section#project-header
+    .container
+      .page-header
+        .project-meta.clearfix
+          .pull-left
+            %span.created_at
+              %i.fa.fa-clock-o
+              %span.date= date_f @project.created_at
+            %span.comments-button
+              = image_tag 'icon_comment.png', class: 'icon-comment'
+              %span.count= @project.comments.count
+          .pull-right
+            %span.share-button
+              %span.count= image_tag 'icon_share.png', class: 'icon-share'
+        %h2
+          = link_to @project do
+            = @project.title
+
+  %section#project-header
+    .container
+      %hr
+      .project-panel
+        .project-label
+          %strong|
+          참여시민
+      .row
+        - @participations.each do |participation|
+          .col-xs-6.col-sm-3
+            = link_to participation.user do
+              .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
+            = participation.user.nickname

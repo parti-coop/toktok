@@ -214,7 +214,8 @@ body.app-projects-show {
   background-color: #f8f8f8;
 }
 
-section#page-project {
+section#page-project,
+section#page-participations {
   .container {
     padding-left: 20px;
     padding-right: 20px;
@@ -247,6 +248,12 @@ section#page-project {
       }
       .comments-button {
         margin-left: 15px;
+      }
+    }
+    h2 a {
+      color: $text-color;
+      &:hover {
+        color: $brand-primary;
       }
     }
   }
@@ -490,15 +497,8 @@ section#page-project {
       }
 
       .participation-users {
-        margin-left: 22px;
-        margin-right: 22px;
         margin-top: 24px;
-        .participation-user {
-          .user-image-thumb.img-user {
-            height: 30px;
-            width: 30px;
-          }
-        }
+        text-align: center;
       }
       .participation-all-user {
         margin-top: 10px;
