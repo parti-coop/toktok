@@ -15,6 +15,6 @@ class CongressmenController < ApplicationController
   private
 
   def congressman_params
-    params.require(:congressman).permit(:name, :committee_id, :description, :party, :image, :image_cache)
+    params.require(:congressman).permit(:name, :committee_id, :description, :party, :image, :image_cache, :facebook_url, :twitter_url)
   end
 end
