@@ -1,6 +1,6 @@
 $project-step-border-color: $gray-lighter;
 
-section#project .project-panel__status .project-status-bar,
+section#page-project .project-panel__status .project-status-bar,
 section#page-home .project {
   @mixin angle-after($height, $color) {
     content: "";
@@ -210,12 +210,19 @@ section#page-home .project {
   }
 }
 
-section#project {
+body.app-projects-show {
+  background-color: #f8f8f8;
+}
+
+section#page-project {
   .container {
     padding-left: 20px;
     padding-right: 20px;
   }
 
+  section#project-participations {
+    background-color: $site-header-primary;
+  }
   .page-header {
     margin: 20px 0 0;
     border: none;
@@ -383,8 +390,6 @@ section#project {
     }
 
     &__participation {
-      background-color: $site-header-primary;
-
       padding: 38px 20px;
       margin-left: -20px;
       margin-right: -20px;

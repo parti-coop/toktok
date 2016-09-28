@@ -1,123 +1,126 @@
-%section#project
-  .container
-    .page-header
-      .project-meta.clearfix
-        .pull-left
-          %span.created_at
-            %i.fa.fa-clock-o
-            %span.date= date_f @project.created_at
-          %span.comments-button
-            = image_tag 'icon_comment.png', class: 'icon-comment'
-            %span.count= @project.comments.count
-        .pull-right
-          %span.share-button
-            %span.count= image_tag 'icon_share.png', class: 'icon-share'
-      %h2
-        = @project.title
-        - if current_user.try(:role).try(:staff?)
+%section#page-project
+  %section#project-header
+    .container
+      .page-header
+        .project-meta.clearfix
+          .pull-left
+            %span.created_at
+              %i.fa.fa-clock-o
+              %span.date= date_f @project.created_at
+            %span.comments-button
+              = image_tag 'icon_comment.png', class: 'icon-comment'
+              %span.count= @project.comments.count
           .pull-right
-            %small
-              = link_to '관리', admin_project_path(@project)
+            %span.share-button
+              %span.count= image_tag 'icon_share.png', class: 'icon-share'
+        %h2
+          = @project.title
+          - if current_user.try(:role).try(:staff?)
+            .pull-right
+              %small
+                = link_to '관리', admin_project_path(@project)
 
-    .project-panel__intro.project-panel
-      = simple_format @project.body
-      - @project.attachments.each do |attachment|
-        = link_to attachment.name, attachment.source.url, target: '_blank'
-      .project-image{style: "background-image: url(#{@project.image.sm.url});"}
+      .project-panel__intro.project-panel
+        = simple_format @project.body
+        - @project.attachments.each do |attachment|
+          = link_to attachment.name, attachment.source.url, target: '_blank'
+        .project-image{style: "background-image: url(#{@project.image.sm.url});"}
 
-    .project-intro-divider
+  .project-intro-divider
 
-    .project-panel__status.project-panel
-      .project-label
-        %strong|
-        진행 상황
-      .project-status-bar
-        .steps{class: "steps--#{@project.status}"}<>
-          .step.step--gathering<>
-            = t("messages.project_status.gathering")
-          .step.step--matching<>
-            = t("messages.project_status.matching")
-          .step.step--running<>
-            = t("messages.project_status.running")
-    - if @project.proposal.present?
-      %hr.project-divider
-      .project-panel__proposer.project-panel
+  %section#project-meta
+    .container
+      .project-panel__status.project-panel
         .project-label
           %strong|
-          제안자
-        .project-panel__proposer
-          .media
-            .media-left
-              .proposer-image.img-user-large{style: "background-image: url(#{@project.proposal.proposer_image_url(:sm)});"}
-            .media-body.proposal-content
-              %span.proposer-name
-                = @project.proposal.proposer_name
-              %span.proposer-date
-                = static_date_f_not_hour @project.proposal.created_at
-              .proposer-opinion
-                = simple_format @project.proposal.body
-
-
-    - if @project.committee.present?
-      .project-panel__committee.project-panel
+          진행 상황
+        .project-status-bar
+          .steps{class: "steps--#{@project.status}"}<>
+            .step.step--gathering<>
+              = t("messages.project_status.gathering")
+            .step.step--matching<>
+              = t("messages.project_status.matching")
+            .step.step--running<>
+              = t("messages.project_status.running")
+      - if @project.proposal.present?
         %hr.project-divider
-        .project-label
-          %strong|
-          관련 상임위원회
-        .committee-content
-          .committee-name
-            = @project.committee.name
-          .committee-congressmen.owl-carousel
-            - @project.committee.congressmen.each do |congressman|
-              .committee-congressman-wrapper
-                .committee-congressman
-                  - unless @project.status == :gathering
-                    .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
-                      = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
-                  .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
-                  .committee-congressman__name
-                    = congressman.name
-                  .committee-congressman__contacts
-                    .committee-congressman__contacts--tok
-                      %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
-                        톡톡
-                        = image_tag 'icon_comment.png', class:'tok-icon'
-                    - if congressman.twitter_url.present?
-                      .committee-congressman__contacts--twitter
-                        = link_to congressman.twitter_url, target: '_blank' do
-                          %i.fa.fa-twitter.fa-fw
-                    - if congressman.facebook_url.present?
-                      .committee-congressman__contacts--facebook
-                        = link_to congressman.facebook_url, target: '_blank' do
-                          %i.fa.fa-facebook.fa-fw
+        .project-panel__proposer.project-panel
+          .project-label
+            %strong|
+            제안자
+          .project-panel__proposer
+            .media
+              .media-left
+                .proposer-image.img-user-large{style: "background-image: url(#{@project.proposal.proposer_image_url(:sm)});"}
+              .media-body.proposal-content
+                %span.proposer-name
+                  = @project.proposal.proposer_name
+                %span.proposer-date
+                  = static_date_f_not_hour @project.proposal.created_at
+                .proposer-opinion
+                  = simple_format @project.proposal.body
 
-    .project-panel__participation.project-panel
-      %p.participation-title
-        해당 입법 발의를 위해 참여해 주세요!
-      .participation-progress
-        .participation-progress__graph
-          - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
-          - right_style = "float: right;" if @project.participations_percentage > 90
-          .current-participations-count.clearfix
-            .content{style: "#{left_style} #{right_style}"}
-              참여
-              %span
-                %span.count<>= @project.participations_count
-                명
-          - bar_count = (1 + ((@project.participations_percentage - 1)/100))
-          - bar_count = 1 if @project.participations_percentage == 0
-          - (bar_count-1).times do |time|
+
+      - if @project.committee.present?
+        .project-panel__committee.project-panel
+          %hr.project-divider
+          .project-label
+            %strong|
+            관련 상임위원회
+          .committee-content
+            .committee-name
+              = @project.committee.name
+            .committee-congressmen.owl-carousel
+              - @project.committee.congressmen.each do |congressman|
+                .committee-congressman-wrapper
+                  .committee-congressman
+                    - unless @project.status == :gathering
+                      .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
+                        = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
+                    .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
+                    .committee-congressman__name
+                      = congressman.name
+                    .committee-congressman__contacts
+                      .committee-congressman__contacts--tok
+                        %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
+                          톡톡
+                          = image_tag 'icon_comment.png', class:'tok-icon'
+                      - if congressman.twitter_url.present?
+                        .committee-congressman__contacts--twitter
+                          = link_to congressman.twitter_url, target: '_blank' do
+                            %i.fa.fa-twitter.fa-fw
+                      - if congressman.facebook_url.present?
+                        .committee-congressman__contacts--facebook
+                          = link_to congressman.facebook_url, target: '_blank' do
+                            %i.fa.fa-facebook.fa-fw
+
+  %section#project-participations
+    .container
+      .project-panel__participation.project-panel
+        %p.participation-title
+          해당 입법 발의를 위해 참여해 주세요!
+        .participation-progress
+          .participation-progress__graph
+            - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
+            - right_style = "float: right;" if @project.participations_percentage > 90
+            .current-participations-count.clearfix
+              .content{style: "#{left_style} #{right_style}"}
+                참여
+                %span
+                  %span.count<>= @project.participations_count
+                  명
+            - (bar_count_of_project(@project)-1).times do |time|
+              .bar
+                .participations-bar{style: "width: 100%"}
             .bar
-              .participations-bar{style: "width: 100%"}
-          .bar
-            .participations-bar{style: "width: #{@project.participations_percentage - ((bar_count-1) * 100)}%"}
+              .participations-bar{style: "width: #{@project.participations_percentage - ((bar_count_of_project(@project)-1) * 100)}%"}
 
-            .participations-goal-count
-              목표 #{@project.participations_goal_count}명
-      .btn-project-participation
-        = render 'participations/button', project: @project
-      .participation-users
-        = render 'participations/list', project: @project
+              .participations-goal-count
+                목표 #{@project.participations_goal_count}명
+        .btn-project-participation
+          = render 'participations/button', project: @project
+        .participation-users
+          = render 'participations/list', project: @project
 
   %section#comments
     .container

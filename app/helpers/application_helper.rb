@@ -28,4 +28,10 @@ module ApplicationHelper
   def project_status_text(project)
     t("messages.project_status.#{project.status}")
   end
+
+  def bar_count_of_project(project)
+    bar_count = (1 + ((project.participations_percentage - 1)/100))
+    bar_count = 1 if project.participations_percentage == 0
+    return bar_count
+  end
 end

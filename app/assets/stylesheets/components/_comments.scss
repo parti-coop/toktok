@@ -29,6 +29,10 @@ section#comments {
   color: $gray;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
+  &:last-child {
+    border-bottom: 1px solid transparent;
+  }
+
   margin-bottom: -1px;
   .comment-meta {
     @include responsive-font-size-small();

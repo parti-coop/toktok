@@ -33,13 +33,11 @@
           %span
             %span.count<>= project.participations_count
             명
-      - bar_count = (1 + (project.participations_percentage - 1)/100)
-      - bar_count = 1 if project.participations_percentage == 0
-      - (bar_count-1).times do |time|
+      - (bar_count_of_project(project)-1).times do |time|
         .bar
           .participations-bar{style: "width: 100%"}
       .bar
-        .participations-bar{style: "width: #{project.participations_percentage - ((bar_count-1) * 100)}%"}
+        .participations-bar{style: "width: #{project.participations_percentage - ((bar_count_of_project(project)-1) * 100)}%"}
 
       .participations-goal-count
         목표

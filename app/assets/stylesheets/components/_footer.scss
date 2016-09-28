@@ -1,4 +1,7 @@
 footer.footer {
+  body.app-projects-show & {
+    border-top: 1px solid $gray-lighter;
+  }
   background-color: $gray-lightest;
   text-align: center;
   padding-top: 22px;
