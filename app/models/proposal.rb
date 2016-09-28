@@ -12,6 +12,8 @@ class Proposal < ApplicationRecord
 
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 
+  scope :recent, -> { order(created_at: :desc) }
+
   def launched?
     projects.any?
   end

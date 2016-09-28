@@ -42,7 +42,7 @@ section#page-home {
       margin-top: 10px;
       margin-bottom: 10px;
       font-size: 18px;
-      color: #16a6a8;
+      color: $brand-primary;
       @media (max-width: $screen-xs-max) {
         padding-left: 20px;
       }

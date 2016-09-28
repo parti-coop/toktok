@@ -68,29 +68,28 @@
           .committee-name
             = @project.committee.name
           .committee-congressmen.owl-carousel
-            - 10.times do
-              - @project.committee.congressmen.each do |congressman|
-                .committee-congressman-wrapper
-                  .committee-congressman
-                    - unless @project.status == :gathering
-                      .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
-                        = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
-                    .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
-                    .committee-congressman__name
-                      = congressman.name
-                    .committee-congressman__contacts
-                      .committee-congressman__contacts--tok
-                        %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
-                          톡톡
-                          = image_tag 'icon_comment.png', class:'tok-icon'
-                      - if congressman.twitter_url.present?
-                        .committee-congressman__contacts--twitter
-                          = link_to congressman.twitter_url, target: '_blank' do
-                            %i.fa.fa-twitter.fa-fw
-                      - if congressman.facebook_url.present?
-                        .committee-congressman__contacts--facebook
-                          = link_to congressman.facebook_url, target: '_blank' do
-                            %i.fa.fa-facebook.fa-fw
+            - @project.committee.congressmen.each do |congressman|
+              .committee-congressman-wrapper
+                .committee-congressman
+                  - unless @project.status == :gathering
+                    .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
+                      = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
+                  .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
+                  .committee-congressman__name
+                    = congressman.name
+                  .committee-congressman__contacts
+                    .committee-congressman__contacts--tok
+                      %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body'} } }
+                        톡톡
+                        = image_tag 'icon_comment.png', class:'tok-icon'
+                    - if congressman.twitter_url.present?
+                      .committee-congressman__contacts--twitter
+                        = link_to congressman.twitter_url, target: '_blank' do
+                          %i.fa.fa-twitter.fa-fw
+                    - if congressman.facebook_url.present?
+                      .committee-congressman__contacts--facebook
+                        = link_to congressman.facebook_url, target: '_blank' do
+                          %i.fa.fa-facebook.fa-fw
 
     .project-panel__participation.project-panel
       %p.participation-title

@@ -1,7 +1,7 @@
 $project-step-border-color: $gray-lighter;
 
 section#project .project-panel__status .project-status-bar,
-.project {
+section#page-home .project {
   @mixin angle-after($height, $color) {
     content: "";
     display: inline-block;
@@ -96,7 +96,7 @@ section#project .project-panel__status .project-status-bar,
   }
 }
 
-.project {
+section#page-home .project {
   padding: 20px;
 
   .project-title {

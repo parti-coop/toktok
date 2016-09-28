@@ -1,15 +1,47 @@
-%section
-  .container
-    .page-header
-      %h2
-        = @user.nickname
-        = link_to '프로필수정', edit_user_registration_path if @user == current_user
+%section#page-users-show
 
-    - if @user == current_user
-      %ul
-        %li
-          내가 한 제안(#{@user.proposals.count})
-          = render @user.proposals
-        %li
-          참여 중인 프로젝트(#{@user.participations.count})
-          = render @user.participations
+  %section#user-header
+    .container
+      .user-meta
+        .user-image.img-user-jumbo{style: "background-image: url(#{image_url(@user.image.sm.url)});"}
+        .user-nickname= @user.nickname
+        .user-email= @user.email
+        - if @user == current_user
+          .user-edit
+            = link_to edit_user_registration_path do
+              %i.fa.fa-cog
+
+  %section#user-body
+    .container
+
+      - if @user.participations.any?
+        .section-label
+          %strong|
+          - if @user == current_user
+            내가 참여한
+          프로젝트
+          %span.count= @user.participations.count
+        .projects
+          - @user.participations.recent.each do |participation|
+            = link_to participation.project do
+              .project
+                .project-title= participation.project.title
+                .project-date
+                  = date_f participation.created_at
+                  참여
+
+      - if @user.participations.any? and @user.proposals.any?
+        %hr
+
+      - if @user.proposals.any?
+        .section-label
+          %strong|
+          - if @user == current_user
+            내가 한
+          제안
+          %span.count= @user.proposals.count
+        .proposals
+          - @user.proposals.recent.each do |proposal|
+            .proposal
+              .proposal-title= proposal.title
+              .proposal-date= date_f proposal.created_at
