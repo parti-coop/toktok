@@ -32,13 +32,13 @@
         %strong|
         진행 상황
       .project-status-bar
-        .steps
-          .step.step--gathering{class: "#{'step__now' if @project.status.to_s == 'gathering'}"}<>
-            매칭 중
-          .step.step--matching{class: "#{'step__now' if @project.status.to_s == 'matching'}"}<>
-            의원 매칭
-          .step.step--running{class: "#{'step__now' if @project.status.to_s == 'running'}"}<>
-            입법 활동
+        .steps{class: "steps--#{@project.status}"}<>
+          .step.step--gathering<>
+            = t("messages.project_status.gathering")
+          .step.step--matching<>
+            = t("messages.project_status.matching")
+          .step.step--running<>
+            = t("messages.project_status.running")
     - if @project.proposal.present?
       %hr.project-divider
       .project-panel__proposer.project-panel

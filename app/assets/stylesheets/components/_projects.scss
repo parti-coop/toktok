@@ -1,3 +1,6 @@
+$project-step-border-color: $gray-lighter;
+
+section#project .project-panel__status .project-status-bar,
 .project {
   @mixin angle-after($height, $color) {
     content: "";
@@ -26,41 +29,8 @@
     left: 0;
   }
 
-  padding: 20px;
-  border-top: 1px solid $gray-lighter;
-
-  @media (min-width: $screen-sm-min) {
-    border-left: 1px solid $gray-lighter;
-    border-right: 1px solid $gray-lighter;
-  }
-
-  .project-title {
-    margin-top: 14px;
-    margin-bottom: 7px;
-    font-size: $font-size-h3;
-    color: $gray-dark;
-    &:hover {
-      color: $brand-primary;
-    }
-  }
-  .project-summary {
-    color: $gray;
-    margin-bottom: 10px;
-  }
-  .project-image {
-    height: 200px;
-    @media (max-width: $screen-xs-max) {
-      height: 140px;
-    }
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
   .steps {
-    position: absolute;
-    bottom: 0;
-    width: 100.1%;
+    width: 100%;
     .step {
       display: inline-block;
       text-align: center;
@@ -70,15 +40,21 @@
       position: relative;
       color: $gray;
       width: 33.3%;
+      &:last-child {
+        width: 33.4%;
+      }
       line-height: 14px;
       background-color: $gray-lightest;
-      border-left: 1px solid $gray-lighter;
+      border-left: 1px solid $project-step-border-color;
     }
     .step:last-child {
-      border-right: 1px solid $gray-lighter;
+      border-right: 1px solid $project-step-border-color;
     }
-    &.steps--running .step--running:last-child {
+    &.steps--running .step--running {
       border-right-color: $brand-primary;
+    }
+    &.steps--gathering .step--gathering {
+      border-left-color: $brand-primary;
     }
 
     &.steps--gathering .step--gathering,
@@ -116,6 +92,44 @@
       &:before {
         @include angle-before(36px, $brand-primary, $gray-lighter)
       }
+    }
+  }
+}
+
+.project {
+  padding: 20px;
+  border-top: 1px solid $gray-lighter;
+
+  @media (min-width: $screen-sm-min) {
+    border-left: 1px solid $gray-lighter;
+    border-right: 1px solid $gray-lighter;
+  }
+
+  .project-title {
+    margin-top: 14px;
+    margin-bottom: 7px;
+    font-size: $font-size-h3;
+    color: $gray-dark;
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+  .project-summary {
+    color: $gray;
+    margin-bottom: 10px;
+  }
+  .project-image {
+    height: 200px;
+    @media (max-width: $screen-xs-max) {
+      height: 140px;
+    }
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .steps {
+      position: absolute;
+      bottom: 0;
     }
   }
   .project-graph {
@@ -244,84 +258,18 @@ section#project {
       }
     }
 
-    &__status {
-      .project-status-bar {
-        .steps {
-          margin-top: 12px;
-          .step {
-            color: $gray;
-            position: relative;
-            display: inline-block;
-            width: 33.33%;
-            text-align: center;
-            border-right: none;
-            background: #fff;
-            border: 1px solid $gray-lighter;
-            border-left: none;
-            font-size: $font-size-small;
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-            @media (max-width: $screen-xs-max) {
-              font-size: $font-size-small-xs;
-            }
-
-            &:after,
-            &:before {
-              content: '';
-              display: block;
-              position: absolute;
-              left: 100%;
-              width: 0;
-              height: 0;
-              border-style: solid;
-            }
-
-            &:after {
-              top: 16px;
-              border-color: transparent transparent transparent #fff;
-              border-width: 5px;
-            }
-
-            &:before {
-              top: 14px;
-              border-color: transparent transparent transparent $gray-lighter;
-              border-width: 7px;
-            }
-            &--gathering {
-              z-index: 3;
-              border-left: 1px solid $gray-lighter;
-            }
-            &--matching {
-              z-index: 2;
-            }
-            &--running {
-              z-index: 1;
-
-              &:after {
-                border: none;
-              }
-
-              &:before {
-                border: none;
-              }
-            }
-            &__now {
-              color: #fff;
-              background-color: $brand-primary;
-              border-color: $brand-primary;
-              &:before {
-                border-color: transparent transparent transparent $brand-primary;
-              }
-              &:after {
-                border-color: transparent transparent transparent $brand-primary;
-              }
-            }
-          }
+    &__status .project-status-bar {
+      .steps .step {
+        border-top: 1px solid $project-step-border-color;
+        border-bottom: 1px solid $project-step-border-color;
+        &.steps--gathering .step--gathering,
+        &.steps--matching .step--matching,
+        &.steps--running .step--running {
+          border-top: 1px solid $brand-primary;
+          border-bottom: 1px solid $brand-primary;
         }
       }
     }
-
     &__proposer {
       .proposal-content {
         display: inline-block;

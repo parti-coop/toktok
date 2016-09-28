@@ -24,4 +24,8 @@ module ApplicationHelper
   def date_f(date)
     timeago_tag date, lang: :ko, limit: 100.days.ago
   end
+
+  def project_status_text(project)
+    t("messages.project_status.#{project.status}")
+  end
 end

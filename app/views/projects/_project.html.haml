@@ -18,11 +18,11 @@
     .project-image{style: "background-image: url(#{project.image.sm.url});"}
       .steps{class: "steps--#{project.status}"}<>
         .step.step--gathering<>
-          시민 지지
+          = t("messages.project_status.gathering")
         .step.step--matching<>
-          의원 매칭
+          = t("messages.project_status.matching")
         .step.step--running<>
-          입법 활동
+          = t("messages.project_status.running")
 
     .project-graph
       - left_style = "left: #{project.participations_percentage - 5}%" if project.participations_percentage > 5 and project.participations_percentage <= 90

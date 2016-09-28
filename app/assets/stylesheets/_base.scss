@@ -18,7 +18,7 @@ body {
 // Footer position
 $footer-height: 163px;
 body {
-  margin-bottom: $footer-height;
+  margin-bottom: $footer-height + 40px;
 }
 .footer {
   position: absolute;
