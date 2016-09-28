@@ -45,6 +45,6 @@ class Project < ApplicationRecord
 
   def participations_percentage
     return 0 if participations_goal_count == 0
-    participations_count / participations_goal_count * 100
+    (participations_count / Float(participations_goal_count) * 100).round(1)
   end
 end
