@@ -33,7 +33,7 @@
           %span
             %span.count<>= project.participations_count
             명
-      - bar_count = (1 + (project.participations_percentage - 1)/100).round(0)
+      - bar_count = (1 + (project.participations_percentage - 1)/100)
       - bar_count = 1 if project.participations_percentage == 0
       - (bar_count-1).times do |time|
         .bar
