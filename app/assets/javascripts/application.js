@@ -61,17 +61,7 @@ $(function(){
   $('.owl-carousel').owlCarousel({
     autoWidth: true,
     dots: false,
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 2000,
-    responsive:{
-      0:{
-          items:2
-      },
-      768:{
-          items:3
-      }
-    }
+    margin: 10,
   })
 
   $('.action-show').on('click', function(e) {

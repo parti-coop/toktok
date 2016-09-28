@@ -11,6 +11,8 @@
       = simple_format @committee.description
 
     %div
+      %h3 의원목록
+
       %ul.list-group
         - @committee.congressmen.each do |c|
           %li.list-group-item
@@ -18,5 +20,9 @@
             .pull-right
               = link_to '수정', [:edit, :admin, c]
               = link_to '삭제', c, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
-        %li.list-group-item
-          = render 'congressmen/form', committee: @committee
+
+      .panel.panel-default
+        .panel-heading
+          의원 추가
+        .panel-body
+          = render 'admin/congressmen/form', committee: @committee

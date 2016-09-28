@@ -1,5 +1,5 @@
-= form_for [:admin, @congressman] do |f|
-  = f.hidden_field :committee_id, value: f.object.committee.id
+= form_for (@congressman.new_record? ? @congressman : [:admin, @congressman]) do |f|
+  = f.hidden_field :committee_id, value: local_assigns[:committee].try(:id) || f.object.committee.id
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'

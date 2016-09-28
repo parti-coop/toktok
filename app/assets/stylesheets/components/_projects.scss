@@ -293,40 +293,51 @@ section#project {
     }
     &__committee {
       .committee-content {
-        margin-top: 4px;
+        margin-top: 6px;
         .committee-name {
 
         }
+
+        $committee-congressman-status-top: 10px;
+        $committee-congressman-status-left: 2px;
+        .committee-congressman-wrapper {
+          padding-top: $committee-congressman-status-top;
+          padding-left: $committee-congressman-status-left;
+        }
         .committee-congressmen {
+          margin-top: 5px;
           .committee-congressman {
             position: relative;
             background-color: $gray-lightest;
-            display: inline-block;
             width: 148px;
             height: 166px;
-            margin-bottom: 31px;
-            margin-right: 12px;
-            margin-top: 14px;
+            padding: 20px 12px 10px;
 
             &__status {
               display: inline-block;
-              border: 1px solid black;
+              border: 1px solid $gray;
               border-radius: 50%;
               position: absolute;
-              padding: 8px;
-              top: -10px;
+              top: -1 * $committee-congressman-status-top;
+              left: -1 * $committee-congressman-status-left;
               font-size: 14px;
               background-color: #fff;
+              width: 40px;
+              height: 40px;
+              line-height: 3;
+              text-align: center;
+              &--accept {
+                border-color: $brand-success;
+                color: $brand-success;
+              }
+              &--reject {
+                border-color: $brand-danger;
+                color: $brand-danger;
+              }
             }
             &__image {
-              height: 70px;
-              width: 70px;
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
               margin-left: auto;
               margin-right: auto;
-              margin-top: 20px;
             }
             &__name {
               text-align: center;
@@ -334,15 +345,14 @@ section#project {
             }
             &__contacts {
               &--tok {
-                margin: 5px 10px 10px;
                 display: inline-block;
-
                 .action-mention {
-                  font-size: 14px;
+                  @include responsive-font-size-small();
                   color: #fff;
                   background-color: $brand-primary;
-                  font-weight: 100;
-                  padding: 6px 9px;
+                  padding: 4px 0;
+                  line-height: 1;
+                  width: 60px;
                   .tok-icon {
                     display: inline-block;
                     width: 13px;
@@ -350,23 +360,21 @@ section#project {
                   }
                 }
               }
-              &--twitter {
-                background-color: $gray-light;
-                display: inline-block;
-                img {
-                  height: 10px;
-                  width: auto;
-                }
-
-              }
+              &--twitter,
               &--facebook {
                 background-color: $gray-light;
                 display: inline-block;
-                img {
-                  height: 10px;
-                  width: auto;
+                line-height: 1.8;
+                @media (max-width: $screen-xs-max) {
+                  line-height: 1.6;
                 }
-
+                vertical-align: bottom;
+                border-radius: 2px;
+                width: 26px;
+                text-align: center;
+                a i {
+                  color: #fff;
+                }
               }
             }
           }

@@ -30,6 +30,15 @@ class Project < ApplicationRecord
     end
   end
 
+  def status_of_congressman(congressman)
+    match = matches.find_by congressman: congressman
+    if match.present?
+      return match.status
+    else
+      :ready
+    end
+  end
+
   def unmathed_congressmen
     Congressman.where.not(id: matched_congressmen)
   end
