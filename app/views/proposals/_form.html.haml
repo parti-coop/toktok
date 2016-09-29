@@ -3,20 +3,10 @@
     = f.label :title, class: 'required'
     = f.text_field :title, class: 'form-control input-lg', data: { 'rule-required': true }
 
-  .form-group
-    = f.label :proposer_name, class: 'required'
-    = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname)), data: { 'rule-required': true }
-
-  .form-group
-    = f.label :proposer_email, class: 'required'
-    = f.text_field :proposer_email, class: 'form-control input-lg', value: (@proposal.proposer_email || current_user.try(:email)), data: { 'rule-required': true }
-
-  .form-group
-    = f.label :proposer_phone, class: 'required'
-    = f.text_field :proposer_phone, class: 'form-control input-lg', data: { 'rule-required': true }
 
   .form-group
     = f.label :body, class: 'required'
+    .help-block 제안자 소개, 제안과정과 계기, 입법제안의 목적 등을 편하게  서술해주세요.
     = f.text_area :body, class: "form-control #{'redactor' if is_redactorable?}", rows: 10, data: { 'rule-required': true }
 
     #attachments
@@ -26,6 +16,22 @@
           첨부파일
       = f.fields_for :attachments do |ff|
         = render 'attachment_fields', f: ff
+      .help-block 제안을 대표 또는 설명하는 이미지, 영상을 파일 업로드 또는 링크해 주세요.
+
+  %hr
+
+  .form-group
+    = f.label :proposer_name, class: 'required'
+    .help
+    = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname)), data: { 'rule-required': true }
+
+  .form-group
+    = f.label :proposer_email, class: 'required'
+    = f.text_field :proposer_email, class: 'form-control input-lg', value: (@proposal.proposer_email || current_user.try(:email)), data: { 'rule-required': true, 'rule-email': true }
+
+  .form-group
+    = f.label :proposer_phone, class: 'required'
+    = f.text_field :proposer_phone, class: 'form-control input-lg', data: { 'rule-required': true }
 
   .form-group.form-group-submita
     = f.submit '제안하기', class: 'btn btn-submit', data: { disable_with: "저장 중..." }
