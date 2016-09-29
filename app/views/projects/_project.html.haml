@@ -3,7 +3,7 @@
     .project-meta.clearfix
       .pull-left
         %span.created_at
-          %i.fa.fa-clock-o
+          = image_tag 'icon_clock.png', class: 'icon-clock'
           %span.date= date_f project.created_at
         %span.comments
           = image_tag 'icon_comment.png', class: 'icon-comment'
