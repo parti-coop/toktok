@@ -16,5 +16,10 @@
         %h2
           = link_to @commentable do
             = @commentable.title
+    .container
+      %hr
+      .comment-edit-label
+        %strong|
+        댓글수정
   %div
     = render 'comments/form', commentable: @commentable
