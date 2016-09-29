@@ -26,7 +26,7 @@ function scroll_to_anchor(anchor_id){
     $('html,body').animate({scrollTop: tag.offset().top},'fast');
 }
 
-Kakao.init('6cd2725534444560cb5fe8c77b020bd6');
+Kakao.init('e75d813957d26c4c8a00535facb7b071');
 
 $.is_blank = function (obj) {
   if (!obj || $.trim(obj) === "") return true;
