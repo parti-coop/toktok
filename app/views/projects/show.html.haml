@@ -23,25 +23,21 @@
 
       .project-panel__intro.project-panel
         .project-image{style: "background-image: url(#{@project.image.lg.url});"}
+        .project-panel__status.project-panel
+          .project-status-bar
+            .steps{class: "steps--#{@project.status}"}<>
+              .step.step--gathering<>
+                = t("messages.project_status.gathering")
+              .step.step--matching<>
+                = t("messages.project_status.matching")
+              .step.step--running<>
+                = t("messages.project_status.running")
         = simple_format @project.body
         - @project.attachments.each do |attachment|
           = link_to attachment.name, attachment.source.url, target: '_blank'
 
   %section#project-meta
     .container
-      .project-divider
-      .project-panel__status.project-panel
-        .project-label
-          %strong|
-          진행 상황
-        .project-status-bar
-          .steps{class: "steps--#{@project.status}"}<>
-            .step.step--gathering<>
-              = t("messages.project_status.gathering")
-            .step.step--matching<>
-              = t("messages.project_status.matching")
-            .step.step--running<>
-              = t("messages.project_status.running")
       - if @project.proposal.present?
         %hr.project-divider
         .project-panel__proposer.project-panel
@@ -71,7 +67,11 @@
     .container
       .project-panel__participation.project-panel
         %p.participation-title
-          해당 입법 발의를 위해 참여해 주세요!
+
+          - if @project.participations.any?
+            해당 입법 발의를 위해 참여해 주세요!
+          - else
+            이 프로젝트의 첫 번째 참여시민이 되어 보세요!
         .participation-progress
           .participation-progress__graph
             - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
@@ -135,6 +135,6 @@
         %hr.project-divider
         .project-label
           %strong|
-          의견
+          시민 톡톡
           %span.text-muted (#{@project.comments.count})
       = render 'comments/list', commentable: @project, placeholder: '의견을 남겨주세요.'

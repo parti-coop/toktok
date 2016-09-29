@@ -309,9 +309,8 @@ section#page-participations {
     }
 
     &__status .project-status-bar {
-      margin-top: 6px;
       .steps .step {
-        border-top: 1px solid $project-step-border-color;
+        border-top: 1px solid transparent;
         border-bottom: 1px solid $project-step-border-color;
         &.steps--gathering .step--gathering,
         &.steps--matching .step--matching,
