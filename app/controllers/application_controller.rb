@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   after_action :prepare_unobtrusive_flash
+  after_filter :store_location
 
   if Rails.env.production? or Rails.env.staging?
     rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownFormat do |exception|
@@ -31,5 +32,17 @@ class ApplicationController < ActionController::Base
     else
       redirect_to fallback_location, **args
     end
+  end
+
+  private
+
+  def store_location
+    return unless request.get?
+    return if params[:controller].match("users/")
+    return if params[:controller].match("devise/")
+    return if params[:controller] == "users" and params[:action] == "join"
+    return if request.xhr?
+
+    store_location_for(:user, request.fullpath)
   end
 end
