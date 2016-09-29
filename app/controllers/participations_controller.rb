@@ -11,7 +11,10 @@ class ParticipationsController < ApplicationController
     @participation.user = current_user
     @participation.save
 
-    redirect_back fallback_location: @participation.project
+    respond_to do |format|
+      format.js
+      format.any { redirect_to root_path }
+    end
 
   end
 
@@ -19,7 +22,9 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find_by user: current_user, project: @project
     @participation.try(:destroy)
 
-    redirect_back fallback_location: @project
+    respond_to do |format|
+      format.js
+      format.any { redirect_to root_path }
+    end
   end
-
 end

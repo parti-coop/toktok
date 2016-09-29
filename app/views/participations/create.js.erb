@@ -1,0 +1,4 @@
+$('#project-participation-button').html('<%= escape_javascript(render "participations/button", project: @project) %>');
+$('#project-participation-button-stuckable').html('<%= escape_javascript(render "participations/button", project: @project) %>');
+$('#project-participation-button-<%= @project.id %>').html('<%= escape_javascript(render "participations/button", project: @project) %>');
+

@@ -46,5 +46,5 @@
         %span
           %span.count<>= project.participations_goal_count
           명
-    .project-participation
+    .project-participation{id:"project-participation-button-#{project.id}"}
       = render 'participations/button', project: project, participation_at_home: true

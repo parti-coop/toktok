@@ -23,7 +23,7 @@
       .project-panel__intro.project-panel
         = simple_format @project.body
         - @project.attachments.each do |attachment|
-          = link_to attachment.name, attachment.source.url, target: '_blank'
+          = link_to attachment.name, attsachment.source.url, target: '_blank'
         .project-image{style: "background-image: url(#{@project.image.sm.url});"}
 
   .project-intro-divider
@@ -98,7 +98,7 @@
     %section#project-participations-stuckable
       .container
         .project-panel__participation.project-panel
-          .btn-project-participation
+          .btn-project-participation#project-participation-button-stuckable
             = render 'participations/button', project: @project
 
   %section#project-participations
@@ -126,7 +126,8 @@
 
               .participations-goal-count
                 목표 #{@project.participations_goal_count}명
-        .btn-project-participation
+
+        .btn-project-participation#project-participation-button
           = render 'participations/button', project: @project
         .participation-users
           = render 'participations/list', project: @project
