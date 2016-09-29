@@ -109,6 +109,8 @@
                 %span
                   %span.count<>= @project.participations_count
                   명
+                %br
+                %i.fa.fa-flag
             - (bar_count_of_project(@project)-1).times do |time|
               .bar
                 .participations-bar{style: "width: 100%"}
