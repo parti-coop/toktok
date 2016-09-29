@@ -29,4 +29,59 @@ footer.footer {
     margin-top: 12p;
     margin-bottom: 17px;
   }
+  .social-share {
+    margin-top: 10px;
+    li {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+    .social-icon {
+      &__kas {
+        width: 44px;
+        height: 44px;
+      }
+      &__kakao {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+      &__facebook {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+      &__twitter {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+    .social-icon--mobile {
+      &__kas {
+        width: 44px;
+        height: 44px;
+      }
+      &__kakao {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+      &__facebook {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+      &__twitter {
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+  }
 }

@@ -7,3 +7,48 @@
         = image_tag 'footer_logo_parti.png'
     .help-mail
       %a(href="mailto://toctoc@wagl.net") 문의하기 toctoc@wagl.net
+    .social-share
+      - unless browser.device.mobile?
+        %ul.list-inline.social-icon
+          - base_data = {action: 'toktok-share', 'share-url': root_url, 'share-text': meta_tags['description'] }
+          - %w(facebook twitter kakao-link kakao-story).each do |provider|
+
+            - data = base_data.merge('share-provider': provider)
+
+            - if provider == 'kakao-link'
+              - hide_kakao_link = (! browser.device.mobile?) ? ' hide' : ''
+              - data = data.merge('share-image': meta_tags['image'], 'share-image-width': '1200', 'share-image-height': '630', 'share-logo': asset_url('share_kakao_icon.png'), 'share-css': 'social-icon__kas')
+            - if provider == 'twitter'
+              - data = data.merge('share-text': "법안은 국회의원만 만드나? 하고 싶은 말, #국회톡톡 으로 의원에게 직접 톡으로 하자! 시민의 제안으로 법안을 만듭니다. 지금 참여해서 시민의 제안을 국회로 연결해주세요!", 'share-logo': asset_url('share_twitter_icon.png'), 'share-css': 'social-icon__twitter')
+            - if provider == 'facebook'
+              - data = data.merge('share-logo': asset_url('share_facebook_icon.png'), 'share-css': 'social-icon__facebook')
+            %li.share-item.jssocials{class: "share-#{provider}#{hide_kakao_link}", data: data }
+              .jssocials-shares
+                .jssocials-share
+                  - if provider == 'kakao-story'
+                    = image_tag 'share_kas_icon.png', class: 'social-icon__kas'
+                  - if provider == 'kakao-link'
+                    = image_tag 'share_kakao_icon.png', class: 'social-icon__kas'
+
+      - if browser.device.mobile?
+        %ul.list-inline.social-icon-mobile--wrapper
+          - base_data = {action: 'toktok-share', 'share-url': root_url, 'share-text': meta_tags['description'] }
+          - %w(facebook twitter kakao-link kakao-story).each do |provider|
+
+            - data = base_data.merge('share-provider': provider)
+
+            - if provider == 'kakao-link'
+              - hide_kakao_link = (! browser.device.mobile?) ? ' hide' : ''
+              - data = data.merge('share-image': meta_tags['image'], 'share-image-width': '1200', 'share-image-height': '630', 'share-logo': asset_url('share_kakao_icon.png'), 'share-css': 'social-icon--mobile__kas')
+            - if provider == 'twitter'
+              - data = data.merge('share-text': "법안은 국회의원만 만드나? 하고 싶은 말, #국회톡톡 으로 의원에게 직접 톡으로 하자! 시민의 제안으로 법안을 만듭니다. 지금 참여해서 시민의 제안을 국회로 연결해주세요!", 'share-logo': asset_url('share_twitter_icon.png'), 'share-css': 'social-icon--mobile__twitter')
+            - if provider == 'facebook'
+              - data = data.merge('share-logo': asset_url('share_facebook_icon.png'), 'share-css': 'social-icon--mobile__facebook')
+            %li.share-item.jssocials{class: "share-#{provider}#{hide_kakao_link}", data: data }
+              .jssocials-shares
+                .jssocials-share
+                  - if provider == 'kakao-story'
+                    = image_tag 'share_kas_icon.png', class: 'social-icon--mobile__kas'
+                  - if provider == 'kakao-link'
+                    = image_tag 'share_kakao_icon.png', class: 'social-icon--mobile__kas'
+
