@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :prepare_meta_tags, if: "request.get?"
   after_action :prepare_unobtrusive_flash
   after_filter :store_location
 
@@ -24,6 +25,43 @@ class ApplicationController < ActionController::Base
 
   def errors_to_flash(model)
     flash[:notice] = model.errors.full_messages.join('<br>').html_safe
+  end
+
+  def prepare_meta_tags(options={})
+    set_meta_tags build_meta_options(options)
+  end
+
+  def build_meta_options(options)
+    site_name = "국회톡톡"
+    title = "하고 싶은 말, 국회톡톡으로 의원에게 직접 톡으로 하자!"
+    image = options[:image] || view_context.image_url('seo.png')
+    url = options[:url] || root_url
+
+    description = "시민의 제안으로 법안을 만듭니다. 지금 참여해서 시민의 제안을 국회로 연결해주세요!"
+    {
+      title:       title,
+      reverse:     true,
+      image:       image,
+      description: description,
+      keywords:    "시민, 정치, 국회, 입법, 법안, 20대국회, 온라인정치, 정치참여, 국회톡톡, 시민입법, 빠띠, 빠흐띠, 와글",
+      canonical:   url,
+      twitter: {
+        site_name: site_name,
+        site: '@parti_xyz',
+        card: 'summary',
+        title: title,
+        description: description,
+        image: image
+      },
+      og: {
+        url: url,
+        site_name: site_name,
+        title: title,
+        image: image,
+        description: description,
+        type: 'website'
+      }
+    }
   end
 
   def redirect_back_with_anchor(anchor:, fallback_location:, **args)
