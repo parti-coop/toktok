@@ -46,7 +46,11 @@
     "accessibility-help-label": "Rich text 편집기",
     "caption": "Caption",
     "bulletslist": "Bullets",
-    "numberslist": "Numbers"
+    "numberslist": "Numbers",
+    "align": "정렬",
+    "align-left": "왼쪽",
+    "align-center": "중앙",
+    "align-right": "오른쪽"
 };
 
 })(jQuery);

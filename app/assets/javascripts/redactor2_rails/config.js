@@ -14,5 +14,7 @@ $(function () {
         minHeight: 200
     };
     // Initialize Redactor
-    $('.redactor').redactor();
+    $('.redactor').redactor({
+        plugins: ['alignment']
+    });
 });

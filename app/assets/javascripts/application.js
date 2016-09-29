@@ -5,6 +5,7 @@
 //= require redactor2_rails/config
 //= require redactor
 //= require redactor2_rails/langs/ko
+//= require redactor/alignment
 //= require cocoon
 //= require unobtrusive_flash
 //= require unobtrusive_flash_bootstrap
