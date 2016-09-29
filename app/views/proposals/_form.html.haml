@@ -22,7 +22,7 @@
     #attachments
       .button
         = link_to_add_association f, :attachments, class: 'btn btn-attachment', 'data-association-insertion-method': 'after' do
-          = image_tag 'icon_attachment', class: 'icon-attachment'
+          = image_tag 'icon_attachment.png', class: 'icon-attachment'
           첨부파일
       = f.fields_for :attachments do |ff|
         = render 'attachment_fields', f: ff
