@@ -34,4 +34,8 @@ module ApplicationHelper
     bar_count = 1 if project.participations_percentage == 0
     return bar_count
   end
+
+  def is_redactorable?
+    !browser.device.mobile? and !browser.device.tablet?
+  end
 end

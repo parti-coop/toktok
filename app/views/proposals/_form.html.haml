@@ -17,7 +17,7 @@
 
   .form-group
     = f.label :body, class: 'required'
-    = f.text_area :body, class: 'form-control redactor', row: 20, data: { 'rule-required': true }
+    = f.text_area :body, class: "form-control #{'redactor' if is_redactorable?}", rows: 10, data: { 'rule-required': true }
 
     #attachments
       .button
