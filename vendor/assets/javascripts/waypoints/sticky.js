@@ -27,7 +27,6 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
       element: this.wrapper,
       handler: $.proxy(function(direction) {
         var shouldBeStuck = this.options.direction.indexOf(direction) > -1
-        console.log(shouldBeStuck)
         this.$element.toggleClass(this.options.stuckClass, shouldBeStuck, 'slow')
 
         var wrapperHeight = shouldBeStuck ? this.$element.outerHeight(true) : ''

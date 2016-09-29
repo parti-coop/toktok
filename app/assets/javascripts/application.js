@@ -82,9 +82,11 @@ $(function(){
     }
   });
 
-  new Waypoint.Sticky({
-    element: $('#project-participations-stuckable'),
-    stuckClass: 'unstuck',
-    offset: 'bottom-in-view'
-  });
+  if($('#project-participations-stuckable').length) {
+    new Waypoint.Sticky({
+      element: $('#project-participations-stuckable'),
+      stuckClass: 'unstuck',
+      offset: 'bottom-in-view'
+    });
+  }
 });
