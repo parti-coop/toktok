@@ -6,10 +6,8 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-
-        .brand-centered
-          %a.navbar-brand{ href: root_path }
-            = image_tag 'site_header_logo.png'
+        %a.navbar-brand{ href: root_path }
+          = image_tag 'site_header_logo.png'
         %ul.nav.navbar-nav.navbar-user.visible-xs
           %li
             - if user_signed_in?
