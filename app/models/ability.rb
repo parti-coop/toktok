@@ -5,11 +5,11 @@ class Ability
     can :read, :all do |model|
       !model.is_a?(Proposal)
     end
-    can :create, Proposal
+    can [:thanks, :create], Proposal
     if user
       can [:create, :update, :destroy], [Comment, Participation]
       can :cancel, Participation
-      can [:read, :thanks, :update, :destroy], Proposal do |proposal|
+      can [:read, :update, :destroy], Proposal do |proposal|
         proposal.user == user
       end
     end
