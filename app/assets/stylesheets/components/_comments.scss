@@ -14,10 +14,7 @@ section#comments {
     form#new_comment {
       display: none;
       #comment_body {
-        font-size: $font-size-base;
-        @media (max-width: $screen-xs-max) {
-          font-size: $font-size-small-xs;
-        }
+        @include responsive-font-size-small();
       }
     }
   }

@@ -15,7 +15,7 @@ section#page-home {
 
     background-color: $site-header-primary;
     p {
-      font-size: $font-size-large;
+      @include responsive-font-size-large();
       color: $brand-primary-lighter;
       position: relative;
     }
@@ -41,7 +41,7 @@ section#page-home {
     .section-title {
       margin-top: 10px;
       margin-bottom: 10px;
-      font-size: 18px;
+      @include responsive-font-size-large();
       color: $brand-primary;
       @media (max-width: $screen-xs-max) {
         padding-left: 20px;
