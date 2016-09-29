@@ -1,5 +1,6 @@
 - project.participations.recent.limit(20).each do |participation|
-  = link_to participation.user, class: 'participation-user', target: '_blank' do
-    .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
+  - if participation.user.present?
+    = link_to participation.user, class: 'participation-user', target: '_blank' do
+      .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
 
 = link_to '참여시민 더보기', project_participations_path(project_id: project), class: 'participation-all-user'
