@@ -94,7 +94,7 @@
                           = link_to congressman.facebook_url, target: '_blank' do
                             %i.fa.fa-facebook.fa-fw
 
-  %section#project-participations
+  %section#project-participations{ class: (@project.participant?(current_user) ? 'unstuck' : 'stuckable') }
     .container
       .project-panel__participation.project-panel
         %p.participation-title

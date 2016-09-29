@@ -214,6 +214,40 @@ body.app-projects-show {
   background-color: #f8f8f8;
 }
 
+section#project-participations {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  .project-panel__participation {
+    padding: 5px;
+  }
+  .participation-title,
+  .participation-progress,
+  .participation-users {
+    display: none;
+  }
+  .btn-project-participation {
+    margin: 0;
+  }
+  &.unstuck {
+    position: static;
+
+    .project-panel__participation {
+      padding: 38px 20px;
+    }
+    .participation-title,
+    .participation-progress,
+    .participation-users {
+      display: block;
+    }
+    .btn-project-participation {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
 section#page-project,
 section#page-participations {
   .container {
@@ -397,7 +431,6 @@ section#page-participations {
     }
 
     &__participation {
-      padding: 38px 20px;
       margin-left: -20px;
       margin-right: -20px;
       margin-bottom: 0;
@@ -407,7 +440,6 @@ section#page-participations {
         color: #fff;
         text-align: center;
       }
-
 
       .participation-progress {
         @include responsive-font-size-small();
@@ -460,10 +492,7 @@ section#page-participations {
       }
 
       .btn-project-participation {
-        margin-top: 20px;
-        margin-bottom: 10px;
         text-align: center;
-
 
         .btn-participation {
           padding-top: 12px;
@@ -507,7 +536,6 @@ section#page-participations {
         color: #fff;
         @include responsive-font-size-small();
       }
-
     }
   }
 

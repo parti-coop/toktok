@@ -13,6 +13,8 @@
 //= require rails-timeago
 //= require locales/jquery.timeago.ko
 //= require jquery.validate
+//= require jquery.waypoints
+//= require waypoints/sticky.js
 
 UnobtrusiveFlash.flashOptions['timeout'] = 3000;
 
@@ -78,5 +80,11 @@ $(function(){
     if($elm.data('show-self-hide')) {
       $elm.hide();
     }
+  });
+
+  new Waypoint.Sticky({
+    element: $('#project-participations.stuckable'),
+    stuckClass: 'unstuck',
+    offset: 'bottom-in-view'
   });
 });
