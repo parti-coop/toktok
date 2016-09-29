@@ -337,7 +337,7 @@ section#page-participations {
             margin: 0 0 12px;
           }
           @include responsive-font-size-base();
-          background-color: $gray-lighter;
+          background-color: $gray-lightest;
           margin-top: 5px;
           padding: 4px 16px;
           border-radius: $border-radius-base;
@@ -490,7 +490,8 @@ section#page-participations {
                 color: #fff;
               }
               .count {
-                color: $brand-primary;
+                color: #fff;
+                @include responsive-font-size-large();
               }
             }
           }

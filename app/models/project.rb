@@ -13,6 +13,7 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 
+  before_save :squish_texts
   # mount
   mount_uploader :image, ImageUploader
 
@@ -46,5 +47,13 @@ class Project < ApplicationRecord
   def participations_percentage
     return 0 if participations_goal_count == 0
     (participations_count / participations_goal_count.to_f * 100).to_i
+  end
+
+  private
+
+  def squish_texts
+    %i(body summary proposer_description).each do |text_field|
+      self.send(text_field).try(:squish!)
+    end
   end
 end

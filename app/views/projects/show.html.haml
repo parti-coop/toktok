@@ -32,7 +32,7 @@
                 = t("messages.project_status.matching")
               .step.step--running<>
                 = t("messages.project_status.running")
-        = simple_format @project.body
+        != @project.body
         - @project.attachments.each do |attachment|
           = link_to attachment.name, attachment.source.url, target: '_blank'
 

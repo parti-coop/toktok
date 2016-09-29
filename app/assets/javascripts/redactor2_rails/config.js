@@ -15,6 +15,6 @@ $(function () {
     };
     // Initialize Redactor
     $('.redactor').redactor({
-        plugins: ['alignment']
+        plugins: ['alignment', 'video']
     });
 });

@@ -50,7 +50,9 @@
     "align": "정렬",
     "align-left": "왼쪽",
     "align-center": "중앙",
-    "align-right": "오른쪽"
+    "align-right": "오른쪽",
+    "video": "비디오",
+    "video-html-code": "비디오 임베드 코드나 유튜브/비메오 주소를 넣어주세요."
 };
 
 })(jQuery);
