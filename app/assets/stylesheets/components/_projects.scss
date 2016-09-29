@@ -288,6 +288,10 @@ section#page-participations {
 
     &__intro {
       color: $gray;
+      line-height: 24px;
+      p {
+        margin: 0 0 12px;
+      }
 
       .project-image {
         height: 120px;
@@ -323,6 +327,10 @@ section#page-participations {
         color: $gray;
         @include responsive-font-size-small();
         .proposer-opinion {
+          line-height: 24px;
+          p {
+            margin: 0 0 12px;
+          }
           @include responsive-font-size-base();
           background-color: $gray-lighter;
           margin-top: 5px;
