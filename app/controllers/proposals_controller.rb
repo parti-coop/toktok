@@ -12,7 +12,7 @@ class ProposalsController < ApplicationController
   def create
     @proposal.user = current_user
     if @proposal.save
-      render 'create'
+      redirect_to [:thanks, @proposal]
     else
       errors_to_flash(@proposal)
       render 'new'

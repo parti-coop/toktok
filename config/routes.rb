@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   resources :congressmen
   resources :users
   get '/me', to: 'users#me', as: :current_user
-  resources :proposals, concerns: [:commentable, :likable]
+  resources :proposals, concerns: [:commentable, :likable] do
+    get :thanks, on: :member
+  end
   resources :projects, concerns: [:commentable, :likable] do
     resources :participations do
       delete :cancel, on: :collection

@@ -9,7 +9,7 @@ class Ability
     if user
       can [:create, :update, :destroy], [Comment, Participation]
       can :cancel, Participation
-      can [:read, :update, :destroy], Proposal do |proposal|
+      can [:read, :thanks, :update, :destroy], Proposal do |proposal|
         proposal.user == user
       end
     end
