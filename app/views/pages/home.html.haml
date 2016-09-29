@@ -6,7 +6,24 @@
         %br
         시민의 제안으로 법안을 만듭니다
       = image_tag 'key_visual.png', class: 'key-visual-image'
-      = link_to '지금 제안하기', new_proposal_path, class: 'btn btn-home-proposal'
+      / = link_to '지금 제안하기', new_proposal_path, class: 'btn btn-home-proposal'
+      %p.lead
+        시민
+        %span
+          %span.count> #{User.count}
+          명과
+        국회의원
+        %span
+          %span.count> #{Congressman.count}
+          명이 모여
+        %br
+        %span
+          %span.count> #{Proposal.count}
+          개 제안과
+        %span
+          %span.count> #{Project.count}
+          개 입법 프로젝트를
+        진행합니다.
 
   %section#current-projects
     .container.project-container

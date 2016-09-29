@@ -15,7 +15,7 @@
     .project-title= project.title
     .project-summary!= project.summary
 
-    .project-image{style: "background-image: url(#{project.image.sm.url});"}
+    .project-image{style: "background-image: url(#{project.image.lg.url});"}
       .steps{class: "steps--#{project.status}"}<>
         .step.step--gathering<>
           = t("messages.project_status.gathering")
@@ -35,11 +35,12 @@
             명
           %br
           %i.fa.fa-flag
-      - (bar_count_of_project(project)-1).times do |time|
+      - if project.participations_percentage >= 100
         .bar
           .participations-bar{style: "width: 100%"}
-      .bar
-        .participations-bar{style: "width: #{project.participations_percentage - ((bar_count_of_project(project)-1) * 100)}%"}
+      - else
+        .bar
+          .participations-bar{style: "width: #{project.participations_percentage}%"}
 
       .participations-goal-count
         목표

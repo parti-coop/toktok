@@ -296,7 +296,7 @@ section#page-participations {
       color: $gray;
       line-height: 24px;
       p {
-        margin: 0 0 12px;
+        margin: 0 0 24px;
       }
 
       .project-image {
@@ -334,7 +334,7 @@ section#page-participations {
         .proposer-opinion {
           line-height: 24px;
           p {
-            margin: 0 0 12px;
+            margin: 0 0 24px;
           }
           @include responsive-font-size-base();
           background-color: $gray-lightest;

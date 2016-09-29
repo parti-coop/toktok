@@ -18,7 +18,13 @@ section#page-home {
       @include responsive-font-size-large();
       color: $brand-primary-lighter;
       position: relative;
+      span.count {
+        font-size: 36px;
+        color: #fff;
+        font-weight: 900;
+      }
     }
+
 
     .btn-home-proposal {
       background-color: #02f2d5;
