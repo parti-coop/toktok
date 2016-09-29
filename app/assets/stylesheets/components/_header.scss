@@ -14,15 +14,22 @@ section#site-header {
     }
   }
 
-  .navbar-brand {
-    left: 50%;
+  .brand-centered {
+    display: flex;
+    justify-content: center;
     position: absolute;
-    transform: translateX(-50%);
-    margin-left: 0;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .navbar-brand {
+    display: flex;
+    align-items: center;
     img {
       height: 24px;
     }
   }
+
   .navbar-toggle {
     margin-left: 10px;
   }
