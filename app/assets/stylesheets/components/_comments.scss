@@ -22,6 +22,51 @@ section#comments {
     }
   }
 }
+section#comments-edit {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .page-header {
+    margin: 20px 0 0;
+    border: none;
+
+    .project-meta {
+      margin-top: 12px;
+      margin-bottom: 12px;
+
+      .count {
+        @include responsive-font-size-small();
+        color: $gray-light;
+      }
+      .created_at {
+        i {
+          color: $brand-primary;
+        }
+        .date {
+          @include responsive-font-size-small();
+          color: $gray-light;
+        }
+      }
+      .comments-button {
+        margin-left: 15px;
+      }
+    }
+    h2 a {
+      color: $text-color;
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+  }
+  .comment-edit-label {
+    margin-bottom: 20px;
+    color: $brand-primary;
+    strong {
+      font-weight: 900;
+    }
+  }
+}
 
 .comment {
   padding-top: 18px;

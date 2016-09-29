@@ -1,3 +1,20 @@
-%h3 Comments
-%div
-  = render 'comments/form', commentable: @project
+%section#comments-edit
+  %section#project-header
+    .container
+      .page-header
+        .project-meta.clearfix
+          .pull-left
+            %span.created_at
+              %i.fa.fa-clock-o
+              %span.date= date_f @commentable.created_at
+            %span.comments-button
+              = image_tag 'icon_comment.png', class: 'icon-comment'
+              %span.count= @commentable.comments.count
+          .pull-right
+            %span.share-button
+              %span.count= image_tag 'icon_share.png', class: 'icon-share'
+        %h2
+          = link_to @commentable do
+            = @commentable.title
+  %div
+    = render 'comments/form', commentable: @commentable

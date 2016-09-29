@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = current_user.comments.find(params[:id])
+    @commentable = @comment.commentable
   end
 
   def update
