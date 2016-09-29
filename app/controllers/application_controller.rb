@@ -76,6 +76,7 @@ class ApplicationController < ActionController::Base
 
   def store_location
     return unless request.get?
+    return if params[:controller].blank?
     return if params[:controller].match("users/")
     return if params[:controller].match("devise/")
     return if params[:controller] == "users" and params[:action] == "join"
