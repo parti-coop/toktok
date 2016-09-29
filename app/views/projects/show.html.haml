@@ -13,23 +13,23 @@
           .pull-right
             %span.share-button
               %span.count= image_tag 'icon_share.png', class: 'icon-share'
+            - if current_user.try(:role).try(:staff?)
+              %span.admin-button
+                = link_to admin_project_path(@project) do
+                  %i.fa.fa-cog
+                  관리
         %h2
           = @project.title
-          - if current_user.try(:role).try(:staff?)
-            .pull-right
-              %small
-                = link_to '관리', admin_project_path(@project)
 
       .project-panel__intro.project-panel
+        .project-image{style: "background-image: url(#{@project.image.lg.url});"}
         = simple_format @project.body
         - @project.attachments.each do |attachment|
-          = link_to attachment.name, attsachment.source.url, target: '_blank'
-        .project-image{style: "background-image: url(#{@project.image.sm.url});"}
-
-  .project-intro-divider
+          = link_to attachment.name, attachment.source.url, target: '_blank'
 
   %section#project-meta
     .container
+      .project-divider
       .project-panel__status.project-panel
         .project-label
           %strong|
@@ -58,41 +58,7 @@
                 %span.proposer-date
                   = static_date_f_not_hour @project.proposal.created_at
                 .proposer-opinion
-                  = simple_format @project.proposal.body
-
-
-      - if @project.committee.present?
-        .project-panel__committee.project-panel
-          %hr.project-divider
-          .project-label
-            %strong|
-            관련 상임위원회
-          .committee-content
-            .committee-name
-              = @project.committee.name
-            .committee-congressmen.owl-carousel
-              - @project.committee.congressmen.each do |congressman|
-                .committee-congressman-wrapper
-                  .committee-congressman
-                    - unless @project.status == :gathering
-                      .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
-                        = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
-                    .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
-                    .committee-congressman__name
-                      = congressman.name
-                    .committee-congressman__contacts
-                      .committee-congressman__contacts--tok
-                        %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
-                          톡톡
-                          = image_tag 'icon_comment_white.png', class:'tok-icon'
-                      - if congressman.twitter_url.present?
-                        .committee-congressman__contacts--twitter
-                          = link_to congressman.twitter_url, target: '_blank' do
-                            %i.fa.fa-twitter.fa-fw
-                      - if congressman.facebook_url.present?
-                        .committee-congressman__contacts--facebook
-                          = link_to congressman.facebook_url, target: '_blank' do
-                            %i.fa.fa-facebook.fa-fw
+                  = simple_format @project.proposer_description
 
   - unless @project.participant?(current_user)
     %section#project-participations-stuckable
@@ -134,4 +100,41 @@
 
   %section#comments
     .container
-      = render 'comments/list', commentable: @project, placeholder: '지지 의견을 남겨주세요.'
+      - if @project.committee.present?
+        .project-panel__committee.project-panel
+          .project-label
+            %strong|
+            관련 상임위원회
+          .committee-content
+            .committee-name
+              = @project.committee.name
+            .committee-congressmen.owl-carousel
+              - @project.committee.congressmen.each do |congressman|
+                .committee-congressman-wrapper
+                  .committee-congressman
+                    - unless @project.status == :gathering
+                      .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
+                        = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
+                    .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
+                    .committee-congressman__name
+                      = congressman.name
+                    .committee-congressman__contacts
+                      .committee-congressman__contacts--tok
+                        %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
+                          톡톡
+                          = image_tag 'icon_comment_white.png', class:'tok-icon'
+                      - if congressman.twitter_url.present?
+                        .committee-congressman__contacts--twitter
+                          = link_to congressman.twitter_url, target: '_blank' do
+                            %i.fa.fa-twitter.fa-fw
+                      - if congressman.facebook_url.present?
+                        .committee-congressman__contacts--facebook
+                          = link_to congressman.facebook_url, target: '_blank' do
+                            %i.fa.fa-facebook.fa-fw
+      .project-panel__comments.project-panel
+        %hr.project-divider
+        .project-label
+          %strong|
+          의견
+          %span.text-muted (#{@project.comments.count})
+      = render 'comments/list', commentable: @project, placeholder: '의견을 남겨주세요.'

@@ -247,6 +247,7 @@ section#page-participations {
 
   section#project-participations {
     background-color: $site-header-primary;
+    margin: 40px 0;
   }
   .page-header {
     margin: 20px 0 0;
@@ -286,7 +287,6 @@ section#page-participations {
     margin-bottom: 20px;
 
     &__intro {
-      margin-top: -16px;
       color: $gray;
 
       .project-image {
@@ -305,6 +305,7 @@ section#page-participations {
     }
 
     &__status .project-status-bar {
+      margin-top: 6px;
       .steps .step {
         border-top: 1px solid $project-step-border-color;
         border-bottom: 1px solid $project-step-border-color;
@@ -326,6 +327,7 @@ section#page-participations {
           background-color: $gray-lighter;
           margin-top: 5px;
           padding: 4px 16px;
+          border-radius: $border-radius-base;
         }
       }
     }

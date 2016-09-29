@@ -30,7 +30,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
         this.$element.toggleClass(this.options.stuckClass, shouldBeStuck, 'slow')
 
         var wrapperHeight = shouldBeStuck ? this.$element.outerHeight(true) : ''
-        this.$wrapper.height(wrapperHeight)
+        //this.$wrapper.height(wrapperHeight)
 
         if (originalHandler) {
           originalHandler.call(this, direction)
