@@ -83,7 +83,7 @@ $(function(){
   });
 
   new Waypoint.Sticky({
-    element: $('#project-participations.stuckable'),
+    element: $('#project-participations-stuckable'),
     stuckClass: 'unstuck',
     offset: 'bottom-in-view'
   });

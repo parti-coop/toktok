@@ -94,7 +94,14 @@
                           = link_to congressman.facebook_url, target: '_blank' do
                             %i.fa.fa-facebook.fa-fw
 
-  %section#project-participations{ class: (@project.participant?(current_user) ? 'unstuck' : 'stuckable') }
+  - unless @project.participant?(current_user)
+    %section#project-participations-stuckable
+      .container
+        .project-panel__participation.project-panel
+          .btn-project-participation
+            = render 'participations/button', project: @project
+
+  %section#project-participations
     .container
       .project-panel__participation.project-panel
         %p.participation-title

@@ -215,37 +215,30 @@ body.app-projects-show {
   background-color: #f8f8f8;
 }
 
-section#project-participations {
+section#page-project  section#project-participations-stuckable {
   position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 1000;
+  background-color: $site-header-primary;
   .project-panel__participation {
     padding: 5px;
-  }
-  .participation-title,
-  .participation-progress,
-  .participation-users {
-    display: none;
   }
   .btn-project-participation {
     margin: 0;
   }
-  &.unstuck {
-    position: static;
 
-    .project-panel__participation {
-      padding: 38px 20px;
-    }
-    .participation-title,
-    .participation-progress,
-    .participation-users {
-      display: block;
-    }
-    .btn-project-participation {
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
+  opacity: 1;
+  visibility: visible;
+  transition-property: opacity, visibility;
+  transition-duration: 300ms, 0ms;
+  transition-delay: 0ms;
+  &.unstuck {
+    opacity: 0;
+    visibility: hidden;
+    transition-property: opacity, visibility;
+    transition-delay: 0ms, 0.3s;
+    transition-duration: 0.3s, 0ms;
   }
 }
 
@@ -437,6 +430,7 @@ section#page-participations {
       margin-left: -20px;
       margin-right: -20px;
       margin-bottom: 0;
+      padding: 38px 20px;
       @include responsive-font-size-large();
 
       .participation-title {
@@ -497,6 +491,8 @@ section#page-participations {
 
       .btn-project-participation {
         text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
 
         .btn-participation {
           padding-top: 12px;
