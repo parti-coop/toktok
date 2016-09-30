@@ -10,11 +10,11 @@
         %div
           %small
             - if @proposal.launched?
-              프로젝트 :
+              제안매칭 :
               - @proposal.projects.each do |project|
                 = link_to project.title, [:admin, project]
             - else
-              = link_to '프로젝트 만들기', new_admin_project_path(proposal_id: @proposal.id)
+              = link_to '제안매칭 만들기', new_admin_project_path(proposal_id: @proposal.id)
 
     .panel.panel-default
       .panel-heading

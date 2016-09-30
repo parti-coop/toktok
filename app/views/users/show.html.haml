@@ -19,7 +19,7 @@
           %strong|
           - if @user == current_user
             내가 참여한
-          프로젝트
+          제안
           %span.count= @user.participations.count
         .projects
           - @user.participations.recent.each do |participation|

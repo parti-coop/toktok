@@ -70,11 +70,11 @@
         %p.participation-title
           - unless @project.participant?(current_user)
             - if @project.participations.any?
-              이 프로젝트에 #{@project.participations_count + 1}번째 참여시민이 되어 보세요!
+              이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 보세요!
             - else
-              이 프로젝트에 첫 번째 참여시민이 되어 보세요!
+              이 제안에 첫 번째 참여시민이 되어 보세요!
           - else
-            #{current_user.nickname}님은 이 프로젝트에 참여 중이십니다.
+            #{current_user.nickname}님은 이 제안에 참여 중이십니다.
         .participation-progress
           .participation-progress__graph
             - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
@@ -86,7 +86,7 @@
                   %span.count<>= @project.participations_count
                   명
                 %br
-                %i.fa.fa-flag
+                %i.fa.fa-bullhorn
             - if @project.participations_percentage >= 100
               .bar
                 .participations-bar{style: "width: 100%"}

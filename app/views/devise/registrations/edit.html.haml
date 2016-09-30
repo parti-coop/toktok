@@ -1,11 +1,10 @@
 %section#profile-edit
   .container
     .profile-edit-header
-      프로필을 수정할 수 있습니다
-    = devise_error_messages!
-    %h2.user-title
       = render 'users/thumbnail'
       = current_user.nickname
+    = devise_error_messages!
+    %h2.user-title
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       .form-group
         = f.label :nickname, class: 'required'
