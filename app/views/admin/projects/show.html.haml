@@ -16,12 +16,12 @@
           = t("messages.project_status.#{@project.status}")
       .panel-body
         [제안자 소개]
-        = simple_format @project.proposer_description
+        != simple_format @project.proposer_description
         [요약]
-        = simple_format @project.summary
+        != simple_format @project.summary
         %hr
         [내용]
-        = simple_format @project.body
+        != @project.body
 
         - if upload_file_exists?(@project.image)
           [대표이미지]

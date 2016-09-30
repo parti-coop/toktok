@@ -1,16 +1,16 @@
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "mixin";
-@import "base";
 
 @import "redactor";
 @import "redactor/alignment";
 @import "select2";
-
 @import "owl.carousel";
 @import "owl.theme.default";
 @import "jssocials";
+
+@import "mixin";
+@import "base";
 
 @import "components/header";
 @import "components/footer";

@@ -294,9 +294,16 @@ section#page-participations {
 
     &__intro {
       color: $gray;
-      line-height: 24px;
-      p {
-        margin: 0 0 24px;
+      .project-panel__body {
+        line-height: 24px;
+        p {
+          margin: 0 0 24px;
+        }
+
+        img {
+          height: auto;
+          max-width: 100%;
+        }
       }
 
       .project-image {
