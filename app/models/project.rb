@@ -49,6 +49,11 @@ class Project < ApplicationRecord
     (participations_count / participations_goal_count.to_f * 100).to_i
   end
 
+  def sould_reject_comment_of? someone
+    return true if someone.blank?
+    return !(participant?(someone))
+  end
+
   private
 
   def squish_texts
