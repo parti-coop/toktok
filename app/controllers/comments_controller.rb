@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     if current_user.blank?
-      redirect_to join_path
+      redirect_to new_user_session_path
     else
       scan_mentioned_congressmen(@comment).each do |congressman|
         @comment.mentions.build(congressman: congressman)

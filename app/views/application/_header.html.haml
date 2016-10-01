@@ -12,9 +12,9 @@
           %li
             - if user_signed_in?
               = link_to current_user_path do
-                = image_tag 'site_header_user.png'
+                .img-user{style: "background-image: url(#{image_url(current_user.image.xs.url)});"}
             - else
-              = link_to join_path do
+              = link_to new_user_session_path do
                 = image_tag 'site_header_user.png'
 
       #site-header-collapsable.collapse.navbar-collapse
@@ -23,7 +23,7 @@
           - if user_signed_in?
             %li.visible-xs-inline= link_to '로그아웃', sign_out_path, method: :delete, class: 'btn btn-sign-out btn-block'
           - else
-            %li.visible-xs-inline= link_to '가입/로그인', join_path, class: 'btn btn-sign-in btn-block'
+            %li.visible-xs-inline= link_to '가입/로그인', new_user_session_path, class: 'btn btn-sign-in btn-block'
           - if current_user.try(:role).try(:staff?)
             %li.dropdown.hidden-xs
               %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
@@ -47,4 +47,4 @@
                 로그아웃
           - else
             %li
-              = link_to '가입/로그인', join_path
+              = link_to '가입/로그인', new_user_session_path

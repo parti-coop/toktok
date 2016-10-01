@@ -3,18 +3,25 @@
     .profile-edit-header
       = render 'users/thumbnail'
       = current_user.nickname
-    = devise_error_messages!
     %h2.user-title
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      .form-group
+      .form-group{class: error_class_str(resource, :nickname)}
         = f.label :nickname, class: 'required'
-        = f.text_field :nickname, class: 'form-control'
-      .form-group
+        = f.text_field :nickname, class: 'form-control input-lg'
+        .help-block
+          = error_messages(resource, :nickname)
+      .form-group{class: error_class_str(resource, :email)}
         = f.label :email, class: 'required'
-        = f.email_field :email, autofocus: true, class: 'form-control'
-      .form-group
+        = f.email_field :email, autofocus: true, class: 'form-control input-lg'
+        .help-block
+          = error_messages(resource, :email)
+      .form-group{class: error_class_str(resource, :image)}
         = f.label :image
-        = f.file_field :image, autofocus: true, class: 'form-control'
+        = f.file_field :image, autofocus: true, class: 'form-control input-lg'
+        .help-block
+          = error_messages(resource, :image)
         = f.hidden_field :image_cache
-      .form-group.text-center
+        - if upload_file_exists?(@project.try(:image))
+          = image_tag resource.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
+      .form-group.form-group-submit
         = f.submit '저장', class: 'btn btn-submit', data: { disable_with: "저장 중..." }

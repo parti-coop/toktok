@@ -31,7 +31,7 @@ label {
   margin-bottom: 20px;
 }
 
-.form-group-submita {
+.form-group-submit {
   text-align: center;
 }
 
@@ -119,6 +119,7 @@ body {
 }
 
 .btn-submit {
+  margin-top: 30px;
   line-height: 2.5;
   width: 183px;
   &, &:focus, &.focus {

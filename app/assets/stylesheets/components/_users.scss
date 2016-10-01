@@ -156,9 +156,6 @@ section#sign-up {
     color: $brand-primary;
     margin-bottom: 36px
   }
-  .sign-up-form {
-    text-align: center;
-  }
   #error_explanation {
     h2 {
       display: none;
@@ -173,6 +170,21 @@ section#sign-up {
   }
 }
 
+section#page-devise-confirmmations,
+section#page-devise-password {
+  padding-top: 20px;
+  .intro {
+    text-align: center;
+    @include responsive-font-size-large();
+    color: #16a6a8;
+    margin-bottom: 36px;
+    .error_explanation {
+      @include responsive-font-size-base();
+      color: $brand-danger;
+    }
+  }
+}
+
 section#profile-edit {
   padding-top: 20px;
   .profile-edit-header {
@@ -180,9 +192,6 @@ section#profile-edit {
     text-align: center;
     color: $brand-primary;
     margin-bottom: 36px
-  }
-  .user-title {
-
   }
   .profile-form {
     text-align: center;
@@ -199,5 +208,33 @@ section#profile-edit {
         list-style: none;
       }
     }
+  }
+}
+
+.email-login-box-wrapper {
+  text-align: center;
+  position: relative;
+  padding-top: 12px;
+  .form-group {
+    margin-bottom: 10px;
+  }
+  .email-login-box {
+    padding-top: 12px;
+    max-width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .email-login-box-title-wraper {
+    position: absolute;
+    top: 25px;
+    .email-login-box-title {
+      color: $gray-light;
+      margin: 10px 0;
+      padding-right: 8px;
+      padding-left: 8px;
+      background-color: #fff;
+      display: inline-block;
+    }
+    width: 270px;
   }
 }

@@ -26,6 +26,11 @@ gem 'unobtrusive_flash', '~> 3.2'
 gem 'truncate_html', '~> 0.9.3'
 gem 'rails-timeago', '~> 2.15'
 
+# schedule
+gem 'sidekiq', '~> 4.2', '>= 4.2.2'
+gem 'redis', '~> 3.3', '>= 3.3.1'
+gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
+
 # assets
 source 'https://rails-assets.org' do
   gem 'rails-assets-trianglify'
@@ -69,9 +74,6 @@ end
 # notification
 gem 'slack-notifier', '~> 1.4'
 gem 'exception_notification', '~> 4.1', '>= 4.1.4'
-gem 'sidekiq', '~> 4.1'
-gem 'redis', '~> 3.2', '>= 3.2.2'
-gem 'redis-namespace', '~> 1.5', '>= 1.5.2'
 
 # monitor
 gem 'newrelic_rpm'

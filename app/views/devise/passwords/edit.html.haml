@@ -1,0 +1,24 @@
+%section#page-devise-password
+  .container
+    .intro
+      비밀번호 변경
+    .password-form
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = f.hidden_field :reset_password_token
+        .form-group{class: error_class_str(resource, :email)}
+          = f.label :password do
+            새로운 비밀번호
+          = f.password_field :password, autofocus: true, class: 'form-control input-lg'
+          .help-block
+            최소 #{Devise.password_length.min}자 이상 적어 주세요.
+          .help-block
+            = error_messages(resource, :password)
+        .form-group{class: error_class_str(resource, :email)}
+          = f.label :password_confirmation do
+            비밀번호 확인
+          = f.password_field :password_confirmation, autofocus: true, class: 'form-control input-lg'
+          .help-block
+            = error_messages(resource, :password_confirmation)
+
+        .form-group.form-group-submit
+          = f.submit '비밀번호 변경', class: 'btn btn-submit', data: { disable_with: "진행 중..." }

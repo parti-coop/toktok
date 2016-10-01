@@ -20,7 +20,7 @@
 //= require jssocials
 //= require kakao
 
-UnobtrusiveFlash.flashOptions['timeout'] = 3000;
+UnobtrusiveFlash.flashOptions['timeout'] = 300000;
 
 function scroll_to_anchor(anchor_id){
     var tag = $(anchor_id);

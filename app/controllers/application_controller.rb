@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :prepare_meta_tags, if: "request.get?"
   after_action :prepare_unobtrusive_flash
-  after_filter :store_location
+  after_action :store_location
 
   if Rails.env.production? or Rails.env.staging?
     rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownFormat do |exception|

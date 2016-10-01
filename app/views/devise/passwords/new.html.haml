@@ -1,0 +1,14 @@
+%section#page-devise-password
+  .container
+    .intro
+      비밀번호를 잊었나요?
+    .password-form
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        .form-group{class: error_class_str(resource, :email)}
+          = f.label :email do
+            이메일을 넣어 주세요.
+          = f.text_field :email, autofocus: true, class: 'form-control input-lg'
+          .help-block
+            = error_messages(resource, :email)
+        .form-group.form-group-submit
+          = f.submit '변경 메일 보내기', class: 'btn btn-submit', data: { disable_with: "진행 중..." }

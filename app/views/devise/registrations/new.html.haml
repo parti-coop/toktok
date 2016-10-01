@@ -1,35 +1,51 @@
 %section#sign-up
   .container
     .sign-up-header
-      당신의 멋진 아이디를 만들어주세요.
+      어서오세요. 국회톡톡입니다.
     .sign-up-form
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
         = f.hidden_field :remember_me
-        .form-group.text-left
+        = f.hidden_field :provider
+        .form-group{class: error_class_str(resource, :nickname)}
           = f.label :nickname do
             사용할 아이디를 넣어 주세요.
-          = f.text_field :nickname, autofocus: true, class: 'form-control'
-          .text-primary
-            * 한글, 알파벳, 숫자, _ 만 가능합니다.
+          = f.text_field :nickname, autofocus: true, class: 'form-control input-lg'
+          .help-block
+            = error_messages(resource, :nickname)
+          .help-block
+            한글, 알파벳, 숫자, _ 만 가능합니다.
 
-        - if resource.email.blank? or resource.errors.include?(:email)
-          .form-group
+        - if 'email' == resource.try(:provider)
+          .form-group{class: error_class_str(resource, :password)}
+            = f.label :password
+            = f.password_field :password, autofocus: true, class: 'form-control input-lg'
+            .help-block
+              = error_messages(resource, :password)
+            .help-block
+              최소 #{Devise.password_length.min}자 이상 적어 주세요.
+          .form-group{class: error_class_str(resource, :password_confirmation)}
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autofocus: true, class: 'form-control input-lg'
+            .help-block
+              = error_messages(resource, :password_confirmation)
+        - if 'email' == resource.try(:provider) or resource.email.blank? or resource.errors.include?(:email)
+          .form-group{class: error_class_str(resource, :email)}
             = f.label :email do
               이메일을 넣어 주세요.
-            = f.text_field :email, autofocus: true, class: 'form-control'
+            = f.text_field :email, autofocus: true, class: 'form-control input-lg'
+            .help-block
+              = error_messages(resource, :email)
 
-        .form-group
-          = f.submit '계속하기', class: 'btn btn-submit', data: { disable_with: "진행 중..." }
+        .form-group.form-group-submit
+          = f.submit ('email' == resource.try(:provider) ? '가입하기' : '계속하기'), class: 'btn btn-submit', data: { disable_with: "진행 중..." }
 
-        = form_tag nil, method: :get do
-          = hidden_field_tag(:after_login)
-          %label.remember_me
-            "계속하기"를 클릭하면
-            %a.text-primary{href: '/terms', target: '_blank'}
-              %b 이용약관
-            ,
-            %a.text-primary{href: '/privacy', target: '_blank'}
-              %b 개인정보처리
-            방침 내용을 이해하고
-            동의하게 됩니다.
+          / .help-block
+          /   "계속하기"를 클릭하면
+          /   %a.text-primary{href: '/terms', target: '_blank'}
+          /     %b 이용약관
+          /   ,
+          /   %a.text-primary{href: '/privacy', target: '_blank'}
+          /     %b 개인정보처리
+          /   방침 내용을
+          /   %br
+          /   이해하고 동의하게 됩니다.

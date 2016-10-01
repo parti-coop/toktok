@@ -38,4 +38,17 @@ module ApplicationHelper
   def is_redactorable?
     !browser.device.mobile? and !browser.device.tablet?
   end
+
+  def has_error_attr?(object, name)
+    object.respond_to?(:errors) && !(name.nil? || object.errors[name.to_s].empty?)
+  end
+
+  def error_class_str(object, name)
+    'has-error' if has_error_attr?(object, name)
+  end
+
+  def error_messages(object, name)
+    return unless has_error_attr?(object, name)
+    return raw resource.errors[name].join('<br>')
+  end
 end

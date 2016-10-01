@@ -42,4 +42,11 @@ Rails.application.routes.draw do
   end
   resources :questions, concerns: [:commentable, :likable]
   resources :comments, only: :index
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/devel/emails"
+  end
+  unless Rails.env.production?
+    get 'kill_me', to: 'users#kill_me'
+  end
 end

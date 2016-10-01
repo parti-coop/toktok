@@ -15,5 +15,6 @@ module Hotlinekr
     config.time_zone = 'Asia/Seoul'
     config.i18n.available_locales = [:en, :ko]
     config.i18n.default_locale = :ko
+    config.active_job.queue_adapter = ((Rails.env.test? or  Rails.env.development?) ? :inline : :sidekiq)
   end
 end

@@ -1,0 +1,18 @@
+%section#page-devise-confirmmations
+  .container
+    .intro
+      가입/이메일 확인
+      - unless resource.errors.empty?
+        .error_explanation
+          제대로 확인되지 않았습니다.
+          = error_messages(resource, :email)
+          = error_messages(resource, :confirmation_token)
+    .confirmmation-form
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        .form-group{class: error_class_str(resource, :email)}
+          = f.label :email do
+            확인 받을 이메일을 넣어 주세요.
+          = f.text_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control input-lg'
+
+        .form-group.form-group-submit
+          = f.submit ('email' == resource.try(:provider) ? '확인 메일 다시 보내기' : '계속하기'), class: 'btn btn-submit', data: { disable_with: "진행 중..." }

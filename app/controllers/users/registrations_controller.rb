@@ -3,13 +3,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # Overwrite update_resource to let users to update their user without giving their password
   def update_resource(resource, params)
-    resource.update_attributes(params)
+    resource.update_without_password(params)
   end
 
   private
 
   def sign_up_params
-    params.require(:user).permit(:remember_me, :nickname, :image, :email)
+    params.require(:user).permit(:remember_me, :nickname, :image, :email, :password, :password_confirmation)
   end
 
   def account_update_params

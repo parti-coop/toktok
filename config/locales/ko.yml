@@ -30,12 +30,12 @@ ko:
     format: "%{message}"
     messages:
       blank: "%{attribute}을 입력해 주세요."
-      not_saved: "저장되지 않았습니다"
+      not_saved: "저장되지 않았습니다."
+      taken: "이미 사용 중입니다."
     models:
       user:
         attributes:
           nickname: 아이디
-
   activerecord:
     models:
       proposal: 제안
@@ -59,17 +59,32 @@ ko:
         nickname: 아이디
         email: 이메일
         image: 프로필 사진
+        current_password: 비밀번호
+        password: 비밀번호
+        password_confirmation: 비밀번호 확인
 
     errors:
       models:
         user:
           attributes:
+            email:
+              taken: 이미 다른 회원이 사용 중인 이메일입니다.
+            password:
+              too_short: 비밀번호가 너무 짧습니다.
+              too_long: 비밀번호가 너무 깁니다.
             nickname:
               exclusion: '%{attribute}에 입력한 값이 올바르지 않습니다. 예시) users, admin, all 등은 사용할 수 없습니다.'
               invalid: '%{attribute} 형식이 올바르지 않습니다.'
               too_long: '%{attribute}는 20자를 넘을 수 없습니다.'
-              taken: '이미 사용중인 %{attribute}입니다'
-
+              taken: '이미 사용중인 %{attribute}입니다.'
+            password_confirmation:
+              confirmation: 비밀번호와 다릅니다.
+            confirmation_token:
+              invalid: "링크가 바르지 않습니다."
+            current_password:
+              invalid: "비밀번호가 틀립니다."
+            reset_password_token:
+              invalid: "링크가 바르지 않습니다."
   views:
     pagination:
       first: "&laquo; 처음"

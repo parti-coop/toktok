@@ -1,0 +1,47 @@
+%section#page-join
+  .container
+    %p.intro
+      시민의 제안으로 법안을 만드는 국회톡톡!
+      %br
+      지금 바로 시작해보세요.
+    .join-buttons
+      = link_to user_facebook_omniauth_authorize_path(provider: :facebook), class: 'btn btn-join btn-join-facebook' do
+        %span
+          %i.fa.fa-facebook.fa-fw
+          페이스북으로 로그인
+
+      = link_to user_twitter_omniauth_authorize_path(provider: :twitter), class: 'btn btn-join btn-join-twitter' do
+        %span
+          %i.fa.fa-twitter.fa-fw
+          트위터로 로그인
+
+      .email-login-box-wrapper
+        .email-login-box
+          %hr
+          .email-login-box-title-wraper
+            .email-login-box-title 또는 이메일로 로그인
+
+          = form_for User.new, url: session_path(:user) do |f|
+            = f.hidden_field :provider, value: 'email'
+            .form-group
+              = f.email_field :email, placeholder: '이메일을 입력하세요', class: 'form-control'
+            .form-group
+              = f.password_field :password, placeholder: '비밀번호를 입력하세요', autocomplete: "off", class: 'form-control'
+            .form-group
+              = f.submit '로그인', class: 'btn btn-primary btn-block', data: { disable_with: "로그인 중..." }
+          %hr
+            .links
+              .text-muted.text-left
+                처음이세요?
+                = link_to '이메일로 가입', new_user_registration_path
+              .text-muted.text-left
+                비밀번호가 기억나지 않으세요?
+                = link_to '비밀번호 분실', new_password_path(resource_name)
+              .text-muted.text-left
+                가입 확인 메일을 못 받으셨어요?
+                = link_to '다시 받기', new_user_confirmation_path
+
+
+
+
+

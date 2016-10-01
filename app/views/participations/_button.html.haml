@@ -10,7 +10,7 @@
       참여하기
       = project.participations_count if participation_at_participation
 - else
-  = link_to join_path, class: 'btn btn-default btn-lg btn-participation btn-participation__accept' do
+  = link_to new_user_session_path, class: 'btn btn-default btn-lg btn-participation btn-participation__accept' do
     참여하기
     = project.participations_count if participation_at_participation
 

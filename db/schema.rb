@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928052604) do
+ActiveRecord::Schema.define(version: 20161001042410) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -150,20 +150,27 @@ ActiveRecord::Schema.define(version: 20160928052604) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
-    t.string   "email",               default: "",        null: false
+    t.string   "email",                  default: "",        null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0,         null: false
+    t.integer  "sign_in_count",          default: 0,         null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "provider",                                null: false
-    t.string   "uid",                                     null: false
+    t.string   "provider",                                   null: false
+    t.string   "uid",                                        null: false
     t.string   "nickname"
     t.string   "image"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "role",                default: "citizen"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "role",                   default: "citizen"
+    t.string   "encrypted_password"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
     t.index ["role"], name: "index_users_on_role", using: :btree
   end
