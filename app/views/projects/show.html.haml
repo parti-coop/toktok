@@ -22,7 +22,8 @@
           = @project.title
 
       .project-panel__intro.project-panel
-        .project-image{style: "background-image: url(#{@project.image.lg.url});"}
+        .project-image
+          %img{src: @project.image.lg.url}
         .project-panel__status.project-panel
           .project-status-bar
             .steps{class: "steps--#{@project.status}"}<>

@@ -31,6 +31,7 @@ section#page-home .project {
 
   .steps {
     width: 100%;
+    background-color: $gray-lightest;
     .step {
       display: inline-block;
       text-align: center;
@@ -49,6 +50,7 @@ section#page-home .project {
     }
     .step:last-child {
       border-right: 1px solid $project-step-border-color;
+      float: right;
     }
     &.steps--running .step--running {
       border-right-color: $brand-primary;
@@ -113,14 +115,17 @@ section#page-home .project {
     margin-bottom: 10px;
   }
   .project-image {
-    height: 233px;
+    max-height: 233px;
+    min-height: 34px;
+    overflow: hidden;
     @media (max-width: $screen-xs-max) {
       height: 140px;
     }
     position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    img {
+      width: 100%;
+      height: auto;
+    }
     .steps {
       position: absolute;
       bottom: 0;
@@ -307,10 +312,12 @@ section#page-participations {
       }
 
       .project-image {
-        height: 233px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        max-height: 233px;
+        overflow: hidden;
+        img {
+          height: auto;
+          width: 100%;
+        }
       }
     }
 

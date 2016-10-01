@@ -63,7 +63,7 @@
 					this.opts.videoContainerClass = (typeof this.opts.videoContainerClass === 'undefined') ? 'video-container' : this.opts.videoContainerClass;
 
 					// parse if it is link on youtube & vimeo
-					var iframeStart = '<div class="' + this.opts.videoContainerClass + '"><iframe style="width: 500px; height: 281px;" src="',
+					var iframeStart = '<div class="' + this.opts.videoContainerClass + '"><iframe src="',
 						iframeEnd = '" frameborder="0" allowfullscreen></iframe></div>';
 
 					if (data.match(this.video.reUrlYoutube))

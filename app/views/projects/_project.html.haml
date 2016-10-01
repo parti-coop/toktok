@@ -15,7 +15,8 @@
     .project-title= project.title
     .project-summary!= project.summary
 
-    .project-image{style: "background-image: url(#{project.image.lg.url});"}
+    .project-image
+      %img{src: project.image.lg.url}
       .steps{class: "steps--#{project.status}"}<>
         .step.step--gathering<>
           = t("messages.project_status.gathering")
