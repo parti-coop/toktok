@@ -1,19 +1,12 @@
-- participation_at_participation ||= false
+- participation_at_home ||= false
 
 - if user_signed_in?
   - if project.participant?(current_user)
-    = link_to cancel_project_participations_path(project_id: project), method: :delete, remote: true, data: { confirm: '참여를 취소하겠습니까?', disable_with: "진행 중..." }, class: 'btn btn-default btn-lg btn-participation btn-participation__cancel' do
+    = link_to cancel_project_participations_path(project_id: project, participation_at_home: participation_at_home), method: :delete, data: { confirm: '참여를 취소하겠습니까?', disable_with: "진행 중..." }, class: 'btn btn-default btn-lg btn-participation btn-participation__cancel' do
       참여 중
-      = project.participations_count if participation_at_participation
   - else
-    = link_to project_participations_path(project_id: project), method: :post, remote: true, data: { disable_with: "진행 중..." }, class: 'btn btn-primary btn-lg btn-participation btn-participation__accept' do
+    = link_to project_participations_path(project_id: project, participation_at_home: participation_at_home), method: :post, data: { disable_with: "진행 중..." }, class: 'btn btn-primary btn-lg btn-participation btn-participation__accept' do
       참여하기
-      = project.participations_count if participation_at_participation
 - else
   = link_to new_user_session_path, class: 'btn btn-default btn-lg btn-participation btn-participation__accept' do
     참여하기
-    = project.participations_count if participation_at_participation
-
-- if participation_at_participation
-  %div
-    목표 #{project.participations_goal_count}명

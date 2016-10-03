@@ -15,7 +15,7 @@
 
     .project-title= project.title
     .project-summary!= project.summary
-
+    %a.anchor{id: "anchor-participation-home-#{project.id}"}
     .project-image
       %img{src: project.image.lg.url}
       .steps{class: "steps--#{project.status}"}<>

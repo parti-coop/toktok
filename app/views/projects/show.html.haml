@@ -66,6 +66,7 @@
 
   %section#project-participations
     .container
+      %a.anchor#anchor-participation
       .project-panel__participation.project-panel
         %p.participation-title
           - unless @project.participant?(current_user)
@@ -96,7 +97,6 @@
 
               .participations-goal-count
                 목표 #{@project.participations_goal_count}명
-
         .btn-project-participation#project-participation-button
           = render 'participations/button', project: @project
         .participation-users

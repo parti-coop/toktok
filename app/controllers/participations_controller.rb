@@ -8,23 +8,26 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation.user = current_user
-    @participation.save
-
-    respond_to do |format|
-      format.js
-      format.any { redirect_to root_path }
+    if params[:participation_at_home] == 'true'
+      @participation.user = current_user
+      @participation.save
+      redirect_back_with_anchor anchor: "anchor-participation-home-#{@participation.project.id}", fallback_location: root_path
+    else
+      @participation.user = current_user
+      @participation.save
+      redirect_back_with_anchor anchor: 'anchor-participation', fallback_location: @participation.project
     end
-
   end
 
   def cancel
-    @participation = Participation.find_by user: current_user, project: @project
-    @participation.try(:destroy)
-
-    respond_to do |format|
-      format.js
-      format.any { redirect_to root_path }
+    if params[:participation_at_home] == 'true'
+      @participation = Participation.find_by user: current_user, project: @project
+      @participation.try(:destroy)
+      redirect_back_with_anchor anchor: "anchor-participation-home-#{@project.id}", fallback_location: root_path
+    else
+      @participation = Participation.find_by user: current_user, project: @project
+      @participation.try(:destroy)
+      redirect_back_with_anchor anchor: 'anchor-participation', fallback_location: @project
     end
   end
 end
