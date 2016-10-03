@@ -1,4 +1,4 @@
-= form_for (@congressman.new_record? ? @congressman : [:admin, @congressman]) do |f|
+= form_for [:admin, @congressman] do |f|
   = f.hidden_field :committee_id, value: local_assigns[:committee].try(:id) || f.object.committee.id
   .form-group
     = f.label :name
@@ -27,6 +27,5 @@
   .form-group
     = f.label :party
     = f.text_field :party, class: 'form-control'
-
   .form-group
     = f.submit class: 'btn btn-defult'
