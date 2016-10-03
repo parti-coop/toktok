@@ -30,8 +30,13 @@ module Admin
     end
 
     def destroy
-      errors_to_flash(@committee) unless @committee.destroy
-      redirect_to admin_committees_url
+      if @committee.congressmen.present?
+        flash[:notice] = t('messages.has_congressman')
+        redirect_to admin_committees_url
+      else
+        errors_to_flash(@committee) unless @committee.destroy
+        redirect_to admin_committees_url
+      end
     end
 
     private
