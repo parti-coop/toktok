@@ -23,7 +23,7 @@
           - if user_signed_in?
             %li.visible-xs-inline= link_to '로그아웃', sign_out_path, method: :delete, class: 'btn btn-sign-out btn-block'
           - else
-            %li.visible-xs-inline= link_to '가입/로그인', new_user_session_path, class: 'btn btn-sign-in btn-block'
+            %li.visible-xs-inline= link_to '로그인', new_user_session_path, class: 'btn btn-sign-in btn-block'
           - if current_user.try(:role).try(:staff?)
             %li.dropdown.hidden-xs
               %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
@@ -47,4 +47,4 @@
                 로그아웃
           - else
             %li
-              = link_to '가입/로그인', new_user_session_path
+              = link_to '로그인', new_user_session_path

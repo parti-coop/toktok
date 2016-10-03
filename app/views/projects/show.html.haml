@@ -71,9 +71,13 @@
         %p.participation-title
           - unless @project.participant?(current_user)
             - if @project.participations.any?
-              이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 보세요!
+              이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 주세요!
+              %br
+              시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
             - else
-              이 제안에 첫 번째 참여시민이 되어 보세요!
+              이 제안의 첫 번째 참여시민이 되어 주세요!
+              %br
+              시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
           - else
             #{current_user.nickname}님은 제안에 참여 중이십니다.
         .participation-progress
@@ -108,7 +112,7 @@
         .project-panel__committee.project-panel
           .project-label
             %strong|
-            관련 상임위원회
+            이 제안의 상임위원회
           .committee-content
             .committee-name
               = @project.committee.name
@@ -125,7 +129,7 @@
                     .committee-congressman__contacts
                       .committee-congressman__contacts--tok
                         %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
-                          톡톡
+                          호출
                           = image_tag 'icon_comment_white.png', class:'tok-icon'
                       - if congressman.twitter_url.present?
                         .committee-congressman__contacts--twitter
@@ -139,6 +143,6 @@
         %hr.project-divider
         .project-label
           %strong|
-          참여시민 톡톡
+          댓글
           %span.text-muted (#{@project.comments.count})
-      = render 'comments/list', commentable: @project, placeholder: '의견을 남겨주세요.'
+      = render 'comments/list', commentable: @project, placeholder: '지지 메시지를 남겨주세요'

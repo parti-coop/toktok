@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
     image = options[:image] || view_context.image_url('seo.png')
     url = options[:url] || root_url
 
-    description = "시민의 제안으로 법안을 만듭니다. 지금 참여해서 시민의 제안을 국회로 연결해주세요!"
+    description = "내게 필요한 법, 국회톡톡으로 국회에 직접 제안하자!"
     {
       title:       title,
       reverse:     true,

@@ -1,12 +1,20 @@
 = form_for @proposal, html: { class: 'new_proposal action-validate', data: { 'validate-submit-form-control': 'form.new_proposal input[type="submit"]' } } do |f|
   .form-group
-    = f.label :title, class: 'required'
+    = f.label :title, class: 'required' do
+      제안의 제목을 20자 이내로 적어주세요.
     = f.text_field :title, class: 'form-control input-lg', data: { 'rule-required': true }
 
 
   .form-group
     = f.label :body, class: 'required'
-    .help-block 제안자 소개, 제안과정과 계기, 입법제안의 목적 등을 편하게  서술해주세요.
+    .help-block
+      국회에 어떤 법안을 제안하고 싶으신가요?
+      %br
+      1. 간단한 자기소개를 해주세요.
+      %br
+      2. 제안을 하는 이유를 밝혀주세요.
+      %br
+      3. 제안하는 내용을 자유롭게 기술해 주세요. (사진이나 통계 자료를 활용한다면 더욱 효과적인 제안이 될 수 있습니다.)
     = f.text_area :body, class: "form-control #{'redactor' if is_redactorable?}", rows: 10, data: { 'rule-required': true }
 
     #attachments
@@ -16,7 +24,7 @@
           첨부파일
       = f.fields_for :attachments do |ff|
         = render 'attachment_fields', f: ff
-      .help-block 제안을 대표 또는 설명하는 이미지, 영상을 파일 업로드 또는 링크해 주세요.
+      .help-block 제안을 설명하는 이미지, 영상을 파일 업로드 또는 링크해주세요.
 
   %hr
 
