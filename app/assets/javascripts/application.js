@@ -19,6 +19,7 @@
 //= require waypoints/sticky.js
 //= require jssocials
 //= require kakao
+//= require jquery.webui-popover
 
 UnobtrusiveFlash.flashOptions['timeout'] = 300000;
 
@@ -38,6 +39,8 @@ $.is_blank = function (obj) {
 }
 
 var prepare_social_share = function($base) {
+  $base.find('[data-action="toktok-popover"]').webuiPopover();
+
   $base.find('[data-action="toktok-share"]').each(function(i, elm) {
     var $elm = $(elm);
 

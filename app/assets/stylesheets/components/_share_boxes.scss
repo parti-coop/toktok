@@ -1,0 +1,53 @@
+.share-box {
+  .share-item {
+    min-width: 35px;
+    height: 35px;
+    background-color: #fff;
+    padding: 5px 3px;
+    text-align: center;
+    margin-right: 10px;
+    border-radius: $btn-border-radius-large;
+    -webkit-border-radius: $btn-border-radius-large;
+    -moz-border-radius: $btn-border-radius-large;
+    cursor: pointer;
+  }
+  .jssocials-share-logo {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .jssocials-share-facebook .fa {
+    color: #2a3ab0;
+  }
+  .jssocials-share-twitter {
+    .fa {
+      color: #56b1ff;
+    }
+    .jssocials-share-no-count {
+      display: none !important;
+    }
+  }
+  .jssocials-share-count {
+    color: #333333;
+    font-size: 14px;
+    padding: 0;
+    margin-left: 3px;
+  }
+  .jssocials-shares {
+    margin: 0;
+  }
+  .jssocials-share {
+    margin: 0.2em 0.3em;
+  }
+  .icon-kas {
+    width: 9px;
+    height: auto;
+    padding-top: 4px;
+  }
+  .share-kakao-link {
+    display: inline-block;
+    background-image: image_url('icon_kakao.png');
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+  }
+}
