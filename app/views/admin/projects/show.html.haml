@@ -52,13 +52,14 @@
       %h3 참여 국회의원
       %ul.list-group
         - @project.matches.each do |m|
-          %li.list-group-item
-            = m.congressman.name
-            = m.status_text
-            = m.created_at
-            .pull-right
-              = link_to '수정', [:edit, :admin, m]
-              = link_to '삭제', [:admin, m], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+          - if m.congressman.present?
+            %li.list-group-item
+              = m.congressman.name
+              = m.status_text
+              = m.created_at
+              .pull-right
+                = link_to '수정', [:edit, :admin, m]
+                = link_to '삭제', [:admin, m], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
         - if @project.unmathed_congressmen.any?
           %li.list-group-item
             = render 'admin/matches/new_form', project: @project
