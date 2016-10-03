@@ -49,6 +49,6 @@ module ApplicationHelper
 
   def error_messages(object, name)
     return unless has_error_attr?(object, name)
-    return raw resource.errors[name].join('<br>')
+    return raw object.errors[name].join('<br>')
   end
 end

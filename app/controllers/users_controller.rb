@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:me, :kill_me]
+  before_action :authenticate_user!, only: [:me, :kill_me, :edit_current_password, :update_current_password]
   def index
     @users = User.all
   end
@@ -11,6 +11,15 @@ class UsersController < ApplicationController
   def me
     @user = current_user
     render 'show'
+  end
+
+  def update_current_password
+    if current_user.update_with_password params.require(:user).permit(:password, :password_confirmation, :current_password)
+      bypass_sign_in(current_user)
+      redirect_to :current_user
+    else
+      render 'edit_current_password'
+    end
   end
 
   def kill_me

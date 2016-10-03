@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   resources :committees
   resources :congressmen
   resources :users
+  get '/current_password/edit', to: 'users#edit_current_password', as: :edit_current_password
+  patch '/current_password', to: 'users#update_current_password', as: :current_password
   get '/me', to: 'users#me', as: :current_user
   resources :proposals, concerns: [:commentable, :likable] do
     get :thanks, on: :member

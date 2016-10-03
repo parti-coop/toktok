@@ -25,3 +25,9 @@
           = image_tag resource.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
       .form-group.form-group-submit
         = f.submit '저장', class: 'btn btn-submit', data: { disable_with: "저장 중..." }
+        - if resource.provider == 'email'
+          %hr
+            .links
+              .text-muted.text-left
+                비밀번호를 바꾸시겠어요?
+                = link_to '변경하기', edit_current_password_path
