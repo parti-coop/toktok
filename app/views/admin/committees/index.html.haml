@@ -27,5 +27,5 @@
                   = c.name
                   .pull-right
                     = link_to '수정', [:edit, :admin, c]
-                    = link_to '삭제', c, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+                    = link_to '삭제', [:admin, c], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
 
