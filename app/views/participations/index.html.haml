@@ -27,6 +27,7 @@
       .row
         - @participations.each do |participation|
           .col-xs-6.col-sm-3
-            = link_to participation.user do
-              .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
-            = participation.user.nickname
+            - if participation.user.present?
+              = link_to participation.user do
+                .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
+              = participation.user.nickname
