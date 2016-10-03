@@ -23,12 +23,13 @@
           %span.count= @user.participations.count
         .projects
           - @user.participations.recent.each do |participation|
-            = link_to participation.project do
-              .project
-                .project-title= participation.project.title
-                .project-date
-                  = date_f participation.created_at
-                  참여
+            - if participation.project.present?
+              = link_to participation.project do
+                .project
+                  .project-title= participation.project.title
+                  .project-date
+                    = date_f participation.created_at
+                    참여
 
       - if @user.participations.any? and @user.proposals.any?
         %hr
