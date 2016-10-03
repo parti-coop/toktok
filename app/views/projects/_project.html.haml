@@ -10,7 +10,8 @@
           %span.count= project.comments.count
       .pull-right
         %span.share-button
-          %span.count= image_tag 'icon_share.png', class: 'icon-share'
+          = render 'projects/project_share', project: project
+          / %span.count= image_tag 'icon_share.png', class: 'icon-share'
 
     .project-title= project.title
     .project-summary!= project.summary

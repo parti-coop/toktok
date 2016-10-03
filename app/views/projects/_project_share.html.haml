@@ -1,0 +1,18 @@
+- share_partial = capture do
+  - data = {action: 'toktok-share', 'share-url': project_url(project), 'share-text': "#{project.title} || 시민의 제안으로 법안을 만듭니다. 지금 #국회톡톡 에 참여해서 시민의 제안을 국회로 연결해주세요!"}
+  - map = { facebook: data }
+  - map.update twitter: data, 'kakao-link': data, 'kakao-story': data
+  .share-box.clearfix
+    - %w(facebook twitter kakao-link kakao-story).each do |provider|
+      - data = map[provider.to_sym].merge('share-provider': provider)
+      - if provider == 'kakao-link'
+        - hide_kakao_link = (! browser.device.mobile?) ? ' hide' : ''
+        - data = data.merge('share-image': "icon_comment.png", 'share-image-width': '300', 'share-image-height': '158') if project.image
+      %span.pull-left{class: "share-item share-#{provider}#{hide_kakao_link}", data: data }
+        - if provider == 'kakao-story'
+          = image_tag 'icon_kas.png', class: 'icon-kas'
+%span.share-button{"data-url": "#share-partial-#{dom_id(project)}", "data-action": "toktok-popover", "data-placement": "left"}
+  %span.count= image_tag 'icon_share.png', class: 'icon-share'
+.hidden
+  .share-partial{id: "share-partial-#{dom_id(project)}"}
+    = share_partial
