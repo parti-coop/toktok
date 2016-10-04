@@ -17,7 +17,8 @@
     .project-summary!= project.summary
     %a.anchor{id: "anchor-participation-home-#{project.id}"}
     .project-image
-      %img{src: project.image.lg.url}
+      = link_to project_path(project) do
+        %img{src: project.image.lg.url}
       = render 'projects/project_steps', project: project, steps_from_home: true
 
     .project-graph
