@@ -8,6 +8,7 @@
         .pull-right
           %small
             = link_to '수정', [:edit, :admin, @project]
+            = link_to '삭제', [:admin, @project], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
 
     .panel.panel-default
       .panel-heading

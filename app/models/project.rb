@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :proposal, required: false
   belongs_to :user
   belongs_to :committee

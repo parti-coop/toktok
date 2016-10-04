@@ -11,6 +11,7 @@ gem 'enumerize', '~> 2.0'
 gem 'sequenced', '~> 3.1', '>= 3.1.1'
 gem 'kaminari', '~> 0.17.0'
 gem 'scoped_search', '~> 3.2', '>= 3.2.2'
+gem 'paranoia', '~> 2.2.0.pre'
 
 # ui
 gem 'sass-rails', '~> 5.0'

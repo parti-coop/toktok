@@ -394,6 +394,8 @@ GEM
       omniauth-oauth (~> 1.1)
     orm_adapter (0.5.0)
     os (0.9.6)
+    paranoia (2.2.0.pre)
+      activerecord (>= 4.0, < 5.1)
     pkg-config (1.1.7)
     postmark (1.7.1)
       json
@@ -599,6 +601,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.3.1)
   omniauth-naver (~> 0.1.0)
   omniauth-twitter (~> 1.2, >= 1.2.1)
+  paranoia (~> 2.2.0.pre)
   postmark-rails
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-assets-trianglify!
