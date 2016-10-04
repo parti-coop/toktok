@@ -128,9 +128,14 @@
                       = congressman.name
                     .committee-congressman__contacts
                       .committee-congressman__contacts--tok
-                        %a.action-mention.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
-                          호출
-                          = image_tag 'icon_comment_white.png', class:'tok-icon'
+                        - if user_signed_in?
+                          %a.action-mention.metion-btn.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
+                            호출
+                            = image_tag 'icon_comment_white.png', class:'tok-icon'
+                        - else
+                          %a.metion-btn.btn{ href: new_user_session_path}
+                            호출
+                            = image_tag 'icon_comment_white.png', class:'tok-icon'
                       - if congressman.twitter_url.present?
                         .committee-congressman__contacts--twitter
                           = link_to congressman.twitter_url, target: '_blank' do

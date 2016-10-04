@@ -413,7 +413,7 @@ section#page-participations {
             &__contacts {
               &--tok {
                 display: inline-block;
-                .action-mention {
+                .metion-btn {
                   @include responsive-font-size-small();
                   color: #fff;
                   background-color: $brand-primary;
