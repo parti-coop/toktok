@@ -373,6 +373,7 @@ section#page-participations {
         .committee-congressman-wrapper {
           padding-top: $committee-congressman-status-top;
           padding-left: $committee-congressman-status-left;
+          display: inline-table;
         }
         .committee-congressmen {
           margin-top: 5px;

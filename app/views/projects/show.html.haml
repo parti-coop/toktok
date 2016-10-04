@@ -112,7 +112,7 @@
           .committee-content
             .committee-name
               = @project.committee.name
-            .committee-congressmen.owl-carousel
+            .committee-congressmen{class: "#{'owl-carousel owl-theme' if browser.device.mobile?}"}
               - @project.committee.congressmen.each do |congressman|
                 .committee-congressman-wrapper
                   .committee-congressman
