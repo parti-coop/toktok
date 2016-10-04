@@ -33,11 +33,11 @@ class ApplicationController < ActionController::Base
 
   def build_meta_options(options)
     site_name = "국회톡톡"
-    title = "하고 싶은 말, 국회톡톡으로 의원에게 직접 톡으로 하자!"
+    title = options[:title] || "내게 필요한 법, 국회톡톡으로 국회에 직접 제안하자!"
     image = options[:image] || view_context.image_url('seo.png')
     url = options[:url] || root_url
+    description = options[:description] || "국회톡톡은 시민의 제안을 법으로 만듭니다. 지금 참여해서 시민의 제안을 국회로 연결해주세요!"
 
-    description = "내게 필요한 법, 국회톡톡으로 국회에 직접 제안하자!"
     {
       title:       title,
       reverse:     true,

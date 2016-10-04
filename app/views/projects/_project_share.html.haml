@@ -1,5 +1,5 @@
 - share_partial = capture do
-  - data = {action: 'toktok-share', 'share-url': project_url(project), 'share-text': "#{project.title} || 시민의 제안으로 법안을 만듭니다. 지금 #국회톡톡 에 참여해서 시민의 제안을 국회로 연결해주세요!"}
+  - data = {action: 'toktok-share', 'share-url': project_url(project), 'share-text': "#{project.title} || 시민의 제안으로 법안을 만듭니다. 지금 #국회톡톡 에 참여해서 시민의 제안을 국회로 연결해주세요!", 'share-image': "#{project.image.url}", 'share-sitename': "국회톡톡"}
   - map = { facebook: data }
   - map.update twitter: data, 'kakao-link': data, 'kakao-story': data
   .share-box.clearfix
