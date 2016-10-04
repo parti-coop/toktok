@@ -98,6 +98,30 @@ section#page-home .project {
   }
 }
 
+.step-modal {
+  .modal-header {
+    background-color: $site-header-primary;
+    color: #fff;
+    .close {
+      color: #fff;
+    }
+    .modal-title {
+      padding-left: 14px;
+    }
+  }
+  .modal-body {
+    img {
+      width: 100%;
+    }
+  }
+  .modal-footer {
+    text-align: center;
+  }
+  .step {
+    cursor: pointer;
+  }
+}
+
 section#page-home .project {
   padding: 20px;
 

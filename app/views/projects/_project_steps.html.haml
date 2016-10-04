@@ -1,0 +1,17 @@
+.steps{class: "steps--#{project.status}"}<>
+  .step-modal
+    - %w(gathering matching running).each do |project_status|
+      .step{class: "step--#{project_status}","data-target": "##{project_status}-example", "data-toggle": "modal", type: "button"}<>
+        = t("messages.project_status.#{project_status}")
+      .modal.fade{id: "#{project_status}-example", "aria-labelledby": "#{project_status}-label", role: "dialog", tabindex: "-1"}
+        .modal-dialog{role: "document"}
+          .modal-content
+            .modal-header
+              %button.close{"aria-label": "Close", "data-dismiss": "modal", type: "button"}
+                %span{"aria-hidden": "true"} &#215;
+              %h4.modal-title{id: "#{project_status}-label"}
+                = Project::STATUS[project_status][:title]
+            .modal-body
+              = image_tag "#{project_status}_example.png"
+            .modal-footer
+              %button.btn.btn-default{"data-dismiss": "modal", type: "button"} Close

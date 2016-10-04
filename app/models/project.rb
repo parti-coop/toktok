@@ -19,6 +19,18 @@ class Project < ApplicationRecord
   # mount
   mount_uploader :image, ImageUploader
 
+  STATUS = {
+    'gathering' => {
+      title: "'시민참여'단계에서는 시민의 제안을 받아 지지를 받습니다."
+    },
+    'matching' => {
+      title: "'의원매칭'단계에서는 1000명 이상의 지지를 받은 제안을 의원과 연결합니다."
+    },
+    'running' => {
+      title: "'입법활동'단계에서는 실제로 의원과 함께 입법을 위한 활동을 합니다."
+    }
+  }
+
   def participant? someone
     participations.exists? user: someone
   end

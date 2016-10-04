@@ -25,17 +25,13 @@
           %img{src: @project.image.lg.url}
         .project-panel__status.project-panel
           .project-status-bar
-            .steps{class: "steps--#{@project.status}"}<>
-              .step.step--gathering<>
-                = t("messages.project_status.gathering")
-              .step.step--matching<>
-                = t("messages.project_status.matching")
-              .step.step--running<>
-                = t("messages.project_status.running")
+            = render 'projects/project_steps', project: @project
+
         .project-panel__body
           != @project.body
         - @project.attachments.each do |attachment|
           = link_to attachment.name, attachment.source.url, target: '_blank'
+
 
   %section#project-meta
     .container

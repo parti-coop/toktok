@@ -18,13 +18,7 @@
     %a.anchor{id: "anchor-participation-home-#{project.id}"}
     .project-image
       %img{src: project.image.lg.url}
-      .steps{class: "steps--#{project.status}"}<>
-        .step.step--gathering<>
-          = t("messages.project_status.gathering")
-        .step.step--matching<>
-          = t("messages.project_status.matching")
-        .step.step--running<>
-          = t("messages.project_status.running")
+      = render 'projects/project_steps', project: project
 
     .project-graph
       - left_style = "left: #{project.participations_percentage - 5}%" if project.participations_percentage > 5 and project.participations_percentage <= 90
