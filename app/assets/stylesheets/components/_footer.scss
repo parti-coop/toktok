@@ -22,12 +22,15 @@ footer.footer {
       }
     }
   }
-  .help-mail a {
-    @include responsive-font-size-small();
-    color: $gray-light;
-    text-decoration: underline;
-    margin-top: 12p;
-    margin-bottom: 17px;
+  .user-agreement,
+  .help-mail {
+    a {
+      @include responsive-font-size-small();
+      color: $gray-light;
+      text-decoration: underline;
+      margin-top: 12p;
+      margin-bottom: 17px;
+    }
   }
   .social-share {
     margin-top: 10px;
