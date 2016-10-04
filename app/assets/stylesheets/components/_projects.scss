@@ -48,6 +48,9 @@ section#page-home .project {
       background-color: $gray-lightest;
       border-left: 1px solid $project-step-border-color;
     }
+    .step-popover {
+      cursor: pointer;
+    }
     .step:last-child {
       border-right: 1px solid $project-step-border-color;
       float: right;
@@ -95,30 +98,6 @@ section#page-home .project {
         @include angle-before(36px, $brand-primary, $gray-lighter)
       }
     }
-  }
-}
-
-.step-modal {
-  .modal-header {
-    background-color: $site-header-primary;
-    color: #fff;
-    .close {
-      color: #fff;
-    }
-    .modal-title {
-      padding-left: 14px;
-    }
-  }
-  .modal-body {
-    img {
-      width: 100%;
-    }
-  }
-  .modal-footer {
-    text-align: center;
-  }
-  .step {
-    cursor: pointer;
   }
 }
 

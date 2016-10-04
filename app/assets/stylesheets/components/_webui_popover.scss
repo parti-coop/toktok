@@ -1,0 +1,37 @@
+#webuiPopover1,
+#webuiPopover2,
+#webuiPopover3 {
+  z-index: 1029;
+  max-width: 400px;
+  @media (max-width: $screen-xs-max) {
+    width: 86%;
+  }
+}
+#project-gathering-example,
+#project-matching-example,
+#project-running-example {
+  padding: 10px 20px;
+  .project-example-label {
+    @include responsive-font-size-large();
+    color: $brand-primary;
+    margin-bottom: 2px;
+  }
+  .project-example-title {
+    color: $gray;
+    font-size: $font-size-base;
+  }
+  .project-example-sample {
+    @include responsive-font-size-large();
+    color: $brand-primary;
+    margin-bottom: 2px;
+  }
+  img {
+    max-width: 300px;
+    border: 1px solid $brand-primary;
+    border-radius: 2px;
+    padding: 20px;
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+    }
+  }
+}

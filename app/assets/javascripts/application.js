@@ -38,10 +38,9 @@ $.is_blank = function (obj) {
   return true;
 }
 
-var prepare_social_share = function($base) {
-  $base.find('[data-action="toktok-popover"]').webuiPopover();
-
-  $base.find('[data-action="toktok-share"]').each(function(i, elm) {
+$(function(){
+  $('[data-action="toktok-popover"]').webuiPopover();
+  $('[data-action="toktok-share"]').each(function(i, elm) {
     var $elm = $(elm);
 
     var url = $elm.data('share-url');
@@ -89,11 +88,8 @@ var prepare_social_share = function($base) {
       });
     }
   });
-}
 
-$(function(){
   $('.action-congressman-select').select2();
-  prepare_social_share($('html'));
   $('.action-mention').on('click', function(e) {
     e.preventDefault();
     var $target = $(e.currentTarget);

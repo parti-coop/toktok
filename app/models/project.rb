@@ -21,13 +21,19 @@ class Project < ApplicationRecord
 
   STATUS = {
     'gathering' => {
-      title: "'시민참여'단계에서는 시민의 제안을 받아 지지를 받습니다."
+      label: '시민참여',
+      title: "‘시민 참여’ 단계에서는 제안에 찬성하는 시민들의 지지와 참여를 모읍니다",
+      placement: 'bottom-right'
     },
     'matching' => {
-      title: "'의원매칭'단계에서는 1000명 이상의 지지를 받은 제안을 의원과 연결합니다."
+      label: '의원매칭',
+      title: "'의원 매칭' 단계에서는 시민참여 1,000건이 넘은 제안을 국회의원과 연결합니다.",
+      placement: 'bottom'
     },
     'running' => {
-      title: "'입법활동'단계에서는 실제로 의원과 함께 입법을 위한 활동을 합니다."
+      label: '입법활동',
+      title: "'입법 활동' 단계에서는 시민과 국회의원을 매칭한 '입법 드림팀'의 입법활동을 투명하게 공개합니다.",
+      placement: 'bottom-left'
     }
   }
 
