@@ -377,7 +377,7 @@ section#page-participations {
             position: relative;
             background-color: $gray-lightest;
             width: 148px;
-            height: 166px;
+            height: 196px;
             padding: 20px 12px 10px;
 
             &__status {
@@ -410,7 +410,8 @@ section#page-participations {
               text-align: center;
               margin-top: 7px;
             }
-            &__contacts {
+            &__contacts-first-line {
+              text-align: center;
               &--tok {
                 display: inline-block;
                 .metion-btn {
@@ -429,6 +430,12 @@ section#page-participations {
                   }
                 }
               }
+            }
+            &__contacts-second-line {
+              margin-top: 4px;
+              text-align: center;
+              &--email,
+              &--homepage,
               &--twitter,
               &--facebook {
                 background-color: $gray-light;

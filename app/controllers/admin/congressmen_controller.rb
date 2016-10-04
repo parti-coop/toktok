@@ -26,7 +26,7 @@ module Admin
     private
 
     def congressman_params
-      params.require(:congressman).permit(:name, :committee_id, :description, :party, :image, :image_cache, :facebook_url, :twitter_url)
+      params.require(:congressman).permit(:name, :committee_id, :description, :party, :image, :image_cache, :facebook_url, :twitter_url, :homepage_url, :email)
     end
   end
 end

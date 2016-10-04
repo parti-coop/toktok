@@ -126,8 +126,8 @@
                     .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
                     .committee-congressman__name
                       = congressman.name
-                    .committee-congressman__contacts
-                      .committee-congressman__contacts--tok
+                    .committee-congressman__contacts-first-line
+                      .committee-congressman__contacts-first-line--tok
                         - if user_signed_in?
                           %a.action-mention.metion-btn.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
                             호출
@@ -136,14 +136,23 @@
                           %a.metion-btn.btn{ href: new_user_session_path}
                             호출
                             = image_tag 'icon_comment_white.png', class:'tok-icon'
+                    .committee-congressman__contacts-second-line
+                      - if congressman.homepage_url.present?
+                        .committee-congressman__contacts-second-line--homepage
+                          = link_to congressman.homepage_url, target: '_blank' do
+                            %i.fa.fa-home.fa-fw
                       - if congressman.twitter_url.present?
-                        .committee-congressman__contacts--twitter
+                        .committee-congressman__contacts-second-line--twitter
                           = link_to congressman.twitter_url, target: '_blank' do
                             %i.fa.fa-twitter.fa-fw
                       - if congressman.facebook_url.present?
-                        .committee-congressman__contacts--facebook
+                        .committee-congressman__contacts-second-line--facebook
                           = link_to congressman.facebook_url, target: '_blank' do
                             %i.fa.fa-facebook.fa-fw
+                      - if congressman.email.present?
+                        .committee-congressman__contacts-second-line--email
+                          = mail_to congressman.email, target: '_blank' do
+                            %i.fa.fa-envelope.fa-fw
       .project-panel__comments.project-panel
         %hr.project-divider
         .project-label

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004012457) do
+ActiveRecord::Schema.define(version: 20161004052150) do
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20161004012457) do
     t.string   "image"
     t.string   "facebook_url"
     t.string   "twitter_url"
+    t.string   "email"
+    t.string   "homepage_url"
     t.index ["committee_id"], name: "index_congressmen_on_committee_id", using: :btree
   end
 
