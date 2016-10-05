@@ -131,7 +131,10 @@ $(function(){
 
   $('.owl-carousel').owlCarousel({
     autoWidth: true,
-    margin: 10
+    margin: 10,
+    dots: false,
+    nav: true,
+    navText: ['&lt;', '&gt;']
   })
 
   $('.action-show').on('click', function(e) {

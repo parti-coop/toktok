@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004052150) do
+ActiveRecord::Schema.define(version: 20161005024956) do
+
+  create_table "assigned_committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.integer  "committee_id", null: false
+    t.integer  "project_id",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["committee_id", "project_id"], name: "index_assigned_committees_on_committee_id_and_project_id", unique: true, using: :btree
+    t.index ["committee_id"], name: "index_assigned_committees_on_committee_id", using: :btree
+    t.index ["project_id"], name: "index_assigned_committees_on_project_id", using: :btree
+  end
 
   create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string   "source",          null: false
@@ -104,14 +114,12 @@ ActiveRecord::Schema.define(version: 20161004052150) do
     t.integer  "user_id"
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
-    t.integer  "committee_id"
     t.integer  "participations_count",                    default: 0
     t.integer  "participations_goal_count",               default: 1000
     t.string   "image"
     t.text     "summary",                   limit: 65535
     t.text     "proposer_description",      limit: 65535
     t.datetime "deleted_at"
-    t.index ["committee_id"], name: "index_projects_on_committee_id", using: :btree
     t.index ["deleted_at"], name: "index_projects_on_deleted_at", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree

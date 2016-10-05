@@ -363,7 +363,7 @@ section#page-participations {
     }
     &__committee {
       .committee-content {
-        margin-top: 6px;
+        margin-top: 12px;
         .committee-name {
 
         }
@@ -371,6 +371,9 @@ section#page-participations {
         $committee-congressman-status-top: 10px;
         $committee-congressman-status-left: 2px;
         .committee-congressman-wrapper {
+          @media (min-width: $screen-sm-min) {
+            margin-bottom: 12px;
+          }
           padding-top: $committee-congressman-status-top;
           padding-left: $committee-congressman-status-left;
           display: inline-table;

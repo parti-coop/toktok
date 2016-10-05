@@ -104,51 +104,54 @@
 
   %section#comments
     .container
-      - if @project.committee.present?
+      - if @project.committees.present?
         .project-panel__committee.project-panel
           .project-label
             %strong|
             이 제안의 상임위원회
-          .committee-content
-            .committee-name
-              = @project.committee.name
-            .committee-congressmen{class: "#{'owl-carousel owl-theme' if browser.device.mobile?}"}
-              - @project.committee.congressmen.each do |congressman|
-                .committee-congressman-wrapper
-                  .committee-congressman
-                    - unless @project.status == :gathering
-                      .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
-                        = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
-                    .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
-                    .committee-congressman__name
-                      = congressman.name
-                    .committee-congressman__contacts-first-line
-                      .committee-congressman__contacts-first-line--tok
-                        - if user_signed_in?
-                          %a.action-mention.metion-btn.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
-                            호출
-                            = image_tag 'icon_comment_white.png', class:'tok-icon'
-                        - else
-                          %a.metion-btn.btn{ href: new_user_session_path}
-                            호출
-                            = image_tag 'icon_comment_white.png', class:'tok-icon'
-                    .committee-congressman__contacts-second-line
-                      - if congressman.homepage_url.present?
-                        .committee-congressman__contacts-second-line--homepage
-                          = link_to congressman.homepage_url, target: '_blank' do
-                            %i.fa.fa-home.fa-fw
-                      - if congressman.twitter_url.present?
-                        .committee-congressman__contacts-second-line--twitter
-                          = link_to congressman.twitter_url, target: '_blank' do
-                            %i.fa.fa-twitter.fa-fw
-                      - if congressman.facebook_url.present?
-                        .committee-congressman__contacts-second-line--facebook
-                          = link_to congressman.facebook_url, target: '_blank' do
-                            %i.fa.fa-facebook.fa-fw
-                      - if congressman.email.present?
-                        .committee-congressman__contacts-second-line--email
-                          = mail_to congressman.email, target: '_blank' do
-                            %i.fa.fa-envelope.fa-fw
+          - if @project.committees.any?
+            .committees-contents
+              - @project.committees.each do |committee|
+                .committee-content
+                  .committee-name
+                    = committee.name
+                  .committee-congressmen.clearfix{class: "#{'owl-carousel owl-theme' if browser.device.mobile?}"}
+                    - committee.congressmen.each do |congressman|
+                      .committee-congressman-wrapper{class: "#{'col-xs-3' unless browser.device.mobile? }"}
+                        .committee-congressman
+                          - unless @project.status == :gathering
+                            .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
+                              = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
+                          .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
+                          .committee-congressman__name
+                            = congressman.name
+                          .committee-congressman__contacts-first-line
+                            .committee-congressman__contacts-first-line--tok
+                              - if user_signed_in?
+                                %a.action-mention.metion-btn.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
+                                  호출
+                                  = image_tag 'icon_comment_white.png', class:'tok-icon'
+                              - else
+                                %a.metion-btn.btn{ href: new_user_session_path}
+                                  호출
+                                  = image_tag 'icon_comment_white.png', class:'tok-icon'
+                          .committee-congressman__contacts-second-line
+                            - if congressman.homepage_url.present?
+                              .committee-congressman__contacts-second-line--homepage
+                                = link_to congressman.homepage_url, target: '_blank' do
+                                  %i.fa.fa-home.fa-fw
+                            - if congressman.twitter_url.present?
+                              .committee-congressman__contacts-second-line--twitter
+                                = link_to congressman.twitter_url, target: '_blank' do
+                                  %i.fa.fa-twitter.fa-fw
+                            - if congressman.facebook_url.present?
+                              .committee-congressman__contacts-second-line--facebook
+                                = link_to congressman.facebook_url, target: '_blank' do
+                                  %i.fa.fa-facebook.fa-fw
+                            - if congressman.email.present?
+                              .committee-congressman__contacts-second-line--email
+                                = mail_to congressman.email, target: '_blank' do
+                                  %i.fa.fa-envelope.fa-fw
       .project-panel__comments.project-panel
         %hr.project-divider
         .project-label

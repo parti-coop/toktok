@@ -1,10 +1,12 @@
 = form_for [:admin, @project] do |f|
 
   .form-group
-    = f.label :committee
-    = f.select :committee_id, nil, {}, {class: 'form-control input-lg'} do
+    = f.label :committees
+    .help-block
+      ctrl을 누른 채로 복수의 위원회를 선택할 수 있습니다.
+    = f.select :committee_ids, nil, {}, {class: 'form-control input-lg', multiple: true} do
       - Committee.all.each do |committee|
-        %option{value: committee.id, selected: @project.committee == committee}
+        %option{value: committee.id, selected: @project.committees.exists?(committee) }
           = committee.name
 
   .form-group
