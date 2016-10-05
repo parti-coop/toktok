@@ -52,7 +52,7 @@
         .panel-body
           = render @project.proposal
 
-  %h3 Attachments
+  %h3 첨부파일
   #attachments
     = f.fields_for :attachments do |ff|
       = render 'attachment_fields', f: ff

@@ -49,13 +49,28 @@ ko:
         proposer_phone: 휴대폰
         body: 내용
       project:
+        committees: 위원회
         title: 제목
+        summary: 요약
+        proposer_description: 제안자 설명
+        body: 내용
+        image: 대표 이미지
+        participations_goal_count: 목표 참여 인원
+        proposal_id: 관련 제안
       comment:
         body: 내용
       committee:
         name: 위원회 이름
+        description: 위원회 설명
       congressman:
         name: 이름
+        image: 사진
+        description: 설명
+        homepage_url: 홈페이지/블로그
+        facebook_url: 페이스북
+        twitter_url: 트위터
+        email: 이메일
+        party: 정당
       user:
         nickname: 아이디
         email: 이메일
@@ -63,6 +78,8 @@ ko:
         current_password: 비밀번호
         password: 비밀번호
         password_confirmation: 비밀번호 확인
+      match:
+        congressman_id: 의원
 
     errors:
       models:

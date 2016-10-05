@@ -1,7 +1,7 @@
 = form_tag admin_users_role_path, method: :patch do
   = hidden_field_tag :role, 'staff'
   .form-group
-    = label_tag :user_nickname
+    = label_tag "아이디"
     = text_field_tag :user_nickname
   .form-group
-    = submit_tag
+    = submit_tag "저장"
