@@ -21,7 +21,7 @@
     font-size: $font-size-base;
   }
   .project-example-sample {
-    @include responsive-font-size-large();
+    @include responsive-font-size-small();
     color: $brand-primary;
     margin-bottom: 2px;
   }
