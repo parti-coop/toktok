@@ -6,6 +6,8 @@
       = link_to 'http://parti.xyz', target: '_blank', class: 'footer-logo footer-logo__parti' do
         = image_tag 'footer_logo_parti.png'
     .user-agreement
+      = link_to '개인정보취급방침', privacy_path
+    .privacy
       = link_to '이용약관', user_agreement_path
     .help-mail
       %a(href="mailto:info@toktok.io") 문의하기 info@toktok.io

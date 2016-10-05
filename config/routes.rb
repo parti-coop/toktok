@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   root 'pages#home'
   get '/user_agreement', to: "pages#user_agreement", as: 'user_agreement'
+  get '/privacy', to: "pages#privacy", as: 'privacy'
 
   concern :commentable do
     resources :comments, shallow: true
