@@ -4,18 +4,20 @@ footer.footer {
   }
   background-color: $gray-lightest;
   text-align: center;
-  padding-top: 22px;
-  padding-bottom: 18px;
+  padding-top: 32px;
+  padding-bottom: 48px;
   .footer-logo-wrapper {
     margin-bottom: 14px;
 
     .footer-logo {
       img {
-        height: 20px;
+        width: 58px;
       }
 
-      &__wagl {
-        margin-right: 17px;
+      &__wagl,
+      &__future,
+      &__forum{
+        margin-right: 10px;
       }
       &__parti {
 
@@ -27,9 +29,8 @@ footer.footer {
   .help-mail {
     a {
       @include responsive-font-size-small();
-      color: $gray-light;
-      text-decoration: underline;
-      margin-top: 12p;
+      color: $gray-dark;
+      margin-top: 12px;
       margin-bottom: 17px;
     }
   }
