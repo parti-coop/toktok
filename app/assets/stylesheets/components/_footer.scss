@@ -9,19 +9,46 @@ footer.footer {
   .footer-logo-wrapper {
     margin-bottom: 14px;
 
+    .logo-host-wrapper {
+      margin-bottom: 24px;
+    }
+
+    .logo-partner-wrapper {
+      margin-bottom: 24px;
+      .footer-logo {
+        img {
+          width: 40px;
+        }
+      }
+    }
+
     .footer-logo {
       img {
         width: 58px;
       }
 
-      &__wagl,
-      &__future,
-      &__forum{
-        margin-right: 10px;
+      &__wagl {
+        margin-right: 20px;
       }
       &__parti {
 
       }
+      &__future {
+        margin-right: 10px;
+      }
+      &__forum{
+      }
+    }
+    .logo-divider {
+      font-size: 35px;
+      color: $site-header-primary;
+    }
+    .logo-label {
+      font-size: 12px;
+      color: $gray;
+    }
+    .footer-menu > span + span {
+      margin-left: 6px;
     }
   }
   .privacy,
@@ -32,6 +59,9 @@ footer.footer {
       color: $gray-dark;
       margin-top: 12px;
       margin-bottom: 17px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .social-share {

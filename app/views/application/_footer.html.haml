@@ -1,18 +1,22 @@
 %footer.footer
   .container
     .footer-logo-wrapper
-      = link_to 'http://www.wagl.net/', target: '_blank', class: 'footer-logo footer-logo__wagl' do
-        = image_tag 'footer_logo_wagl.png'
-      = link_to 'http://themirae.org/', target: '_blank', class: 'footer-logo footer-logo__future' do
-        = image_tag 'footer_logo_future.png'
-      = link_to '#', target: '_blank', class: 'footer-logo footer-logo__forum' do
-        = image_tag 'footer_logo_forum.png'
-      = link_to 'http://parti.xyz', target: '_blank', class: 'footer-logo footer-logo__parti' do
-        = image_tag 'footer_logo_parti.png'
-    .user-agreement
-      = link_to '개인정보취급방침', privacy_path
-    .privacy
-      = link_to '이용약관', user_agreement_path
+      .logo-host-wrapper
+        = link_to 'http://www.wagl.net/', target: '_blank', class: 'footer-logo footer-logo__wagl' do
+          = image_tag 'footer_logo_wagl.png'
+        = link_to 'http://parti.xyz', target: '_blank', class: 'footer-logo footer-logo__parti' do
+          = image_tag 'footer_logo_parti.png'
+      .logo-partner-wrapper
+        .logo-label 파트너 기관
+        = link_to 'http://themirae.org/', target: '_blank', class: 'footer-logo footer-logo__future' do
+          = image_tag 'footer_logo_future.png'
+        = link_to '#', target: '_blank', class: 'footer-logo footer-logo__forum' do
+          = image_tag 'footer_logo_forum.png'
+    .footer-menu
+      %span.privacy
+        = link_to '개인정보취급방침', privacy_path
+      %span.user-agreement
+        = link_to '이용약관', user_agreement_path
     .help-mail
       %a(href="mailto:info@toktok.io") 문의하기 info@toktok.io
     .social-share
