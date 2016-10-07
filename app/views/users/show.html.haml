@@ -5,8 +5,8 @@
       .user-meta
         .user-image.img-user-jumbo{style: "background-image: url(#{image_url(@user.image.sm.url)});"}
         .user-nickname= @user.nickname
-        .user-email= @user.email
         - if @user == current_user
+          .user-email= @user.email
           .user-edit
             = link_to edit_user_registration_path do
               %i.fa.fa-cog
