@@ -51,7 +51,9 @@
       = link_to '모두 보기', project_participations_path(project_id: @project), target: '_blank'
 
     %div
-      %h3 참여 국회의원
+      %h3
+        참여 국회의원
+        = link_to '관리/추가', admin_project_matches_path(@project), class: 'btn btn-default'
       %ul.list-group
         - @project.matches.each do |m|
           - if m.congressman.present?
@@ -60,11 +62,8 @@
               = m.status_text
               = m.created_at
               .pull-right
-                = link_to '수정', [:edit, :admin, m]
+                = link_to '상태변경', [:edit, :admin, m]
                 = link_to '삭제', [:admin, m], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
-        - if @project.unmathed_congressmen.any?
-          %li.list-group-item
-            = render 'admin/matches/new_form', project: @project
 
     %div
       = render 'comments/list', commentable: @project
