@@ -116,7 +116,7 @@
                   .committee-name
                     = committee.name
                   .committee-congressmen.clearfix{class: "#{'owl-carousel owl-theme' if browser.device.mobile?}"}
-                    - committee.congressmen.order(:name).each do |congressman|
+                    - @project.sorted_congressmen_of_committee(committee).each do |congressman|
                       .committee-congressman-wrapper{class: "#{'col-xs-3' unless browser.device.mobile? }"}
                         .committee-congressman
                           - unless @project.status == :gathering

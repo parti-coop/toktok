@@ -9,7 +9,9 @@ class Project < ApplicationRecord
   has_many :attachments, dependent: :destroy, as: :attachable
   has_many :participations, dependent: :destroy
   has_many :matches, dependent: :destroy
+  has_many :accept_matches, -> { where status: :accept }, class_name: Match
   has_many :matched_congressmen, through: :matches, source: :congressman
+  has_many :accept_congressmen, through: :accept_matches, source: :congressman
 
   validates :title, presence: true
 
@@ -74,11 +76,25 @@ class Project < ApplicationRecord
     return !(participant?(someone))
   end
 
+  def sorted_congressmen_of_committee(committee)
+    return committee.congressmen.order(:name) if status == :gathering
+    accept_committee_congressmane = committee.congressmen.where(id: accept_congressmen)
+    unmatched_committee_congressmane = committee.congressmen.where.not(id: accept_committee_congressmane)
+    [
+      accept_committee_congressmane.sort{ |x,y| match_of_congressman(y).try(:updated_at) <=> match_of_congressman(x).try(:updated_at) },
+      unmatched_committee_congressmane.order(:name)
+    ].flatten.compact
+  end
+
   private
 
   def squish_texts
     %i(body summary proposer_description).each do |text_field|
       self.send(text_field).try(:squish!)
     end
+  end
+
+  def match_of_congressman(congressman)
+    matches.find_by(congressman: congressman)
   end
 end

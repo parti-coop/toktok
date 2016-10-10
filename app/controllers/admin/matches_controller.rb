@@ -19,7 +19,7 @@ module Admin
 
     def update
       if @match.update_attributes(update_params)
-        redirect_to [:admin, @match.project]
+        redirect_to [:admin, @match.project, :matches]
       else
         errors_to_flash(@project)
         render 'new'
