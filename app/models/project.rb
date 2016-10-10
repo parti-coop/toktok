@@ -56,7 +56,7 @@ class Project < ApplicationRecord
     if match.present?
       return match.status
     else
-      :ready
+      :calling
     end
   end
 

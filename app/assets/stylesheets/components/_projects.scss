@@ -55,6 +55,9 @@ section#page-home .project {
       border-right: 1px solid $project-step-border-color;
       float: right;
     }
+    .fa-check {
+      color: $brand-primary;
+    }
     &.steps--running .step--running {
       border-right-color: $brand-primary;
     }

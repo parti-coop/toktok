@@ -21,11 +21,9 @@ ko:
         citizen: "시민"
     match:
       status:
-        ready: 준비
-        calling: 요청
-        accept: 참여
-        reject: 불참
-        no_answer: 불응
+        calling: 대기
+        accept: 응답
+        reject: 거부
 
   errors:
     format: "%{message}"
