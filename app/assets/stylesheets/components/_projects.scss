@@ -415,7 +415,7 @@ section#page-participations {
 
             &__status {
               display: inline-block;
-              border: 1px solid $gray;
+              border: 2px solid $brand-primary;
               border-radius: 50%;
               position: absolute;
               top: -1 * $committee-congressman-status-top;
@@ -424,8 +424,10 @@ section#page-participations {
               background-color: #fff;
               width: 40px;
               height: 40px;
-              line-height: 3;
+              line-height: 2.7;
               text-align: center;
+              font-weight: bold;
+              color: $brand-primary;
               &--accept {
                 border-color: $brand-success;
                 color: $brand-success;
