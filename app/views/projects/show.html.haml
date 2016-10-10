@@ -26,6 +26,13 @@
         .project-panel__status.project-panel
           .project-status-bar
             = render 'projects/project_steps', project: @project
+        - if @project.status == :matching
+          .media.project-matched-steps
+            .media-left.matched-icon
+              = image_tag 'icon_smile.png'
+            .media-body.matched-detail
+              '#{@project.title}'에 대한 시민의 ‘참여하기'가 #{number_with_delimiter(@project.participations_goal_count)}명을 돌파했습니다.
+          %hr.project-divider
 
         .project-panel__body
           != @project.body
@@ -53,57 +60,60 @@
                 .proposer-opinion
                   = simple_format @project.proposer_description
 
-  - unless @project.participant?(current_user)
-    %section#project-participations-stuckable
+  - if @project.status == :gathering
+    - unless @project.participant?(current_user)
+      %section#project-participations-stuckable
+        .container
+          .project-panel__participation.project-panel
+            .btn-project-participation#project-participation-button-stuckable
+              = render 'participations/button', project: @project
+
+    %section#project-participations
       .container
+        %a.anchor#anchor-participation
         .project-panel__participation.project-panel
-          .btn-project-participation#project-participation-button-stuckable
-            = render 'participations/button', project: @project
-
-  %section#project-participations
-    .container
-      %a.anchor#anchor-participation
-      .project-panel__participation.project-panel
-        %p.participation-title
-          - unless @project.participant?(current_user)
-            - if @project.participations.any?
-              이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 주세요!
-              %br
-              시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
-            - else
-              이 제안의 첫 번째 참여시민이 되어 주세요!
-              %br
-              시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
-          - else
-            #{current_user.nickname}님은 제안에 참여 중이십니다.
-        .participation-progress
-          .participation-progress__graph
-            - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
-            - right_style = "float: right;" if @project.participations_percentage > 90
-            .current-participations-count.clearfix
-              .content{style: "#{left_style} #{right_style}"}
-                참여
-                %span
-                  %span.count<>= @project.participations_count
-                  명
+          %p.participation-title
+            - unless @project.participant?(current_user)
+              - if @project.participations.any?
+                이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 주세요!
                 %br
-                %i.fa.fa-bullhorn
-            - if @project.participations_percentage >= 100
-              .bar
-                .participations-bar{style: "width: 100%"}
+                시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
+              - else
+                이 제안의 첫 번째 참여시민이 되어 주세요!
+                %br
+                시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
             - else
-              .bar
-                .participations-bar{style: "width: #{@project.participations_percentage}%"}
+              #{current_user.nickname}님은 제안에 참여 중이십니다.
+          .participation-progress
+            .participation-progress__graph
+              - left_style = "left: #{@project.participations_percentage - 5}%" if @project.participations_percentage > 5 and @project.participations_percentage <= 90
+              - right_style = "float: right;" if @project.participations_percentage > 90
+              .current-participations-count.clearfix
+                .content{style: "#{left_style} #{right_style}"}
+                  참여
+                  %span
+                    %span.count<>= @project.participations_count
+                    명
+                  %br
+                  %i.fa.fa-bullhorn
+              - if @project.participations_percentage >= 100
+                .bar
+                  .participations-bar{style: "width: 100%"}
+              - else
+                .bar
+                  .participations-bar{style: "width: #{@project.participations_percentage}%"}
 
-              .participations-goal-count
-                목표 #{@project.participations_goal_count}명
-        .btn-project-participation#project-participation-button
-          = render 'participations/button', project: @project
-        .participation-users
-          = render 'participations/list', project: @project
+                .participations-goal-count
+                  목표 #{@project.participations_goal_count}명
+          .btn-project-participation#project-participation-button
+            = render 'participations/button', project: @project
+          .participation-users
+            = render 'participations/list', project: @project
 
   %section#comments
     .container
+      - unless @project.status == :gathering
+        %hr.project-divider
       - if @project.committees.present?
         .project-panel__committee.project-panel
           .project-label

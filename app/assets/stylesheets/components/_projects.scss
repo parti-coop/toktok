@@ -261,7 +261,6 @@ section#page-participations {
     padding-left: 20px;
     padding-right: 20px;
   }
-
   section#project-participations {
     background-color: $site-header-primary;
     margin: 40px 0;
@@ -346,6 +345,30 @@ section#page-participations {
         }
       }
     }
+
+    .project-matched-steps {
+      min-height: 68px;
+      /*padding: 12px 15px;*/
+      border: 1px solid $brand-primary;
+
+      .matched-icon {
+        vertical-align: middle;
+        border-right: 1px solid $brand-primary;
+        min-height: 68px;
+        height: 100%;
+        text-align: center;
+        padding: 23px 21px;
+        img {
+          width: 20px;
+        }
+      }
+      .matched-detail {
+        vertical-align: middle;
+        padding: 12px 15px;
+        @include responsive-font-size-base();
+      }
+    }
+
     &__proposer {
       margin-top: 9px;
       .proposal-content {
