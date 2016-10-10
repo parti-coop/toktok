@@ -26,8 +26,11 @@ Rails.application.routes.draw do
   concern :commentable do
     resources :comments, shallow: true
   end
+
   concern :likable do
-    resources :likes, shallow: true
+    resources :likes, shallow: true do
+      delete :destroy, on: :collection
+    end
   end
 
   resources :committees
@@ -45,7 +48,7 @@ Rails.application.routes.draw do
     end
   end
   resources :questions, concerns: [:commentable, :likable]
-  resources :comments, only: :index
+  resources :comments, concerns: [:likable]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/devel/emails"

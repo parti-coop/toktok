@@ -1,13 +1,13 @@
 - if user_signed_in?
   - if Like.liked_by?(likable, current_user)
-    = link_to Like.like_by_likable_and_user(likable, current_user), method: :delete, data: { confirm: '공감을 취소하겠습니까?' }, class: 'btn btn-default btn-lg' do
-      지지
+    = link_to Like.like_by_likable_and_user(likable, current_user), method: :delete, remote: true, data: { confirm: '공감을 취소하겠습니까?' }, class: 'btn btn-default btn-sm' do
+      %i.fa.fa-thumbs-up
       = likable.likes.count
   - else
-    = link_to [likable, Like.new], method: :post, class: 'btn btn-primary btn-lg' do
-      지지
+    = link_to [likable, Like.new], method: :post, remote: true, class: 'btn btn-primary btn-sm' do
+      %i.fa.fa-thumbs-o-up
       = likable.likes.count
 - else
-  = link_to new_user_session_path, class: 'btn btn-default btn-lg' do
-    지지
+  = link_to new_user_session_path, class: 'btn btn-primary btn-sm' do
+    %i.fa.fa-thumbs-o-up
     = likable.likes.count
