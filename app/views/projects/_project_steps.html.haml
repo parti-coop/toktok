@@ -3,6 +3,14 @@
   - if steps_from_home
     - %w(gathering matching running).each do |project_status|
       .step{class: "step--#{project_status}"}<>
+        -if project.status == :matching
+          - if project_status == 'gathering'
+            %i.fa.fa-check
+        -if project.status == :running
+          - if project_status == 'gathering'
+            %i.fa.fa-check
+          - if project_status == 'matching'
+            %i.fa.fa-check
         = Project::STATUS[project_status][:label]
   - else
     - %w(gathering matching running).each do |project_status|
