@@ -1,11 +1,14 @@
-.comment[comment]
+.comment[comment]{class: "#{'best-comment' if local_assigns[:best_comments].present?}" }
   .media
+
     .media-left
       .comment-image.img-user-large{style: "background-image: url(#{image_url(comment.user.image.xs.url)});"}
     .media-body
       .comment-meta
         %span.comment-name= comment.user.nickname
         %span.comment-date= date_f comment.created_at
+        - if local_assigns[:best_comments].present?
+          %span.comment-best Best
       = simple_format comment.body
       .buttons
         - if can? :update, comment

@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def index
     @commentable = params[:commentable_type].classify.constantize.find(params[:commentable_id])
+    @best_comments = @commentable.comments.hottest
     @comments = @commentable.comments.recent.page(params[:page])
   end
 

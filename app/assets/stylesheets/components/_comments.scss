@@ -68,6 +68,8 @@ section#comments-edit {
 .comment {
   padding-top: 18px;
   padding-bottom: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: $gray;
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
@@ -89,6 +91,19 @@ section#comments-edit {
   .fa-thumbs-up {
     color: $brand-primary;
   }
+
+  .comment-best {
+    display: inline-block;
+    background-color: $brand-primary;
+    color: #fff;
+    padding: 1px 3px;
+    border-radius: 2px;
+    margin-left: 4px;
+  }
+}
+
+.best-comment {
+  background-color: $gray-lightest;
 }
 
 .btn-comment {

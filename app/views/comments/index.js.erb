@@ -1,5 +1,5 @@
 $('.comments-page').fadeOut("fast", function(){
-   var content = $('<%= escape_javascript(render "comments/page", comments: @comments, commentable: @commentable) %>').hide();
+   var content = $('<%= escape_javascript(render "comments/page", comments: @comments, commentable: @commentable, best_comments: @best_comments) %>').hide();
    $(this).replaceWith(content);
    $('.comments-page').fadeIn("fast");
    scroll_to_anchor('#anchor-comments');

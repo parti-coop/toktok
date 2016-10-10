@@ -1,4 +1,5 @@
 .comments-page
   .comments
+    = render partial: 'comments/comment', collection: best_comments, locals: { best_comments: "true" }
     = render partial: 'comments/comment', collection: comments
   = paginate comments, params: { controller: '/comments', action: 'index', commentable_type: commentable.class.to_s, commentable_id: commentable.id, id: nil }, remote: true
