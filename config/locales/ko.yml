@@ -45,7 +45,7 @@ ko:
       proposal:
         title: 제목
         proposer_email: 이메일
-        proposer_name: 제안하시는 분의 이름/조직
+        proposer_name: 제안하시는 분의 이름
         proposer_phone: 휴대폰
         body: 내용
       project:
