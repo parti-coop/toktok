@@ -46,8 +46,6 @@ class Project < ApplicationRecord
   def status
     if participations_count < participations_goal_count
       :gathering
-    elsif matches.having_status(:accept).any?
-      :running
     else
       :matching
     end

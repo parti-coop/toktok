@@ -13,6 +13,7 @@ ko:
       gathering: 시민 참여
       matching: 의원 매칭
       running: 입법 활동
+    default_matching_staff_message: 이제 국회의원들의 응답을 기다립니다. 응답을 원하는 의원을 댓글로 호출하세요!
 
   enumerize:
     user:
@@ -54,6 +55,7 @@ ko:
         body: 내용
         image: 대표 이미지
         participations_goal_count: 목표 참여 인원
+        matching_staff_message: 매칭단계 운영자 메시지
         proposal_id: 관련 제안
       comment:
         body: 내용

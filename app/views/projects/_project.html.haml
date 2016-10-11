@@ -21,17 +21,21 @@
         %img{src: project.image.lg.url}
       = render 'projects/project_steps', project: project, steps_from_home: true
 
-    .project-graph
+    .project-graph{class: "#{'highlighted-background' unless project.status == :gathering}"}
       - left_style = "left: #{project.participations_percentage - 5}%" if project.participations_percentage > 5 and project.participations_percentage <= 90
       - right_style = "float: right;" if project.participations_percentage > 90
       .current-participations-count.clearfix
         .content{style: "#{left_style} #{right_style}"}
+          -unless project.status == :gathering
+            %span
+              목표: #{project.participations_goal_count}명 /
           참여
           %span
             %span.count<>= project.participations_count
             명
           %br
-          %i.fa.fa-bullhorn
+          %i.fa.fa-bullhorn{class: "#{'pull-right' unless project.status == :gathering}"}
+
       - if project.participations_percentage >= 100
         .bar
           .participations-bar{style: "width: 100%"}
@@ -39,8 +43,15 @@
         .bar
           .participations-bar{style: "width: #{project.participations_percentage}%"}
 
-      .participations-goal-count
-        목표
-        %span
-          %span.count<>= project.participations_goal_count
-          명
+      -if project.status == :gathering
+        .participations-goal-count
+          목표
+          %span
+            %span.count<>= project.participations_goal_count
+            명
+      -else
+        .project-matching-message{class: "#{'text-center' unless browser.device.mobile?}"}
+          - if project.matching_staff_message.present?
+            = simple_format project.matching_staff_message
+          - else
+            = t("messages.default_matching_staff_message")

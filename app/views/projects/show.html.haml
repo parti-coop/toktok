@@ -27,12 +27,28 @@
           .project-status-bar
             = render 'projects/project_steps', project: @project
         - if @project.status == :matching
-          .media.project-matched-steps
-            .media-left.matched-icon
-              = image_tag 'icon_smile_on.png'
-            .media-body.matched-detail
-              '#{@project.title}'에 대한 시민의 ‘참여하기'가 #{number_with_delimiter(@project.participations_goal_count)}명을 돌파했습니다.
-          %hr.project-divider
+          .project-matched-steps
+            .media.project-matched-step
+              .media-left.matched-icon
+                = image_tag 'icon_smile_on.png'
+              .media-body.matched-detail
+                '#{@project.title}'에 대한 시민의 ‘참여하기'가 #{number_with_delimiter(@project.participations_goal_count)}명을 돌파했습니다.
+            .media.project-matched-step
+              .media-left.matched-icon
+                = image_tag 'icon_send_on.png'
+              .media-body.matched-detail
+                - @project.committees.each do |committee|
+                  = "'#{committee.name}'"
+                국회의원들에게 초대 메일을 보냈습니다.
+            .media.project-matched-step
+              .media-left.matched-icon
+                = image_tag 'icon_timer_on.png'
+              .media-body.matched-detail
+                - if @project.matching_staff_message.present?
+                  = simple_format @project.matching_staff_message
+                - else
+                  = t("messages.default_matching_staff_message")
+            %hr.project-divider
 
         .project-panel__body
           != @project.body

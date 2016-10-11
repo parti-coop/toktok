@@ -137,6 +137,9 @@ section#page-home .project {
       bottom: 0;
     }
   }
+  .project-graph.highlighted-background {
+    background-color: $brand-primary-lightest;
+  }
   .project-graph {
     border: 1px solid $brand-primary;
     padding: 16px 20px 12px;
@@ -156,6 +159,10 @@ section#page-home .project {
     }
     .participations-goal-count {
       text-align: center;
+    }
+    .project-matching-message {
+      margin-top: 20px;
+      margin-bottom: 5px;
     }
     .current-participations-count {
       .content {
@@ -347,25 +354,32 @@ section#page-participations {
     }
 
     .project-matched-steps {
-      min-height: 68px;
-      /*padding: 12px 15px;*/
-      border: 1px solid $brand-primary;
+      margin-top: 20px;
 
-      .matched-icon {
-        vertical-align: middle;
-        border-right: 1px solid $brand-primary;
+      .project-matched-step {
+        margin-top: 10px;
         min-height: 68px;
-        height: 100%;
-        text-align: center;
-        padding: 23px 21px;
-        img {
-          width: 20px;
+        border: 1px solid $brand-primary;
+
+        .matched-icon {
+          vertical-align: middle;
+          border-right: 1px solid $brand-primary;
+          min-height: 68px;
+          height: 100%;
+          text-align: center;
+          padding: 23px 21px;
+          img {
+            width: 20px;
+          }
         }
-      }
-      .matched-detail {
-        vertical-align: middle;
-        padding: 12px 15px;
-        @include responsive-font-size-base();
+        .matched-detail {
+          vertical-align: middle;
+          padding: 12px 15px;
+          @include responsive-font-size-base();
+          p {
+            margin-bottom: 0;
+          }
+        }
       }
     }
 

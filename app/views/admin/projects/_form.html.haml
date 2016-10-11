@@ -41,6 +41,10 @@
       입력하지 않으면 1000명 기본값으로 설정됩니다.
 
   .form-group
+    = f.label :matching_staff_message
+    = f.text_area :matching_staff_message, class: 'form-control'
+
+  .form-group
     = f.label :proposal_id
     = f.text_field :proposal_id, class: 'form-control input-lg'
     .help-block
