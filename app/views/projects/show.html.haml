@@ -29,7 +29,7 @@
         - if @project.status == :matching
           .media.project-matched-steps
             .media-left.matched-icon
-              = image_tag 'icon_smile.png'
+              = image_tag 'icon_smile_on.png'
             .media-body.matched-detail
               '#{@project.title}'에 대한 시민의 ‘참여하기'가 #{number_with_delimiter(@project.participations_goal_count)}명을 돌파했습니다.
           %hr.project-divider
