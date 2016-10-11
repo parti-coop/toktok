@@ -88,8 +88,9 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
+gem 'letter_opener_web'
+
 group :development, :test do
-  gem 'letter_opener_web'
   gem 'byebug'
   gem 'minitest-focus',     '~> 1.1', '>= 1.1.2'
   gem 'guard', '~> 2.13.0'
