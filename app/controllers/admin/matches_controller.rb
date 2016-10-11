@@ -29,7 +29,7 @@ module Admin
     private
 
     def create_params
-      params.require(:match).permit(:congressman_id)
+      params.require(:match).permit(:congressman_id, status: :calling)
     end
 
     def update_params
