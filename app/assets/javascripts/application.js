@@ -39,7 +39,16 @@ $.is_blank = function (obj) {
 }
 
 $(function(){
-  $('[data-action="toktok-popover"]').webuiPopover();
+  $('[data-action="toktok-popover"]').each(function(i, elm) {
+    var $elm = $(elm);
+    if ($elm.attr('data-project-now-step') == 'gathering') {
+      $('[data-project-status="matching"]').webuiPopover();
+      $('[data-project-status="running"]').webuiPopover();
+    } else if ($elm.attr('data-project-now-step') == 'matching') {
+      $('[data-project-status="running"]').webuiPopover();
+    }
+  });
+
   $('[data-action="toktok-share"]').each(function(i, elm) {
     var $elm = $(elm);
 

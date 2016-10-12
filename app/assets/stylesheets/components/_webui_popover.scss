@@ -1,6 +1,4 @@
-#webuiPopover1,
-#webuiPopover2,
-#webuiPopover3 {
+.webui-popover {
   z-index: 1029;
   max-width: 400px;
   @media (max-width: $screen-xs-max) {

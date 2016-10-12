@@ -341,16 +341,16 @@ section#page-participations {
     }
 
     &__status .project-status-bar {
-      .steps .step {
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid $project-step-border-color;
-        &.steps--gathering .step--gathering,
-        &.steps--matching .step--matching,
-        &.steps--running .step--running {
-          border-top: 1px solid $brand-primary;
-          border-bottom: 1px solid $brand-primary;
+      .steps .step-wrapper {
+        border-top: 1px solid $brand-primary;
+        /*border-bottom: 1px solid $brand-primary;*/
+        display: inline;
+        cursor: pointer;
+        .step {
+          border-bottom: 1px solid $project-step-border-color;
         }
       }
+
     }
 
     .project-matched-steps {
