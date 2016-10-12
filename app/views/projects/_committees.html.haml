@@ -21,9 +21,14 @@
                   .committee-congressman__contacts-first-line
                     .committee-congressman__contacts-first-line--tok
                       - if user_signed_in?
-                        %a.action-mention.metion-btn.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
-                          호출
-                          = image_tag 'icon_comment_white.png', class:'tok-icon'
+                        - if @project.participant?(current_user)
+                          %a.action-mention.metion-btn.btn{ href: '#', data: { mention: { to: congressman.name, 'form-control': '#new_comment textarea#comment_body', 'form-placeholder': '.placeholder.action-show' } } }
+                            호출
+                            = image_tag 'icon_comment_white.png', class:'tok-icon'
+                        - else
+                          %a.action-mention-before-paticipation.metion-btn.btn{ href: '#anchor-participation' }
+                            호출
+                            = image_tag 'icon_comment_white.png', class:'tok-icon'
                       - else
                         %a.metion-btn.btn{ href: new_user_session_path}
                           호출

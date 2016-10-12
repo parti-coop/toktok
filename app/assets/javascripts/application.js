@@ -115,6 +115,10 @@ $(function(){
     }
     $(form_control).focus();
   });
+  $('.action-mention-before-paticipation').on('click', function(e) {
+    $('.tab-content #gathering').addClass('active')
+    UnobtrusiveFlash.showFlashMessage('참여 후에 의원을 호출할 수 있습니다. 먼저 이 프로젝트에 참여 해 주세요!')
+  });
 
   $(document).click(function (event) {
     var clickover = $(event.target);
