@@ -23,27 +23,28 @@
                 = simple_format @project.matching_staff_message
               - else
                 = t("messages.default_matching_staff_message")
-          %hr.project-divider
-          .project-panel__comgressmen-comment.project-panel
-            .project-label
-              %strong|
-              의원 한마디
-            - @project.matches.each do |match|
-              - if match.matching_comment.present?
-                .project-panel__comgressman
-                  .media
-                    .media-left
-                      .comgressman-image.img-user-large{style: "background-image: url(#{match.congressman.image.sm.url})"}
-                    .media-body.comgressman-comment-content
-                      %span.comgressman-name
-                        = match.congressman.name
-                      - if match.congressman.party.present?
-                        %span.comgressman-party
-                          | #{match.congressman.party}
-                      %span{class: "btn-xs comgressman-match-status comgressman-match-status-#{match.status}"}
-                        = match.translation(match.status)
-                      .comgressman-opinion
-                        = match.matching_comment
+          - if @project.mathced_congressmen_commented?
+            %hr.project-divider
+            .project-panel__comgressmen-comment.project-panel
+              .project-label
+                %strong|
+                의원 한마디
+              - @project.matches.each do |match|
+                - if match.matching_comment.present?
+                  .project-panel__comgressman
+                    .media
+                      .media-left
+                        .comgressman-image.img-user-large{style: "background-image: url(#{match.congressman.image.sm.url})"}
+                      .media-body.comgressman-comment-content
+                        %span.comgressman-name
+                          = match.congressman.name
+                        - if match.congressman.party.present?
+                          %span.comgressman-party
+                            | #{match.congressman.party}
+                        %span{class: "btn-xs comgressman-match-status comgressman-match-status-#{match.status}"}
+                          = match.translation(match.status)
+                        .comgressman-opinion
+                          = match.matching_comment
 
 
           %hr.project-divider

@@ -84,6 +84,12 @@ class Project < ApplicationRecord
     ].flatten.compact
   end
 
+  def mathced_congressmen_commented?
+    matches.any?  do |match|
+      match.matching_comment.present?
+    end
+  end
+
   private
 
   def squish_texts
