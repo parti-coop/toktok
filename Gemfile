@@ -83,6 +83,7 @@ gem 'ey_config'
 
 # tool
 gem 'redactor2_rails', '~> 0.1.1'
+gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
 
 group :development do
   gem 'web-console', '~> 2.0'
