@@ -401,6 +401,40 @@ section#page-participations {
         }
       }
     }
+    &__comgressman {
+      margin-top: 9px;
+      margin-bottom: 14px;
+      .comgressman-comment-content {
+        color: $gray;
+        @include responsive-font-size-small();
+        .comgressman-match-status {
+          color: #fff;
+          margin-left: 2px;
+          padding: 1px 2px;
+
+          &-calling {
+            background-color: $brand-primary;
+          }
+          &-accept {
+            background-color: $brand-success;
+          }
+          &-reject {
+            background-color: $brand-danger;
+          }
+        }
+        .comgressman-opinion {
+          line-height: 24px;
+          p {
+            margin: 0 0 24px;
+          }
+          @include responsive-font-size-base();
+          background-color: $gray-lightest;
+          margin-top: 5px;
+          padding: 4px 16px;
+          border-radius: $border-radius-base;
+        }
+      }
+    }
     &__committee {
       .committee-content {
         margin-top: 12px;

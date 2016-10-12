@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011084543) do
+ActiveRecord::Schema.define(version: 20161012152917) do
 
   create_table "assigned_committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.integer  "committee_id", null: false
@@ -78,11 +78,12 @@ ActiveRecord::Schema.define(version: 20161011084543) do
   end
 
   create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
-    t.integer  "project_id",                         null: false
-    t.integer  "congressman_id",                     null: false
-    t.string   "status",         default: "calling", null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "project_id",                                         null: false
+    t.integer  "congressman_id",                                     null: false
+    t.string   "status",                         default: "calling", null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.text     "matching_comment", limit: 65535
     t.index ["congressman_id"], name: "index_matches_on_congressman_id", using: :btree
     t.index ["project_id", "congressman_id"], name: "index_matches_on_project_id_and_congressman_id", unique: true, using: :btree
     t.index ["project_id"], name: "index_matches_on_project_id", using: :btree

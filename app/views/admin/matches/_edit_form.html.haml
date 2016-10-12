@@ -3,4 +3,7 @@
     = f.label :status
     = f.select :status, Match.status.options, {}, { class: 'form-control input-lg' }
   .form-group
+    = f.label :matching_comment
+    = f.text_area :matching_comment, class: "form-control", rows: 4
+  .form-group
     = f.submit class: 'btn btn-defult'

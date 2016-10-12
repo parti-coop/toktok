@@ -80,6 +80,8 @@ ko:
         password_confirmation: 비밀번호 확인
       match:
         congressman_id: 의원
+        status: 매칭 여부
+        matching_comment: 의원 한마디
 
     errors:
       models:

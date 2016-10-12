@@ -33,7 +33,7 @@ module Admin
     end
 
     def update_params
-      params.require(:match).permit(:status)
+      params.require(:match).permit(:status, :matching_comment)
     end
   end
 end
