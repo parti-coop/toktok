@@ -308,7 +308,7 @@ section#page-participations {
 
   .project-panel {
     margin-bottom: 6px;
-
+    &__gathering,
     &__intro {
       color: $gray;
       .project-panel__body {
