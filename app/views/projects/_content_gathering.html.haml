@@ -38,14 +38,20 @@
     .project-panel__participation.project-panel
       %p.participation-title
         - unless @project.participant?(current_user)
-          - if @project.participations.any?
-            이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 주세요!
-            %br
-            시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
+          - if @project.status == :gathering
+            - if @project.participations.any?
+              이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 주세요!
+              %br
+              시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
+            - else
+              이 제안의 첫 번째 참여시민이 되어 주세요!
+              %br
+              시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
           - else
-            이 제안의 첫 번째 참여시민이 되어 주세요!
+            시민의 참여가 목표인원인 #{number_with_delimiter(@project.participations_goal_count)}명을 달성했습니다
+            %i !
             %br
-            시민 1,000명이 모이면 국회의원 매칭을 시작합니다!
+            목표인원이 채워진 이후에도 계속 참여 가능합니다.
         - else
           #{current_user.nickname}님은 제안에 참여 중이십니다.
       .participation-progress
