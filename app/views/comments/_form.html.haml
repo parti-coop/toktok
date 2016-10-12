@@ -7,7 +7,7 @@
         .form-group
           = f.text_area :body, rows: 5, class: 'form-control', placeholder: local_assigns[:placeholder]
         .form-group
-          = f.submit '저장', class: 'btn btn-comment'
+          = f.submit '저장', class: 'btn btn-comment', data: { disable_with: "진행 중..." }
     - else
       참여시민의 지지의견입니다.
   - else
