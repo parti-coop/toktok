@@ -42,7 +42,7 @@
                           %span.comgressman-party
                             | #{match.congressman.party}
                         %span{class: "btn-xs comgressman-match-status comgressman-match-status-#{match.status}"}
-                          = match.translation(match.status)
+                          = match.status_text
                         .comgressman-opinion
                           = match.matching_comment
 
