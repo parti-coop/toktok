@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable, :confirmable
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :trackable, :omniauthable,
-         :omniauth_providers => [:facebook, :twitter]
+         :omniauth_providers => [:facebook, :twitter, :kakao]
 
   has_many :proposals, dependent: :destroy
   has_many :participations, dependent: :destroy

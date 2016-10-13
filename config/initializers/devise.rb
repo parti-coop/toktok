@@ -241,6 +241,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], scope: "email", info_fields: 'email,name', secure_image_url: true, image_size: 'large'
   config.omniauth :twitter, ENV['TWITTER_APP_ID'], ENV['TWITTER_APP_SECRET']
+  config.omniauth :kakao, ENV['KAKAO_CLIENT_ID'], {redirect_path: '/users/auth/kakao/callback'}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

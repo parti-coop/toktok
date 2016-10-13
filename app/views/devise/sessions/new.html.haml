@@ -15,6 +15,11 @@
           %i.fa.fa-twitter.fa-fw
           트위터로 로그인
 
+      = link_to user_kakao_omniauth_authorize_path(provider: :kakao), class: 'btn btn-join btn-join-kakao' do
+        %span
+          = image_tag 'icon_kakao.png'
+          카카오톡으로 로그인
+
       .email-login-box-wrapper
         .email-login-box
           %hr

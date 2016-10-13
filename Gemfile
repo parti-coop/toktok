@@ -53,6 +53,7 @@ gem 'omniauth-google-oauth2', '~> 0.3.1'
 gem 'omniauth-naver', '~> 0.1.0'
 gem 'twitter', '~> 5.16'
 gem 'google-api-client', '~> 0.9.2'
+gem 'omniauth-kakao', github: 'hans-hk/omniauth-kakao'
 
 # util
 gem 'sdoc', '~> 0.4.0', group: :doc
