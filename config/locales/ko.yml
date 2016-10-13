@@ -23,7 +23,7 @@ ko:
     match:
       status:
         calling: 대기
-        accept: 응답
+        accept: 참여
         reject: 거부
 
   errors:

@@ -90,6 +90,25 @@ class Project < ApplicationRecord
     end
   end
 
+  def any_congressman_accepted?
+    matches.any? do |match|
+      status_of_congressman(match.congressman) == 'accept'
+    end
+  end
+
+  def has_congressman_accepted?(congressman)
+    match = matches.find_by congressman: congressman
+    if match.present?
+      if match.status == 'accept'
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
   private
 
   def squish_texts

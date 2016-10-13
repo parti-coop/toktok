@@ -55,3 +55,9 @@
             = simple_format project.matching_staff_message
           - else
             = t("messages.default_matching_staff_message")
+          %p
+            - if project.any_congressman_accepted?
+              - project.matches.each do |match|
+                - if project.has_congressman_accepted?(match.congressman)
+                  = "'#{match.congressman.name}(#{match.congressman.committee.name})'"
+              의원이 참여했습니다!
