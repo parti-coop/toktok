@@ -11,7 +11,7 @@
           .committee-congressmen.clearfix{class: "#{'owl-carousel owl-theme' if browser.device.mobile?}"}
             - @project.sorted_congressmen_of_committee(committee).each do |congressman|
               .committee-congressman-wrapper{class: "#{'col-xs-3' unless browser.device.mobile? }"}
-                .committee-congressman
+                .committee-congressman{class: "committee-congressman-#{@project.status_of_congressman(congressman)}"}
                   - unless @project.status == :gathering
                     .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
                       = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")

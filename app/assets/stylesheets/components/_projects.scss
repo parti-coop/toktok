@@ -461,6 +461,10 @@ section#page-participations {
             height: 196px;
             padding: 20px 12px 10px;
 
+            &-accept{
+              background-color: $brand-primary-lightest;
+            }
+
             &__status {
               display: inline-block;
               border: 2px solid $brand-primary;
