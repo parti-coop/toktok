@@ -14,7 +14,14 @@
                 .committee-congressman{class: "committee-congressman-#{@project.status_of_congressman(congressman)}"}
                   - unless @project.status == :gathering
                     .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
-                      = t("enumerize.match.status.#{@project.status_of_congressman(congressman)}")
+                      - if @project.status_of_congressman(congressman) == :accept
+                        = image_tag 'icon_match_accept'
+                      - if @project.status_of_congressman(congressman) == :reject
+                        = image_tag 'icon_match_reject'
+                      - if @project.status_of_congressman(congressman) == :calling
+                        = t("enumerize.match.status.calling")
+
+
                   .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
                   .committee-congressman__name
                     = congressman.name

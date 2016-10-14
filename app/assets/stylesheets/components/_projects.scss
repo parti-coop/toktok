@@ -480,13 +480,11 @@ section#page-participations {
               text-align: center;
               font-weight: bold;
               color: $brand-primary;
-              &--accept {
-                border-color: $brand-success;
-                color: $brand-success;
-              }
-              &--reject {
-                border-color: $brand-danger;
-                color: $brand-danger;
+              &--accept, &--reject {
+                border: none;
+                img {
+                  width: 40px;
+                }
               }
             }
             &__image {
