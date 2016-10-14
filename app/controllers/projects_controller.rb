@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource
-  before_action :reset_meta_tags, if: "request.get?"
+  before_action :reset_meta_tags, only: :show
 
   def index
     @projects = Project.all

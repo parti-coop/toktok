@@ -15,9 +15,9 @@
                   - unless @project.status == :gathering
                     .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
                       - if @project.status_of_congressman(congressman) == :accept
-                        = image_tag 'icon_match_accept'
+                        = image_tag 'icon_match_accept.png'
                       - if @project.status_of_congressman(congressman) == :reject
-                        = image_tag 'icon_match_reject'
+                        = image_tag 'icon_match_reject.png'
                       - if @project.status_of_congressman(congressman) == :calling
                         = t("enumerize.match.status.calling")
 
