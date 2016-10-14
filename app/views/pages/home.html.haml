@@ -2,10 +2,12 @@
   %section#key-visual
     .container
       %p
-        국회에 직접 메시지를 보내세요.
+        국회에 직접 제안을 보내세요.
         %br
-        시민 1,000명의 메시지가 모이면, 국회의원이 응답합니다!
+        시민의 제안으로 법안을 만듭니다.
       = image_tag 'key_visual.png', class: 'key-visual-image'
+      = link_to new_proposal_path, class: 'btn btn-default btn-lg btn-home-proposal' do
+        제안하기
 
   %section#current-projects
     .container.project-container
