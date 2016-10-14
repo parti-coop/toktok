@@ -49,6 +49,8 @@ $(function(){
     }
   });
 
+  $('[data-action="toktok-social-popover"]').webuiPopover();
+
   $('[data-action="toktok-share"]').each(function(i, elm) {
     var $elm = $(elm);
 
