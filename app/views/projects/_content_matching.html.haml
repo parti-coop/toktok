@@ -55,6 +55,6 @@
             .project-summary
               = simple_format @project.summary
 
-          %hr.project-divider
+= render 'project_participations', project: @project
 
 
