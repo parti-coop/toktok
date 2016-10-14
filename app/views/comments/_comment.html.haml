@@ -9,7 +9,8 @@
         %span.comment-date= date_f comment.created_at
         - if local_assigns[:best_comments].present?
           %span.comment-best Best
-      = smart_format comment.body
+      .comment-body
+        = smart_format comment.body
       .buttons
         - if can? :update, comment
           = link_to '수정', [:edit, comment]

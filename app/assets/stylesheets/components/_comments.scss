@@ -85,6 +85,9 @@ section#comments-edit {
       margin-right: 9px;
     }
   }
+  .comment-body {
+    word-break: break-all;
+  }
   .buttons a + a {
     margin-left: 9px;
   }
