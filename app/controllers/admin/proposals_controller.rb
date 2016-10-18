@@ -4,5 +4,10 @@ module Admin
     def index
       @proposals = Proposal.all
     end
+
+    def destroy
+      errors_to_flash(@proposal) unless @proposal.destroy
+      redirect_to admin_proposals_path
+    end
   end
 end

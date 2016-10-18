@@ -15,6 +15,8 @@
                 = link_to project.title, [:admin, project]
             - else
               = link_to '제안매칭 만들기', new_admin_project_path(proposal_id: @proposal.id)
+              .pull-right
+                = link_to '삭제', [:admin, @proposal], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
 
     .panel.panel-default
       .panel-heading
