@@ -30,6 +30,7 @@
 
   .form-group
     = f.label :proposer_name, class: 'required'
+    .help-block-proposer-name 제안 페이지에 여기 써주신 이름이 나옵니다
     .help
     = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname)), data: { 'rule-required': true }
 
