@@ -19,7 +19,7 @@
               .proposer-image.img-user-large{style: "background-image: url(#{@project.proposal.proposer_image_url(:sm)});"}
             .media-body.proposal-content
               %span.proposer-name
-                = @project.proposal.proposer_name
+                = @project.proposer
               %span.proposer-date
                 = static_date_f_not_hour @project.proposal.created_at
               .proposer-opinion

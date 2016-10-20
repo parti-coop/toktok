@@ -17,6 +17,11 @@
     = f.label :summary
     = f.text_area :summary, class: 'form-control redactor'
 
+  - if @project.proposal.present?
+    .form-group
+      = f.label :proposer
+      = f.text_field :proposer, class: 'form-control input-lg', value: @project.proposal.proposer_name
+
   .form-group
     = f.label :proposer_description
     = f.text_area :proposer_description, class: 'form-control redactor'

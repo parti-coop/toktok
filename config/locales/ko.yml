@@ -51,6 +51,7 @@ ko:
         committees: 위원회
         title: 제목
         summary: 요약
+        proposer: 제안자
         proposer_description: 제안자 설명
         body: 내용
         image: 대표 이미지
