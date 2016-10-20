@@ -31,8 +31,17 @@
         .proposal-label
           %strong|
           첨부파일
-        - @proposal.attachments.each do |attachment|
-          = link_to attachment.name, attachment.source.url, target: '_blank'
+        .proposal-attachment
+          - @proposal.attachments.each do |attachment|
+            = link_to attachment.name, attachment.source.url, target: '_blank'
+            %br
+    %br
+    %div
+      - if upload_file_exists?(@proposal.image)
+        .proposal-label
+          %strong|
+          대표이미지
+        = image_tag @proposal.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
     %br
     %hr
 

@@ -59,4 +59,9 @@ section#page-proposals-show {
       font-weight: 900;
     }
   }
+  .proposal-attachment {
+    a {
+      word-break: break-all;
+    }
+  }
 }

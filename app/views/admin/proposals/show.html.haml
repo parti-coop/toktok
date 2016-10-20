@@ -1,4 +1,4 @@
-%section
+%section#page-proposals-show
   .container
     .page-header
       %h2
@@ -28,9 +28,21 @@
           - if @proposal.user.present?
             %span (회원: #{@proposal.user.nickname})
       .panel-body
+        [제안내용]
+        %br
         = simple_format @proposal.body
-        - @proposal.attachments.each do |attachment|
-          = link_to attachment.name, attachment.source.url, target: '_blank'
+        %br
+        - if @proposal.attachments.any?
+          [첨부파일]
+          .proposal-attachment
+            - @proposal.attachments.each do |attachment|
+              = link_to attachment.name, attachment.source.url, target: '_blank'
+              %br
+        %br
+        - if upload_file_exists?(@proposal.image)
+          [대표이미지]
+          %br
+          = image_tag @proposal.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
 
     %div
       = render 'comments/list', commentable: @proposal

@@ -26,6 +26,14 @@
         = render 'attachment_fields', f: ff
       .help-block 제안을 설명하는 이미지, 영상을 파일 업로드 또는 링크해주세요.
 
+  .form-group
+    = f.label :image
+    = f.hidden_field :image_cache, value: f.object.image_cache
+    = f.file_field :image, class: 'form-control input-lg'
+    .help-block 이 제안을 가장 잘 표현하는 대표 이미지를 올려주세요. 대표 이미지는 국회톡톡 메인페이지와 제안페이지 전반에서 보여집니다.
+    - if upload_file_exists?(@proposal.try(:image))
+      = image_tag @proposal.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
+
   %hr
 
   .form-group

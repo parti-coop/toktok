@@ -14,6 +14,9 @@ class Proposal < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
+  # mount
+  mount_uploader :image, ImageUploader
+
   def launched?
     projects.any?
   end
