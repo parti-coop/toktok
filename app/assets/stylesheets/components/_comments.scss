@@ -87,6 +87,9 @@ section#comments-edit {
   }
   .comment-body {
     word-break: break-all;
+    .metioned-congressman {
+      color: $brand-primary;
+    }
   }
   .buttons a + a {
     margin-left: 9px;

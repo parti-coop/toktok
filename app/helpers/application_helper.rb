@@ -14,6 +14,16 @@ module ApplicationHelper
 
   def smart_format(text, html_options = {}, options = {})
     parsed_text = simple_format(h(text), html_options, options).to_str
+    parsed_text = parsed_text.gsub(Congressman::HTML_AT_NICKNAME_REGEX) do |m|
+      at_nickname = $1
+      nickname = at_nickname[1..-1]
+      congressman = Congressman.find_by name: nickname
+      if congressman.present?
+        m.gsub($1, content_tag(:span, $1, class: "metioned-congressman"))
+      else
+        m
+      end
+    end
     raw(auto_link(parsed_text,
       html: {class: 'auto_link', target: '_blank'},
       link: :urls,

@@ -6,4 +6,7 @@ class Congressman < ApplicationRecord
 
   # mount
   mount_uploader :image, ImageUploader
+
+  # validations
+  HTML_AT_NICKNAME_REGEX = /(?:^|\s|>)(@[ㄱ-ㅎ가-힣a-z0-9_]+)/
 end
