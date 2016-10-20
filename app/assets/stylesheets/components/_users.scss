@@ -149,12 +149,10 @@ section#page-users-show {
           @include responsive-font-size-small();
           color: $gray;
         }
-      }
-    }
-    .projects {
-      .project:hover {
-        @include hover-shadow();
-        color: $gray-darker;
+        &:hover {
+          @include hover-shadow();
+          color: $gray-darker;
+        }
       }
     }
   }

@@ -51,3 +51,12 @@ section#page-proposals-create {
     }
   }
 }
+
+section#page-proposals-show {
+  .proposal-label {
+    color: $brand-primary;
+    strong {
+      font-weight: 900;
+    }
+  }
+}

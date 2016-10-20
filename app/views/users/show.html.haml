@@ -43,6 +43,7 @@
           %span.count= @user.proposals.count
         .proposals
           - @user.proposals.recent.each do |proposal|
-            .proposal
-              .proposal-title= proposal.title
-              .proposal-date= date_f proposal.created_at
+            = link_to proposal do
+              .proposal
+                .proposal-title= proposal.title
+                .proposal-date= date_f proposal.created_at

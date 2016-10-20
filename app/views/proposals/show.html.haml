@@ -1,4 +1,4 @@
-%section
+%section#page-proposals-show
   .container
     .page-header
       %h2
@@ -13,15 +13,28 @@
               = link_to '삭제', @proposal, method: :delete, data: {confirm: '정말로 삭제하시겠습니까?'}
 
     %div
+      .proposal-label
+        %strong|
+        제안자
       %span= @proposal.proposer_name
       %span= @proposal.proposer_email
       %span= @proposal.proposer_phone
       - if @proposal.user.present?
         %span (회원: #{@proposal.user.nickname})
+    %br
     %div
+      .proposal-label
+        %strong|
+        제안내용
       = simple_format @proposal.body
-      - @proposal.attachments.each do |attachment|
-        = link_to attachment.name, attachment.source.url, target: '_blank'
+      - if @proposal.attachments.any?
+        .proposal-label
+          %strong|
+          첨부파일
+        - @proposal.attachments.each do |attachment|
+          = link_to attachment.name, attachment.source.url, target: '_blank'
+    %br
+    %hr
 
     %div
       = render 'comments/list', commentable: @proposal
