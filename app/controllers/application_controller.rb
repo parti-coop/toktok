@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     end
     rescue_from ActionController::InvalidCrossOriginRequest, ActionController::InvalidAuthenticityToken do |exception|
       self.response_body = nil
+      logger.error "!!!DoubleRenderErrorMessage!!!: #{exception.message}"
+      logger.error exception.backtrace.join("\n")
       redirect_to root_url, :alert => I18n.t('errors.messages.invalid_auth_token')
     end
   end
