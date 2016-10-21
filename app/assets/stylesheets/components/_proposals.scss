@@ -1,4 +1,5 @@
-section#page-proposals-new {
+section#page-proposals-new,
+section#page-proposals-edit {
   padding-top: 20px;
   .intro {
     text-align: center;
@@ -22,7 +23,7 @@ section#page-proposals-new {
       }
     }
   }
-  .help-block-proposer-name {
+  .help-block {
     color: $brand-success;
   }
 }

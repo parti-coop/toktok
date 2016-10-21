@@ -1,12 +1,14 @@
 = form_for @proposal, html: { class: 'new_proposal action-validate', data: { 'validate-submit-form-control': 'form.new_proposal input[type="submit"]' } } do |f|
   .form-group
     = f.label :title, class: 'required' do
-      제안의 제목을 20자 이내로 적어주세요.
+      %strong 제안 제목
+    .help-block 20자 이내로 적어주세요
     = f.text_field :title, class: 'form-control input-lg', data: { 'rule-required': true }
 
 
   .form-group
-    = f.label :body, class: 'required'
+    = f.label :body, class: 'required' do
+      %strong 내용
     .help-block
       국회에 어떤 법안을 제안하고 싶으신가요?
       %br
@@ -21,33 +23,37 @@
       .button
         = link_to_add_association f, :attachments, class: 'btn btn-attachment', 'data-association-insertion-method': 'after' do
           = image_tag 'icon_attachment.png', class: 'icon-attachment'
-          첨부파일
+          %strong 첨부파일
       = f.fields_for :attachments do |ff|
         = render 'attachment_fields', f: ff
       .help-block 제안을 설명하는 이미지, 영상을 파일 업로드 또는 링크해주세요.
 
   .form-group
-    = f.label :image
+    = f.label :image do
+      %strong 대표 이미지
+    .help-block 이 제안을 가장 잘 표현하는 대표 이미지를 올려주세요. 대표 이미지는 국회톡톡 메인페이지와 제안페이지 전반에서 보여집니다.
     = f.hidden_field :image_cache, value: f.object.image_cache
     = f.file_field :image, class: 'form-control input-lg'
-    .help-block 이 제안을 가장 잘 표현하는 대표 이미지를 올려주세요. 대표 이미지는 국회톡톡 메인페이지와 제안페이지 전반에서 보여집니다.
     - if upload_file_exists?(@proposal.try(:image))
       = image_tag @proposal.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
 
   %hr
 
   .form-group
-    = f.label :proposer_name, class: 'required'
-    .help-block-proposer-name 제안 페이지에 여기 써주신 이름이 나옵니다
+    = f.label :proposer_name, class: 'required' do
+      %strong 제안하시는 분의 이름
+    .help-block 제안 페이지에 여기 써주신 이름이 나옵니다
     .help
     = f.text_field :proposer_name, class: 'form-control input-lg', value: (@proposal.proposer_name || current_user.try(:nickname)), data: { 'rule-required': true }
 
   .form-group
-    = f.label :proposer_email, class: 'required'
+    = f.label :proposer_email, class: 'required' do
+      %strong 이메일
     = f.text_field :proposer_email, class: 'form-control input-lg', value: (@proposal.proposer_email || current_user.try(:email)), data: { 'rule-required': true, 'rule-email': true }
 
   .form-group
-    = f.label :proposer_phone, class: 'required'
+    = f.label :proposer_phone, class: 'required' do
+      %strong 휴대폰
     = f.text_field :proposer_phone, class: 'form-control input-lg', data: { 'rule-required': true }
 
   .form-group.form-group-submit
