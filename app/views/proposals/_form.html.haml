@@ -56,5 +56,9 @@
       %strong 휴대폰
     = f.text_field :proposer_phone, class: 'form-control input-lg', data: { 'rule-required': true }
 
+  .proposal-help-block
+    %p 국회톡톡의 제안은 특정한 개인 또는 단체의 이익이 아니라, 공익적 목적을 지향합니다.
+    %p 시민제안의 내용은 국회톡톡의 입장과 다를 수 있습니다.
+    %p 시민제안의 구체적인 논의는 시민 자율에 맡겨집니다.
   .form-group.form-group-submit
     = f.submit '제안하기', class: 'btn btn-submit', data: { disable_with: "저장 중..." }

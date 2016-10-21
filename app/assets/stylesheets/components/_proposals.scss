@@ -26,6 +26,12 @@ section#page-proposals-edit {
   .help-block {
     color: $brand-success;
   }
+  .proposal-help-block {
+    color: $brand-success;
+    @media (min-width: $screen-sm-min) {
+      text-align: center;
+    }
+  }
 }
 
 
