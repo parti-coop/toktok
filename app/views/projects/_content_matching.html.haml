@@ -1,7 +1,7 @@
 %section#project-base
   .container
-    .project-panel__matching.project-panel
-      - if @project.status == :matching
+    .project-panel
+      .project-panel__matching
         .project-matched-steps
           .media.project-matched-step
             .media-left.matched-icon
@@ -45,15 +45,13 @@
                           = match.status_text
                         .comgressman-opinion
                           = simple_format match.matching_comment
-
-
-          %hr.project-divider
-          .project-panel__summary.project-panel
-            .project-label
-              %strong|
-              제안 요약
-            .project-summary
-              = simple_format @project.summary
+        %hr.project-divider
+        .project-panel__summary.project-panel
+          .project-label
+            %strong|
+            제안 요약
+          .project-summary
+            = simple_format @project.summary
 
 = render 'project_participations', project: @project
 

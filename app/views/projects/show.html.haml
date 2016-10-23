@@ -30,20 +30,17 @@
   .tab-content
     #gathering.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :gathering}"}
       = render 'projects/content_gathering'
+      = render 'project_committes'
+      = render 'project_comments'
+      
     #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :matching}"}
       = render 'projects/content_matching'
+      = render 'project_committes'
+      = render 'project_comments'
+
     #running.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :running}"}
       = render 'projects/content_running'
+      = render 'project_comments'
 
-  %section#comments
-    .container
-      - if @project.committees.present?
-        = render 'committees'
-
-      .project-panel__comments.project-panel
-        %hr.project-divider
-        .project-label
-          %strong|
-          댓글
-          %span.text-muted (#{@project.comments.count})
-      = render 'comments/list', commentable: @project, placeholder: '지지 메시지를 남겨주세요'
+  
+  

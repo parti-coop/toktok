@@ -85,6 +85,12 @@ ko:
         congressman_id: 의원
         status: 매칭 여부
         matching_comment: 의원 한마디
+      timeline:
+        congressman_id: 의원
+        actor: 작성자 이름
+        image: 작성자 이미지
+        body: 내용
+        timeline_date: 타임라인 날짜
 
     errors:
       models:

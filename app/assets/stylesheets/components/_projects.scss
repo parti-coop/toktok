@@ -350,34 +350,127 @@ section#page-participations {
           border-bottom: 1px solid $project-step-border-color;
         }
       }
-
     }
 
-    .project-matched-steps {
-      margin-top: 20px;
+    &__matching {
+      .project-matched-steps {
+        margin-top: 20px;
 
-      .project-matched-step {
-        margin-top: 10px;
-        min-height: 68px;
-        border: 1px solid $brand-primary;
-
-        .matched-icon {
-          vertical-align: middle;
-          border-right: 1px solid $brand-primary;
+        .project-matched-step {
+          margin-top: 10px;
           min-height: 68px;
-          height: 100%;
-          text-align: center;
-          padding: 23px 21px;
-          img {
-            width: 20px;
+          border: 1px solid $brand-primary;
+
+          .matched-icon {
+            vertical-align: middle;
+            border-right: 1px solid $brand-primary;
+            min-height: 68px;
+            height: 100%;
+            text-align: center;
+            padding: 23px 21px;
+            img {
+              width: 20px;
+            }
+          }
+          .matched-detail {
+            vertical-align: middle;
+            padding: 12px 15px;
+            @include responsive-font-size-base();
+            p {
+              margin-bottom: 0;
+            }
           }
         }
-        .matched-detail {
-          vertical-align: middle;
-          padding: 12px 15px;
-          @include responsive-font-size-base();
+      }
+    }
+
+    &__running {
+      .project-running-intro {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        &__step {
+          margin-top: 10px;
+          min-height: 68px;
+          border: 1px solid $brand-primary;
+          display: table;
+          width: 100%;
+          padding: 13px 34px;
+          margin-bottom: 20px;
           p {
-            margin-bottom: 0;
+            display: table-cell;
+            vertical-align: middle;
+            word-break: break-all;
+          }
+        
+        }
+        &__participants {
+          margin-top: 30px;
+          margin-bottom: 30px;
+
+          .running-congressmen {
+            text-align: center;
+            .running-congressman {
+              display: inline-block;
+              margin-left: 6px;
+              margin-right: 6px;
+            }
+          }
+
+          .collabo-mark {
+            text-align:center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            img {
+              width: 14px
+            }
+          }
+          .running-citizens {
+            text-align:center;
+            .row {
+              margin-top: 3px;
+              margin-bottom: 3px;
+            }
+          }
+        
+        }
+        &__go-parti {
+          text-align: center;
+          .btn-go-parti {
+            @include responsive-font-size-base();
+            padding: 14px 54px;
+          }
+        }
+      }
+    }
+
+    &__timeline-list {
+      .timeline {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        position: relative;
+        &-intro {
+          margin-bottom: 3px;
+          .name {
+            color: $brand-primary;
+            @inclue responsive-font-size-base();
+            margin-right: 6px;
+          }
+          .date {
+            color: $gray;
+          }
+
+        }
+        &-body {
+          background-color: #fff;
+          padding: 12px 10px;
+          &-wing {
+            width: 0;
+            height: 0;
+            border-top: 0px solid transparent;
+            border-bottom: 13px solid transparent;
+            border-right: 16px solid #fff;
+            position: absolute;
+            left: 24px;
           }
         }
       }
@@ -668,4 +761,11 @@ section#page-participations {
     margin-top: 30px;
     margin-bottom: 30px;
   }
+}
+
+section#project-running-timeline {
+  background-color: #efefef;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
 }

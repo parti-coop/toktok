@@ -1,8 +1,9 @@
 = form_for [:admin, @project] do |f|
 
   .form-group
-    = f.label :on_running
-    = f.check_box :on_running, { class: 'checkbox-inline' }, 'true', 'false'
+    %label
+      = f.check_box :on_running, { class: ' checkbox-inline' }, 'true', 'false'
+      = f.label :on_running
 
   .form-group
     = f.label :committees

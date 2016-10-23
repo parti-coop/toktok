@@ -1,0 +1,37 @@
+= form_for [:admin, @timeline] do |f|
+  .form-group
+    = f.label :timeline_date
+    = f.date_field :timeline_date, class: 'form-control'
+  .form-group
+    = f.label :congressman_id
+    = f.select :congressman_id, nil, {include_blank: '해당없음', selected: 'selected'}, { class: 'form-control input-lg action-congressman-select' } do
+      - [@timeline.project.committees].flatten.compact.each do |committee|
+        %optgroup{label: "#{committee.name}"}
+          - committee.congressmen.each do |congressman|
+            %option{value: congressman.id}= congressman.name
+  .form-group
+    = f.label :actor
+    = f.text_field :actor, class: 'form-control'
+    .help-block
+      관리자의 경우에는 '국회톡톡'이라고 씁니다. (의원을 선택한 경우에는 입력하지 않습니다.) 
+      %br
+      (위에 의원을 선택하고 이곳에 이름을 입력할 경우에는 여기에 입력한 이름으로만 등록됩니다.)
+  .form-group
+    = f.label :image
+    = f.hidden_field :image_cache, value: f.object.image_cache
+    = f.file_field :image, class: 'form-control input-lg'
+    .help-block 
+      작성자 이름을 '국회톡톡'으로 한 경우나 의원을 선택한 경우에는 등록하지 않아도 됩니다.  
+      %br
+      (위에 의원을 선택하고 이곳에 이미지를 등록한 경우에는 여기에 등록한 이미지로 보여집니다.)
+      %br
+      추천 크기 : 000 X 000 정도면 됩니다. 자동으로 적당히 늘어나고 잘려 나옵니다.
+    - if upload_file_exists?(@timeline.try(:image))
+      = image_tag @timeline.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: "form-control", rows: 4
+  
+
+  .form-group
+    = f.submit '저장', class: 'btn btn-defult'

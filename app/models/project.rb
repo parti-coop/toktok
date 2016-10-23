@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   has_many :attachments, dependent: :destroy, as: :attachable
   has_many :participations, dependent: :destroy
   has_many :matches, dependent: :destroy
+  has_many :timelines, dependent: :destroy
   has_many :accept_matches, -> { where status: :accept }, class_name: Match
   has_many :matched_congressmen, through: :matches, source: :congressman
   has_many :accept_congressmen, through: :accept_matches, source: :congressman
@@ -109,6 +110,10 @@ class Project < ApplicationRecord
     else
       return false
     end
+  end
+
+  def select_random_citizen(limit_count)
+    participations.limit(limit_count).order('RAND()')
   end
 
   private

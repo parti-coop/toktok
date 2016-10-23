@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :proposals
     resources :projects do
       resources :matches, shallow: true
+      resources :timelines, shallow: true
     end
     resources :committees
     resources :congressmen

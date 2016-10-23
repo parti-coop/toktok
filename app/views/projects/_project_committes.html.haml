@@ -1,0 +1,4 @@
+%section#committees
+  .container
+    - if @project.committees.present?
+      = render 'committees'

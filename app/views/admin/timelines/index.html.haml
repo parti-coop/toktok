@@ -1,0 +1,32 @@
+%section
+  .container
+    .page-header
+      %h2.clearfix
+        관리 &gt;
+        = link_to '타임라인', admin_projects_path
+        &gt;
+        = link_to @project.title, [:admin, @project]
+
+
+    %div
+      %h3
+        타임라인
+      %ul.list-group
+        - if @project.timelines.any?
+          - @project.timelines.oldest.each do |t|
+            %li.list-group-item
+              = static_date_f_not_hour(t.timeline_date)
+              = t.actor if t.actor.present?
+              = t.congressman.name if t.congressman.present?
+              = t.body
+              .pull-right
+                = link_to '상태변경', [:edit, :admin, t]
+                = link_to '삭제', [:admin, t], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
+          %li.list-group-item
+            = render 'admin/timelines/new_form', project: @project
+        - else
+          등록 된 타임라인이 없습니다.
+          %li.list-group-item
+            = render 'admin/timelines/new_form', project: @project
+
+        

@@ -1,0 +1,7 @@
+%section
+  .container
+    .page-header
+      %h2 #{@timeline.project.title} > #{static_date_f_not_hour(@timeline.timeline_date)} 타임라인 수정
+
+    %section
+      = render 'edit_form'

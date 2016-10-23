@@ -1,0 +1,9 @@
+%section#comments
+  .container
+    .project-panel__comments.project-panel
+      %hr.project-divider
+      .project-label
+        %strong|
+        댓글
+        %span.text-muted (#{@project.comments.count})
+    = render 'comments/list', commentable: @project, placeholder: '지지 메시지를 남겨주세요'

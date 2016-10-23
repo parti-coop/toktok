@@ -4,4 +4,6 @@ class Match < ApplicationRecord
 
   belongs_to :project
   belongs_to :congressman
+
+  scope :in_accept, -> { where(status: :accept) }
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021071557) do
+ActiveRecord::Schema.define(version: 20161023092900) do
 
   create_table "assigned_committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC" do |t|
     t.integer  "committee_id", null: false
@@ -165,6 +165,19 @@ ActiveRecord::Schema.define(version: 20161021071557) do
     t.datetime "updated_at"
     t.index ["assetable_type", "assetable_id"], name: "idx_redactor2_assetable", using: :btree
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_redactor2_assetable_type", using: :btree
+  end
+
+  create_table "timelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "actor"
+    t.string   "image"
+    t.text     "body",           limit: 65535, null: false
+    t.integer  "project_id",                   null: false
+    t.integer  "congressman_id"
+    t.datetime "timeline_date",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["congressman_id"], name: "index_timelines_on_congressman_id", using: :btree
+    t.index ["project_id"], name: "index_timelines_on_project_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|

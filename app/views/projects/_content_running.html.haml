@@ -1,5 +1,59 @@
 %section#project-base
   .container
-    .project-panel__running.project-panel
-      .project-panel__body
-        입법단계
+    .project-panel
+      .project-panel__running
+        .project-running-intro
+          .project-running-intro__step
+            %p
+              총 #{number_with_delimiter(@project.participations.count)}명의 시민이
+              = safe_join(@project.matches.map{ |m| m.congressman.name }, ', ')
+              의원과 함께 입법 활동을 시작합니다
+          .project-running-intro__participants
+            .running-congressmen
+              - @project.matches.in_accept.each_slice(3) do |matches|
+                .row
+                  - matches.each do |match|
+                    .img-cogressman.running-congressman{style: "background-image: url(#{match.congressman.image.sm.url})"}
+            .collabo-mark
+              = image_tag 'icon_close.png'
+            .running-citizens
+              - @project.select_random_citizen(36).each_slice(9)  do |participations|
+                .row  
+                  - participations.each do |participation|
+                    .img-user-large{style: "background-image: url(#{image_url(participation.user.image.xs.url)});"}
+
+          .project-running-intro__go-parti 
+            = link_to '입법실행 플랫폼으로 가기', 'http://toktok.parti.xyz/', target: '_blank', class: 'btn btn-lg btn-primary btn-go-parti'
+
+- if @project.timelines.any?
+  %section#project-running-timeline
+    .container
+      .project-panel
+        .project-label
+          %strong|
+          타임라인
+        .project-panel__timeline-list
+          - @project.timelines.recent.each do |timeline|
+            .timeline
+              .media
+                .media-left
+                  - if timeline.image.present?
+                    .img-user-large{style: "background-image: url(#{image_url(timeline.image.xs.url)});"}
+                  - else
+                    - if timeline.actor.present?
+                      - if timeline.actor == '국회톡톡'
+                        .img-user-large{style: "background-image: url(#{image_url('img_default_profile.png')});"}
+                      - else
+                        .img-user-large{style: "background-image: url(#{image_url('img_default_profile.png')});"}
+                    - else
+                      .img-user-large{style: "background-image: url(#{image_url(timeline.congressman.image.xs.url)});"}
+                .media-body
+                  .timeline-intro
+                    %span.name
+                      = timeline.actor.present? ? timeline.actor : timeline.congressman.name
+                    %span.date
+                      = static_date_f_not_hour(timeline.timeline_date)
+                  .didd
+                  .timeline-body
+                    .timeline-body-wing
+                    = timeline.body
