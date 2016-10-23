@@ -1,6 +1,10 @@
 = form_for [:admin, @project] do |f|
 
   .form-group
+    = f.label :on_running
+    = f.check_box :on_running, { class: 'checkbox-inline' }, 'true', 'false'
+
+  .form-group
     = f.label :committees
     .help-block
       ctrl을 누른 채로 복수의 위원회를 선택할 수 있습니다.

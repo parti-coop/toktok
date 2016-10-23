@@ -44,6 +44,8 @@ class Project < ApplicationRecord
   end
 
   def status
+    return :running if on_running
+
     if participations_count < participations_goal_count
       :gathering
     else
