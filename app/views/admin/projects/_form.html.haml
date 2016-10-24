@@ -6,6 +6,12 @@
       = f.label :on_running
 
   .form-group
+    = f.label :running_platform_url
+    = f.text_field :running_platform_url, class: 'form-control input-lg'
+    .help-block
+      http:// 나 https://로 시작되는 형식으로 url을 입력해주세요.
+
+  .form-group
     = f.label :committees
     .help-block
       ctrl을 누른 채로 복수의 위원회를 선택할 수 있습니다.

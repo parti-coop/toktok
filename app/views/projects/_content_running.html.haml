@@ -22,8 +22,9 @@
                   - participations.each do |participation|
                     .img-user-large{style: "background-image: url(#{image_url(participation.user.image.xs.url)});"}
 
-          .project-running-intro__go-parti 
-            = link_to '입법실행 플랫폼으로 가기', 'http://toktok.parti.xyz/', target: '_blank', class: 'btn btn-lg btn-primary btn-go-parti'
+          - if @project.running_platform_url.present?
+            .project-running-intro__go-parti 
+              = link_to '입법실행 플랫폼으로 가기', @project.running_platform_url.strip, target: '_blank', class: 'btn btn-lg btn-primary btn-go-parti'
 
 - if @project.timelines.any?
   %section#project-running-timeline
