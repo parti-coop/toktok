@@ -49,6 +49,8 @@
       %h3 참여 시민
       #{@project.participations_count}명 / 목표 #{@project.participations_goal_count}명
       = link_to '모두 보기', project_participations_path(project_id: @project), target: '_blank'
+      %br
+      = link_to '참여시민 리스트 다운로드', admin_download_emails_path(params: {project_id: @project.id}, format: :xlsx)
 
     %div
       %h3

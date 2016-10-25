@@ -1,5 +1,10 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Emails #{l(Date.today)}") do |sheet|
+  if @emails.first[:project].present?
+    sheet.add_row ["프로젝트 이름: #{@emails.first[:project]}"]
+  else
+    sheet.add_row ["모든 회원 리스트"]
+  end
   sheet.add_row ["이메일", "이름", "가입유형"]
   @emails.each do |data|
     sheet.add_row [data[:email], data[:name], data[:provider]]
