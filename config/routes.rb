@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "pages#home"
     get :staffs, to: "users#staffs"
+    get 'download_emails', to: 'base#download_emails'
     patch 'users/role', to: "users#role"
     resources :proposals
     resources :projects do

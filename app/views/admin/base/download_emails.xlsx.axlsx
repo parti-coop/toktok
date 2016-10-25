@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Emails #{l(Date.today)}") do |sheet|
+  sheet.add_row ["이메일", "이름", "가입유형"]
+  @emails.each do |data|
+    sheet.add_row [data[:email], data[:name], data[:provider]]
+  end
+end
