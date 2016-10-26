@@ -19,7 +19,8 @@
                       - if @project.status_of_congressman(congressman) == :reject
                         = image_tag 'icon_match_reject.png'
                       - if @project.status_of_congressman(congressman) == :calling
-                        = t("enumerize.match.status.calling")
+                        = t("enumerize.match.status.calling") if @project.status == :matching
+                        = image_tag 'icon_match_no_answer.png' if @project.status == :running
 
 
                   .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}

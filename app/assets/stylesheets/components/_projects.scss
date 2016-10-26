@@ -401,7 +401,7 @@ section#page-participations {
             vertical-align: middle;
             word-break: break-all;
           }
-        
+
         }
         &__participants {
           margin-top: 30px;
@@ -431,7 +431,7 @@ section#page-participations {
               margin-bottom: 3px;
             }
           }
-        
+
         }
         &__go-parti {
           text-align: center;
@@ -573,9 +573,10 @@ section#page-participations {
               text-align: center;
               font-weight: bold;
               color: $brand-primary;
-              &--accept, &--reject {
-                border: none;
+              &--accept, &--reject, &--calling{
                 img {
+                  margin-left: -2px;
+                  margin-top: -2px;
                   width: 40px;
                 }
               }
