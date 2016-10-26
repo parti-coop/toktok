@@ -15,6 +15,7 @@
 //= require rails-timeago
 //= require locales/jquery.timeago.ko
 //= require jquery.validate
+//= require validate/accept
 //= require jquery.waypoints
 //= require waypoints/sticky.js
 //= require jssocials
@@ -134,6 +135,11 @@ $(function(){
   $('.action-validate').validate({
     ignore: ':hidden:not(.redactor)',
     errorPlacement: function(error, element) {
+      console.log(element.attr('id') );
+      if(element.attr('id') == 'proposal_image') {
+        $(error).addClass('control-label').html('이미지 파일을 올려 주세요.');
+        element.after(error);
+      }
       return true;
     },
     highlight: function(element, errorClass, validClass) {

@@ -33,7 +33,7 @@
       %strong 대표 이미지
     .help-block 이 제안을 가장 잘 표현하는 대표 이미지를 올려주세요. 대표 이미지는 국회톡톡 메인페이지와 제안페이지 전반에서 보여집니다.
     = f.hidden_field :image_cache, value: f.object.image_cache
-    = f.file_field :image, class: 'form-control input-lg'
+    = f.file_field :image, class: 'form-control input-lg', data: { 'rule-accept': 'image/*' }
     - if upload_file_exists?(@proposal.try(:image))
       = image_tag @proposal.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
 
