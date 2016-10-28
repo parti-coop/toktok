@@ -21,6 +21,12 @@ module Admin
       end
     end
 
+    def destroy
+      @timeline = Timeline.find(params[:id])
+      @timeline.destroy
+      redirect_to :back
+    end
+
   	private
 
   	def create_params
