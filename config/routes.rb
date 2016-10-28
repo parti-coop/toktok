@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     resources :proposals
     resources :projects do
       resources :matches, shallow: true
-      resources :timelines, shallow: true
+      resources :timelines, shallow: true do
+        member do
+          delete :remove_image
+        end
+      end
     end
     resources :committees
     resources :congressmen

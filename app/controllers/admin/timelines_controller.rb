@@ -27,6 +27,12 @@ module Admin
       redirect_to :back
     end
 
+    def remove_image
+      @timeline.remove_image!
+      @timeline.save
+      redirect_to :back
+    end
+
   	private
 
   	def create_params

@@ -23,13 +23,15 @@
     = f.hidden_field :image_cache, value: f.object.image_cache
     = f.file_field :image, class: 'form-control input-lg'
     .help-block
+      - if upload_file_exists?(@timeline.image)
+        = image_tag @timeline.image.url, class: 'img-thumbnail', style: 'max-height: 100px'
+        = link_to '삭제', remove_image_admin_timeline_path(@timeline), method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }, class: 'btn btn-default btn-sm btn-delete-image'
+      %br
       작성자 이름을 '국회톡톡'으로 한 경우나 의원을 선택한 경우에는 등록하지 않아도 됩니다.
       %br
       (위에 의원을 선택하고 이곳에 이미지를 등록한 경우에는 여기에 등록한 이미지로 보여집니다.)
       %br
       추천 크기 : 000 X 000 정도면 됩니다. 자동으로 적당히 늘어나고 잘려 나옵니다.
-    - if upload_file_exists?(@timeline.try(:image))
-      = image_tag @timeline.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
   .form-group
     = f.label :body
     = f.text_area :body, class: "form-control", rows: 4
