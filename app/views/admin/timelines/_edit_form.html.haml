@@ -9,7 +9,7 @@
       - [@timeline.project.committees].flatten.compact.each do |committee|
         %optgroup{label: "#{committee.name}"}
           - committee.congressmen.each do |congressman|
-            - selected = congressman.id == @timeline.congressman.id ? 'selected' : nil
+            - selected = congressman.id == @timeline.try(:congressman).try(:id) ? 'selected' : nil
             %option{value: congressman.id, selected: selected }= congressman.name
   .form-group
     = f.label :actor

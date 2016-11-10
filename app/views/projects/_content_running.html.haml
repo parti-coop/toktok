@@ -18,12 +18,12 @@
               = image_tag 'icon_close.png'
             .running-citizens
               - @project.select_random_citizen(36).each_slice(9)  do |participations|
-                .row  
+                .row
                   - participations.each do |participation|
                     .img-user-large{style: "background-image: url(#{image_url(participation.user.image.xs.url)});"}
 
           - if @project.running_platform_url.present?
-            .project-running-intro__go-parti 
+            .project-running-intro__go-parti
               = link_to '입법실행 플랫폼으로 가기', @project.running_platform_url.strip, target: '_blank', class: 'btn btn-lg btn-primary btn-go-parti'
 
 - if @project.timelines.any?
@@ -57,4 +57,4 @@
                   .didd
                   .timeline-body
                     .timeline-body-wing
-                    = timeline.body
+                    = smart_format timeline.body
