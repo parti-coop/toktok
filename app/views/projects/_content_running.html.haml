@@ -6,7 +6,7 @@
           .project-running-intro__step
             %p
               총 #{number_with_delimiter(@project.participations.count)}명의 시민이
-              = safe_join(@project.matches.map{ |m| m.congressman.name }, ', ')
+              = safe_join(@project.matches.in_accept.map{ |m| m.congressman.name }, ', ')
               의원과 함께 입법 활동을 시작합니다
           .project-running-intro__participants
             .running-congressmen
