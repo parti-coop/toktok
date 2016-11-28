@@ -64,6 +64,9 @@
       -else
         .project-matching-message{class: "#{'text-center' unless browser.device.mobile?}"}
           %p
-            총 #{number_with_delimiter(project.participations.count)}명의 시민이
-            = safe_join(project.matches.map{ |m| m.congressman.name }, ', ')
-            의원과 함께 입법 활동을 시작합니다
+            - if project.any_congressman_accepted?
+              총 #{number_with_delimiter(project.participations.count)}명의 시민이
+              = safe_join(project.matches.in_accept.map{ |m| m.congressman.name }, ', ')
+              의원과 함께 입법 활동을 시작합니다
+            - else
+              어떤 의원도 응답하지 않았습니다. 총 #{project.participations.count}명의 시민이 함께 새로운 플랫폼에서 공론화 활동을 시작합니다.
