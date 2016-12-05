@@ -103,30 +103,48 @@ section#page-home .project {
     }
   }
 }
+section#current-projects .project-container {
+  .row {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .project-card-wrapper {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
 
 section#page-home .project {
-  padding: 20px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  .project-intro {
+    position: relative;
 
+    .project-status {
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      color: #fff;
+      background-color: #16a6a8;
+      padding: 4px 7px;
+    }
+  }
   .project-title {
-    margin-top: 14px;
-    margin-bottom: 7px;
-    font-size: $font-size-h3;
+    height: 50px;
+    font-size: $font-size-large;
     color: $gray-dark;
     &:hover {
       color: $brand-primary;
     }
+    @include multi-text-ellipsis(2);
   }
   .project-summary {
     color: $gray;
     margin-bottom: 10px;
   }
   .project-image {
-    max-height: 233px;
-    min-height: 34px;
+    height: 140px;
     overflow: hidden;
-    @media (max-width: $screen-xs-max) {
-      height: 140px;
-    }
     position: relative;
     img {
       width: 100%;
@@ -137,19 +155,17 @@ section#page-home .project {
       bottom: 0;
     }
   }
-  .project-graph.highlighted-background {
-    background-color: $brand-primary-lightest;
-  }
-  .project-graph {
+  .project-detail {
+    height: 148px;
     border: 1px solid $brand-primary;
-    padding: 16px 20px 12px;
+    padding: 8px;
     color: $gray;
     .count {
-      color: $brand-primary;
     }
     .bar {
       height: 10px;
-      margin: 4px 0;
+      margin-top: 12px;
+      margin-bottom: 6px;
       width: 100%;
       background-color: $gray-lighter;
       .participations-bar {
@@ -157,18 +173,15 @@ section#page-home .project {
         height: 100%;
       }
     }
-    .participations-goal-count {
-      text-align: center;
+    .bar-info {
+      .participations-percentage {
+        color: $gray-light;
+      }
     }
-    .project-matching-message {
-      margin-top: 20px;
-      margin-bottom: 5px;
-    }
-    .current-participations-count {
-      .content {
-        display: inline-block;
-        position: relative;
-        text-align: center;
+    .project-footer {
+      margin-top: 12px;
+      .participations {
+        padding-right: 6px;
       }
     }
   }

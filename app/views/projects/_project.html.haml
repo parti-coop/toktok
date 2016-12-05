@@ -1,40 +1,19 @@
 .project[project]
-  = link_to project do
-    .project-meta.clearfix
-      .pull-left
-        %span.created_at
-          = image_tag 'icon_clock.png', class: 'icon-clock'
-          %span.date= date_f project.created_at
-        %span.comments
-          = image_tag 'icon_comment.png', class: 'icon-comment'
-          %span.count= project.comments.count
-      .pull-right
-        %span.share-button
-          = render 'projects/project_share', project: project
-          / %span.count= image_tag 'icon_share.png', class: 'icon-share'
+  = link_to project_path(project) do
+    .project-intro
+      .project-image{style: "background-image: url(#{project.image.lg.url});"}
+      .project-status
+        -if project.status == :gathering
+          시민참여
+        -if project.status == :matching
+          매칭 중
+        -if project.status == :running
+          입법활동
 
-    .project-title= project.title
-    .project-summary!= project.summary
-    %a.anchor{id: "anchor-participation-home-#{project.id}"}
-    .project-image
-      = link_to project_path(project) do
-        %img{src: project.image.lg.url}
-      = render 'projects/project_steps', project: project, steps_from_home: true
-
-    .project-graph{class: "#{'highlighted-background' unless project.status == :gathering}"}
+    .project-detail
       - left_style = "left: #{project.participations_percentage - 5}%" if project.participations_percentage > 5 and project.participations_percentage <= 90
       - right_style = "float: right;" if project.participations_percentage > 90
-      .current-participations-count.clearfix
-        .content{style: "#{left_style} #{right_style}"}
-          -unless project.status == :gathering
-            %span
-              목표: #{project.participations_goal_count}명 /
-          참여
-          %span
-            %span.count<>= project.participations_count
-            명
-          %br
-          %i.fa.fa-bullhorn{class: "#{'pull-right' unless project.status == :gathering}"}
+      .project-title= project.title
 
       - if project.participations_percentage >= 100
         .bar
@@ -42,31 +21,27 @@
       - else
         .bar
           .participations-bar{style: "width: #{project.participations_percentage}%"}
+      .bar-info
+        .media
+          .media-body
+            %span
+              %span.text-primary<>= project.participations_goal_count
+              명
+          .media-right
+            %span.participations-percentage
+              #{project.participations_percentage}%
 
-      -if project.status == :gathering
-        .participations-goal-count
-          목표
-          %span
-            %span.count<>= project.participations_goal_count
-            명
-      -elsif project.status == :matching
-        .project-matching-message{class: "#{'text-center' unless browser.device.mobile?}"}
-          - if project.matching_staff_message.present?
-            = simple_format project.matching_staff_message
-          - else
-            = t("messages.default_matching_staff_message")
-          %p
-            - if project.any_congressman_accepted?
-              - project.matches.each do |match|
-                - if project.has_congressman_accepted?(match.congressman)
-                  = "'#{match.congressman.name}(#{match.congressman.committee.name})'"
-              의원이 참여했습니다!
-      -else
-        .project-matching-message{class: "#{'text-center' unless browser.device.mobile?}"}
-          %p
-            - if project.any_congressman_accepted?
-              총 #{number_with_delimiter(project.participations.count)}명의 시민이
-              = safe_join(project.matches.in_accept.map{ |m| m.congressman.name }, ', ')
-              의원과 함께 입법 활동을 시작합니다
-            - else
-              어떤 의원도 응답하지 않아 매칭에 실패했습니다. 총 #{project.participations.count}명의 시민이 함께 새로운 플랫폼에서 공론화 활동을 시작합니다.
+      .project-footer
+        .media
+          .media-body
+            %span.participations
+              = image_tag 'icon_participation.png', class: 'icon-participation'
+              %span.count= project.participations_count
+            %span.comments
+              = image_tag 'icon_comment.png', class: 'icon-comment'
+              %span.count= project.comments.count
+          .media-right
+            %span.share-button
+              = render 'projects/project_share', project: project
+
+

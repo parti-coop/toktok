@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(version: 20161024003920) do
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_redactor2_assetable_type", using: :btree
   end
 
-  create_table "timelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "timelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "actor"
     t.string   "image"
     t.text     "body",           limit: 65535, null: false
