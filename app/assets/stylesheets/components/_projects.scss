@@ -117,6 +117,14 @@ section#current-projects .project-container {
 section#page-home .project {
   margin-top: 12px;
   margin-bottom: 12px;
+  &:hover {
+    .project-detail {
+      border: 1px solid $brand-primary;
+      .project-title {
+        color: $brand-primary;
+      }
+    }
+  }
   .project-intro {
     position: relative;
 
@@ -160,6 +168,10 @@ section#page-home .project {
     border: 1px solid $gray-lighter;
     padding: 8px;
     color: $gray;
+    &:hover {
+      border: 1px solid $brand-primary;
+    }
+
     .count {
     }
     .bar {
