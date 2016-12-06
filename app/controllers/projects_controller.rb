@@ -15,7 +15,6 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.hottest
     end
-    @sort = params[:sort]
   end
 
   def reset_meta_tags
