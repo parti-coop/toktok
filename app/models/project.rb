@@ -22,6 +22,10 @@ class Project < ApplicationRecord
   # mount
   mount_uploader :image, ImageUploader
 
+  scope :recent, -> { order(created_at: :desc) }
+  scope :matching, -> { where(on_running: true) }
+  scope :hottest, -> { order(participations_count: :desc) }
+
   STATUS = {
     'gathering' => {
       label: '시민참여',

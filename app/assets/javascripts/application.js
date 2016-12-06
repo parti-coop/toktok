@@ -39,8 +39,26 @@ $.is_blank = function (obj) {
   return true;
 }
 
-$(function(){
-  $('[data-action="toktok-popover"]').each(function(i, elm) {
+$.hotline_apply = function($base, query, callback) {
+  $.each($base.find(query), function(i, elm){
+    callback(elm);
+  });
+}
+
+$.parse$ = function(str) {
+  return $($.parseHTML($.trim(str)));
+}
+
+var hotline_partial = function(partial) {
+  var $partial = $.parse$(partial);
+  hotline_prepare($partial);
+
+  return $partial;
+}
+
+var hotline_prepare = function($base) {
+
+  $.hotline_apply($base, '[data-action="toktok-popover"]', function(elm) {
     var $elm = $(elm);
     if ($elm.attr('data-project-now-step') == 'gathering') {
       $('[data-project-status="matching"]').webuiPopover();
@@ -50,9 +68,12 @@ $(function(){
     }
   });
 
-  $('[data-action="toktok-social-popover"]').webuiPopover();
+  $.hotline_apply($base, '[data-action="toktok-social-popover"]', function(elm) {
+    $(elm).webuiPopover();
+  });
 
-  $('[data-action="toktok-share"]').each(function(i, elm) {
+
+  $.hotline_apply($base, '[data-action="toktok-share"]', function(elm) {
     var $elm = $(elm);
 
     var url = $elm.data('share-url');
@@ -101,28 +122,119 @@ $(function(){
     }
   });
 
-  $('.action-congressman-select').select2();
-  $('.action-mention').on('click', function(e) {
-    e.preventDefault();
-    var $target = $(e.currentTarget);
-    var to = $target.data('mention-to');
-    var form_control = $target.data('mention-form-control');
-    var form_placeholder = $target.data('mention-form-placeholder');
+  $.hotline_apply($base, '.action-congressman-select', function(elm) {
+    $(elm).select2();
+  });
 
-    $(form_control).closest('form').show();
-    $(form_placeholder).hide();
+  $.hotline_apply($base, '.action-mention', function(elm) {
+    $(elm).on('click', function(e) {
+      e.preventDefault();
+      var $target = $(e.currentTarget);
+      var to = $target.data('mention-to');
+      var form_control = $target.data('mention-form-control');
+      var form_placeholder = $target.data('mention-form-placeholder');
 
-    var value = $(form_control).val();
-    if(to) {
-      $(form_control).val('@' + to + ' ' + value);
+      $(form_control).closest('form').show();
+      $(form_placeholder).hide();
+
+      var value = $(form_control).val();
+      if(to) {
+        $(form_control).val('@' + to + ' ' + value);
+      }
+      $(form_control).focus();
+    });
+  });
+
+  $.hotline_apply($base, '.action-mention-before-paticipation', function(elm) {
+    $(elm).on('click', function(e) {
+      $('.tab-content #gathering').addClass('active')
+      UnobtrusiveFlash.showFlashMessage('참여 후에 의원을 호출할 수 있습니다. 먼저 이 프로젝트에 참여 해 주세요!')
+    });
+  });
+
+  $.hotline_apply($base, '.action-validate', function(elm) {
+    $(elm).validate({
+      ignore: ':hidden:not(.redactor)',
+      errorPlacement: function(error, element) {
+        console.log(element.attr('id') );
+        if(element.attr('id') == 'proposal_image') {
+          $(error).addClass('control-label').html('이미지 파일을 올려 주세요.');
+          element.after(error);
+        }
+        return true;
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).closest('.form-group').addClass('field_with_errors');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).closest('.form-group').removeClass('field_with_errors');
+      }
+    });
+  });
+
+  $.hotline_apply($base, '.owl-carousel', function(elm) {
+    $(elm).owlCarousel({
+      autoWidth: true,
+      margin: 10,
+      dots: false,
+      nav: true,
+      navText: ['&lt;', '&gt;']
+    })
+  });
+
+  $.hotline_apply($base, '.action-show', function(elm) {
+    $(elm).on('click', function(e) {
+      var $elm = $(e.currentTarget);
+      var $target = $($elm.data('show-target'));
+      $target.show();
+      var focus_id = $elm.data('show-focus');
+      $focus = $(focus_id);
+      $focus.focus();
+      if($elm.data('show-self-hide')) {
+        $elm.hide();
+      }
+    });
+  });
+
+  $.hotline_apply($base, '#project-participations-stuckable', function(elm) {
+    if($(elm).length) {
+      new Waypoint.Sticky({
+        element: $('#project-participations-stuckable'),
+        stuckClass: 'unstuck',
+        offset: 'bottom-in-view'
+      });
     }
-    $(form_control).focus();
-  });
-  $('.action-mention-before-paticipation').on('click', function(e) {
-    $('.tab-content #gathering').addClass('active')
-    UnobtrusiveFlash.showFlashMessage('참여 후에 의원을 호출할 수 있습니다. 먼저 이 프로젝트에 참여 해 주세요!')
   });
 
+  $.hotline_apply($base, '[data-action="hotline-filter-projects"]', function(elm) {
+    $(elm).each(function(i, elm) {
+      var $elm = $(elm);
+      $elm.on('click', function(e) {
+        var sort = $(this).data('search-sort');
+
+        $('.projects-all-loading').show();
+        $('.projects-all-list').hide();
+        $.ajax({
+          url: '/projects/search.js',
+          type: "get",
+          data:{
+            sort: sort
+          },
+          complete: function(xhr) {
+            $('.projects-all-loading').hide();
+            $('.projects-all-list').show();
+          },
+        });
+        return false;
+      });
+    });
+  });
+
+};
+
+
+$(function(){
+  hotline_prepare($('body'));
   $(document).click(function (event) {
     var clickover = $(event.target);
     var opened = $(".navbar-collapse").hasClass("navbar-collapse");
@@ -131,50 +243,4 @@ $(function(){
         $("button.navbar-toggle").click();
     }
   });
-
-  $('.action-validate').validate({
-    ignore: ':hidden:not(.redactor)',
-    errorPlacement: function(error, element) {
-      console.log(element.attr('id') );
-      if(element.attr('id') == 'proposal_image') {
-        $(error).addClass('control-label').html('이미지 파일을 올려 주세요.');
-        element.after(error);
-      }
-      return true;
-    },
-    highlight: function(element, errorClass, validClass) {
-      $(element).closest('.form-group').addClass('field_with_errors');
-    },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).closest('.form-group').removeClass('field_with_errors');
-    }
-  });
-
-  $('.owl-carousel').owlCarousel({
-    autoWidth: true,
-    margin: 10,
-    dots: false,
-    nav: true,
-    navText: ['&lt;', '&gt;']
-  })
-
-  $('.action-show').on('click', function(e) {
-    var $elm = $(e.currentTarget);
-    var $target = $($elm.data('show-target'));
-    $target.show();
-    var focus_id = $elm.data('show-focus');
-    $focus = $(focus_id);
-    $focus.focus();
-    if($elm.data('show-self-hide')) {
-      $elm.hide();
-    }
-  });
-
-  if($('#project-participations-stuckable').length) {
-    new Waypoint.Sticky({
-      element: $('#project-participations-stuckable'),
-      stuckClass: 'unstuck',
-      offset: 'bottom-in-view'
-    });
-  }
 });

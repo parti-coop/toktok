@@ -45,6 +45,15 @@ section#page-home {
   section#current-projects {
     padding-top: 10px;
 
+    .projects-all-loading {
+      text-align: center;
+      margin-top: 50px;
+      display: none;
+      @media (max-width: $screen-xs-max){
+        min-height: 800px;
+      }
+    }
+
     .section-title {
       margin-top: 10px;
       margin-bottom: 10px;
@@ -57,6 +66,18 @@ section#page-home {
     .project-container {
       padding-left: 0;
       padding-right: 0;
+      margin-top: 18px;
+      .list-inline {
+        margin-left: 0;
+        margin-bottom: 0;
+        color: $gray;
+        a {
+          color: $gray;
+          &.active {
+            color: $brand-primary;
+          }
+        }
+      }
     }
 
     .project {

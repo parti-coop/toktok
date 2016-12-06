@@ -52,6 +52,9 @@ Rails.application.routes.draw do
     resources :participations do
       delete :cancel, on: :collection
     end
+    collection do
+      get :search
+    end
   end
   resources :questions, concerns: [:commentable, :likable]
   resources :comments, concerns: [:likable]

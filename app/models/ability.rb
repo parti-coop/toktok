@@ -6,6 +6,7 @@ class Ability
       !model.is_a?(Proposal)
     end
     can [:thanks, :create], Proposal
+    can [:search], Project
     if user
       can [:create, :update, :destroy], Participation
       can [:create, :update, :destroy], Comment do |comment|

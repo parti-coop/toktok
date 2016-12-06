@@ -1,0 +1,7 @@
+- data_params = { action: 'hotline-filter-projects', 'search-sort': 'default'}
+%ul.list-inline
+  %li= link_to '최신순', '#', data: data_params.merge('search-sort': 'recent'), class: ('active' if params['sort'] == 'recent')
+  |
+  %li= link_to '참여순', '#', data: data_params.merge('search-sort': 'hottest'), class: ('active' if params['sort'] == 'hottest' or params['sort'].blank?)
+  |
+  %li= link_to '매칭순', '#', data: data_params.merge('search-sort': 'matching'), class: ('active' if params['sort'] == 'matching')

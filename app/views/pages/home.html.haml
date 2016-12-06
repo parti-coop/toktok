@@ -8,8 +8,13 @@
       = image_tag 'key_visual.png', class: 'key-visual-image'
       = link_to new_proposal_path, class: 'btn btn-default btn-lg btn-home-proposal' do
         제안하기
-
   %section#current-projects
     .container.project-container
-      = render 'projects/list'
+      .projects-sort-select
+        = render 'pages/home_sort_select'
+
+      .projects-all-loading
+        %i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw
+      .projects-all-list
+        = render 'projects/list'
 

@@ -1,0 +1,5 @@
+var $select = hotline_partial("<%= escape_javascript(render 'pages/home_sort_select') %>");
+$('#current-projects .project-container .projects-sort-select').html($select);
+
+var $projects = hotlinn_partial("<%= escape_javascript(render 'projects/list') %>");
+$('#current-projects .project-container .projects-all-list').html($projects);
