@@ -1,7 +1,7 @@
 %section#page-home
   %section#key-visual
     .owl-carousel
-      .item
+      .item.constant-item
         %p
           국회에 직접 제안을 보내세요.
           %br
@@ -9,11 +9,13 @@
         = image_tag 'key_visual.png', class: 'key-visual-image'
         = link_to new_proposal_path, class: 'btn btn-default btn-lg btn-home-proposal' do
           제안하기
-      .item
-        %p
-          weew
-        = image_tag 'gathering_example.png'
-
+      - @mainslides.each do |mainslide|
+        .item
+          - if mainslide.url.present?
+            = link_to mainslide.url, target: '_blank' do
+              = image_tag mainslide.image.lg.url
+          - else
+            = image_tag mainslide.image.lg.url
 
   %section#current-projects
     .container.project-container

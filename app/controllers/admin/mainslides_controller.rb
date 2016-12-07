@@ -3,7 +3,7 @@ module Admin
     load_and_authorize_resource
 
     def index
-      @mainslides = Mainslide.all
+      @mainslides = Mainslide.all.priority.sequential
     end
 
     def new

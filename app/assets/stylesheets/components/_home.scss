@@ -1,15 +1,25 @@
 section#page-home {
   section#key-visual {
-    padding-top: 38px;
-    padding-bottom: 38px;
     text-align: center;
 
     .owl-carousel {
       color: #fff;
       .owl-item {
-        img {
-          height: 442px;
-          width: auto;
+        .item.constant-item {
+          background-color: $brand-success;
+          padding-top: 38px;
+          padding-bottom: 38px;
+          img {
+            width: 100%;
+            height: auto;
+            max-width: 700px;
+          }
+        }
+        .item {
+          background-color: #fff;
+          img {
+            width: 100%;
+          }
         }
         .btn-home-proposal {
           display: block;

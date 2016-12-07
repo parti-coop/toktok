@@ -175,9 +175,11 @@ var hotline_prepare = function($base) {
 
   $.hotline_apply($base, '.owl-carousel', function(elm) {
     $(elm).owlCarousel({
+      autoPlay: true,
       slideSpeed : 500,
       singleItem: true,
       navigation: true,
+      autoHeight : true,
       navigationText: ["&lt;","&gt;"]
     })
   });

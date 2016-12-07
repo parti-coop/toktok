@@ -10,7 +10,10 @@
     = f.label :image
     = f.hidden_field :image_cache, value: f.object.image_cache
     = f.file_field :image, class: 'form-control input-lg'
-    .help-block 추천 크기 : 740px X 246px 정도면 됩니다. 이미지 이펙트는 이미지 하단부터 블랙에서 투명으로 그라디언트되는 레이어 (높이 64px)를 이미지 위에 덮어 주세요. 자동으로 적당히 늘어나고 잘려 나옵니다.
+    .help-block
+      추천 이미지 비율은 가로(2.5) 세로(1)이며, 파일 크기는 https://tinypng.com 와 같은 서비스를 사용해서 최대한 줄여서 넣어주세요.
+      %br
+      (용량이 클 경우 홈페이지 로딩시간이 길어지게됩니다)
     - if upload_file_exists?(@project.try(:image))
       = image_tag @project.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
 
