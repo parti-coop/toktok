@@ -3,19 +3,19 @@ class ProjectsController < ApplicationController
   before_action :reset_meta_tags, only: :show
 
   def index
-    @projects = Project.all
+    @projects = Project.all.page(params[:page])
   end
 
   def search
-    @projects = Project.search_for(params[:keyword])
+    @projects = Project.search_for(params[:keyword]).page(params[:page])
 
     case params[:sort]
     when 'hottest'
-      @projects = @projects.hottest
+      @projects = @projects.hottest.page(params[:page])
     when 'matching'
-      @projects = @projects.matching
+      @projects = @projects.matching.page(params[:page])
     else
-      @projects = @projects.recent
+      @projects = @projects.recent.page(params[:page])
     end
   end
 

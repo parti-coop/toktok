@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  paginates_per 12
   acts_as_paranoid
 
   belongs_to :proposal, required: false
