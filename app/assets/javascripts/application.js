@@ -211,7 +211,9 @@ var hotline_prepare = function($base) {
     $(elm).each(function(i, elm) {
       var $elm = $(elm);
       $elm.on('click', function(e) {
+        var search_input = $(this).data('search-input');
         var sort = $(this).data('search-sort');
+        var $elm = $(this);
 
         $('.projects-all-loading').show();
         $('.projects-all-list').hide();
@@ -219,11 +221,12 @@ var hotline_prepare = function($base) {
           url: '/projects/search.js',
           type: "get",
           data:{
+            keyword: $(search_input).val(),
             sort: sort
           },
           complete: function(xhr) {
             $('.projects-all-loading').hide();
-            $('.projects-all-list').show();
+            $('.projects-all-list').show().trigger('hotline-home-searched');
           },
         });
         return false;
