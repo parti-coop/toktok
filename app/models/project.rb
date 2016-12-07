@@ -24,7 +24,7 @@ class Project < ApplicationRecord
 
   # scopes
   scope :recent, -> { order(created_at: :desc) }
-  scope :matching, -> { where(on_running: true) }
+  scope :matching, -> { where('participations_count >= participations_goal_count').order(created_at: :desc) }
   scope :hottest, -> { order(participations_count: :desc) }
 
   # search
