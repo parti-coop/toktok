@@ -43,8 +43,6 @@ section#page-home {
   }
 
   section#current-projects {
-    padding-top: 10px;
-
     .projects-all-loading {
       text-align: center;
       margin-top: 50px;
@@ -67,14 +65,33 @@ section#page-home {
       padding-left: 0;
       padding-right: 0;
       margin-top: 18px;
-      .list-inline {
-        margin-left: 0;
-        margin-bottom: 0;
-        color: $gray;
-        a {
+      .projects-search-form {
+        margin: 0 5px 12px;
+        .input-group-keyword {
+          .form-control {
+            font-size: $font-size-base;
+            height: 35px;
+          }
+          .input-group-btn {
+            .btn-group-default {
+              color: #fff;
+              background-color: #16a6a8;
+              height: 35px;
+              padding: 0 10px;
+            }
+          }
+        }
+      }
+      .projects-sort-select {
+        .list-inline {
+          margin-left: 0;
+          margin-bottom: 0;
           color: $gray;
-          &.active {
-            color: $brand-primary;
+          a {
+            color: $gray;
+            &.active {
+              color: $brand-primary;
+            }
           }
         }
       }

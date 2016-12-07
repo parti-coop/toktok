@@ -15,6 +15,7 @@
 //= require rails-timeago
 //= require locales/jquery.timeago.ko
 //= require jquery.validate
+//= require jquery.typewatch
 //= require validate/accept
 //= require jquery.waypoints
 //= require waypoints/sticky.js
@@ -230,6 +231,34 @@ var hotline_prepare = function($base) {
     });
   });
 
+  $.hotline_apply($base, '[data-action="hotline-search-projects"]', function(elm) {
+    $(elm).each(function(i, elm) {
+      var sort = $(elm).data('search-sort');
+      var options = {
+        callback: function (value) {
+          $('.projects-all-loading').show();
+          $('.projects-all-list').hide();
+          $.ajax({
+            url: '/projects/search.js',
+            type: "get",
+            data:{
+              keyword: value,
+              sort: $(sort).val()
+            },
+            complete: function(xhr) {
+              $('.projects-all-loading').hide();
+              $('.projects-all-list').show().trigger('hotline-home-searched');
+            },
+          });
+        },
+        wait: 500,
+        highlight: true,
+        allowSubmit: false,
+        captureLength: 2
+      }
+      $(elm).typeWatch( options );
+    });
+  });
 };
 
 

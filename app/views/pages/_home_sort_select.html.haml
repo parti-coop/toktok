@@ -1,4 +1,4 @@
-- data_params = { action: 'hotline-filter-projects', 'search-sort': 'default'}
+- data_params = { action: 'hotline-filter-projects', 'search-input': '#projects-all input[data-action=hotline-search-projects]', 'search-sort': 'default'}
 %ul.list-inline
   %li= link_to '최신순', '#', data: data_params.merge('search-sort': 'recent'), class: ('active' if params['sort'] == 'recent' or params['sort'].blank?)
   |

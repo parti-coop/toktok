@@ -10,8 +10,17 @@
         제안하기
   %section#current-projects
     .container.project-container
-      .projects-sort-select
-        = render 'pages/home_sort_select'
+      .projects-filter
+        .projects-search-form
+          %form(onsubmit="return false;")
+            = hidden_field_tag :sort
+            .input-group.input-group-lg.input-group-keyword
+              %input.form-control{name: "keyword", placeholder: "제안 검색하기", type: "search", data: { action: 'hotline-search-projects', 'search-sort': '#projects-all input[name=sort]'}}
+                %span.input-group-btn
+                  %button.btn.btn-group-default{:type => "button"}
+                    %i.fa.fa-search
+        .projects-sort-select
+          = render 'pages/home_sort_select'
 
       .projects-all-loading
         %i.fa.fa-spinner.fa-pulse.fa-3x.fa-fw

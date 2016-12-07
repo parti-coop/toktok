@@ -1,5 +1,10 @@
 var $select = hotline_partial("<%= escape_javascript(render 'pages/home_sort_select') %>");
 $('#current-projects .project-container .projects-sort-select').html($select);
 
+$('#projects-all input[name=sort]').val("<%= params['sort'] %>");
+
 var $projects = hotline_partial("<%= escape_javascript(render 'projects/list') %>");
-$('#current-projects .project-container .projects-all-list').html($projects);
+
+$('#current-projects .project-container .projects-all-list').html($projects).one("parti-home-searched", function(e) {
+  $('#current-projects .project-container .projects-all-list');
+});

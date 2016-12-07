@@ -22,9 +22,13 @@ class Project < ApplicationRecord
   # mount
   mount_uploader :image, ImageUploader
 
+  # scopes
   scope :recent, -> { order(created_at: :desc) }
   scope :matching, -> { where(on_running: true) }
   scope :hottest, -> { order(participations_count: :desc) }
+
+  # search
+  scoped_search on: [:title]
 
   STATUS = {
     'gathering' => {

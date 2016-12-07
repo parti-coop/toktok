@@ -7,13 +7,15 @@ class ProjectsController < ApplicationController
   end
 
   def search
+    @projects = Project.search_for(params[:keyword])
+
     case params[:sort]
-    when 'recent'
-      @projects = Project.recent
+    when 'hottest'
+      @projects = @projects.hottest
     when 'matching'
-      @projects = Project.matching
+      @projects = @projects.matching
     else
-      @projects = Project.hottest
+      @projects = @projects.recent
     end
   end
 
