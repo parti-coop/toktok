@@ -4,6 +4,33 @@ section#page-home {
     padding-bottom: 38px;
     text-align: center;
 
+    .owl-carousel {
+      color: #fff;
+      .owl-item {
+        img {
+          height: 442px;
+          width: auto;
+        }
+        .btn-home-proposal {
+          display: block;
+          margin: auto;
+        }
+      }
+      .owl-buttons {
+        font-size: 40px;
+        .owl-prev {
+          position: absolute;
+          top: 50%;
+          left: 10%;
+        }
+        .owl-next {
+          position: absolute;
+          top: 50%;
+          right: 10%;
+        }
+      }
+    }
+
     .key-visual-image {
       width: 100%;
       margin-top: -100px;

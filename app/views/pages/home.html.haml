@@ -1,13 +1,20 @@
 %section#page-home
   %section#key-visual
-    .container
-      %p
-        국회에 직접 제안을 보내세요.
-        %br
-        시민의 제안으로 법안을 만듭니다.
-      = image_tag 'key_visual.png', class: 'key-visual-image'
-      = link_to new_proposal_path, class: 'btn btn-default btn-lg btn-home-proposal' do
-        제안하기
+    .owl-carousel
+      .item
+        %p
+          국회에 직접 제안을 보내세요.
+          %br
+          시민의 제안으로 법안을 만듭니다.
+        = image_tag 'key_visual.png', class: 'key-visual-image'
+        = link_to new_proposal_path, class: 'btn btn-default btn-lg btn-home-proposal' do
+          제안하기
+      / .item
+      /   %p
+      /     weew
+      /   = image_tag 'gathering_example.png'
+
+
   %section#current-projects
     .container.project-container
       .projects-filter
