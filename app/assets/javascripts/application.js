@@ -175,8 +175,7 @@ var hotline_prepare = function($base) {
 
   $.hotline_apply($base, '.owl-carousel', function(elm) {
     $(elm).owlCarousel({
-      slideSpeed : 300,
-      paginationSpeed : 400,
+      slideSpeed : 500,
       singleItem: true,
       navigation: true,
       navigationText: ["&lt;","&gt;"]

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'download_emails', to: 'base#download_emails'
     patch 'users/role', to: "users#role"
     resources :proposals
+    resources :mainslides
     resources :projects do
       resources :matches, shallow: true
       resources :timelines, shallow: true do

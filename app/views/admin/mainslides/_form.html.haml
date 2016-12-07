@@ -1,0 +1,24 @@
+= form_for [:admin, @mainslide] do |f|
+
+  .form-group
+    = f.label :order
+    = f.number_field :order, class: 'form-control input-lg'
+    .help-block
+      슬라이드가 보여질 순서를 숫자로 입력해주세요. (순서가 같은 슬라이드의 경우, 먼저 만들어진 슬라이드부터 보여집니다)
+
+  .form-group
+    = f.label :image
+    = f.hidden_field :image_cache, value: f.object.image_cache
+    = f.file_field :image, class: 'form-control input-lg'
+    .help-block 추천 크기 : 740px X 246px 정도면 됩니다. 이미지 이펙트는 이미지 하단부터 블랙에서 투명으로 그라디언트되는 레이어 (높이 64px)를 이미지 위에 덮어 주세요. 자동으로 적당히 늘어나고 잘려 나옵니다.
+    - if upload_file_exists?(@project.try(:image))
+      = image_tag @project.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
+
+  .form-group
+    = f.label :url
+    = f.text_field :url, class: 'form-control input-lg'
+    .help-block
+      슬라이드이미지를 클릭했을 때 연결될 링크가 있다면, http:// 나 https://로 시작되는 형식으로 url을 입력해주세요.
+
+  .form-group
+    = f.submit class: 'btn btn-primary'

@@ -1,0 +1,28 @@
+%section
+  .container
+    .page-header
+      %h2
+        관리 &gt; 메인슬라이드 관리
+        .pull-right
+          %small
+            = link_to '만들기', new_admin_mainslide_path
+    %table.table.table-condensed
+      %thead
+        %tr
+          %th 슬라이드 순서
+          %th 이미지
+          %th 링크url
+          %th 관리
+      %tbody
+        - @mainslides.each do |mainslide|
+          %tr
+            %th(scope="row")= mainslide.order
+            %td
+              = image_tag mainslide.image.sm.url
+            %td
+              - if mainslide.url.present?
+                = mainslide.url
+            %td
+              = link_to '수정', edit_admin_mainslide_path(mainslide)
+              %br
+              = link_to '삭제', [:admin, mainslide], method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
