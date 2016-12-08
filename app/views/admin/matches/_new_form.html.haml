@@ -1,12 +1,15 @@
-= form_for [:admin, project, Match.new] do |f|
-  .form-group
-    = f.label :congressman_id
-    = f.select :congressman_id, nil, {}, { class: 'form-control input-lg action-congressman-select' } do
-      - [project.committees].flatten.compact.each do |committee|
-        - unmatched_congressmen = committee.congressmen.where.not(id: project.matched_congressmen)
-        - next unless unmatched_congressmen.any?
-        %optgroup{label: "#{committee.name}"}
-          - unmatched_congressmen.each do |congressman|
-            %option{value: congressman.id}= congressman.name
-  .form-group
-    = f.submit '저장', class: 'btn btn-defult'
+- if project.committees.any?
+  = form_for [:admin, project, Match.new] do |f|
+    .form-group
+      = f.label :congressman_id
+      = f.select :congressman_id, nil, {}, { class: 'form-control input-lg action-congressman-select' } do
+        - [project.committees].flatten.compact.each do |committee|
+          - unmatched_congressmen = committee.congressmen.where.not(id: project.matched_congressmen)
+          - next unless unmatched_congressmen.any?
+          %optgroup{label: "#{committee.name}"}
+            - unmatched_congressmen.each do |congressman|
+              %option{value: congressman.id}= congressman.name
+    .form-group
+      = f.submit '저장', class: 'btn btn-defult'
+- else
+  이 제안에 등록된 상임위가 없습니다. 의원을 매칭시키려면 먼저 상임위를 등록해야합니다.

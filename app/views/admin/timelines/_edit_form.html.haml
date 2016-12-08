@@ -3,14 +3,20 @@
   .form-group
     = f.label :timeline_date
     = f.date_field :timeline_date, class: 'form-control'
-  .form-group
-    = f.label :congressman_id
-    = f.select :congressman_id, nil, {include_blank: '해당없음'}, { class: 'form-control input-lg action-congressman-select' } do
-      - [@timeline.project.committees].flatten.compact.each do |committee|
-        %optgroup{label: "#{committee.name}"}
-          - committee.congressmen.each do |congressman|
-            - selected = congressman.id == @timeline.try(:congressman).try(:id) ? 'selected' : nil
-            %option{value: congressman.id, selected: selected }= congressman.name
+  - if @timeline.project.committees.any?
+    .form-group
+      = f.label :congressman_id
+      = f.select :congressman_id, nil, {include_blank: '해당없음'}, { class: 'form-control input-lg action-congressman-select' } do
+        - [@timeline.project.committees].flatten.compact.each do |committee|
+          %optgroup{label: "#{committee.name}"}
+            - committee.congressmen.each do |congressman|
+              - selected = congressman.id == @timeline.try(:congressman).try(:id) ? 'selected' : nil
+              %option{value: congressman.id, selected: selected }= congressman.name
+  - else
+    .form-group
+      = f.label :congressman_id
+      .help-block
+        이 제안에 배정된 상임위가 없습니다. 의원 이름으로 타임라인을 쓰려면 먼저 상임위를 배정해야합니다.
   .form-group
     = f.label :actor
     = f.text_field :actor, class: 'form-control'
