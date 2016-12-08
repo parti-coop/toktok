@@ -5,7 +5,6 @@ class Ability
     can :read, :all do |model|
       !model.is_a?(Proposal)
     end
-    can [:thanks, :create], Proposal
     can [:search], Project
     if user
       can [:create, :update, :destroy], Participation
@@ -13,8 +12,9 @@ class Ability
         comment.user == user
       end
       can :cancel, Participation
-      can [:read, :update, :destroy], Proposal do |proposal|
-        proposal.user == user
+      can [:create], Project
+      can [:read, :update, :destroy, :thanks], Project do |project|
+        project.user == user
       end
     end
   end

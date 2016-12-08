@@ -1,0 +1,77 @@
+= form_for @project, html: { class: 'new_project action-validate', data: { 'validate-submit-form-control': 'form.new_project input[type="submit"]' } } do |f|
+  .form-group
+    = f.label :title, class: 'required' do
+      %strong 제안 제목
+    .help-block 20자 이내로 적어주세요
+    = f.text_field :title, class: 'form-control input-lg', data: { 'rule-required': true }
+
+
+  .form-group
+    = f.label :body, class: 'required' do
+      %strong 제안 내용
+    .help-block
+      국회에 어떤 법안을 제안하고 싶으신가요?
+      %br
+      1. 제안을 하는 이유를 밝혀주세요.
+      %br
+      2. 제안하는 내용을 자유롭게 기술해 주세요. (사진이나 통계 자료를 활용한다면 더욱 효과적인 제안이 될 수 있습니다.)
+    = f.text_area :body, class: "form-control #{'redactor' if is_redactorable?}", rows: 10, data: { 'rule-required': true }
+
+    #attachments
+      .button
+        = link_to_add_association f, :attachments, class: 'btn btn-attachment', 'data-association-insertion-method': 'after' do
+          = image_tag 'icon_attachment.png', class: 'icon-attachment'
+          %strong 첨부파일
+      = f.fields_for :attachments do |ff|
+        = render 'attachment_fields', f: ff
+      .help-block 제안을 설명하는 이미지, 영상을 파일 업로드 또는 링크해주세요.
+
+  .form-group
+    = f.label :summary, class: 'required' do
+      %strong 제안 요약
+    .help-block
+      위의 제안을 한 두 문장 정도로 요약해주세요.
+      %br
+      (이 제안을 SNS로 공유하거나 간단히 소개할 때 쓰입니다)
+    = f.text_area :summary, class: 'form-control redactor'
+
+  .form-group
+    = f.label :image do
+      %strong 대표 이미지
+    .help-block 이 제안을 가장 잘 표현하는 대표 이미지를 올려주세요. 대표 이미지는 국회톡톡 메인페이지와 제안페이지 전반에서 보여집니다.
+    = f.hidden_field :image_cache, value: f.object.image_cache
+    = f.file_field :image, class: 'form-control input-lg', data: { 'rule-accept': 'image/*' }
+    - if upload_file_exists?(@project.try(:image))
+      = image_tag @project.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
+
+  %hr
+
+  .form-group
+    = f.label :proposer, class: 'required' do
+      %strong 제안하시는 분의 이름
+    .help-block 제안 페이지에 여기 써주신 이름이 나옵니다
+    .help
+    = f.text_field :proposer, class: 'form-control input-lg', value: (@project.proposer || current_user.try(:nickname)), data: { 'rule-required': true }
+
+  .form-group
+    = f.label :proposer_description, class: 'required' do
+      %strong 제안하시는 분 자신에 대한 간단한 소개
+    .help-block 제안 페이지에 여기 써주신 소개글이 나옵니다
+    = f.text_area :proposer_description, class: 'form-control redactor'
+
+  .form-group
+    = f.label :proposer_email, class: 'required' do
+      %strong 이메일
+    = f.text_field :proposer_email, class: 'form-control input-lg', value: (@project.proposer_email || current_user.try(:email)), data: { 'rule-required': true, 'rule-email': true }
+
+  .form-group
+    = f.label :proposer_phone, class: 'required' do
+      %strong 휴대폰
+    = f.text_field :proposer_phone, class: 'form-control input-lg', data: { 'rule-required': true }
+
+  .project-help-block
+    %p 국회톡톡의 제안은 특정한 개인 또는 단체의 이익이 아니라, 공익적 목적을 지향합니다.
+    %p 시민제안의 내용은 국회톡톡의 입장과 다를 수 있습니다.
+    %p 시민제안의 구체적인 논의는 시민 자율에 맡겨집니다.
+  .form-group.form-group-submit
+    = f.submit '제안하기', class: 'btn btn-submit', data: { disable_with: "저장 중..." }

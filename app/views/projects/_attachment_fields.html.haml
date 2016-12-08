@@ -1,0 +1,13 @@
+.nested-fields{class: ('nested-fields--persisted' if f.object.source.url.present?)}
+  .form-group
+    .row<>
+      .col-xs-10.col-sm-11.col-middel<>
+        = f.hidden_field :soure_cache, value: f.object.source_cache
+        - if f.object.source.url.present?
+          = link_to excerpt(f.object.name, length: 30), f.object.source.url, target: '_blank', class: 'source-link'
+        - else
+          = f.file_field :source, class: 'form-control input-lg'
+      .col-xs-2.col-sm-1.col-middel<>
+        = link_to_remove_association f do
+          = image_tag 'icon_close.png', class: 'icon-close'
+

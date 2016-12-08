@@ -1,5 +1,81 @@
 $project-step-border-color: $gray-lighter;
 
+section#page-projects-new,
+section#page-projects-edit {
+  padding-top: 20px;
+  .intro {
+    text-align: center;
+    @include responsive-font-size-large();
+    color: $brand-primary;
+    margin-bottom: 36px;
+  }
+  #attachments {
+    margin-top: 12px;
+    .nested-fields {
+      margin-top: 6px;
+      .form-group {
+        margin-bottom: 0;
+        .source-link {
+          margin-left: 15px;
+        }
+      }
+      &.nested-fields--persisted {
+        background-color: $gray-lightest;
+        line-height: 3.3;
+      }
+    }
+  }
+  .help-block {
+    color: $brand-success;
+  }
+  .project-help-block {
+    color: $brand-success;
+    @media (min-width: $screen-sm-min) {
+      text-align: center;
+    }
+  }
+}
+
+
+section#page-projects-create {
+  section#intro {
+    color: $gray-dark;
+    background-color: $gray-lightest;
+    padding: 25px 20px;
+    text-align: center;
+  }
+  section#saved-project{
+    margin-top: 20px;
+    .project-proposer {
+      @include responsive-font-size-small();
+      color: $gray;
+    }
+    .project-title {
+      font-size: $font-size-h3;
+      margin-top: 15px;
+      margin-bottom: 7px;
+    }
+    .project-body {
+      color: $gray;
+    }
+  }
+}
+
+section#page-projects-show {
+  .project-label {
+    color: $brand-primary;
+    strong {
+      font-weight: 900;
+    }
+  }
+  .project-attachment {
+    a {
+      word-break: break-all;
+    }
+  }
+}
+
+
 section#page-project .project-panel__status .project-status-bar,
 section#page-home .project {
   @mixin angle-after($height, $color) {

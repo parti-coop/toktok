@@ -50,6 +50,9 @@ Rails.application.routes.draw do
     get :thanks, on: :member
   end
   resources :projects, concerns: [:commentable, :likable] do
+    member do
+      get :thanks
+    end
     resources :participations do
       delete :cancel, on: :collection
     end

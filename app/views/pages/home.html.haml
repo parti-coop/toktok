@@ -7,8 +7,12 @@
           %br
           시민의 제안으로 법안을 만듭니다.
         = image_tag 'key_visual.png', class: 'key-visual-image'
-        = link_to new_proposal_path, class: 'btn btn-default btn-lg btn-home-proposal' do
-          제안하기
+        - if user_signed_in?
+          = link_to new_project_path, class: 'btn btn-default btn-lg btn-home-proposal' do
+            제안하기
+        - else
+          = link_to new_user_session_path, class: 'btn btn-default btn-lg btn-home-proposal' do
+            제안하기
       - @mainslides.each do |mainslide|
         .item
           - if mainslide.url.present?

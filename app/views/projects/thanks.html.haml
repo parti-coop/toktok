@@ -1,0 +1,30 @@
+%section#page-projects-create
+  %section#intro
+    .container
+      %p
+        제안해주셔서 감사합니다.
+  %section#saved-project
+    .container
+      .section-label
+        %strong|
+        제안자
+      .media
+        .media-left
+          .proposer-image.img-user-large{style: "background-image: url(#{image_url('img_default_profile.png')});"}
+        .media-body.project-proposer
+          .proposer-name
+            = @project.proposer
+            %span.proposer-date
+              = static_date_f_not_hour @project.created_at
+          .proposer-email
+            = @project.proposer_email
+          .proposer-phone
+            = @project.proposer_phone
+      %hr.project-divider
+      .pull-right
+        = link_to '제안 자세히 보기', @project
+      .section-label
+        %strong|
+        제안내용
+      .project-title= @project.title
+      .project-body!= @project.body

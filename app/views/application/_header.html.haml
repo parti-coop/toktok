@@ -19,7 +19,10 @@
 
       #site-header-collapsable.collapse.navbar-collapse
         %ul.nav.navbar-nav
-          %li= link_to '제안하기', new_proposal_path
+          - if user_signed_in?
+            %li= link_to '제안하기', new_project_path
+          -else
+            %li= link_to '제안하기', new_user_session_path
           - if user_signed_in?
             %li.visible-xs-inline= link_to '로그아웃', sign_out_path, method: :delete, class: 'btn btn-sign-out btn-block'
           - else
