@@ -28,10 +28,17 @@
     = f.label :summary
     = f.text_area :summary, class: 'form-control redactor'
 
-  - if @project.proposal.present?
-    .form-group
-      = f.label :proposer
-      = f.text_field :proposer, class: 'form-control input-lg', value: @project.proposal.proposer_name
+  .form-group
+    = f.label :proposer
+    = f.text_field :proposer, class: 'form-control input-lg', value: @project.proposer
+
+  .form-group
+    = f.label :proposer_phone
+    = f.text_field :proposer_phone, class: 'form-control input-lg', value: @project.proposer_phone
+
+  .form-group
+    = f.label :proposer_email
+    = f.text_field :proposer_email, class: 'form-control input-lg', value: @project.proposer_email
 
   .form-group
     = f.label :proposer_description
