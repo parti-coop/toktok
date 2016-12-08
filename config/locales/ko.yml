@@ -51,12 +51,12 @@ ko:
       project:
         committees: 위원회
         title: 제목
-        summary: 요약
-        proposer: 제안자
-        proposer_email: 이메일
-        proposer_phone: 휴대폰
+        summary: 제안 요약
+        proposer: 제안자 이름
+        proposer_email: 제안자 이메일
+        proposer_phone: 제안자 휴대폰
         proposer_description: 제안자 설명
-        body: 내용
+        body: 제안 내용
         image: 대표 이미지
         participations_goal_count: 목표 참여 인원
         matching_staff_message: 매칭단계 운영자 메시지

@@ -1,4 +1,13 @@
 %section#committees
   .container
-    - if @project.committees.present?
+    - if @project.committees.any?
       = render 'committees'
+    - else
+      .project-panel__committee.project-panel
+        .project-label
+          %strong|
+          이 제안의 상임위원회
+      이 제안에는 아직 상임위가 배정되지 않았습니다.
+      %br
+      관리자에게 배정을 요청해주세요.
+      %a(href="mailto:info@toktok.io") info@toktok.io

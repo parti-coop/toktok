@@ -25,6 +25,10 @@
     = f.text_field :title, class: 'form-control input-lg'
 
   .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control redactor'
+
+  .form-group
     = f.label :summary
     = f.text_area :summary, class: 'form-control redactor'
 
@@ -45,10 +49,6 @@
     = f.text_area :proposer_description, class: 'form-control redactor'
 
   .form-group
-    = f.label :body
-    = f.text_area :body, class: 'form-control redactor'
-
-  .form-group
     = f.label :image
     = f.hidden_field :image_cache, value: f.object.image_cache
     = f.file_field :image, class: 'form-control input-lg'
@@ -66,18 +66,6 @@
   .form-group
     = f.label :matching_staff_message
     = f.text_area :matching_staff_message, class: 'form-control'
-
-  .form-group
-    = f.label :proposal_id
-    = f.text_field :proposal_id, class: 'form-control input-lg'
-    .help-block
-      관련 제안이 있다면 해당 제안번호를 넣어주세요.
-      = link_to '제안번호 확인', admin_proposals_path, target: '_blank'
-
-    - if @project.proposal.present?
-      .panel.panel-default
-        .panel-body
-          = render @project.proposal
 
   %h3 첨부파일
   #attachments
