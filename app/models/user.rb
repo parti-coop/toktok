@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :omniauth_providers => [:facebook, :twitter, :kakao]
 
   has_many :proposals, dependent: :destroy
+  has_many :projects
   has_many :participations, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :comments, dependent: :destroy

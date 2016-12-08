@@ -13,7 +13,23 @@
 
   %section#user-body
     .container
-
+      - if @user.projects.any?
+        .section-label
+          %strong|
+          - if @user == current_user
+            내가
+          만든 제안
+          %span.count= @user.projects.count
+        .projects
+          - @user.projects.recent.each do |project|
+            - if project.present?
+              = link_to project do
+                .project
+                  .project-title= project.title
+                  .project-date
+                    = date_f project.created_at
+                    제안
+    .container
       - if @user.participations.any?
         .section-label
           %strong|
