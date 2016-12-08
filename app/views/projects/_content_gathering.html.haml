@@ -24,6 +24,19 @@
                 = static_date_f_not_hour @project.proposal.created_at
               .proposer-opinion
                 = simple_format @project.proposer_description
+    - elsif @project.user.present?
+      %hr.project-divider
+      .project-panel__proposer
+        .media
+          .media-left
+            .proposer-image.img-user-large{style: "background-image: url(#{@project.user.image.sm.url});"}
+          .media-body.proposal-content
+            %span.proposer-name
+              = @project.proposer
+            %span.proposer-date
+              = static_date_f_not_hour @project.created_at
+            .proposer-opinion
+              = simple_format @project.proposer_description
 
 - unless @project.participant?(current_user)
   %section#project-participations-stuckable
