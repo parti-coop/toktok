@@ -17,6 +17,11 @@
                 = link_to admin_project_path(@project) do
                   %i.fa.fa-cog
                   관리
+            - if @project.user == current_user
+              %span.admin-button
+                = link_to '수정', edit_project_path(@project)
+                - unless @project.participations_count > 0
+                  = link_to '삭제', @project, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' }
         %h2
           = @project.title
 
@@ -32,7 +37,7 @@
       = render 'projects/content_gathering'
       = render 'project_committes'
       = render 'project_comments'
-      
+
     #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :matching}"}
       = render 'projects/content_matching'
       = render 'project_committes'
@@ -42,5 +47,5 @@
       = render 'projects/content_running'
       = render 'project_comments'
 
-  
-  
+
+

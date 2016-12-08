@@ -20,6 +20,19 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    if @project.update(project_params)
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @project.destroy
+    redirect_to root_path
+  end
+
   def search
     @projects = Project.search_for(params[:keyword]).page(params[:page])
 
