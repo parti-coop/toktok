@@ -35,7 +35,6 @@
   .tab-content
     #gathering.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :gathering}"}
       = render 'projects/content_gathering'
-      = render 'project_committes'
       = render 'project_comments'
 
     #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :matching}"}
