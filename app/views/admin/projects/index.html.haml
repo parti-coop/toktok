@@ -2,7 +2,7 @@
   .container
     .page-header
       %h2
-        관리 &gt; 제안매칭
+        관리 &gt; 제안
         .pull-right
           %small
             = link_to '만들기', new_admin_project_path
@@ -12,7 +12,6 @@
           %th #
           %th 제목
           %th 상태
-          %th 제안
           %th 날짜
       %tbody
         - @projects.each do |project|
@@ -23,8 +22,5 @@
               %span.fa.fa-comment-o
                 = project.comments.count
             %td= t("messages.project_status.#{project.status}")
-            %td
-              - if project.proposal.present?
-                = link_to project.proposal.title, admin_proposal_path(project.proposal)
             %td
               %span= static_date_f project.created_at
