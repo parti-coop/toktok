@@ -51,13 +51,15 @@ section#page-projects-edit {
       .checklist-content {
         .check-item {
           margin-top: 18px;
+          display: table;
           p {
-            display: inline;
+            display: table-cell;
           }
           input {
             display: none;
           }
           label {
+            vertical-align: text-top;
             width: 20px;
             height: 20px;
             background-color: $gray-light;
