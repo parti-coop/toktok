@@ -263,6 +263,60 @@ var hotline_prepare = function($base) {
       $(elm).typeWatch( options );
     });
   });
+
+  $.hotline_apply($base, '#checkBefore', function(elm) {
+    $(elm).on('show.bs.modal', function (e) {
+      var button = $(e.relatedTarget); // Button that triggered the modal
+      var recipient = '큐ㅅ'; // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this);
+      modal.find('.modal-title').text('New message to ' + recipient);
+    });
+
+
+  });
+
+  $.hotline_apply($base, '[data-action="hotline-before-submit-form-validation"]', function(elm) {
+    var $elm = $(elm);
+    var $form = $(elm);
+    var $submit = $('#before-submit-button');
+    $submit.prop('disabled', true);
+    $submit.addClass('disabled');
+
+    $form.validate({
+      ignore: ':hidden:not(.validate)',
+      errorPlacement: function(error, element) {
+        return true;
+      }
+    });
+
+    $elm.find(':input').on('input', function(e) {
+      if($form.valid()) {
+        $submit.prop('disabled', false);
+        $submit.removeClass('disabled');
+      } else {
+        $submit.prop('disabled', true);
+        $submit.addClass('disabled');
+      }
+    });
+
+    $elm.find(':input').on('change', function(e) {
+      if($form.valid()) {
+        $submit.prop('disabled', false);
+        $submit.removeClass('disabled');
+      } else {
+        $submit.prop('disabled', true);
+        $submit.addClass('disabled');
+      }
+    });
+
+    $submit.on('click', function(e) {
+      if($form.valid() == false) {
+        alert('필수 입력항목을 모두 입력해야합니다');
+      }
+    });
+  });
 };
 
 

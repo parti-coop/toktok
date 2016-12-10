@@ -1,4 +1,4 @@
-= form_for @project, html: { class: 'new_project action-validate', data: { 'validate-submit-form-control': 'form.new_project input[type="submit"]' } } do |f|
+= form_for @project, html: { class: 'new_project action-validate', data: { action: 'hotline-before-submit-form-validation', 'validate-submit-form-control': 'form.new_project input[type="submit"]' } } do |f|
   .form-group
     = f.label :title, class: 'required' do
       %strong 제안 제목
@@ -33,7 +33,7 @@
       위의 제안을 한 두 문장 정도로 요약해주세요.
       %br
       (이 제안을 SNS로 공유하거나 간단히 소개할 때 쓰입니다)
-    = f.text_area :summary, class: 'form-control redactor'
+    = f.text_area :summary, class: 'form-control redactor', data: { 'rule-required': true }
 
   .form-group
     = f.label :image do
@@ -57,7 +57,7 @@
     = f.label :proposer_description, class: 'required' do
       %strong 제안하시는 분 자신에 대한 간단한 소개
     .help-block 제안 페이지에 여기 써주신 소개글이 나옵니다
-    = f.text_area :proposer_description, class: 'form-control redactor'
+    = f.text_area :proposer_description, class: 'form-control redactor', data: { 'rule-required': true }
 
   .form-group
     = f.label :proposer_email, class: 'required' do
@@ -74,4 +74,21 @@
     %p 시민제안의 내용은 국회톡톡의 입장과 다를 수 있습니다.
     %p 시민제안의 구체적인 논의는 시민 자율에 맡겨집니다.
   .form-group.form-group-submit
-    = f.submit '제안하기', class: 'btn btn-submit', data: { disable_with: "저장 중..." }
+    .btn.btn-submit#before-submit-button{ data: { action: 'hotline-before-submit', target: "#checkBefore", toggle: "modal"} }
+      제안하기
+
+  #checkBefore.modal.fade{"aria-labelledby" => "checkBeforeLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} &#215;
+          %h4#checkBeforeLabel.modal-title Modal title
+        .modal-body
+          \...
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 닫기
+          / %button.btn.btn-primary{:type => "button"} Save changes
+          = f.submit '업로드 하기', class: 'button btn btn-primary', data: { disable_with: "저장 중..." }
+
+
