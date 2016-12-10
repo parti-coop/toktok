@@ -264,7 +264,7 @@ var hotline_prepare = function($base) {
     });
   });
 
-  $.hotline_apply($base, '[data-action="hotline-before-submit-form-validation"]', function(elm) {
+  $.hotline_apply($base, '[data-action="hotline-before-checklist-form-validation"]', function(elm) {
     var $elm = $(elm);
     var $form = $(elm);
     var $submit = $('#before-submit-button');
@@ -301,6 +301,32 @@ var hotline_prepare = function($base) {
     $submit.on('click', function(e) {
       if($form.valid() == false) {
         alert('필수 입력항목을 모두 입력해야합니다');
+      }
+    });
+  });
+
+  $.hotline_apply($base, '[data-action="hotline-before-submit"]', function(elm) {
+    var $elm = $(elm);
+    var $submit = $('#hotline-before-submit-button');
+    $submit.prop('disabled', true);
+    $submit.addClass('disabled');
+    $elm.find(':input').on('input', function(e) {
+      if($('#cb1').prop( "checked" ) == true && $('#cb2').prop( "checked" ) == true && $('#cb3').prop( "checked" ) == true) {
+        $submit.prop('disabled', false);
+        $submit.removeClass('disabled');
+      } else {
+        $submit.prop('disabled', true);
+        $submit.addClass('disabled');
+      }
+    });
+
+    $elm.find(':input').on('change', function(e) {
+      if($('#cb1').prop( "checked" ) == true && $('#cb2').prop( "checked" ) == true && $('#cb3').prop( "checked" ) == true) {
+        $submit.prop('disabled', false);
+        $submit.removeClass('disabled');
+      } else {
+        $submit.prop('disabled', true);
+        $submit.addClass('disabled');
       }
     });
   });

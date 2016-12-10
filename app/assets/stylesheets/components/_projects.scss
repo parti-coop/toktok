@@ -76,6 +76,11 @@ section#page-projects-edit {
       .btn-close {
         background-color: $gray-light;
       }
+      #hotline-before-submit-button {
+        &.disabled {
+          opacity: 0.4;
+        }
+      }
     }
   }
 }
