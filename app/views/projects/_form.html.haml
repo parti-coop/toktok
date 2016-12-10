@@ -33,7 +33,7 @@
       위의 제안을 한 두 문장 정도로 요약해주세요.
       %br
       (이 제안을 SNS로 공유하거나 간단히 소개할 때 쓰입니다)
-    = f.text_area :summary, class: 'form-control redactor', data: { 'rule-required': true }
+    = f.text_area :summary, class: "form-control #{'redactor' if is_redactorable?}", data: { 'rule-required': true }
 
   .form-group
     = f.label :image do
@@ -57,7 +57,7 @@
     = f.label :proposer_description, class: 'required' do
       %strong 제안하시는 분 자신에 대한 간단한 소개
     .help-block 제안 페이지에 여기 써주신 소개글이 나옵니다
-    = f.text_area :proposer_description, class: 'form-control redactor', data: { 'rule-required': true }
+    = f.text_area :proposer_description, class: "form-control #{'redactor' if is_redactorable?}", data: { 'rule-required': true }
 
   .form-group
     = f.label :proposer_email, class: 'required' do
