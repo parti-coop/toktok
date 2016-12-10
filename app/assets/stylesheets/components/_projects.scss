@@ -34,6 +34,50 @@ section#page-projects-edit {
       text-align: center;
     }
   }
+  #checkBefore .modal-dialog {
+    max-width: 410px;
+    .modal-body {
+      color: $gray;
+      .checklist-title {
+        font-size: $font-size-large;
+        color: $brand-primary;
+        text-align: center;
+        margin-top: 9px;
+        margin-bottom: 24px;
+      }
+      .checklist-subtitle {
+        font-weight: bold;
+      }
+      .checklist-content {
+        .check-item {
+          margin-top: 18px;
+          p {
+            display: inline;
+          }
+          input {
+            display: none;
+          }
+          label {
+            width: 20px;
+            height: 20px;
+            background-color: $gray-light;
+            margin-bottom: -6px;
+            margin-right: 8px;
+          }
+          input:checked + label:after {
+            content: '\2714';
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+    .modal-footer {
+      border-top: none;
+      .btn-close {
+        background-color: $gray-light;
+      }
+    }
+  }
 }
 
 

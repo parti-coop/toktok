@@ -264,19 +264,6 @@ var hotline_prepare = function($base) {
     });
   });
 
-  $.hotline_apply($base, '#checkBefore', function(elm) {
-    $(elm).on('show.bs.modal', function (e) {
-      var button = $(e.relatedTarget); // Button that triggered the modal
-      var recipient = '큐ㅅ'; // Extract info from data-* attributes
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-      var modal = $(this);
-      modal.find('.modal-title').text('New message to ' + recipient);
-    });
-
-
-  });
-
   $.hotline_apply($base, '[data-action="hotline-before-submit-form-validation"]', function(elm) {
     var $elm = $(elm);
     var $form = $(elm);
@@ -317,6 +304,7 @@ var hotline_prepare = function($base) {
       }
     });
   });
+
 };
 
 

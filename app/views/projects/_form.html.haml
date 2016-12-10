@@ -80,15 +80,30 @@
   #checkBefore.modal.fade{"aria-labelledby" => "checkBeforeLabel", :role => "dialog", :tabindex => "-1"}
     .modal-dialog{:role => "document"}
       .modal-content
-        .modal-header
+        .modal-body
           %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
             %span{"aria-hidden" => "true"} &#215;
-          %h4#checkBeforeLabel.modal-title Modal title
-        .modal-body
-          \...
+          .checklist-title
+            몇가지만 확인할게요
+          .checklist-subtitle
+            제안이 성공적으로 업로드 되기 전에 확인하고 모두 체크해주세요.
+          .checklist-content
+            .check-item
+              %input{type: "checkbox", id: 'cb1'}
+              %label{:for => "cb1"}
+              %p 대표이미지 등 이미지 업로드시, 저작권에 유의해주세요.
+
+            .check-item
+              %input{type: "checkbox", id: 'cb2'}
+              %label{:for => "cb2"}
+              %p 공익을 위한 제안인지 다시 한번 검토해 주세요.
+            .check-item
+              %input{type: "checkbox", id: 'cb3'}
+              %label{:for => "cb3"}
+              %p 혐오와 비방 목적의 제안은 관리자에 의해 삭제될 수 있습니다.
         .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} 닫기
+          %button.btn.btn-default.pull-left.btn-close{"data-dismiss" => "modal", :type => "button"} 닫기
           / %button.btn.btn-primary{:type => "button"} Save changes
-          = f.submit '업로드 하기', class: 'button btn btn-primary', data: { disable_with: "저장 중..." }
+          = f.submit '업로드 하기', class: 'button btn btn-primary pull-right', data: { disable_with: "저장 중..." }
 
 
