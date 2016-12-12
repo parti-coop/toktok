@@ -65,7 +65,11 @@
 
   .form-group
     = f.label :matching_staff_message
-    = f.text_area :matching_staff_message, class: 'form-control'
+    = f.text_area :matching_staff_message, class: 'form-control', placeholder: '입력하지 않을 경우 기본메시지가 들어갑니다'
+
+  .form-group
+    = f.label :running_staff_message
+    = f.text_area :running_staff_message, class: 'form-control', placeholder: '입력하지 않을 경우 기본메시지가 들어갑니다'
 
   %h3 첨부파일
   #attachments
