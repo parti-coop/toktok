@@ -44,6 +44,20 @@
         .panel-body
           = render @project.proposal
 
+    - if @project.committees.any?
+      %div
+        %h3
+          주 상임위 선택
+        = form_for(@project, url: admin_project_path(@project), html: { method: :put }) do |f|
+          .form-group
+            .row
+              .col-sm-9.col-xs-7
+                = f.select :primary_committee_id, nil, {include_blank: '(선택안함)'}, {class: 'form-control input-lg'} do
+                  - @project.committees.each do |committee|
+                    %option{value: committee.id, selected: @project.primary_committee_id == committee.id }
+                      = committee.name
+              .col-sm-3.col-xs-5
+                = f.submit '주 상임위 저장', class: 'btn btn-primary btn-block', data: { disable_with: "저장 중..." }
 
     %div
       %h3 참여 시민
