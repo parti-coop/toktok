@@ -268,8 +268,11 @@ var hotline_prepare = function($base) {
     var $elm = $(elm);
     var $form = $(elm);
     var $submit = $('#before-submit-button');
-    $submit.prop('disabled', true);
-    $submit.addClass('disabled');
+
+    if(!$form.valid()) {
+      $submit.prop('disabled', true);
+      $submit.addClass('disabled');
+    }
 
     $form.validate({
       ignore: ':hidden:not(.validate)',
