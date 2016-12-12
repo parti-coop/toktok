@@ -477,12 +477,10 @@ section#page-participations {
       }
 
       .project-image {
-        max-height: 233px;
-        overflow: hidden;
-        img {
-          height: auto;
-          width: 100%;
-        }
+        height: 233px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
     }
 
