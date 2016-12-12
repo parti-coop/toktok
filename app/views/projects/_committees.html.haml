@@ -1,10 +1,16 @@
+- if @project.primary_committee_id.present?
+  - primary_committee = Committee.find(@project.primary_committee_id)
+  - not_priamary_committees = @project.committees.order(:name) - [ primary_committee ]
+  - committees = [primary_committee] + not_priamary_committees
+- else
+  - committees = @project.committees.order(:name)
 .project-panel__committee.project-panel
   .project-label
     %strong|
     이 제안의 상임위원회
   - if @project.committees.any?
     .committees-contents
-      - @project.committees.order(:name).each do |committee|
+      - committees.each do |committee|
         .committee-content
           .committee-name
             = committee.name
