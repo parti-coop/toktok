@@ -2,5 +2,5 @@
   - @projects.each do |project|
     .project-card-wrapper.col-sm-4.col-xs-6
       = render project
-  .projects-pagination.col-sm-12
-    = paginate @projects, remote: true, params: { controller: :projects, action: :search }
+.projects-pagination.col-sm-12
+  = paginate @projects, remote: true, params: { controller: :projects, action: :search }
