@@ -18,10 +18,6 @@ class Project < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :summary, presence: true
-  validates :proposer, presence: true
-  validates :proposer_email, presence: true
-  validates :proposer_phone, presence: true
-  validates :proposer_description, presence: true
 
   accepts_nested_attributes_for :attachments, reject_if: proc { |params| params[:source].blank? and params[:source_cache].blank? and params[:id].blank? }, allow_destroy: true
 

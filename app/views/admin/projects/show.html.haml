@@ -44,10 +44,10 @@
         .panel-body
           = render @project.proposal
 
-    - if @project.committees.any?
-      %div
-        %h3
-          주 상임위 선택
+    %div
+      %h3
+        주 상임위 선택
+      - if @project.committees.any?
         = form_for(@project, url: admin_project_path(@project), html: { method: :put }) do |f|
           .form-group
             .row
@@ -58,6 +58,9 @@
                       = committee.name
               .col-sm-3.col-xs-5
                 = f.submit '주 상임위 저장', class: 'btn btn-primary btn-block', data: { disable_with: "저장 중..." }
+      - else
+        %div
+          상임위가 배정되지 않았습니다. 먼저 상임위를 배정해야합니다.
 
     %div
       %h3 참여 시민
