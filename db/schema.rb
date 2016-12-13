@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212024626) do
+ActiveRecord::Schema.define(version: 20161213092021) do
 
   create_table "assigned_committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC" do |t|
     t.integer  "committee_id", null: false
@@ -78,11 +78,12 @@ ActiveRecord::Schema.define(version: 20161212024626) do
   end
 
   create_table "mainslides", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.integer  "order",                    null: false
-    t.string   "image",                    null: false
-    t.text     "url",        limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "order",                     null: false
+    t.string   "image",                     null: false
+    t.text     "url",         limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
   end
 
   create_table "matches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|

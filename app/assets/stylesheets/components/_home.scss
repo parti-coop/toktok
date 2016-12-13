@@ -15,11 +15,33 @@ section#page-home {
             max-width: 700px;
           }
         }
-        .item {
-          background-color: #fff;
-          img {
-            width: 100%;
+        .changable-item {
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          height: 514px;
+          @media (max-width: $screen-xs-max) {
+            height: 397px;
           }
+          .description {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 50%;
+            height: 30%;
+            margin: auto;
+            @media (max-width: $screen-xs-max) {
+              width: 80%;
+            }
+
+            p {
+              color: $gray-lighter;
+            }
+          }
+
         }
         .btn-home-proposal {
           display: block;
@@ -32,11 +54,17 @@ section#page-home {
           position: absolute;
           top: 50%;
           left: 10%;
+          @media (max-width: $screen-xs-max) {
+            left: 2%;
+          }
         }
         .owl-next {
           position: absolute;
           top: 50%;
           right: 10%;
+          @media (max-width: $screen-xs-max) {
+            right: 2%;
+          }
         }
       }
     }
