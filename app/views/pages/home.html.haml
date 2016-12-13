@@ -17,8 +17,14 @@
         - if mainslide.url.present?
           = link_to mainslide.url, target: '_blank' do
             .item.changable-item{style: "background-image: url(#{image_url(mainslide.image.lg.url)});"}
+              - if mainslide.description.present?
+                .description
+                  = simple_format mainslide.description
         - else
           .item.changable-item{style: "background-image: url(#{image_url(mainslide.image.lg.url)});"}
+            - if mainslide.description.present?
+              .description
+                = simple_format mainslide.description
 
   %section#current-projects
     .container.project-container

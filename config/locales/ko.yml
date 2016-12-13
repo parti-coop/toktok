@@ -95,6 +95,12 @@ ko:
         image: 작성자 이미지
         body: 내용
         timeline_date: 타임라인 날짜
+      mainslide:
+        order: 슬라이드 순서
+        image: 이미지
+        description: 슬라이드 문구
+        url: 링크 url
+
 
     errors:
       models:

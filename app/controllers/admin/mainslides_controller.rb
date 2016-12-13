@@ -37,7 +37,7 @@ module Admin
     private
 
     def mainslide_params
-      params.require(:mainslide).permit(:order, :url, :image)
+      params.require(:mainslide).permit(:order, :url, :image, :description)
     end
   end
 end

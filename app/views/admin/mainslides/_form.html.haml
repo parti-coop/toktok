@@ -18,6 +18,10 @@
       = image_tag @project.image.url, class: 'img-thumbnail', style: 'max-width: 50%'
 
   .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control input-lg'
+
+  .form-group
     = f.label :url
     = f.text_field :url, class: 'form-control input-lg'
     .help-block
