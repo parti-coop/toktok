@@ -14,12 +14,11 @@
           = link_to new_user_session_path, class: 'btn btn-default btn-lg btn-home-proposal' do
             제안하기
       - @mainslides.each do |mainslide|
-        .item
-          - if mainslide.url.present?
-            = link_to mainslide.url, target: '_blank' do
-              = image_tag mainslide.image.lg.url
-          - else
-            = image_tag mainslide.image.lg.url
+        - if mainslide.url.present?
+          = link_to mainslide.url, target: '_blank' do
+            .item.changable-item{style: "background-image: url(#{image_url(mainslide.image.lg.url)});"}
+        - else
+          .item.changable-item{style: "background-image: url(#{image_url(mainslide.image.lg.url)});"}
 
   %section#current-projects
     .container.project-container
