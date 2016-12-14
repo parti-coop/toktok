@@ -40,9 +40,9 @@ section#page-home {
               color: #fff;
             }
             h1, h2, h3, h4 {
-              color: $brand-primary;
+              color: $brand-primary-lighter;
               &:hover {
-                color: $brand-primary;
+                color: $brand-primary-lighter;
               }
             }
           }
