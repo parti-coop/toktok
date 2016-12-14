@@ -9,6 +9,10 @@ section#page-home {
           background-color: $brand-success;
           padding-top: 38px;
           padding-bottom: 38px;
+          height: 514px;
+          @media (max-width: $screen-xs-max) {
+            height: 397px;
+          }
           img {
             width: 100%;
             height: auto;
