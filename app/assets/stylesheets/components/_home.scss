@@ -24,7 +24,6 @@ section#page-home {
             height: 397px;
           }
           .description {
-            overflow: hidden;
             position: absolute;
             top: 0;
             bottom: 0;
@@ -39,6 +38,12 @@ section#page-home {
 
             p {
               color: #fff;
+            }
+            h1, h2, h3, h4 {
+              color: $brand-primary;
+              &:hover {
+                color: $brand-primary;
+              }
             }
           }
 
