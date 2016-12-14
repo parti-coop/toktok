@@ -9,6 +9,11 @@ section#page-home {
           background-color: $brand-success;
           padding-top: 38px;
           padding-bottom: 38px;
+          height: 514px;
+          @media (max-width: $screen-xs-max) {
+            margin-top: 5%;
+            height: 397px;
+          }
           img {
             width: 100%;
             height: auto;
@@ -24,7 +29,6 @@ section#page-home {
             height: 397px;
           }
           .description {
-            overflow: hidden;
             position: absolute;
             top: 0;
             bottom: 0;
@@ -39,6 +43,12 @@ section#page-home {
 
             p {
               color: #fff;
+            }
+            h1, h2, h3, h4 {
+              color: $brand-primary-lighter;
+              &:hover {
+                color: $brand-primary-lighter;
+              }
             }
           }
 
