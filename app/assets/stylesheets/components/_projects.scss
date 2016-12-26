@@ -192,6 +192,7 @@ section#page-home .project {
       border-left-color: $brand-primary;
     }
 
+    &.steps--fail .step--matching,
     &.steps--gathering .step--gathering,
     &.steps--matching .step--matching,
     &.steps--running .step--running {
@@ -199,6 +200,7 @@ section#page-home .project {
       color: #fff;
     }
 
+    &.steps--fail .step--matching,
     &.steps--gathering .step--gathering,
     &.steps--matching .step--matching {
       &:after {
@@ -206,6 +208,7 @@ section#page-home .project {
       }
     }
 
+    &.steps--fail .step--gathering,
     &.steps--gathering .step--matching,
     &.steps--matching .step--gathering,
     &.steps--running .step--gathering,
@@ -214,6 +217,7 @@ section#page-home .project {
         @include angle-after(36px, $gray-lightest)
       }
     }
+
     &.steps--gathering .step--running,
     &.steps--gathering .step--matching,
     &.steps--matching .step--running,
@@ -222,6 +226,7 @@ section#page-home .project {
         @include angle-before(36px, $gray-lightest, $gray-lighter)
       }
     }
+
     &.steps--matching .step--matching,
     &.steps--running .step--running  {
       &:before {

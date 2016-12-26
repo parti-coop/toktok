@@ -2,7 +2,7 @@
   - %w(gathering matching running).each do |project_status|
     .step-wrapper{role: "presentation"}<>
       .step{class: "step--#{project_status} step-popover", "aria-controls": project_status, "data-toggle": "tab", href: "##{project_status}", role: "tab", "data-url": "#project-#{project_status}-example", "data-action": "toktok-popover", "data-placement": "#{Project::STATUS[project_status][:placement]}", "data-project-now-step": project.status_of_project, "data-project-status": project_status}
-        -if project.status_of_project == :matching
+        -if project.status_of_project == :matching or :fail
           - if project_status == 'gathering'
             %i.fa.fa-check
         -if project.status_of_project == :running
@@ -10,7 +10,10 @@
             %i.fa.fa-check
           - if project_status == 'matching'
             %i.fa.fa-check
-        = Project::STATUS[project_status][:label]
+        - if project_status == 'matching' and project.status_of_project == :fail
+          = '매칭실패'
+        - else
+          = Project::STATUS[project_status][:label]
       .hidden<>
         %div{id: "project-#{project_status}-example"}
           %p.project-example-label

@@ -66,6 +66,8 @@ var hotline_prepare = function($base) {
       $('[data-project-status="running"]').webuiPopover();
     } else if ($elm.attr('data-project-now-step') == 'matching') {
       $('[data-project-status="running"]').webuiPopover();
+    } else if ($elm.attr('data-project-now-step') == 'fail') {
+      $('[data-project-status="running"]').webuiPopover();
     }
   });
 
