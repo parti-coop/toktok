@@ -55,7 +55,7 @@ class Project < ApplicationRecord
     participations.exists? user: someone
   end
 
-  def status
+  def status_of_project
     return :running if on_running
 
     if participations_count < participations_goal_count
@@ -89,7 +89,7 @@ class Project < ApplicationRecord
   end
 
   def sorted_congressmen_of_committee(committee)
-    return committee.congressmen.order(:name) if status == :gathering
+    return committee.congressmen.order(:name) if status_of_project == :gathering
     accept_committee_congressmane = committee.congressmen.where(id: accept_congressmen)
     unmatched_committee_congressmane = committee.congressmen.where.not(id: accept_committee_congressmane)
     [

@@ -32,16 +32,16 @@
             = render 'projects/project_steps', project: @project
 
   .tab-content
-    #gathering.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :gathering}"}
+    #gathering.tab-pane{role: "tabpanel", class: "#{'active' if @project.status_of_project == :gathering}"}
       = render 'projects/content_gathering'
       = render 'project_comments'
 
-    #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :matching}"}
+    #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status_of_project == :matching}"}
       = render 'projects/content_matching'
       = render 'project_committes'
       = render 'project_comments'
 
-    #running.tab-pane{role: "tabpanel", class: "#{'active' if @project.status == :running}"}
+    #running.tab-pane{role: "tabpanel", class: "#{'active' if @project.status_of_project == :running}"}
       = render 'projects/content_running'
       = render 'project_comments'
 

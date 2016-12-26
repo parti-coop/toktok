@@ -21,6 +21,6 @@
               = link_to project.title, [:admin, project]
               %span.fa.fa-comment-o
                 = project.comments.count
-            %td= t("messages.project_status.#{project.status}")
+            %td= t("messages.project_status.#{project.status_of_project}")
             %td
               %span= static_date_f project.created_at

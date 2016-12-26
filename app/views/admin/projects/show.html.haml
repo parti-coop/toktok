@@ -14,7 +14,7 @@
       .panel-heading
         %div
           [상태]
-          = t("messages.project_status.#{@project.status}")
+          = t("messages.project_status.#{@project.status_of_project}")
       .panel-body
         [제안자 소개]
         != simple_format @project.proposer_description

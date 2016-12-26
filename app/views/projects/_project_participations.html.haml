@@ -3,7 +3,7 @@
     .project-panel__participation.project-panel#anchor-participation
       %p.participation-title
         - unless @project.participant?(current_user)
-          - if @project.status == :gathering
+          - if @project.status_of_project == :gathering
             - if @project.participations.any?
               이 제안에 #{@project.participations_count + 1}번째 참여시민이 되어 주세요!
               %br

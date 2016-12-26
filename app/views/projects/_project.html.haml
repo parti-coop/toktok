@@ -3,11 +3,11 @@
     .project-intro
       .project-image{style: "background-image: url(#{project.image.lg.url});"}
       .project-status
-        -if project.status == :gathering
+        -if project.status_of_project == :gathering
           시민참여
-        -if project.status == :matching
+        -if project.status_of_project == :matching
           매칭 중
-        -if project.status == :running
+        -if project.status_of_project == :running
           입법활동
 
     .project-detail

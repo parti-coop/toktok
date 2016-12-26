@@ -18,15 +18,15 @@
             - @project.sorted_congressmen_of_committee(committee).each do |congressman|
               .committee-congressman-wrapper{class: "#{'col-xs-3' unless browser.device.mobile? }"}
                 .committee-congressman{class: "committee-congressman-#{@project.status_of_congressman(congressman)}"}
-                  - unless @project.status == :gathering
+                  - unless @project.status_of_project == :gathering
                     .committee-congressman__status{class: "committee-congressman__status--#{@project.status_of_congressman(congressman)}"}
                       - if @project.status_of_congressman(congressman) == :accept
                         = image_tag 'icon_match_accept.png'
                       - if @project.status_of_congressman(congressman) == :reject
                         = image_tag 'icon_match_reject.png'
                       - if @project.status_of_congressman(congressman) == :calling
-                        = t("enumerize.match.status.calling") if @project.status == :matching
-                        = image_tag 'icon_match_no_answer.png' if @project.status == :running
+                        = t("enumerize.match.status.calling") if @project.status_of_project == :matching
+                        = image_tag 'icon_match_no_answer.png' if @project.status_of_project == :running
 
 
                   .committee-congressman__image.img-cogressman{style: "background-image: url(#{congressman.image.sm.url})"}
