@@ -2,13 +2,11 @@
 
   .form-group
     = f.label :status
-    = f.select :status, nil, {}, {class: 'form-control'} do
-      %option{value: nil, selected: "#{@project.status.blank? ? 'true' : ''}"}
-        선택안함
-      %option{value: 'running'}
+    = f.select :status, nil, {include_blank: '해당없음'}, {class: 'form-control'} do
+      %option{value: 'running', selected: @project.status=='running'}
         입법활동
-      %option{value: 'fail'}
-        실패
+      %option{value: 'fail', selected: @project.status=='fail'}
+        매칭실패
 
   .form-group
     = f.label :running_platform_url

@@ -12,6 +12,7 @@ ko:
     project_status:
       gathering: 시민 참여
       matching: 의원 매칭
+      fail: 매칭 실패
       running: 입법 활동
     default_matching_staff_message: 이제 국회의원들의 응답을 기다립니다. 응답을 원하는 의원을 댓글로 호출하세요!
 
