@@ -36,7 +36,7 @@
       = render 'projects/content_gathering'
       = render 'project_comments'
 
-    #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status_of_project == :matching or :fail}"}
+    #matching.tab-pane{role: "tabpanel", class: "#{'active' if @project.status_of_project == :matching or @project.status_of_project == :fail}"}
       = render 'projects/content_matching'
       = render 'project_committes'
       = render 'project_comments'
@@ -44,6 +44,8 @@
     #running.tab-pane{role: "tabpanel", class: "#{'active' if @project.status_of_project == :running}"}
       = render 'projects/content_running'
       = render 'project_comments'
+
+
 
 
 

@@ -26,6 +26,7 @@
                         = image_tag 'icon_match_reject.png'
                       - if @project.status_of_congressman(congressman) == :calling
                         = t("enumerize.match.status.calling") if @project.status_of_project == :matching
+                        = image_tag 'icon_match_no_answer.png' if @project.status_of_project == :fail
                         = image_tag 'icon_match_no_answer.png' if @project.status_of_project == :running
 
 
