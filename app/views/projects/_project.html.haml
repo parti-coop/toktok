@@ -7,6 +7,8 @@
           시민참여
         -if project.status_of_project == :matching
           매칭 중
+        -if project.status_of_project == :fail
+          매칭실패
         -if project.status_of_project == :running
           입법활동
 
