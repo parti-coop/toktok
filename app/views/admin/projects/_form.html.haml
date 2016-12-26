@@ -1,9 +1,14 @@
 = form_for [:admin, @project] do |f|
 
   .form-group
-    %label.checkbox-inline
-      = f.check_box :on_running, { class: 'checkbox-inline' }, 'true', 'false'
-      = f.label :on_running
+    = f.label :status
+    = f.select :status, nil, {}, {class: 'form-control'} do
+      %option{value: nil, selected: "#{@project.status.blank? ? 'true' : ''}"}
+        선택안함
+      %option{value: 'running'}
+        입법활동
+      %option{value: 'fail'}
+        실패
 
   .form-group
     = f.label :running_platform_url

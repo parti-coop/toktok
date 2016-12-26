@@ -56,7 +56,8 @@ class Project < ApplicationRecord
   end
 
   def status_of_project
-    return :running if on_running
+    return :fail if status == 'fail'
+    return :running if status == 'running'
 
     if participations_count < participations_goal_count
       :gathering

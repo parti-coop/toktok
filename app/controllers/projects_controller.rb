@@ -53,6 +53,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :body, :proposal_id, :participations_goal_count, :image, :image_cache, :summary, :proposer, :proposer_email, :proposer_phone, :proposer_description, :matching_staff_message, :on_running, :running_platform_url, committee_ids: [], attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
+    params.require(:project).permit(:title, :body, :proposal_id, :participations_goal_count, :image, :image_cache, :summary, :proposer, :proposer_email, :proposer_phone, :proposer_description, :matching_staff_message, :status, :running_platform_url, committee_ids: [], attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
   end
 end

@@ -62,7 +62,7 @@ ko:
         matching_staff_message: 매칭단계 운영자 메시지
         running_staff_message: 입법활동단계 운영자 메시지
         proposal_id: 관련 제안
-        on_running: 입법활동단계 진입
+        status: 프로젝트 상태
         running_platform_url: 입법플랫폼 URL
       comment:
         body: 내용

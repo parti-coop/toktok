@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161213092021) do
+ActiveRecord::Schema.define(version: 20161226044727) do
 
   create_table "assigned_committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC" do |t|
     t.integer  "committee_id", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20161213092021) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
-  create_table "mainslides", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "mainslides", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer  "order",                     null: false
     t.string   "image",                     null: false
     t.text     "url",         limit: 65535
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20161213092021) do
     t.text     "body",                      limit: 16777215
     t.integer  "proposal_id"
     t.integer  "user_id"
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
     t.integer  "participations_count",                       default: 0
     t.integer  "participations_goal_count",                  default: 1000
     t.string   "image"
@@ -133,12 +133,12 @@ ActiveRecord::Schema.define(version: 20161213092021) do
     t.datetime "deleted_at"
     t.text     "matching_staff_message",    limit: 65535
     t.string   "proposer"
-    t.boolean  "on_running",                                 default: false
     t.string   "running_platform_url"
     t.string   "proposer_email"
     t.string   "proposer_phone"
     t.text     "running_staff_message",     limit: 65535
     t.integer  "primary_committee_id"
+    t.string   "status"
     t.index ["deleted_at"], name: "index_projects_on_deleted_at", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
