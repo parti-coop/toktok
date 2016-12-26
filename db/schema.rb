@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226044727) do
+ActiveRecord::Schema.define(version: 20161226141831) do
 
   create_table "assigned_committees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC" do |t|
     t.integer  "committee_id", null: false
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20161226044727) do
     t.text     "running_staff_message",     limit: 65535
     t.integer  "primary_committee_id"
     t.string   "status",                                     default: ""
+    t.text     "fail_staff_message",        limit: 65535
     t.index ["deleted_at"], name: "index_projects_on_deleted_at", using: :btree
     t.index ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree

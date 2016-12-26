@@ -14,7 +14,6 @@ ko:
       matching: 의원 매칭
       fail: 매칭 실패
       running: 입법 활동
-    default_matching_staff_message: 이제 국회의원들의 응답을 기다립니다. 응답을 원하는 의원을 댓글로 호출하세요!
 
   enumerize:
     user:
@@ -61,6 +60,7 @@ ko:
         image: 대표 이미지
         participations_goal_count: 목표 참여 인원
         matching_staff_message: 매칭단계 운영자 메시지
+        fail_staff_message: 매칭실패 운영자 메시지
         running_staff_message: 입법활동단계 운영자 메시지
         proposal_id: 관련 제안
         status: 프로젝트 상태

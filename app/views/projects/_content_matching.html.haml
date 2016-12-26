@@ -19,10 +19,10 @@
             .media-left.matched-icon
               = image_tag 'icon_timer_on.png'
             .media-body.matched-detail
-              - if @project.matching_staff_message.present?
-                = simple_format @project.matching_staff_message
-              - else
-                = t("messages.default_matching_staff_message")
+              - if @project.status_of_project == :matching
+                = @project.matching_staff_message.present? ? simple_format(@project.matching_staff_message) : '이제 국회의원들의 응답을 기다립니다. 응답을 원하는 의원을 댓글로 호출하세요!'
+              - if @project.status_of_project == :fail
+                = @project.fail_staff_message.present? ? simple_format(@project.fail_staff_message) : "의원 중 누구도 응답하지 않았으며 이미 예산안이 국회를 통과해 매칭에 실패했습니다."
           - if @project.mathced_congressmen_commented?
             %hr.project-divider
             .project-panel__comgressmen-comment.project-panel

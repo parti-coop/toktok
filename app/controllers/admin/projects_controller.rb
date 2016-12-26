@@ -40,7 +40,7 @@ module Admin
     private
 
     def project_params
-      params.require(:project).permit(:title, :body, :proposal_id, :participations_goal_count, :image, :image_cache, :summary, :proposer, :proposer_phone, :proposer_email, :proposer_description, :matching_staff_message, :running_staff_message, :status, :running_platform_url, :primary_committee_id, committee_ids: [], attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
+      params.require(:project).permit(:title, :body, :proposal_id, :participations_goal_count, :image, :image_cache, :summary, :proposer, :proposer_phone, :proposer_email, :proposer_description, :matching_staff_message, :fail_staff_message, :running_staff_message, :status, :running_platform_url, :primary_committee_id, committee_ids: [], attachments_attributes: [ :id, :source, :source_cache, :_destroy ])
     end
 
     def should_exists_committees

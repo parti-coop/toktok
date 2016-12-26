@@ -2,6 +2,8 @@
 
   .form-group
     = f.label :status
+    .help-block
+      '매칭실패' 또는 '입법활동' 상태만 선택할 수 있습니다. (나머지 상태는 참여자수에 따라 자동으로 설정됩니다)
     = f.select :status, nil, {include_blank: '해당없음'}, {class: 'form-control'} do
       %option{value: 'running', selected: @project.status=='running'}
         입법활동
@@ -69,6 +71,10 @@
   .form-group
     = f.label :matching_staff_message
     = f.text_area :matching_staff_message, class: 'form-control', placeholder: '입력하지 않을 경우 기본메시지가 들어갑니다'
+
+  .form-group
+    = f.label :fail_staff_message
+    = f.text_area :fail_staff_message, class: 'form-control', placeholder: '입력하지 않을 경우 기본메시지가 들어갑니다'
 
   .form-group
     = f.label :running_staff_message
