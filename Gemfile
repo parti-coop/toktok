@@ -103,4 +103,5 @@ group :development, :test do
   gem 'spring'
   gem 'mocha', '~> 1.1'
   gem 'rails-controller-testing'
+  gem 'puma'
 end

@@ -5,6 +5,11 @@ class CommentsController < ApplicationController
     @commentable = params[:commentable_type].classify.constantize.find(params[:commentable_id])
     @best_comments = @commentable.comments.hottest
     @comments = @commentable.comments.recent.page(params[:page])
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def create

@@ -44,6 +44,11 @@ class ProjectsController < ApplicationController
     else
       @projects = @projects.recent.page(params[:page])
     end
+
+    respond_to do |format|
+      format.js
+      format.html { redirect_to root_path }
+    end
   end
 
   def reset_meta_tags
