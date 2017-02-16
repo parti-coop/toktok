@@ -80,10 +80,6 @@ gem 'slack-notifier', '~> 1.4'
 gem 'exception_notification', '~> 4.1', '>= 4.1.4'
 gem 'postmark-rails'
 
-# monitor
-gem 'newrelic_rpm'
-gem 'ey_config'
-
 # tool
 gem 'redactor2_rails', '~> 0.1.1'
 gem 'rails_autolink', '~> 1.1', '>= 1.1.6'

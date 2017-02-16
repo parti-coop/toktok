@@ -2,9 +2,9 @@
 
 ## 실환경 구축 방법
 
-페이스북, 트위터를 연결합니다. 각 키는 프로젝트루트/shared/config/env.yml에 등록합니다. email을 얻어 올 권한이 있어야 합니다.
+페이스북, 트위터, 카카오를 연결합니다. 각 키는 {project root}/config/config/env.yml에 등록합니다. 각 연결 계정은 email을 얻어 올 권한이 있어야 합니다.
 
-S3_로 시작하는 것은 아마존 s3 관련된 정보입니다.
+S3_로 시작하는 것은 아마존 s3 관련된 정보입니다. s3를 이용해 업로드나 이미지나 업로드 파일을 관리합니다.
 
 ```
 production:
@@ -19,10 +19,19 @@ production:
   S3_REGION: xx
   S3_BUCKET: xx
   DEFAULT_ADMIN_EMAIL: 최초 관리자 이메일 
-  DEFAULT_ADMIN_PROVIDER: 최초 관리자의 인증 제공 업체 구별자
+  DEFAULT_ADMIN_PROVIDER: 최초 관리자의 인증 제공 업체 구별자, 'email'을 권장합니다.
   DEFAULT_ADMIN_UID: 인증 제공 업체에 등록된 최초 관리자의 uid
 ```
 
+기본 데이터 로딩을 해야합니다.
+
+```
+$ bundle exec rake db:seed_fu
+```
+
+redis와 sidekiq을 사용합니다. 배포 후에 sidekiq을 재기동해야합니다.
+
+mysql을 구동해야합니다. mysql의 encoding은 utf8mb4를 사용합니다. mysql은 버전 5.6 이상을 사용합니다.
 
 ## 로컬 개발 환경 구축 방법
 
@@ -78,7 +87,7 @@ development:
 #### 스키마
 
 ```
-CREATE DATABASE hotlinekr_development_브랜치이름 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE hotlinekr_development_브랜치이름 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 이후 db:migrate로 수행합니다.
