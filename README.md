@@ -23,6 +23,10 @@ production:
   DEFAULT_ADMIN_UID: 인증 제공 업체에 등록된 최초 관리자의 uid
 ```
 
+mysql을 구동해야합니다. mysql의 encoding은 utf8mb4를 사용합니다. mysql은 버전 5.6 이상을 사용합니다. mysql 명령어로 데이터베이스를 만듭니다.
+
+{project root}/config/database.yml에 데이터베이스 연결 정보를 설정합니다.
+
 기본 데이터 로딩을 해야합니다.
 
 ```
@@ -31,9 +35,7 @@ $ bundle exec rake db:seed_fu
 
 redis와 sidekiq을 사용합니다. 배포 후에 sidekiq을 재기동해야합니다.
 
-mysql을 구동해야합니다. mysql의 encoding은 utf8mb4를 사용합니다. mysql은 버전 5.6 이상을 사용합니다.
-
-config/environments/production.rb에 이메일 설정을 합니다.
+config/environments/production.rb에 메일 발송 설정을 합니다.
 
 ## 로컬 개발 환경 구축 방법
 
