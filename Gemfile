@@ -78,7 +78,6 @@ end
 # notification
 gem 'slack-notifier', '~> 1.4'
 gem 'exception_notification', '~> 4.1', '>= 4.1.4'
-gem 'postmark-rails'
 
 # tool
 gem 'redactor2_rails', '~> 0.1.1'

@@ -8,7 +8,7 @@ S3_로 시작하는 것은 아마존 s3 관련된 정보입니다. s3를 이용�
 
 ```
 production:
-  ...
+  SECRET_KEY_BASE: xx
   FACEBOOK_APP_ID: xx
   FACEBOOK_APP_SECRET: xx
   TWITTER_APP_ID: xx
@@ -32,6 +32,8 @@ $ bundle exec rake db:seed_fu
 redis와 sidekiq을 사용합니다. 배포 후에 sidekiq을 재기동해야합니다.
 
 mysql을 구동해야합니다. mysql의 encoding은 utf8mb4를 사용합니다. mysql은 버전 5.6 이상을 사용합니다.
+
+config/environments/production.rb에 이메일 설정을 합니다.
 
 ## 로컬 개발 환경 구축 방법
 
