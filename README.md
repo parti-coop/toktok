@@ -39,7 +39,7 @@ config/environments/production.rb에 메일 발송 설정을 합니다.
 
 ## 로컬 개발 환경 구축 방법
 
-기본적인 Rail 개발 환경에 rbenv, pow/powder를 이용합니다.
+기본적인 Rail 개발 환경에 rbenv를 이용합니다.
 
 ```
 $ rbenv install 2.3.1
@@ -98,23 +98,24 @@ CREATE DATABASE hotlinekr_development_브랜치이름 CHARACTER SET utf8mb4 COLL
 
 ### 로그인 준비
 
-페이스북, 트위터를 연결합니다. 각 키는 프로젝트 최상위 폴더에 .powenv에 등록합니다. 트위터는 사용자 email을 얻어오기 위해 twitter에 따로 요청해야합니다.
+페이스북, 트위터를 연결합니다. 각 키는 {project root}/config/env.yml에 설정합니다. 트위터는 사용자 email을 얻어오기 위해 twitter에 권한을 적절히 설정해야합니다.
 
 ```
-export FACEBOOK_APP_ID="xx"
-export FACEBOOK_APP_SECRET="xx"
-export TWITTER_APP_ID="xx"
-export TWITTER_APP_SECRET="xx"
+FACEBOOK_APP_ID: xx
+FACEBOOK_APP_SECRET: xx
+TWITTER_APP_ID: xx
+TWITTER_APP_SECRET: xx
+KAKAO_CLIENT_ID: xx
 ```
 
 ### 관리자
 
-DEFAULT_ADMIN_UID는 https://dev.twitter.com/rest/tools/console 을 통해 획득한다. 
+{project root}/config/env.yml에 설정합니다. DEFAULT_ADMIN_UID는 https://dev.twitter.com/rest/tools/console 을 통해 획득합니다 
 
 ```
-export DEFAULT_ADMIN_UID="???"
-export DEFAULT_ADMIN_PROVIDER="twitter"
-export DEFAULT_ADMIN_EMAIL="account@parti.xyz"
+DEFAULT_ADMIN_UID: xx
+DEFAULT_ADMIN_PROVIDER: xx
+DEFAULT_ADMIN_EMAIL: xx
 ```
 
 #### 관리자 데이터 추가
@@ -122,5 +123,16 @@ export DEFAULT_ADMIN_EMAIL="account@parti.xyz"
 [mbleigh/seed-fu](https://github.com/mbleigh/seed-fu) 을 이용하여 설정된 초기 데이터를 로딩합니다.
 
 ```
-$ source .powenv
 $ bundle exec rake db:seed_fu
+```
+
+### 테스트용 파일 서버 설정
+
+{project root}/config/env.yml에 설정합니다. Amazon S3를 이용합니다. 되도록 실제 파일서버와 연결하지 않아야 합니다.
+
+```
+S3_ACCESS_KEY: xx
+S3_SECRET_KEY: xx
+S3_REGION: xx
+S3_BUCKET: xx
+```

@@ -26,4 +26,6 @@ app/assets/.DS_Store
 
 local_env.yml
 
+config/env.yml
+
 .DS_Store

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# IMPORTANT 위치를 옮기지 마세요
+gem 'envyable', require: 'envyable/rails-now'
+
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 # database
@@ -59,7 +62,6 @@ gem 'omniauth-kakao', github: 'hans-hk/omniauth-kakao'
 
 # util
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'envyable', '~> 0.2.0'
 gem 'seed-fu', '~> 2.3', '>= 2.3.5'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem "recaptcha", require: "recaptcha/rails"
