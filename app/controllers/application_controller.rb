@@ -9,20 +9,27 @@ class ApplicationController < ActionController::Base
       render_404
     end
     rescue_from CanCan::AccessDenied do |exception|
-      self.response_body = nil
-      redirect_to root_url, :alert => exception.message
+      begin
+        self.response_body = nil
+        redirect_to root_url, :alert => exception.message
+      rescue AbstractController::DoubleRenderError => e
+      end
     end
     rescue_from ActionController::InvalidCrossOriginRequest, ActionController::InvalidAuthenticityToken do |exception|
-      self.response_body = nil
-      logger.error "!!!DoubleRenderErrorMessage!!!: #{exception.message}"
-      logger.error exception.backtrace.join("\n")
-      redirect_to root_url, :alert => I18n.t('errors.messages.invalid_auth_token')
+      begin
+        self.response_body = nil
+        redirect_to root_url, :alert => I18n.t('errors.messages.invalid_auth_token')
+      rescue AbstractController::DoubleRenderError => e
+      end
     end
   end
 
   def render_404
-    self.response_body = nil
-    render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    begin
+      self.response_body = nil
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    rescue AbstractController::DoubleRenderError => e
+    end
   end
 
   def errors_to_flash(model)
