@@ -45,8 +45,6 @@ gem 'carrierwave', '~> 0.10.0'
 gem "mini_magick"
 gem 'file_validators', '~> 2.0', '>= 2.0.2'
 gem "fog"
-gem 'axlsx', '~> 2.0', '>= 2.0.1'
-gem 'axlsx_rails', '~> 0.4.0'
 
 # auth
 gem 'cancancan', '~> 1.10'
@@ -70,6 +68,11 @@ gem 'browser', '~> 2.0', '>= 2.0.2'
 gem 'meta-tags', '~> 2.1.0'
 gem 'ruby_dig', '~> 0.0.2'
 gem 'identicon', '~> 0.0.5'
+gem 'nokogiri', '~> 1.6', '>= 1.6.7.2'
+gem 'rack-protection', '~> 1.5.5'
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
 
 # image
 gem 'imgkit', '~> 1.6', '>= 1.6.1'
@@ -101,4 +104,5 @@ group :development, :test do
   gem 'mocha', '~> 1.1'
   gem 'rails-controller-testing'
   gem 'puma'
+  gem 'rails-erd'
 end
