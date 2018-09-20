@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   def index
+    render_404 and return if params[:commentable_type].blank?
     @commentable = params[:commentable_type].classify.constantize.find(params[:commentable_id])
     @best_comments = @commentable.comments.hottest
     @comments = @commentable.comments.recent.page(params[:page])

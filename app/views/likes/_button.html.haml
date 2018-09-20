@@ -2,12 +2,12 @@
   - if Like.liked_by?(likable, current_user)
     = link_to Like.like_by_likable_and_user(likable, current_user), method: :delete, remote: true, data: { confirm: '공감을 취소하겠습니까?' }, class: 'btn btn-default btn-sm' do
       %i.fa.fa-thumbs-up
-      = likable.likes.count
+      = likable.likes_count
   - else
     = link_to [likable, Like.new], method: :post, remote: true, class: 'btn btn-primary btn-sm' do
       %i.fa.fa-thumbs-o-up
-      = likable.likes.count
+      = likable.likes_count
 - else
   = link_to new_user_session_path, class: 'btn btn-primary btn-sm' do
     %i.fa.fa-thumbs-o-up
-    = likable.likes.count
+    = likable.likes_count
