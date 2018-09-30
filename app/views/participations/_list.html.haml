@@ -1,7 +1,8 @@
-- project.participations.recent.limit(20).each do |participation|
-  - if participation.user.present?
-    = link_to participation.user, class: 'participation-user', target: '_blank' do
-      .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
+- cache project, expires_in: 1.hour, race_condition_ttl: 30.seconds do
+  - project.participations.recent.limit(20).each do |participation|
+    - if participation.user.present?
+      = link_to participation.user, class: 'participation-user', target: '_blank' do
+        .img-user-large{style: "background-image: url(#{participation.user.image.sm.url});"}
 
 - if project.participations_count > 0
   = link_to '참여시민 더보기', project_participations_path(project_id: project), class: 'participation-all-user'

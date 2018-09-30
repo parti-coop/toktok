@@ -1,22 +1,21 @@
 .comment[comment]{class: "#{'best-comment' if local_assigns[:best_comments].present?}" }
-  - cache comment, expires_in: 1.hour, race_condition_ttl: 30.seconds do
-    .media
-      - cache comment, expires_in: 1.hour, race_condition_ttl: 30.seconds do
-        .media-left
-          .comment-image.img-user-large{style: "background-image: url(#{image_url(comment.user.image.xs.url)});"}
-        .media-body
-          .comment-meta
-            %span.comment-name= comment.user.nickname
-            %span.comment-date= date_f comment.created_at
-            - if local_assigns[:best_comments].present?
-              %span.comment-best Best
-          .comment-body
-            = smart_format comment.body
-          .buttons
-            - if can? :update, comment
-              = link_to '수정', [:edit, comment]
-            - if can? :destroy, comment
-              = link_to '삭제', comment, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' }
-        .media-right
-          .like
-            = render 'likes/button', likable: comment, remote: true
+  .media
+    - cache comment, expires_in: 1.hour, race_condition_ttl: 30.seconds do
+      .media-left
+        .comment-image.img-user-large{style: "background-image: url(#{image_url(comment.user.image.xs.url)});"}
+      .media-body
+        .comment-meta
+          %span.comment-name= comment.user.nickname
+          %span.comment-date= date_f comment.created_at
+          - if local_assigns[:best_comments].present?
+            %span.comment-best Best
+        .comment-body
+          = smart_format comment.body
+      .buttons
+        - if can? :update, comment
+          = link_to '수정', [:edit, comment]
+        - if can? :destroy, comment
+          = link_to '삭제', comment, method: :delete, data: { confirm: '정말 삭제하시겠습니까?' }
+    .media-right
+      .like
+        = render 'likes/button', likable: comment, remote: true
